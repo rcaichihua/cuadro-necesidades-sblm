@@ -1,0 +1,526 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Icono_Caja_Chica" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Caja_Chica.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Planilla_276" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Planilla_276.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Reporte_Trabajadores" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Reporte_Trabajadores.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Catalogo_Obras" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Catalogo_Obras.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="databaseIII" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\databaseIII.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Anular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Anular.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Base_Datos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Base_Datos.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Registro_Prevision" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Registro_Prevision.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fondo_bene" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fondo_bene.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Nuevo_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Nuevo_3.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Otros_Reportes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Otros_Reportes.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Correo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Correo.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Encargos_Internos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Encargos_Internos.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="New_Fondo_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\New_Fondo_2.jpeg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Garantias" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Garantias.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Viaticos_Asignaciones" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Viaticos_Asignaciones.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Grafico" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Grafico.ICO;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Autorizar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Autorizar.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Generar_Solicitud" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Generar_Solicitud.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Siguiente_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Siguiente_2.ICO;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Calendario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Calendario.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Anular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Anular.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Reporte_Transparencia" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Reporte_Transparencia.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Solicitud_Certificacion_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Solicitud_Certificacion_2.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Editar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Editar.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Reporte_Requerimiento_Biene" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Reporte_Requerimiento_Biene.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Orden_Servicio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Orden_Servicio.ICO;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Editar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Editar.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Quitar_Aprobacion_Requerimiento" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Quitar_Aprobacion_Requerimiento.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Eliminar_Bienes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Eliminar_Bienes.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Actualizar_Registro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Actualizar_Registro.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cancelar_Formato" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cancelar_Formato.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="new_fondo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\new_fondo.jpeg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Excel_Logo_Home_Page" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Excel-Logo-Home-Page.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Otros_Registros" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Otros_Registros.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Giro_Caj_Chica" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Giro_Caj_Chica.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Certificcion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Certificcion.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Nuevo_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Nuevo_2.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Bienes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Bienes.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Desaprobar_Requerimiento" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Desaprobar_Requerimiento.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Eliminar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Eliminar.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Reporte_PIM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Reporte_PIM.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Anular1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Anular.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cerrar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cerrar.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Image_Impuesto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Image_Impuesto.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Rebajar_Orden" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Rebajar_Orden.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Configuracion_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Configuracion_2.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Planilla_CAS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Planilla_CAS.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Catalogo_Servicios" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Catalogo_Servicios.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Procesos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Procesos.ICO;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Giro_Planillas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Giro_Planillas.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fachadacolor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fachadacolor.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Registro_Convocatotrias" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Registro_Convocatotrias.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Planillas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Planillas.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Reporte_Legajo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Reporte_Legajo.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_PECOSA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_PECOSA.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Devengar_OS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Devengar_OS.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_PAC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_PAC.ICO;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Actualizar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Actualizar.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Nuevo_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Nuevo_4.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Salir" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Salir.ICO;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Metas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Metas.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_NEA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_NEA.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Login_SAB" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Login_SAB.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Contratos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Contratos.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Ampliaciones" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Ampliaciones.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Giro_Varios" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Giro_Varios.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Reporte_Requerimiento_Servicios" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Reporte_Requerimiento_Servicios.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Visualizar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Visualizar.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Reporte_Servicios" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Reporte_Servicios.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Registro_Trabajadores" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Registro_Trabajadores.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Registro_Legajo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Registro_Legajo.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Registro_Contratos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Registro_Contratos.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Reporte_Planillas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Reporte_Planillas.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Agregar_Bien" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Agregar_Bien.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cancelar_Comprobante" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cancelar_Comprobante.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\excel.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Autorizar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Autorizar.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Orden_Compra" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Orden_Compra.ICO;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Logo_SBLM_copia" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logo_SBLM-copia.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Contabilidad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Contabilidad.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Planillas_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Planillas_2.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Limpiar_Bienes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Limpiar_Bienes.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Reporte_General" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Reporte_General.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Reporte_Devengados" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Reporte_Devengados.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Extornar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Extornar.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Cumplimiento" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Cumplimiento.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Rebajas_Certificacion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Rebajas_Certificacion.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Reportes_Compras" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Reportes_Compras.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Solicitud_Certificacion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Solicitud_Certificacion.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Rebajas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Rebajas.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Giro_OS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Giro_OS.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Ampliar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Ampliar.ICO;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Servicios" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Servicios.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Buscar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Buscar.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Firmar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Firmar.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cargo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cargo.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SAB" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SAB.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Aceptar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Aceptar.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Reporte_PECOSA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Reporte_PECOSA.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Aprobacion_Requerimiento" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Aprobacion_Requerimiento.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_PIA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_PIA.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Editar2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Editar2.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Siguiente" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Siguiente.ICO;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Configuracion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Configuracion.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Fuentes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Fuentes.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Reportar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Reportar.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Reporte_Giros" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Reporte_Giros.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Imprimir" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Imprimir.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Penalidad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Penalidad.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Ampliacion_Certificaciones" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Ampliacion_Certificaciones.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Usuarios" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Usuarios.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Catalogo_Bienes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Catalogo_Bienes.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Giro_Viaticos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Giro_Viaticos.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Reporte_SEACE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Reporte_SEACE.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Nota_Modificatoria" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Nota_Modificatoria.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Reducir" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Reducir.ICO;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Actividades" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Actividades.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Clasificadpres" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Clasificadpres.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Devengar_OC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Devengar_OC.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Giro_OC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Giro_OC.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Guadar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Guadar.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Giro_Encargos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Giro_Encargos.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Proveedores" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Proveedores.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Reporte_NEA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Reporte_NEA.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Estadistica" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Estadistica.ICO;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Reenumerar_Orden" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Reenumerar_Orden.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Estudio_Mercado" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Estudio_Mercado.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Nuevo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Nuevo.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_Reporte_General_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_Reporte_General_2.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono_PC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono_PC.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="garantia" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\garantia.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SAG_SBLM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SAG_SBLM.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cn.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="saldo_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\saldo_16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+</root>
