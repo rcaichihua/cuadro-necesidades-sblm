@@ -75,7 +75,7 @@
     End Sub
     Private Sub Boton_Nueva_AM_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Boton_Nuevo_AM.Click
         If Datos.Acceso_Sub_Boton(My.Settings.Usuario.Trim, "Boton_Accion_Modificatoria", Me.Boton_Nuevo_AM.Name) = True Then
-            Dim Formulario As New frmRegistro_CN
+            Dim Formulario As New frmRegistro_Acciones_Modificatorias
             Formulario.Editar = False
             Formulario.ShowDialog()
             Call Me.Filtrar()

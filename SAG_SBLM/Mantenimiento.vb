@@ -1149,7 +1149,7 @@ Public Class Mantenimiento
         Da.Fill(Ds)
         If Ds.Tables(0).Rows.Count > 0 Then
             Select Case Ds.Tables(0).Rows(0).Item("Codigo_Estado_CN").ToString
-                Case "01" 'EMITIDO()
+                Case "03" 'EMITIDO() 01
                     Nuevo.Enabled = True
                     Editar.Enabled = True
                     Eliminar.Enabled = True
@@ -1167,7 +1167,7 @@ Public Class Mantenimiento
                     Aprobar.Enabled = True
                     Visualizar.Enabled = True
                     Imprimir.Enabled = True
-                Case "03" 'APROBADO()
+                Case "01" 'APROBADO() 03
                     Nuevo.Enabled = True
                     Editar.Enabled = False
                     Eliminar.Enabled = False

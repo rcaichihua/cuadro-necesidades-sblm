@@ -12,7 +12,7 @@
     <AssemblyName>SAG_SBLM</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <OptionExplicit>On</OptionExplicit>
     <OptionCompare>Binary</OptionCompare>
     <OptionStrict>Off</OptionStrict>
@@ -33,6 +33,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
     <PublishUrl>\\192.168.1.8\Sistemas\SAG_CN\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
@@ -64,6 +65,7 @@
     <DocumentationFile>SAG_SBLM.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -73,6 +75,7 @@
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>SAG_SBLM.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -97,7 +100,7 @@
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
       <HintPath>bin\Debug\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -298,6 +301,12 @@
       <DependentUpon>frmProveedor.vb</DependentUpon>
     </Compile>
     <Compile Include="frmProveedor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegistro_Acciones_Modificatorias.designer.vb">
+      <DependentUpon>frmRegistro_Acciones_Modificatorias.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegistro_Acciones_Modificatorias.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmRegistro_CN.designer.vb">
@@ -526,6 +535,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmProveedor.resx">
       <DependentUpon>frmProveedor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegistro_Acciones_Modificatorias.resx">
+      <DependentUpon>frmRegistro_Acciones_Modificatorias.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRegistro_CN.resx">
       <DependentUpon>frmRegistro_CN.vb</DependentUpon>
