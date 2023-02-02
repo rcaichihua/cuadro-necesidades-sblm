@@ -12,6 +12,7 @@
     Dim SubGenerica_Detalle As New DataTable
     Dim Especifica As New DataTable
     Dim Especifica_Detalle As New DataTable
+    Dim Motivo As New DataTable
     Public Editar As Boolean = False
     Dim Separador As Char
     Private Sub cbFF_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbFF.SelectedIndexChanged
@@ -201,7 +202,7 @@
         txtEnero.SelectionLength = txtEnero.Text.Length
         SumaTotalMeses()
     End Sub
-    Private Sub txtEnero_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtEnero.GotFocus
+    Private Sub txtEnero_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtEnero.GotFocus, txtEnero_m.GotFocus
         txtEnero.SelectionStart = 0
         txtEnero.SelectionLength = txtEnero.Text.Length
         SumaTotalMeses()
@@ -222,7 +223,7 @@
             Me.txtEnero.Text = "0.00"
         End If
     End Sub
-    Private Sub txtEnero_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtEnero.LostFocus
+    Private Sub txtEnero_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtEnero.LostFocus, txtEnero_m.LostFocus
         With Me.txtEnero
             If Len(Trim(.Text)) = 0 Then .Text = 0
             .Text = FormatNumber(.Text, 2, , , TriState.True)
@@ -239,7 +240,7 @@
         txtFebrero.SelectionLength = txtFebrero.Text.Length
         SumaTotalMeses()
     End Sub
-    Private Sub txtFebrero_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtFebrero.GotFocus
+    Private Sub txtFebrero_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtFebrero.GotFocus, txtFebrero_m.GotFocus
         txtFebrero.SelectionStart = 0
         txtFebrero.SelectionLength = txtFebrero.Text.Length
         SumaTotalMeses()
@@ -260,7 +261,7 @@
             Me.txtFebrero.Text = "0.00"
         End If
     End Sub
-    Private Sub txtFebrero_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtFebrero.LostFocus
+    Private Sub txtFebrero_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtFebrero.LostFocus, txtFebrero_m.LostFocus
         With Me.txtFebrero
             If Len(Trim(.Text)) = 0 Then .Text = 0
             .Text = FormatNumber(.Text, 2, , , TriState.True)
@@ -272,7 +273,7 @@
         txtMarzo.SelectionLength = txtMarzo.Text.Length
         SumaTotalMeses()
     End Sub
-    Private Sub txtMarzo_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtMarzo.GotFocus
+    Private Sub txtMarzo_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtMarzo.GotFocus, txtMarzo_m.GotFocus
         txtMarzo.SelectionStart = 0
         txtMarzo.SelectionLength = txtMarzo.Text.Length
         SumaTotalMeses()
@@ -293,7 +294,7 @@
             Me.txtMarzo.Text = "0.00"
         End If
     End Sub
-    Private Sub txtMarzo_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtMarzo.LostFocus
+    Private Sub txtMarzo_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtMarzo.LostFocus, txtMarzo_m.LostFocus
         With Me.txtMarzo
             If Len(Trim(.Text)) = 0 Then .Text = 0
             .Text = FormatNumber(.Text, 2, , , TriState.True)
@@ -305,7 +306,7 @@
         txtAbril.SelectionLength = txtAbril.Text.Length
         SumaTotalMeses()
     End Sub
-    Private Sub txtAbril_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtAbril.GotFocus
+    Private Sub txtAbril_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtAbril.GotFocus, txtAbril_m.GotFocus
         txtAbril.SelectionStart = 0
         txtAbril.SelectionLength = txtAbril.Text.Length
         SumaTotalMeses()
@@ -326,7 +327,7 @@
             Me.txtAbril.Text = "0.00"
         End If
     End Sub
-    Private Sub txtAbril_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtAbril.LostFocus
+    Private Sub txtAbril_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtAbril.LostFocus, txtAbril_m.LostFocus
         With Me.txtAbril
             If Len(Trim(.Text)) = 0 Then .Text = 0
             .Text = FormatNumber(.Text, 2, , , TriState.True)
@@ -338,7 +339,7 @@
         txtMayo.SelectionLength = txtMayo.Text.Length
         SumaTotalMeses()
     End Sub
-    Private Sub txtMayo_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtMayo.GotFocus
+    Private Sub txtMayo_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtMayo.GotFocus, txtMayo_m.GotFocus
         txtMayo.SelectionStart = 0
         txtMayo.SelectionLength = txtMayo.Text.Length
         SumaTotalMeses()
@@ -359,7 +360,7 @@
             Me.txtMayo.Text = "0.00"
         End If
     End Sub
-    Private Sub txtMayo_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtMayo.LostFocus
+    Private Sub txtMayo_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtMayo.LostFocus, txtMayo_m.LostFocus
         With Me.txtMayo
             If Len(Trim(.Text)) = 0 Then .Text = 0
             .Text = FormatNumber(.Text, 2, , , TriState.True)
@@ -371,7 +372,7 @@
         txtJunio.SelectionLength = txtJunio.Text.Length
         SumaTotalMeses()
     End Sub
-    Private Sub txtJunio_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtJunio.GotFocus
+    Private Sub txtJunio_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtJunio.GotFocus, txtJunio_m.GotFocus
         txtJunio.SelectionStart = 0
         txtJunio.SelectionLength = txtJunio.Text.Length
         SumaTotalMeses()
@@ -392,7 +393,7 @@
             Me.txtJunio.Text = "0.00"
         End If
     End Sub
-    Private Sub txtJunio_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtJunio.LostFocus
+    Private Sub txtJunio_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtJunio.LostFocus, txtJunio_m.LostFocus
         With Me.txtJunio
             If Len(Trim(.Text)) = 0 Then .Text = 0
             .Text = FormatNumber(.Text, 2, , , TriState.True)
@@ -404,7 +405,7 @@
         txtJulio.SelectionLength = txtJulio.Text.Length
         SumaTotalMeses()
     End Sub
-    Private Sub txtJulio_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtJulio.GotFocus
+    Private Sub txtJulio_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtJulio.GotFocus, txtJulio_m.GotFocus
         txtJulio.SelectionStart = 0
         txtJulio.SelectionLength = txtJulio.Text.Length
         SumaTotalMeses()
@@ -425,7 +426,7 @@
             Me.txtJulio.Text = "0.00"
         End If
     End Sub
-    Private Sub txtJulio_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtJulio.LostFocus
+    Private Sub txtJulio_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtJulio.LostFocus, txtJulio_m.LostFocus
         With Me.txtJulio
             If Len(Trim(.Text)) = 0 Then .Text = 0
             .Text = FormatNumber(.Text, 2, , , TriState.True)
@@ -437,7 +438,7 @@
         txtAgosto.SelectionLength = txtAgosto.Text.Length
         SumaTotalMeses()
     End Sub
-    Private Sub txtAgosto_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtAgosto.GotFocus
+    Private Sub txtAgosto_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtAgosto.GotFocus, txtAgosto_m.GotFocus
         txtAgosto.SelectionStart = 0
         txtAgosto.SelectionLength = txtAgosto.Text.Length
         SumaTotalMeses()
@@ -458,7 +459,7 @@
             Me.txtAgosto.Text = "0.00"
         End If
     End Sub
-    Private Sub txtAgosto_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtAgosto.LostFocus
+    Private Sub txtAgosto_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtAgosto.LostFocus, txtAgosto_m.LostFocus
         With Me.txtAgosto
             If Len(Trim(.Text)) = 0 Then .Text = 0
             .Text = FormatNumber(.Text, 2, , , TriState.True)
@@ -470,7 +471,7 @@
         txtSeptiembre.SelectionLength = txtSeptiembre.Text.Length
         SumaTotalMeses()
     End Sub
-    Private Sub txtSeptiembre_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtSeptiembre.GotFocus
+    Private Sub txtSeptiembre_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtSeptiembre.GotFocus, txtSeptiembre_m.GotFocus
         txtSeptiembre.SelectionStart = 0
         txtSeptiembre.SelectionLength = txtSeptiembre.Text.Length
         SumaTotalMeses()
@@ -491,7 +492,7 @@
             Me.txtSeptiembre.Text = "0.00"
         End If
     End Sub
-    Private Sub txtSeptiembre_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtSeptiembre.LostFocus
+    Private Sub txtSeptiembre_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtSeptiembre.LostFocus, txtSeptiembre_m.LostFocus
         With Me.txtSeptiembre
             If Len(Trim(.Text)) = 0 Then .Text = 0
             .Text = FormatNumber(.Text, 2, , , TriState.True)
@@ -503,12 +504,12 @@
         txtOctubre.SelectionLength = txtOctubre.Text.Length
         SumaTotalMeses()
     End Sub
-    Private Sub txtOctubre_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtOctubre.GotFocus
+    Private Sub txtOctubre_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtOctubre.GotFocus, txtOctubre_m.GotFocus
         txtOctubre.SelectionStart = 0
         txtOctubre.SelectionLength = txtOctubre.Text.Length
         SumaTotalMeses()
     End Sub
-    Private Sub txtOctubre_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtOctubre.KeyPress
+    Private Sub txtOctubre_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtOctubre.KeyPress, txtOctubre_m.KeyPress
         If txtOctubre.Text.IndexOf(".") <> -1 And Asc(e.KeyChar) = 46 Then e.KeyChar = Chr(0)
         If Not IsNumeric(e.KeyChar) And Asc(e.KeyChar) <> 47 And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 13 And Asc(e.KeyChar) <> 46 Then e.KeyChar = Chr(0)
         If Not (Char.IsNumber(e.KeyChar) Or e.KeyChar.Equals(Separador) Or Char.IsControl(e.KeyChar)) Then e.Handled = True
@@ -524,7 +525,7 @@
             Me.txtOctubre.Text = "0.00"
         End If
     End Sub
-    Private Sub txtOctubre_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtOctubre.LostFocus
+    Private Sub txtOctubre_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtOctubre.LostFocus, txtOctubre_m.LostFocus
         With Me.txtOctubre
             If Len(Trim(.Text)) = 0 Then .Text = 0
             .Text = FormatNumber(.Text, 2, , , TriState.True)
@@ -536,7 +537,7 @@
         txtNoviembre.SelectionLength = txtNoviembre.Text.Length
         SumaTotalMeses()
     End Sub
-    Private Sub txtNoviembre_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtNoviembre.GotFocus
+    Private Sub txtNoviembre_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtNoviembre.GotFocus, txtNoviembre_m.GotFocus
         txtNoviembre.SelectionStart = 0
         txtNoviembre.SelectionLength = txtNoviembre.Text.Length
         SumaTotalMeses()
@@ -557,7 +558,7 @@
             Me.txtNoviembre.Text = "0.00"
         End If
     End Sub
-    Private Sub txtNoviembre_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtNoviembre.LostFocus
+    Private Sub txtNoviembre_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtNoviembre.LostFocus, txtNoviembre_m.LostFocus
         With Me.txtNoviembre
             If Len(Trim(.Text)) = 0 Then .Text = 0
             .Text = FormatNumber(.Text, 2, , , TriState.True)
@@ -569,7 +570,7 @@
         txtDiciembre.SelectionLength = txtDiciembre.Text.Length
         SumaTotalMeses()
     End Sub
-    Private Sub txtDiciembre_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtDiciembre.GotFocus
+    Private Sub txtDiciembre_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtDiciembre.GotFocus, txtDiciembre_m.GotFocus
         txtDiciembre.SelectionStart = 0
         txtDiciembre.SelectionLength = txtDiciembre.Text.Length
         SumaTotalMeses()
@@ -591,7 +592,7 @@
         End If
         btnAgregar.Focus()
     End Sub
-    Private Sub txtDiciembre_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtDiciembre.LostFocus
+    Private Sub txtDiciembre_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtDiciembre.LostFocus, txtDiciembre_m.LostFocus
         With Me.txtDiciembre
             If Len(Trim(.Text)) = 0 Then .Text = 0
             .Text = FormatNumber(.Text, 2, , , TriState.True)
@@ -600,6 +601,10 @@
     End Sub
     Private Sub SumaTotalMeses()
         txtCantidad.Text = (Convert.ToDecimal(IIf(txtEnero.Text.Trim() = String.Empty, "0.00", txtEnero.Text)) + Convert.ToDecimal(IIf(txtFebrero.Text.Trim() = String.Empty, "0.00", txtFebrero.Text)) + Convert.ToDecimal(IIf(txtMarzo.Text.Trim() = String.Empty, "0.00", txtMarzo.Text)) + Convert.ToDecimal(IIf(txtAbril.Text.Trim() = String.Empty, "0.00", txtAbril.Text)) + Convert.ToDecimal(IIf(txtMayo.Text.Trim() = String.Empty, "0.00", txtMayo.Text)) + Convert.ToDecimal(IIf(txtJunio.Text.Trim() = String.Empty, "0.00", txtJunio.Text)) + Convert.ToDecimal(IIf(txtJulio.Text.Trim() = String.Empty, "0.00", txtJulio.Text)) + Convert.ToDecimal(IIf(txtAgosto.Text.Trim() = String.Empty, "0.00", txtAgosto.Text)) + Convert.ToDecimal(IIf(txtSeptiembre.Text.Trim() = String.Empty, "0.00", txtSeptiembre.Text)) + Convert.ToDecimal(IIf(txtOctubre.Text.Trim() = String.Empty, "0.00", txtOctubre.Text) + +Convert.ToDecimal(IIf(txtNoviembre.Text.Trim() = String.Empty, "0.00", txtNoviembre.Text)) + +Convert.ToDecimal(IIf(txtDiciembre.Text.Trim() = String.Empty, "0.00", txtDiciembre.Text)))).ToString("###,###,#.00")
+    End Sub
+    Private Sub SumaTotalMeses_modificado()
+        txtCantidad_m.Text = (Convert.ToDecimal(IIf(txtEnero_m.Text.Trim() = String.Empty, "0.00", txtEnero_m.Text)) + Convert.ToDecimal(IIf(txtFebrero_m.Text.Trim() = String.Empty, "0.00", txtFebrero_m.Text)) + Convert.ToDecimal(IIf(txtMarzo_m.Text.Trim() = String.Empty, "0.00", txtMarzo_m.Text)) + Convert.ToDecimal(IIf(txtAbril_m.Text.Trim() = String.Empty, "0.00", txtAbril_m.Text)) + Convert.ToDecimal(IIf(txtMayo_m.Text.Trim() = String.Empty, "0.00", txtMayo_m.Text)) + Convert.ToDecimal(IIf(txtJunio_m.Text.Trim() = String.Empty, "0.00", txtJunio_m.Text)) + Convert.ToDecimal(IIf(txtJulio_m.Text.Trim() = String.Empty, "0.00", txtJulio_m.Text)) + Convert.ToDecimal(IIf(txtAgosto_m.Text.Trim() = String.Empty, "0.00", txtAgosto_m.Text)) + Convert.ToDecimal(IIf(txtSeptiembre_m.Text.Trim() = String.Empty, "0.00", txtSeptiembre_m.Text)) + Convert.ToDecimal(IIf(txtOctubre_m.Text.Trim() = String.Empty, "0.00", txtOctubre_m.Text) + +Convert.ToDecimal(IIf(txtNoviembre_m.Text.Trim() = String.Empty, "0.00", txtNoviembre_m.Text)) + +Convert.ToDecimal(IIf(txtDiciembre_m.Text.Trim() = String.Empty, "0.00", txtDiciembre_m.Text)))).ToString("###,###,#.00")
+        txtMonto.Text = ((Convert.ToDecimal(IIf(txtEnero_m.Text.Trim() = String.Empty, "0.00", txtEnero_m.Text)) + Convert.ToDecimal(IIf(txtFebrero_m.Text.Trim() = String.Empty, "0.00", txtFebrero_m.Text)) + Convert.ToDecimal(IIf(txtMarzo_m.Text.Trim() = String.Empty, "0.00", txtMarzo_m.Text)) + Convert.ToDecimal(IIf(txtAbril_m.Text.Trim() = String.Empty, "0.00", txtAbril_m.Text)) + Convert.ToDecimal(IIf(txtMayo_m.Text.Trim() = String.Empty, "0.00", txtMayo_m.Text)) + Convert.ToDecimal(IIf(txtJunio_m.Text.Trim() = String.Empty, "0.00", txtJunio_m.Text)) + Convert.ToDecimal(IIf(txtJulio_m.Text.Trim() = String.Empty, "0.00", txtJulio_m.Text)) + Convert.ToDecimal(IIf(txtAgosto_m.Text.Trim() = String.Empty, "0.00", txtAgosto_m.Text)) + Convert.ToDecimal(IIf(txtSeptiembre_m.Text.Trim() = String.Empty, "0.00", txtSeptiembre_m.Text)) + Convert.ToDecimal(IIf(txtOctubre_m.Text.Trim() = String.Empty, "0.00", txtOctubre_m.Text) + +Convert.ToDecimal(IIf(txtNoviembre_m.Text.Trim() = String.Empty, "0.00", txtNoviembre_m.Text)) + +Convert.ToDecimal(IIf(txtDiciembre_m.Text.Trim() = String.Empty, "0.00", txtDiciembre_m.Text)))) * Convert.ToDecimal(txtCosto.Text)).ToString("###,###,#.00")
     End Sub
     Private Sub dgvDistribucionCn_CellFormatting(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles dgvDistribucionCn.CellFormatting
         If Me.dgvDistribucionCn.Columns(e.ColumnIndex).Name = "Ene." Then
@@ -701,7 +706,7 @@
                                                             dgvDistribucionCn.Item(35, dgvDistribucionCn.Rows.Count - 1).Value = Fuente_Financiaminto.Rows(Me.cbFF.SelectedIndex).Item("Codigo_FF").ToString & "." & Rubro.Rows(Me.cbRubro.SelectedIndex).Item("Codigo_Rubro").ToString & "." & Me.txtCodigoGrupo.Text.Trim & "." & Me.txtCodigoClase.Text.Trim & "." & Me.txtCodigoFamilia.Text.Trim & "." & Me.txtCodigoItem.Text.Trim & "." & Secuencia_Funcional.Rows(Me.cbSecuenciaFuncional.SelectedIndex).Item("Codigo_Secuencia_Funcional").ToString & "." & Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString & "." & Actividad.Rows(Me.cbActividad.SelectedIndex).Item("Codigo_Actividad").ToString
                                                             dgvDistribucionCn.Item(36, dgvDistribucionCn.Rows.Count - 1).Value = IIf(rbBienes.Checked, "01", "02")
                                                             dgvDistribucionCn.Item(38, dgvDistribucionCn.Rows.Count - 1).Value = Format(Math.Round(Convert.ToDouble(Me.txtCantidad.Text) * Convert.ToDouble(txtCosto.Text), 2, MidpointRounding.AwayFromZero), "###,###,#.00")
-                                                            dgvDistribucionCn.Item(41, dgvDistribucionCn.Rows.Count - 1).Value = IIf(Me.txtdb.Text.Trim() = String.Empty, "0", Me.txtdb.Text)
+                                                            dgvDistribucionCn.Item(41, dgvDistribucionCn.Rows.Count - 1).Value = IIf(Me.txtDB.Text.Trim() = String.Empty, "0", Me.txtDB.Text)
                                                             Me.txtEnero.Text = "0.00"
                                                             Me.txtFebrero.Text = "0.00"
                                                             Me.txtMarzo.Text = "0.00"
@@ -943,12 +948,14 @@
     Private Sub frmRegistro_CN_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.Office2007ColorTable = DevComponents.DotNetBar.Rendering.eOffice2007ColorScheme.Blue
         If Editar = False Then
+            Motivo = Datos.LLenar_Combo_Solo("select Codigo_Motivo_AM, Descripcion_Motivo_AM, (Codigo_Motivo_AM + ' - ' + Descripcion_Motivo_AM) as Motivo from Motivo_Acccion_Modificatoria", Me.cbMotivo, "Motivo")
             Unidad_Organica = Datos.LLenar_Combo_Solo("Select * From Unidad_Organica Where Año_Ejecucion='" & My.Settings.Año_Ejecucion & "' And Codigo_Unidad_Organica In (" & Datos.Cadena_Unidades_Organicas_Por_Usuario(My.Settings.Año_Ejecucion, My.Settings.Usuario) & ")", Me.cbUnidadOrganica, "Nombre_Unidad_Organica")
             Fuente_Financiaminto = Datos.LLenar_Combo_Solo("Select * From Lista_FF Where Año_Ejecucion='" & My.Settings.Año_Ejecucion & "'", Me.cbFF, "Fuente")
             'Tipo_Transaccion = Datos.LLenar_Combo_Solo("Select * From Lista_Tipo_Transaccion Where Año_Ejecucion='" & My.Settings.Año_Ejecucion & "'", Me.cb, "Transaccion")
             Call Me.Dimensionar()
             Separador = Application.CurrentCulture.NumberFormat.NumberDecimalSeparator
         Else
+            Motivo = Datos.LLenar_Combo_Solo("select Codigo_Motivo_AM, Descripcion_Motivo_AM, (Codigo_Motivo_AM + ' - ' + Descripcion_Motivo_AM) as Motivo from Motivo_Acccion_Modificatoria", Me.cbMotivo, "Motivo")
             Unidad_Organica = Datos.LLenar_Combo_Solo("Select * From Unidad_Organica Where Año_Ejecucion='" & My.Settings.Año_Ejecucion & "' And Codigo_Unidad_Organica In (" & Datos.Cadena_Unidades_Organicas_Por_Usuario(My.Settings.Año_Ejecucion, My.Settings.Usuario) & ")", Me.cbUnidadOrganica, "Nombre_Unidad_Organica")
             Fuente_Financiaminto = Datos.LLenar_Combo_Solo("Select * From Lista_FF Where Año_Ejecucion='" & My.Settings.Año_Ejecucion & "'", Me.cbFF, "Fuente")
             'Tipo_Transaccion = Datos.LLenar_Combo_Solo("Select * From Lista_Tipo_Transaccion Where Año_Ejecucion='" & My.Settings.Año_Ejecucion & "'", Me.cbTipoTransaccion, "Transaccion")
@@ -977,14 +984,31 @@
         Formulario.Tipo_Catalogo = IIf(rbBienes.Checked, "01", "02")
         Formulario.ShowDialog()
         If Variable_Codigo_Grupo.Trim.Length > 0 And Variable_Codigo_Clase.Trim.Length > 0 And Variable_Codigo_Familia.Trim.Length > 0 And Variable_Codigo_Item.Trim.Length > 0 Then
-            Datos.Mostrar_Data_Item_Catalogo(Variable_Codigo_Grupo, Variable_Codigo_Clase, Variable_Codigo_Familia,
-                                             Variable_Codigo_Item, IIf(rbBienes.Checked, 1, 2), Me.txtCodigoGrupo,
+            'Datos.Mostrar_Data_Item_Catalogo(Variable_Codigo_Grupo, Variable_Codigo_Clase, Variable_Codigo_Familia,
+            '                                 Variable_Codigo_Item, IIf(rbBienes.Checked, 1, 2), Me.txtCodigoGrupo,
+            '                                 Me.txtGrupo, Me.txtCodigoClase, Me.txtClase, Me.txtCodigoFamilia,
+            '                                 Me.txtFamilia, Me.txtCodigoItem, Me.txtItem, Me.txtCodigoUnidadMedida,
+            '                                 Me.txtUnidadMedida, Me.txtTipoTransaccion, Me.txtGenerica, Me.txtSubGenerica,
+            '                                 Me.txtSubGenericaDetalle, Me.txtEspecifica, Me.txtEspecificaDetalle)
+            Datos.Mostrar_Data_Item_Catalogo_Cuadro_Necesidades(Variable_Codigo_Grupo, Variable_Codigo_Clase, Variable_Codigo_Familia,
+                                             Variable_Codigo_Item, IIf(rbBienes.Checked, 1, 2),
+                                             Convert.ToDouble(Fuente_Financiaminto.Rows(Me.cbFF.SelectedIndex).Item("Codigo_FF").ToString),
+                                             Rubro.Rows(Me.cbRubro.SelectedIndex).Item("Codigo_Rubro").ToString,
+                                             Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString,
+                                             Secuencia_Funcional.Rows(Me.cbSecuenciaFuncional.SelectedIndex).Item("Codigo_Secuencia_Funcional").ToString,
+                                             Actividad.Rows(Me.cbActividad.SelectedIndex).Item("Codigo_Actividad").ToString, Me.txtCodigoGrupo,
                                              Me.txtGrupo, Me.txtCodigoClase, Me.txtClase, Me.txtCodigoFamilia,
                                              Me.txtFamilia, Me.txtCodigoItem, Me.txtItem, Me.txtCodigoUnidadMedida,
                                              Me.txtUnidadMedida, Me.txtTipoTransaccion, Me.txtGenerica, Me.txtSubGenerica,
-                                             Me.txtSubGenericaDetalle, Me.txtEspecifica, Me.txtEspecificaDetalle)
-            Me.txtEnero.Focus()
+                                             Me.txtSubGenericaDetalle, Me.txtEspecifica, Me.txtEspecificaDetalle,
+                                             Me.txtEnero, Me.txtFebrero, Me.txtMarzo, Me.txtAbril, Me.txtMarzo, Me.txtJunio, Me.txtJulio,
+                                             Me.txtAgosto, Me.txtSeptiembre, Me.txtOctubre, Me.txtNoviembre, Me.txtDiciembre,
+                                             Me.txtEnero_m, Me.txtFebrero_m, Me.txtMarzo_m, Me.txtAbril_m, Me.txtMarzo_m, Me.txtJunio_m,
+                                             Me.txtJulio_m, Me.txtAgosto_m, Me.txtSeptiembre_m, Me.txtOctubre_m, Me.txtNoviembre_m,
+                                             Me.txtDiciembre_m)
+            Me.txtEnero_m.Focus()
             Call Me.Evaluar_Saldos()
+            Call Me.SumaTotalMeses_modificado()
         Else
             Me.txtCodigoGrupo.Text = ""
             Me.txtGrupo.Text = ""
@@ -1018,7 +1042,7 @@
                                             If Me.txtEspecifica.Text.Trim.Length > 0 Then
                                                 If Me.txtEspecificaDetalle.Text.Trim.Length > 0 Then
                                                     Me.txtSaldo.Text =
-                                                        Format(Datos.Saldo_CN(Convert.ToDouble(Fuente_Financiaminto.Rows(Me.cbFF.SelectedIndex).Item("Codigo_FF").ToString),
+                                                        Format(Datos.Saldo_CN_AM(Convert.ToDouble(Fuente_Financiaminto.Rows(Me.cbFF.SelectedIndex).Item("Codigo_FF").ToString),
                                                              Rubro.Rows(Me.cbRubro.SelectedIndex).Item("Codigo_Rubro").ToString,
                                                              Me.txtTipoTransaccion.Text.Trim,
                                                              Me.txtGenerica.Text.Trim,
@@ -1083,7 +1107,7 @@
 
         total_clasificador = 0
 
-        For Each row As DataGridViewRow In dgvDistribucionCn.rows
+        For Each row As DataGridViewRow In dgvDistribucionCn.Rows
             If (row.Cells("FF").Value = Codigo_FF And row.Cells("R").Value = Codigo_Rubro And row.Cells("TT").Value = Tipo_Transaccion And
                 row.Cells("G").Value = Generica And row.Cells("SG").Value = Sub_Generica And row.Cells("SGD").Value = Sub_Generica_Detalle And
                 row.Cells("E").Value = Especifica And row.Cells("ED").Value = Especifica_Detalle And row.Cells("Meta").Value = Codigo_Secuencia_Funcional And
@@ -1123,7 +1147,7 @@
 
         total_clasificador = 0
 
-        For Each row As DataGridViewRow In dgvDistribucionCn.rows
+        For Each row As DataGridViewRow In dgvDistribucionCn.Rows
 
             If Tipo_Transaccion & "." & Generica & "." & Sub_Generica = "2.3.1" Then
                 'Davy aqui puedes consultar si la UO tiene asignado el clasificador de limpieza
@@ -1416,5 +1440,350 @@
 
     Private Sub cbRubro_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbRubro.SelectedIndexChanged
         txtSaldo.Text = "0.00"
+    End Sub
+
+    Private Sub cbMotivo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbMotivo.SelectedIndexChanged
+        If Me.cbMotivo.Items.Count > 0 Then
+            If Me.cbMotivo.Text.Trim.Length > 0 Then
+                Select Case Motivo.Rows(Me.cbMotivo.SelectedIndex).Item("Codigo_Motivo_AM").ToString
+                    Case "001"
+                        Me.CheckBox1.Enabled = False
+                        Me.txtDiferencia.Enabled = False
+                        Me.txtDiferencia.Visible = False
+                        Me.Label41.Visible = False
+                    Case "002"
+                        Me.CheckBox1.Enabled = True
+                        Me.txtDiferencia.Enabled = True
+                        Me.txtDiferencia.Visible = True
+                        Me.Label41.Visible = True
+                End Select
+            End If
+        End If
+    End Sub
+
+    Private Sub txtEnero_m_Enter(sender As Object, e As EventArgs) Handles txtEnero_m.Enter
+        txtEnero_m.SelectionStart = 0
+        txtEnero_m.SelectionLength = txtEnero_m.Text.Length
+        SumaTotalMeses_modificado()
+    End Sub
+
+    Private Sub txtFebrero_m_Enter(sender As Object, e As EventArgs) Handles txtFebrero_m.Enter
+        txtFebrero_m.SelectionStart = 0
+        txtFebrero_m.SelectionLength = txtFebrero_m.Text.Length
+        SumaTotalMeses_modificado()
+    End Sub
+
+    Private Sub txtMarzo_m_Enter(sender As Object, e As EventArgs) Handles txtMarzo_m.Enter
+        txtMarzo_m.SelectionStart = 0
+        txtMarzo_m.SelectionLength = txtMarzo_m.Text.Length
+        SumaTotalMeses_modificado()
+    End Sub
+
+    Private Sub txtAbril_m_Enter(sender As Object, e As EventArgs) Handles txtAbril_m.Enter
+        txtAbril_m.SelectionStart = 0
+        txtAbril_m.SelectionLength = txtAbril_m.Text.Length
+        SumaTotalMeses_modificado()
+    End Sub
+
+    Private Sub txtMayo_m_Enter(sender As Object, e As EventArgs) Handles txtMayo_m.Enter
+        txtMayo_m.SelectionStart = 0
+        txtMayo_m.SelectionLength = txtMayo_m.Text.Length
+        SumaTotalMeses_modificado()
+    End Sub
+
+    Private Sub txtJunio_m_Enter(sender As Object, e As EventArgs) Handles txtJunio_m.Enter
+        txtJunio_m.SelectionStart = 0
+        txtJunio_m.SelectionLength = txtJunio_m.Text.Length
+        SumaTotalMeses_modificado()
+    End Sub
+
+    Private Sub txtJulio_m_Enter(sender As Object, e As EventArgs) Handles txtJulio_m.Enter
+        txtJulio_m.SelectionStart = 0
+        txtJulio_m.SelectionLength = txtJulio_m.Text.Length
+        SumaTotalMeses_modificado()
+    End Sub
+
+    Private Sub txtAgosto_m_Enter(sender As Object, e As EventArgs) Handles txtAgosto_m.Enter
+        txtAgosto_m.SelectionStart = 0
+        txtAgosto_m.SelectionLength = txtAgosto_m.Text.Length
+        SumaTotalMeses_modificado()
+    End Sub
+
+    Private Sub txtSeptiembre_m_Enter(sender As Object, e As EventArgs) Handles txtSeptiembre_m.Enter
+        txtSeptiembre_m.SelectionStart = 0
+        txtSeptiembre_m.SelectionLength = txtSeptiembre_m.Text.Length
+        SumaTotalMeses_modificado()
+    End Sub
+
+    Private Sub txtOctubre_m_Enter(sender As Object, e As EventArgs) Handles txtOctubre_m.Enter
+        txtOctubre_m.SelectionStart = 0
+        txtOctubre_m.SelectionLength = txtOctubre_m.Text.Length
+        SumaTotalMeses_modificado()
+    End Sub
+
+    Private Sub txtNoviembre_m_Enter(sender As Object, e As EventArgs) Handles txtNoviembre_m.Enter
+        txtNoviembre_m.SelectionStart = 0
+        txtNoviembre_m.SelectionLength = txtNoviembre_m.Text.Length
+        SumaTotalMeses_modificado()
+    End Sub
+
+    Private Sub txtDiciembre_m_Enter(sender As Object, e As EventArgs) Handles txtDiciembre_m.Enter
+        txtDiciembre_m.SelectionStart = 0
+        txtDiciembre_m.SelectionLength = txtDiciembre_m.Text.Length
+        SumaTotalMeses_modificado()
+    End Sub
+
+    Private Sub txtEnero_m_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtEnero_m.KeyPress
+        If txtEnero_m.Text.IndexOf(".") <> -1 And Asc(e.KeyChar) = 46 Then e.KeyChar = Chr(0)
+        If Not IsNumeric(e.KeyChar) And Asc(e.KeyChar) <> 47 And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 13 And Asc(e.KeyChar) <> 46 Then e.KeyChar = Chr(0)
+        If Not (Char.IsNumber(e.KeyChar) Or e.KeyChar.Equals(Separador) Or Char.IsControl(e.KeyChar)) Then e.Handled = True
+        SumaTotalMeses_modificado()
+        If Asc(e.KeyChar) = 13 Then
+            Me.txtFebrero_m.Focus()
+        End If
+    End Sub
+
+    Private Sub txtFebrero_m_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtFebrero_m.KeyPress
+        If txtFebrero_m.Text.IndexOf(".") <> -1 And Asc(e.KeyChar) = 46 Then e.KeyChar = Chr(0)
+        If Not IsNumeric(e.KeyChar) And Asc(e.KeyChar) <> 47 And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 13 And Asc(e.KeyChar) <> 46 Then e.KeyChar = Chr(0)
+        If Not (Char.IsNumber(e.KeyChar) Or e.KeyChar.Equals(Separador) Or Char.IsControl(e.KeyChar)) Then e.Handled = True
+        SumaTotalMeses_modificado()
+        If Asc(e.KeyChar) = 13 Then
+            Me.txtMarzo_m.Focus()
+        End If
+    End Sub
+
+    Private Sub txtMarzo_m_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtMarzo_m.KeyPress
+        If txtMarzo_m.Text.IndexOf(".") <> -1 And Asc(e.KeyChar) = 46 Then e.KeyChar = Chr(0)
+        If Not IsNumeric(e.KeyChar) And Asc(e.KeyChar) <> 47 And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 13 And Asc(e.KeyChar) <> 46 Then e.KeyChar = Chr(0)
+        If Not (Char.IsNumber(e.KeyChar) Or e.KeyChar.Equals(Separador) Or Char.IsControl(e.KeyChar)) Then e.Handled = True
+        SumaTotalMeses_modificado()
+        If Asc(e.KeyChar) = 13 Then
+            Me.txtAbril_m.Focus()
+        End If
+    End Sub
+
+    Private Sub txtAbril_m_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtAbril_m.KeyPress
+        If txtAbril_m.Text.IndexOf(".") <> -1 And Asc(e.KeyChar) = 46 Then e.KeyChar = Chr(0)
+        If Not IsNumeric(e.KeyChar) And Asc(e.KeyChar) <> 47 And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 13 And Asc(e.KeyChar) <> 46 Then e.KeyChar = Chr(0)
+        If Not (Char.IsNumber(e.KeyChar) Or e.KeyChar.Equals(Separador) Or Char.IsControl(e.KeyChar)) Then e.Handled = True
+        SumaTotalMeses_modificado()
+        If Asc(e.KeyChar) = 13 Then
+            Me.txtMayo_m.Focus()
+        End If
+    End Sub
+
+    Private Sub txtMayo_m_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtMayo_m.KeyPress
+        If txtMayo_m.Text.IndexOf(".") <> -1 And Asc(e.KeyChar) = 46 Then e.KeyChar = Chr(0)
+        If Not IsNumeric(e.KeyChar) And Asc(e.KeyChar) <> 47 And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 13 And Asc(e.KeyChar) <> 46 Then e.KeyChar = Chr(0)
+        If Not (Char.IsNumber(e.KeyChar) Or e.KeyChar.Equals(Separador) Or Char.IsControl(e.KeyChar)) Then e.Handled = True
+        SumaTotalMeses_modificado()
+        If Asc(e.KeyChar) = 13 Then
+            Me.txtJunio_m.Focus()
+        End If
+    End Sub
+
+    Private Sub txtJunio_m_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtJunio_m.KeyPress
+        If txtJunio_m.Text.IndexOf(".") <> -1 And Asc(e.KeyChar) = 46 Then e.KeyChar = Chr(0)
+        If Not IsNumeric(e.KeyChar) And Asc(e.KeyChar) <> 47 And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 13 And Asc(e.KeyChar) <> 46 Then e.KeyChar = Chr(0)
+        If Not (Char.IsNumber(e.KeyChar) Or e.KeyChar.Equals(Separador) Or Char.IsControl(e.KeyChar)) Then e.Handled = True
+        SumaTotalMeses_modificado()
+        If Asc(e.KeyChar) = 13 Then
+            Me.txtJulio_m.Focus()
+        End If
+    End Sub
+
+    Private Sub txtJulio_m_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtJulio_m.KeyPress
+        If txtJulio_m.Text.IndexOf(".") <> -1 And Asc(e.KeyChar) = 46 Then e.KeyChar = Chr(0)
+        If Not IsNumeric(e.KeyChar) And Asc(e.KeyChar) <> 47 And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 13 And Asc(e.KeyChar) <> 46 Then e.KeyChar = Chr(0)
+        If Not (Char.IsNumber(e.KeyChar) Or e.KeyChar.Equals(Separador) Or Char.IsControl(e.KeyChar)) Then e.Handled = True
+        SumaTotalMeses_modificado()
+        If Asc(e.KeyChar) = 13 Then
+            Me.txtAgosto_m.Focus()
+        End If
+    End Sub
+
+    Private Sub txtAgosto_m_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtAgosto_m.KeyPress
+        If txtAgosto_m.Text.IndexOf(".") <> -1 And Asc(e.KeyChar) = 46 Then e.KeyChar = Chr(0)
+        If Not IsNumeric(e.KeyChar) And Asc(e.KeyChar) <> 47 And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 13 And Asc(e.KeyChar) <> 46 Then e.KeyChar = Chr(0)
+        If Not (Char.IsNumber(e.KeyChar) Or e.KeyChar.Equals(Separador) Or Char.IsControl(e.KeyChar)) Then e.Handled = True
+        SumaTotalMeses_modificado()
+        If Asc(e.KeyChar) = 13 Then
+            Me.txtSeptiembre_m.Focus()
+        End If
+    End Sub
+
+    Private Sub txtSeptiembre_m_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSeptiembre_m.KeyPress
+        If txtSeptiembre_m.Text.IndexOf(".") <> -1 And Asc(e.KeyChar) = 46 Then e.KeyChar = Chr(0)
+        If Not IsNumeric(e.KeyChar) And Asc(e.KeyChar) <> 47 And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 13 And Asc(e.KeyChar) <> 46 Then e.KeyChar = Chr(0)
+        If Not (Char.IsNumber(e.KeyChar) Or e.KeyChar.Equals(Separador) Or Char.IsControl(e.KeyChar)) Then e.Handled = True
+        SumaTotalMeses_modificado()
+        If Asc(e.KeyChar) = 13 Then
+            Me.txtOctubre_m.Focus()
+        End If
+    End Sub
+
+    Private Sub txtNoviembre_m_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNoviembre_m.KeyPress
+        If txtNoviembre_m.Text.IndexOf(".") <> -1 And Asc(e.KeyChar) = 46 Then e.KeyChar = Chr(0)
+        If Not IsNumeric(e.KeyChar) And Asc(e.KeyChar) <> 47 And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 13 And Asc(e.KeyChar) <> 46 Then e.KeyChar = Chr(0)
+        If Not (Char.IsNumber(e.KeyChar) Or e.KeyChar.Equals(Separador) Or Char.IsControl(e.KeyChar)) Then e.Handled = True
+        SumaTotalMeses_modificado()
+        If Asc(e.KeyChar) = 13 Then
+            Me.txtDiciembre_m.Focus()
+        End If
+    End Sub
+
+    Private Sub txtDiciembre_m_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtDiciembre_m.KeyPress
+        If txtDiciembre_m.Text.IndexOf(".") <> -1 And Asc(e.KeyChar) = 46 Then e.KeyChar = Chr(0)
+        If Not IsNumeric(e.KeyChar) And Asc(e.KeyChar) <> 47 And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 13 And Asc(e.KeyChar) <> 46 Then e.KeyChar = Chr(0)
+        If Not (Char.IsNumber(e.KeyChar) Or e.KeyChar.Equals(Separador) Or Char.IsControl(e.KeyChar)) Then e.Handled = True
+        SumaTotalMeses_modificado()
+        If Asc(e.KeyChar) = 13 Then
+            Me.btnAgregar.Focus()
+        End If
+    End Sub
+
+    Private Sub txtEnero_m_KeyUp(sender As Object, e As KeyEventArgs) Handles txtEnero_m.KeyUp
+        SumaTotalMeses_modificado()
+    End Sub
+
+    Private Sub txtFebrero_m_KeyUp(sender As Object, e As KeyEventArgs) Handles txtFebrero_m.KeyUp
+        SumaTotalMeses_modificado()
+    End Sub
+
+    Private Sub txtMarzo_m_KeyUp(sender As Object, e As KeyEventArgs) Handles txtMarzo_m.KeyUp
+        SumaTotalMeses_modificado()
+    End Sub
+
+    Private Sub txtAbril_m_KeyUp(sender As Object, e As KeyEventArgs) Handles txtAbril_m.KeyUp
+        SumaTotalMeses_modificado()
+    End Sub
+
+    Private Sub txtMayo_m_KeyUp(sender As Object, e As KeyEventArgs) Handles txtMayo_m.KeyUp
+        SumaTotalMeses_modificado()
+    End Sub
+
+    Private Sub txtJunio_m_KeyUp(sender As Object, e As KeyEventArgs) Handles txtJunio_m.KeyUp
+        SumaTotalMeses_modificado()
+    End Sub
+
+    Private Sub txtJulio_m_KeyUp(sender As Object, e As KeyEventArgs) Handles txtJulio_m.KeyUp
+        SumaTotalMeses_modificado()
+    End Sub
+
+    Private Sub txtAgosto_m_KeyUp(sender As Object, e As KeyEventArgs) Handles txtAgosto_m.KeyUp
+        SumaTotalMeses_modificado()
+    End Sub
+
+    Private Sub txtSeptiembre_m_KeyUp(sender As Object, e As KeyEventArgs) Handles txtSeptiembre_m.KeyUp
+        SumaTotalMeses_modificado()
+    End Sub
+
+    Private Sub txtOctubre_m_KeyUp(sender As Object, e As KeyEventArgs) Handles txtOctubre_m.KeyUp
+        SumaTotalMeses_modificado()
+    End Sub
+
+    Private Sub txtNoviembre_m_KeyUp(sender As Object, e As KeyEventArgs) Handles txtNoviembre_m.KeyUp
+        SumaTotalMeses_modificado()
+    End Sub
+
+    Private Sub txtDiciembre_m_KeyUp(sender As Object, e As KeyEventArgs) Handles txtDiciembre_m.KeyUp
+        SumaTotalMeses_modificado()
+    End Sub
+
+    Private Sub txtEnero_m_Leave(sender As Object, e As EventArgs) Handles txtEnero_m.Leave
+        If Me.txtEnero_m.Text.Trim.Length > 0 Then
+            Me.txtEnero_m.Text = FormatNumber(txtEnero_m.Text, 2, , , TriState.True)
+        Else
+            Me.txtEnero_m.Text = "0.00"
+        End If
+    End Sub
+
+    Private Sub txtFebrero_m_Leave(sender As Object, e As EventArgs) Handles txtFebrero_m.Leave
+        If Me.txtFebrero_m.Text.Trim.Length > 0 Then
+            Me.txtFebrero_m.Text = FormatNumber(txtFebrero_m.Text, 2, , , TriState.True)
+        Else
+            Me.txtFebrero_m.Text = "0.00"
+        End If
+    End Sub
+
+    Private Sub txtMarzo_m_Leave(sender As Object, e As EventArgs) Handles txtMarzo_m.Leave
+        If Me.txtMarzo_m.Text.Trim.Length > 0 Then
+            Me.txtMarzo_m.Text = FormatNumber(txtMarzo_m.Text, 2, , , TriState.True)
+        Else
+            Me.txtMarzo_m.Text = "0.00"
+        End If
+    End Sub
+
+    Private Sub txtAbril_m_Leave(sender As Object, e As EventArgs) Handles txtAbril_m.Leave
+        If Me.txtAbril_m.Text.Trim.Length > 0 Then
+            Me.txtAbril_m.Text = FormatNumber(txtAbril_m.Text, 2, , , TriState.True)
+        Else
+            Me.txtAbril_m.Text = "0.00"
+        End If
+    End Sub
+
+    Private Sub txtMayo_m_Leave(sender As Object, e As EventArgs) Handles txtMayo_m.Leave
+        If Me.txtMayo_m.Text.Trim.Length > 0 Then
+            Me.txtMayo_m.Text = FormatNumber(txtMayo_m.Text, 2, , , TriState.True)
+        Else
+            Me.txtMayo_m.Text = "0.00"
+        End If
+    End Sub
+
+    Private Sub txtJunio_m_Leave(sender As Object, e As EventArgs) Handles txtJunio_m.Leave
+        If Me.txtJunio_m.Text.Trim.Length > 0 Then
+            Me.txtJunio_m.Text = FormatNumber(txtJunio_m.Text, 2, , , TriState.True)
+        Else
+            Me.txtJunio_m.Text = "0.00"
+        End If
+    End Sub
+
+    Private Sub txtJulio_m_Leave(sender As Object, e As EventArgs) Handles txtJulio_m.Leave
+        If Me.txtJulio_m.Text.Trim.Length > 0 Then
+            Me.txtJulio_m.Text = FormatNumber(txtJulio_m.Text, 2, , , TriState.True)
+        Else
+            Me.txtJulio_m.Text = "0.00"
+        End If
+    End Sub
+
+    Private Sub txtAgosto_m_Leave(sender As Object, e As EventArgs) Handles txtAgosto_m.Leave
+        If Me.txtAgosto_m.Text.Trim.Length > 0 Then
+            Me.txtAgosto_m.Text = FormatNumber(txtAgosto_m.Text, 2, , , TriState.True)
+        Else
+            Me.txtAgosto_m.Text = "0.00"
+        End If
+    End Sub
+
+    Private Sub txtSeptiembre_m_Leave(sender As Object, e As EventArgs) Handles txtSeptiembre_m.Leave
+        If Me.txtSeptiembre_m.Text.Trim.Length > 0 Then
+            Me.txtSeptiembre_m.Text = FormatNumber(txtSeptiembre_m.Text, 2, , , TriState.True)
+        Else
+            Me.txtSeptiembre_m.Text = "0.00"
+        End If
+    End Sub
+
+    Private Sub txtOctubre_m_Leave(sender As Object, e As EventArgs) Handles txtOctubre_m.Leave
+        If Me.txtOctubre_m.Text.Trim.Length > 0 Then
+            Me.txtOctubre_m.Text = FormatNumber(txtOctubre_m.Text, 2, , , TriState.True)
+        Else
+            Me.txtOctubre_m.Text = "0.00"
+        End If
+    End Sub
+
+    Private Sub txtNoviembre_m_Leave(sender As Object, e As EventArgs) Handles txtNoviembre_m.Leave
+        If Me.txtNoviembre_m.Text.Trim.Length > 0 Then
+            Me.txtNoviembre_m.Text = FormatNumber(txtNoviembre_m.Text, 2, , , TriState.True)
+        Else
+            Me.txtNoviembre_m.Text = "0.00"
+        End If
+    End Sub
+
+    Private Sub txtDiciembre_m_Leave(sender As Object, e As EventArgs) Handles txtDiciembre_m.Leave
+        If Me.txtDiciembre_m.Text.Trim.Length > 0 Then
+            Me.txtDiciembre_m.Text = FormatNumber(txtDiciembre_m.Text, 2, , , TriState.True)
+        Else
+            Me.txtDiciembre_m.Text = "0.00"
+        End If
     End Sub
 End Class

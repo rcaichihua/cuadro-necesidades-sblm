@@ -3093,35 +3093,37 @@ Public Class Mantenimiento
         'Dim Da As New OleDb.OleDbDataAdapter("Select Importe_Asignado as Saldo_CN from Lista_Movimientos_PIA_CN Where Codigo_FF=" & Codigo_FF & " And Codigo_Rubro='" & Codigo_Rubro & "' And Tipo_Transaccion='" & Tipo_Transaccion & "' And Generica='" & Generica & "' And Sub_Generica='" & Sub_Generica & "' And Sub_Generica_Detalle='" & Sub_Generica_Detalle & "' And Especifica='" & Especifica & "' And Especifica_Detalle='" & Especifica_Detalle & "' And Codigo_Secuencia_Funcional='" & Codigo_Secuencia_Funcional & "' And Codigo_Unidad_Organica='" & Codigo_Unidad_Organica & "' And Codigo_Actividad='" & Codigo_Actividad & "' And Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
         'Dim Da As New OleDb.OleDbDataAdapter("Select Importe_Asignado as Saldo_CN from Lista_PIA_para_CN Where Codigo_FF=" & Codigo_FF & " And Codigo_Rubro='" & Codigo_Rubro & "' And Tipo_Transaccion='" & Tipo_Transaccion & "' And Generica='" & Generica & "' And Sub_Generica='" & Sub_Generica & "' And Sub_Generica_Detalle='" & Sub_Generica_Detalle & "' And Especifica='" & Especifica & "' And Especifica_Detalle='" & Especifica_Detalle & "' And Codigo_Secuencia_Funcional='" & Codigo_Secuencia_Funcional & "' And Codigo_Unidad_Organica='" & Codigo_Unidad_Organica & "' And Codigo_Actividad='" & Codigo_Actividad & "' And Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
         'Dim Da As New OleDb.OleDbDataAdapter("Select Saldo as Saldo_CN from Lista_Movimientos_PIA_PIM_Certificados_Saldos Where Codigo_FF=" & Codigo_FF & " And Codigo_Rubro='" & Codigo_Rubro & "' And Tipo_Transaccion='" & Tipo_Transaccion & "' And Generica='" & Generica & "' And Sub_Generica='" & Sub_Generica & "' And Sub_Generica_Detalle='" & Sub_Generica_Detalle & "' And Especifica='" & Especifica & "' And Especifica_Detalle='" & Especifica_Detalle & "' And Codigo_Secuencia_Funcional='" & Codigo_Secuencia_Funcional & "' And Codigo_Unidad_Organica='" & Codigo_Unidad_Organica & "' And Codigo_Actividad='" & Codigo_Actividad & "' And Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
-        Dim Tabla_Consulta as String = ""
-        Dim Consulta_general as String = ""
+        Dim Tabla_Consulta As String = ""
+        Dim Consulta_general As String = ""
 
-        If Tipo_Transaccion & "." & Generica & "." & Sub_Generica = "2.3.1"
-            Dim Da_limpieza As New OleDb.OleDbDataAdapter("select * from PIA_prevision_detalle where Año_Ejecucion='"& My.Settings.Año_Ejecucion &"' and Codigo_Unidad_Organica='" & Codigo_Unidad_Organica & "'and ltrim(rtrim(Tipo_Transaccion))+'.'+Generica+'.'+Sub_Generica+'.'+Sub_Generica_Detalle+'.'+Especifica+'.'+Especifica_Detalle='2.3.1.5.3.1' ", Cn)
+        If Tipo_Transaccion & "." & Generica & "." & Sub_Generica = "2.3.1" Then
+            Dim Da_limpieza As New OleDb.OleDbDataAdapter("select * from PIA_prevision_detalle where Año_Ejecucion='" & My.Settings.Año_Ejecucion & "' and Codigo_Unidad_Organica='" & Codigo_Unidad_Organica & "'and ltrim(rtrim(Tipo_Transaccion))+'.'+Generica+'.'+Sub_Generica+'.'+Sub_Generica_Detalle+'.'+Especifica+'.'+Especifica_Detalle='2.3.1.5.3.1' ", Cn)
             Dim Ds_limpieza As New Data.DataSet
             Da_limpieza.Fill(Ds_limpieza)
 
-            if Ds_limpieza.Tables(0).Rows.Count>0
-                If Tipo_Transaccion & "." & Generica & "." & Sub_Generica & "." & Sub_Generica_Detalle & "." & Especifica & "." & Especifica_Detalle = "2.3.1.5.3.1"
+            If Ds_limpieza.Tables(0).Rows.Count > 0 Then
+
+                If Tipo_Transaccion & "." & Generica & "." & Sub_Generica & "." & Sub_Generica_Detalle & "." & Especifica & "." & Especifica_Detalle = "2.3.1.5.3.1" Then
                     Tabla_Consulta = "Lista_Movimiento_CN_material_limpieza_saldo"
-                else
+                Else
                     Tabla_Consulta = "Lista_Movimiento_CN_bienes_saldo"
                 End If
             Else
                 Tabla_Consulta = "Lista_Movimiento_CN_bienes_alone_saldo"
-            End If     
-        else if Tipo_Transaccion & "." & Generica & "." & Sub_Generica = "2.3.2"
-            If Tipo_Transaccion & "." & Generica & "." & Sub_Generica & "." & Sub_Generica_Detalle & "." & Especifica & "." & Especifica_Detalle = "2.3.2.7.2.99"
+            End If
+        ElseIf Tipo_Transaccion & "." & Generica & "." & Sub_Generica = "2.3.2" Then
+
+            If Tipo_Transaccion & "." & Generica & "." & Sub_Generica & "." & Sub_Generica_Detalle & "." & Especifica & "." & Especifica_Detalle = "2.3.2.7.2.99" Then
                 Tabla_Consulta = "Lista_Movimiento_CN_locadores_saldo"
-            else
+            Else
                 Tabla_Consulta = "Lista_Movimiento_CN_servicios_saldo"
             End If
-        else if Tipo_Transaccion & "." & Generica = "2.6"
+        ElseIf Tipo_Transaccion & "." & Generica = "2.6" Then
             Tabla_Consulta = "Lista_Movimiento_CN_activos_no_financieros_saldo"
         End If
-        
-        Consulta_general = "select Saldo From "& Tabla_Consulta &" where Codigo_FF=" & Codigo_FF & " And Codigo_Rubro='" & Codigo_Rubro  & "' And Codigo_Unidad_Organica='" & Codigo_Unidad_Organica & "' And Año_Ejecucion='" & Año_Ejecucion & "'"
-        Dim Da As New OleDb.OleDbDataAdapter(Consulta_general,Cn)
+
+        Consulta_general = "select Saldo From " & Tabla_Consulta & " where Codigo_FF=" & Codigo_FF & " And Codigo_Rubro='" & Codigo_Rubro & "' And Codigo_Unidad_Organica='" & Codigo_Unidad_Organica & "' And Año_Ejecucion='" & Año_Ejecucion & "'"
+        Dim Da As New OleDb.OleDbDataAdapter(Consulta_general, Cn)
         Dim Ds As New Data.DataSet
 
         Da.Fill(Ds)
@@ -3132,6 +3134,23 @@ Public Class Mantenimiento
             Saldo_CN = 0
         End If
         Return Saldo_CN
+    End Function
+
+    Public Function Saldo_CN_AM(ByVal Codigo_FF As Integer, ByVal Codigo_Rubro As String, ByVal Tipo_Transaccion As String, ByVal Generica As String, ByVal Sub_Generica As String, ByVal Sub_Generica_Detalle As String, ByVal Especifica As String, ByVal Especifica_Detalle As String, ByVal Codigo_Secuencia_Funcional As String, ByVal Codigo_Unidad_Organica As String, ByVal Codigo_Actividad As String, ByVal Año_Ejecucion As String) As Double
+        Saldo_CN_AM = 0
+        'Dim Da As New OleDb.OleDbDataAdapter("Select Importe_Asignado as Saldo_CN from Lista_Movimientos_PIA_CN Where Codigo_FF=" & Codigo_FF & " And Codigo_Rubro='" & Codigo_Rubro & "' And Tipo_Transaccion='" & Tipo_Transaccion & "' And Generica='" & Generica & "' And Sub_Generica='" & Sub_Generica & "' And Sub_Generica_Detalle='" & Sub_Generica_Detalle & "' And Especifica='" & Especifica & "' And Especifica_Detalle='" & Especifica_Detalle & "' And Codigo_Secuencia_Funcional='" & Codigo_Secuencia_Funcional & "' And Codigo_Unidad_Organica='" & Codigo_Unidad_Organica & "' And Codigo_Actividad='" & Codigo_Actividad & "' And Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
+        'Dim Da As New OleDb.OleDbDataAdapter("Select Importe_Asignado as Saldo_CN from Lista_PIA_para_CN Where Codigo_FF=" & Codigo_FF & " And Codigo_Rubro='" & Codigo_Rubro & "' And Tipo_Transaccion='" & Tipo_Transaccion & "' And Generica='" & Generica & "' And Sub_Generica='" & Sub_Generica & "' And Sub_Generica_Detalle='" & Sub_Generica_Detalle & "' And Especifica='" & Especifica & "' And Especifica_Detalle='" & Especifica_Detalle & "' And Codigo_Secuencia_Funcional='" & Codigo_Secuencia_Funcional & "' And Codigo_Unidad_Organica='" & Codigo_Unidad_Organica & "' And Codigo_Actividad='" & Codigo_Actividad & "' And Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
+        Dim Da As New OleDb.OleDbDataAdapter("Select Saldo as Saldo_CN from Lista_Movimientos_PIA_PIM_Certificados_Saldos Where Codigo_FF=" & Codigo_FF & " And Codigo_Rubro='" & Codigo_Rubro & "' And Tipo_Transaccion='" & Tipo_Transaccion & "' And Generica='" & Generica & "' And Sub_Generica='" & Sub_Generica & "' And Sub_Generica_Detalle='" & Sub_Generica_Detalle & "' And Especifica='" & Especifica & "' And Especifica_Detalle='" & Especifica_Detalle & "' And Codigo_Secuencia_Funcional='" & Codigo_Secuencia_Funcional & "' And Codigo_Unidad_Organica='" & Codigo_Unidad_Organica & "' And Codigo_Actividad='" & Codigo_Actividad & "' And Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
+        Dim Ds As New Data.DataSet
+
+        Da.Fill(Ds)
+
+        If Ds.Tables(0).Rows.Count > 0 Then
+            Saldo_CN_AM = Convert.ToDouble(Ds.Tables(0).Rows(0).Item("Saldo_CN").ToString)
+        Else
+            Saldo_CN_AM = 0
+        End If
+        Return Saldo_CN_AM
     End Function
 
     Public Function Precio_ref_CN(ByVal Codigo_Grupo As Integer, ByVal Codigo_Clase As String, ByVal Codigo_Familia As String, ByVal Codigo_Item As String, ByVal Año_Ejecucion As String) As Double
@@ -3806,6 +3825,9 @@ Public Class Mantenimiento
         Cm = Nothing
 
         For Recorrido As Integer = 0 To DataGridView.Rows.Count - 1
+            If DataGridView.Rows(Recorrido).Cells(0).Value = "0108" Then
+                MessageBox.Show("Hola")
+            End If
             Select Case DataGridView.Rows(Recorrido).Cells(0).Value.ToString.Length
                 Case 4
                     If DataGridView.Rows(Recorrido).Cells(4).Value = True Then
@@ -4819,6 +4841,164 @@ Public Class Mantenimiento
         End If
         Return Cadena_Unidades_Organicas_Por_Usuario
     End Function
+    Public Sub Mostrar_Data_Item_Catalogo_Cuadro_Necesidades(ByVal Codigo_Grupo As String, ByVal Codigo_Clase As String, ByVal Codigo_Familia As String, ByVal Codigo_Item As String, ByVal Tipo As Integer, ByVal Codigo_FF As Double, ByVal Codigo_Rubro As String, ByVal Codigo_Unidad_Organica As String, ByVal Codigo_Secuencia_Funcional As String, ByVal Codigo_Actividad As String, ByVal Caja_Codigo_Grupo As System.Windows.Forms.TextBox, ByVal Caja_Grupo As System.Windows.Forms.TextBox, ByVal Caja_Codigo_Clase As System.Windows.Forms.TextBox, ByVal Caja_Clase As System.Windows.Forms.TextBox, ByVal Caja_Codigo_Familia As System.Windows.Forms.TextBox, ByVal Caja_Familia As System.Windows.Forms.TextBox, ByVal Caja_Codigo_Item As System.Windows.Forms.TextBox, ByVal Caja_Item As System.Windows.Forms.TextBox, ByVal Caja_Codigo_Unidad_Medida As System.Windows.Forms.TextBox, ByVal Caja_Unidad_Medida As System.Windows.Forms.TextBox, ByVal Caja_Tipo_Transaccion As System.Windows.Forms.TextBox, ByVal Caja_Generica As System.Windows.Forms.TextBox, ByVal Caja_Sub_Generica As System.Windows.Forms.TextBox, ByVal Caja_Sub_Generica_Detalle As System.Windows.Forms.TextBox, ByVal Caja_Especifica As System.Windows.Forms.TextBox, ByVal Caja_Especifica_Detalle As System.Windows.Forms.TextBox, ByVal txtEnero As TextBox, ByVal txtFebrero As TextBox, ByVal txtMarzo As TextBox, ByVal txtAbril As TextBox, ByVal txtMayo As TextBox, ByVal txtJunio As TextBox, ByVal txtJulio As TextBox, ByVal txtAgosto As TextBox, ByVal txtSeptiembre As TextBox, ByVal txtOctubre As TextBox, ByVal txtNoviembre As TextBox, ByVal txtDiciembre As TextBox, ByVal txtEnero_m As TextBox, ByVal txtFebrero_m As TextBox, ByVal txtMarzo_m As TextBox, ByVal txtAbril_m As TextBox, ByVal txtMayo_m As TextBox, ByVal txtJunio_m As TextBox, ByVal txtJulio_m As TextBox, ByVal txtAgosto_m As TextBox, ByVal txtSeptiembre_m As TextBox, ByVal txtOctubre_m As TextBox, ByVal txtNoviembre_m As TextBox, ByVal txtDiciembre_m As TextBox)
+        Select Case Tipo
+            Case 1
+                Dim Da As New OleDb.OleDbDataAdapter("Select * From Detalle_Cuadro_Necesidades a inner join Catalogo_Bienes b on a.Codigo_Catalogo=b.Codigo_Catalogo and a.Codigo_Grupo=b.Codigo_Grupo and a.Codigo_Clase=b.Codigo_Clase and a.Codigo_Familia=b.Codigo_Familia and a.Codigo_Item=b.Codigo_Item Where Año_Ejecucion = '" + My.Settings.Año_Ejecucion + "' and Codigo_Unidad_Organica='" + Codigo_Unidad_Organica + "' and Codigo_Secuencia_Funcional='" + Codigo_Secuencia_Funcional + "' and Codigo_Actividad='" + Codigo_Actividad + "' and Codigo_FF = " + Codigo_FF.ToString() + " and Codigo_Rubro='" + Codigo_Rubro + "' and a.Codigo_Grupo='" & Codigo_Grupo & "' And a.Codigo_Clase='" & Codigo_Clase & "' And a.Codigo_Familia='" & Codigo_Familia & "' And a.Codigo_Item='" & Codigo_Item & "'", Cn)
+                Dim Ds As New Data.DataSet
+                Da.Fill(Ds)
+                If Ds.Tables(0).Rows.Count > 0 Then
+                    Caja_Codigo_Grupo.Text = Ds.Tables(0).Rows(0).Item("Codigo_Grupo").ToString
+                    Caja_Grupo.Text = Ds.Tables(0).Rows(0).Item("Descripcion_Grupo").ToString
+                    Caja_Codigo_Clase.Text = Ds.Tables(0).Rows(0).Item("Codigo_Clase").ToString
+                    Caja_Clase.Text = Ds.Tables(0).Rows(0).Item("Descripcion_Clase").ToString
+                    Caja_Codigo_Familia.Text = Ds.Tables(0).Rows(0).Item("Codigo_Familia").ToString
+                    Caja_Familia.Text = Ds.Tables(0).Rows(0).Item("Descripcion_Familia").ToString
+                    Caja_Codigo_Item.Text = Ds.Tables(0).Rows(0).Item("Codigo_Item").ToString
+                    Caja_Item.Text = Ds.Tables(0).Rows(0).Item("Descripcion_Item").ToString
+                    Caja_Codigo_Unidad_Medida.Text = Ds.Tables(0).Rows(0).Item("Codigo_Unidad_Medida").ToString
+                    Caja_Unidad_Medida.Text = Ds.Tables(0).Rows(0).Item("Descripcion_Unidad_Medida").ToString
+                    Caja_Tipo_Transaccion.Text = Ds.Tables(0).Rows(0).Item("Tipo_Transaccion").ToString
+                    Caja_Generica.Text = Ds.Tables(0).Rows(0).Item("Generica").ToString
+                    Caja_Sub_Generica.Text = Ds.Tables(0).Rows(0).Item("Sub_Generica").ToString
+                    Caja_Sub_Generica_Detalle.Text = Ds.Tables(0).Rows(0).Item("Sub_Generica_Detalle").ToString
+                    Caja_Especifica.Text = Ds.Tables(0).Rows(0).Item("Especifica").ToString
+                    Caja_Especifica_Detalle.Text = Ds.Tables(0).Rows(0).Item("Especifica_Detalle").ToString
+                    txtEnero.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Enero").ToString
+                    txtFebrero.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Febrero").ToString
+                    txtMarzo.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Marzo").ToString
+                    txtAbril.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Abril").ToString
+                    txtMayo.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Mayo").ToString
+                    txtJunio.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Junio").ToString
+                    txtJulio.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Julio").ToString
+                    txtAgosto.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Agosto").ToString
+                    txtSeptiembre.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Septiembre").ToString
+                    txtOctubre.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Octubre").ToString
+                    txtNoviembre.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Noviembre").ToString
+                    txtDiciembre.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Diciembre").ToString
+                    txtEnero_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Enero").ToString
+                    txtFebrero_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Febrero").ToString
+                    txtMarzo_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Marzo").ToString
+                    txtAbril_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Abril").ToString
+                    txtMayo_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Mayo").ToString
+                    txtJunio_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Junio").ToString
+                    txtJulio_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Julio").ToString
+                    txtAgosto_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Agosto").ToString
+                    txtSeptiembre_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Septiembre").ToString
+                    txtOctubre_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Octubre").ToString
+                    txtNoviembre_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Noviembre").ToString
+                    txtDiciembre_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Diciembre").ToString
+                Else
+                    Caja_Codigo_Grupo.Text = String.Empty
+                    Caja_Grupo.Text = String.Empty
+                    Caja_Codigo_Clase.Text = String.Empty
+                    Caja_Clase.Text = String.Empty
+                    Caja_Codigo_Familia.Text = String.Empty
+                    Caja_Familia.Text = String.Empty
+                    Caja_Codigo_Item.Text = String.Empty
+                    Caja_Item.Text = String.Empty
+                    Caja_Codigo_Unidad_Medida.Text = String.Empty
+                    Caja_Unidad_Medida.Text = String.Empty
+                    Caja_Tipo_Transaccion.Text = String.Empty
+                    Caja_Generica.Text = String.Empty
+                    Caja_Sub_Generica.Text = String.Empty
+                    Caja_Sub_Generica_Detalle.Text = String.Empty
+                    Caja_Especifica.Text = String.Empty
+                    Caja_Especifica_Detalle.Text = String.Empty
+
+                    txtEnero.Text = "0.00"
+                    txtFebrero.Text = "0.00"
+                    txtMarzo.Text = "0.00"
+                    txtAbril.Text = "0.00"
+                    txtMayo.Text = "0.00"
+                    txtJunio.Text = "0.00"
+                    txtJulio.Text = "0.00"
+                    txtAgosto.Text = "0.00"
+                    txtSeptiembre.Text = "0.00"
+                    txtOctubre.Text = "0.00"
+                    txtNoviembre.Text = "0.00"
+                    txtDiciembre.Text = "0.00"
+                    Return
+                End If
+            Case 2
+                Dim Da As New OleDb.OleDbDataAdapter("Select * From Detalle_Cuadro_Necesidades a inner join Catalogo_Servicios b on a.Codigo_Catalogo=b.Codigo_Catalogo and a.Codigo_Grupo=b.Codigo_Grupo and a.Codigo_Clase=b.Codigo_Clase and a.Codigo_Familia=b.Codigo_Familia and a.Codigo_Item=b.Codigo_Item Where Año_Ejecucion = '" + My.Settings.Año_Ejecucion + "' and Codigo_Unidad_Organica='" + Codigo_Unidad_Organica + "' and Codigo_Secuencia_Funcional='" + Codigo_Secuencia_Funcional + "' and Codigo_Actividad='" + Codigo_Actividad + "' and Codigo_FF = " + Codigo_FF.ToString() + " and Codigo_Rubro='" + Codigo_Rubro + "' and a.Codigo_Grupo='" & Codigo_Grupo & "' And a.Codigo_Clase='" & Codigo_Clase & "' And a.Codigo_Familia='" & Codigo_Familia & "' And a.Codigo_Item='" & Codigo_Item & "'", Cn)
+                Dim Ds As New Data.DataSet
+                Da.Fill(Ds)
+                If Ds.Tables(0).Rows.Count > 0 Then
+                    Caja_Codigo_Grupo.Text = Ds.Tables(0).Rows(0).Item("Codigo_Grupo").ToString
+                    Caja_Grupo.Text = Ds.Tables(0).Rows(0).Item("Descripcion_Grupo").ToString
+                    Caja_Codigo_Clase.Text = Ds.Tables(0).Rows(0).Item("Codigo_Clase").ToString
+                    Caja_Clase.Text = Ds.Tables(0).Rows(0).Item("Descripcion_Clase").ToString
+                    Caja_Codigo_Familia.Text = Ds.Tables(0).Rows(0).Item("Codigo_Familia").ToString
+                    Caja_Familia.Text = Ds.Tables(0).Rows(0).Item("Descripcion_Familia").ToString
+                    Caja_Codigo_Item.Text = Ds.Tables(0).Rows(0).Item("Codigo_Item").ToString
+                    Caja_Item.Text = Ds.Tables(0).Rows(0).Item("Descripcion_Item").ToString
+                    Caja_Codigo_Unidad_Medida.Text = Ds.Tables(0).Rows(0).Item("Codigo_Unidad_Medida").ToString
+                    Caja_Unidad_Medida.Text = Ds.Tables(0).Rows(0).Item("Descripcion_Unidad_Medida").ToString
+                    Caja_Tipo_Transaccion.Text = Ds.Tables(0).Rows(0).Item("Tipo_Transaccion").ToString
+                    Caja_Generica.Text = Ds.Tables(0).Rows(0).Item("Generica").ToString
+                    Caja_Sub_Generica.Text = Ds.Tables(0).Rows(0).Item("Sub_Generica").ToString
+                    Caja_Sub_Generica_Detalle.Text = Ds.Tables(0).Rows(0).Item("Sub_Generica_Detalle").ToString
+                    Caja_Especifica.Text = Ds.Tables(0).Rows(0).Item("Especifica").ToString
+                    Caja_Especifica_Detalle.Text = Ds.Tables(0).Rows(0).Item("Especifica_Detalle").ToString
+                    txtEnero.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Enero").ToString
+                    txtFebrero.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Febrero").ToString
+                    txtMarzo.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Marzo").ToString
+                    txtAbril.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Abril").ToString
+                    txtMayo.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Mayo").ToString
+                    txtJunio.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Junio").ToString
+                    txtJulio.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Julio").ToString
+                    txtAgosto.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Agosto").ToString
+                    txtSeptiembre.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Septiembre").ToString
+                    txtOctubre.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Octubre").ToString
+                    txtNoviembre.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Noviembre").ToString
+                    txtDiciembre.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Diciembre").ToString
+                    txtEnero_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Enero").ToString
+                    txtFebrero_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Febrero").ToString
+                    txtMarzo_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Marzo").ToString
+                    txtAbril_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Abril").ToString
+                    txtMayo_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Mayo").ToString
+                    txtJunio_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Junio").ToString
+                    txtJulio_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Julio").ToString
+                    txtAgosto_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Agosto").ToString
+                    txtSeptiembre_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Septiembre").ToString
+                    txtOctubre_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Octubre").ToString
+                    txtNoviembre_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Noviembre").ToString
+                    txtDiciembre_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Diciembre").ToString
+                Else
+                    Caja_Codigo_Grupo.Text = String.Empty
+                    Caja_Grupo.Text = String.Empty
+                    Caja_Codigo_Clase.Text = String.Empty
+                    Caja_Clase.Text = String.Empty
+                    Caja_Codigo_Familia.Text = String.Empty
+                    Caja_Familia.Text = String.Empty
+                    Caja_Codigo_Item.Text = String.Empty
+                    Caja_Item.Text = String.Empty
+                    Caja_Codigo_Unidad_Medida.Text = String.Empty
+                    Caja_Unidad_Medida.Text = String.Empty
+                    Caja_Tipo_Transaccion.Text = String.Empty
+                    Caja_Generica.Text = String.Empty
+                    Caja_Sub_Generica.Text = String.Empty
+                    Caja_Sub_Generica_Detalle.Text = String.Empty
+                    Caja_Especifica.Text = String.Empty
+                    Caja_Especifica_Detalle.Text = String.Empty
+
+                    txtEnero.Text = "0.00"
+                    txtFebrero.Text = "0.00"
+                    txtMarzo.Text = "0.00"
+                    txtAbril.Text = "0.00"
+                    txtMayo.Text = "0.00"
+                    txtJunio.Text = "0.00"
+                    txtJulio.Text = "0.00"
+                    txtAgosto.Text = "0.00"
+                    txtSeptiembre.Text = "0.00"
+                    txtOctubre.Text = "0.00"
+                    txtNoviembre.Text = "0.00"
+                    txtDiciembre.Text = "0.00"
+                    Return
+                End If
+        End Select
+    End Sub
     Public Sub Mostrar_Data_Item_Catalogo(ByVal Codigo_Grupo As String, ByVal Codigo_Clase As String, ByVal Codigo_Familia As String, ByVal Codigo_Item As String, ByVal Tipo As Integer, ByVal Caja_Codigo_Grupo As System.Windows.Forms.TextBox, ByVal Caja_Grupo As System.Windows.Forms.TextBox, ByVal Caja_Codigo_Clase As System.Windows.Forms.TextBox, ByVal Caja_Clase As System.Windows.Forms.TextBox, ByVal Caja_Codigo_Familia As System.Windows.Forms.TextBox, ByVal Caja_Familia As System.Windows.Forms.TextBox, ByVal Caja_Codigo_Item As System.Windows.Forms.TextBox, ByVal Caja_Item As System.Windows.Forms.TextBox, ByVal Caja_Codigo_Unidad_Medida As System.Windows.Forms.TextBox, ByVal Caja_Unidad_Medida As System.Windows.Forms.TextBox, ByVal Caja_Tipo_Transaccion As System.Windows.Forms.TextBox, ByVal Caja_Generica As System.Windows.Forms.TextBox, ByVal Caja_Sub_Generica As System.Windows.Forms.TextBox, ByVal Caja_Sub_Generica_Detalle As System.Windows.Forms.TextBox, ByVal Caja_Especifica As System.Windows.Forms.TextBox, ByVal Caja_Especifica_Detalle As System.Windows.Forms.TextBox)
         Select Case Tipo
             Case 1

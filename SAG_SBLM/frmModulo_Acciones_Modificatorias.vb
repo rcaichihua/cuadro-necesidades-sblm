@@ -18,7 +18,7 @@
         Call Me.Dimensionar()
         Me.cbCriterio.Items.Add(Me.dgvAccionesModificatorias.Columns(1).Name)
         Me.cbCriterio.SelectedIndex = 0
-        Datos.Evaluacion_Botones_Modulo_Accion_Modificatoria(My.Settings.Año_Ejecucion, Variable_Numero_Nota_Modificatoria, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Anular_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+        Datos.Evaluacion_Botones_Modulo_Accion_Modificatoria(My.Settings.Año_Ejecucion, Variable_Numero_Nota_Modificatoria, Boton_Nueva_AM, Boton_Editar_AM, Boton_Anular_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
     End Sub
     Sub Filtrar()
         If Me.cbEstado.Items.Count > 0 And Me.cbMes.Items.Count > 0 Then
@@ -35,7 +35,7 @@
         Me.dgvAccionesModificatorias.DataSource = DT
         If DT.Rows.Count > 0 Then
             Me.lblRegistros.Text = " - Total de Registros Encontrados: " & DT.Rows.Count
-            Datos.Evaluacion_Botones_Modulo_Accion_Modificatoria(My.Settings.Año_Ejecucion, Variable_Numero_Nota_Modificatoria, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Anular_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+            Datos.Evaluacion_Botones_Modulo_Accion_Modificatoria(My.Settings.Año_Ejecucion, Variable_Numero_Nota_Modificatoria, Boton_Nueva_AM, Boton_Editar_AM, Boton_Anular_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
         Else
             Me.lblRegistros.Text = " - Total de Registros Encontrados: 0"
             Me.Boton_Editar_AM.Enabled = False
@@ -49,7 +49,7 @@
         End If
     End Sub
 
-    Private Sub cbEstado_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbEstado.SelectedIndexChanged 
+    Private Sub cbEstado_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbEstado.SelectedIndexChanged
         Call Me.Filtrar()
     End Sub
     Private Sub Dimensionar()
@@ -73,14 +73,14 @@
         Me.dgvAccionesModificatorias.Columns(5).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         Me.dgvAccionesModificatorias.Columns(6).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
     End Sub
-    Private Sub Boton_Nueva_AM_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Boton_Nuevo_AM.Click
-        If Datos.Acceso_Sub_Boton(My.Settings.Usuario.Trim, "Boton_Accion_Modificatoria", Me.Boton_Nuevo_AM.Name) = True Then
+    Private Sub Boton_Nueva_AM_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Boton_Nueva_AM.Click
+        If Datos.Acceso_Sub_Boton(My.Settings.Usuario.Trim, "Boton_Accion_Modificatoria", Me.Boton_Nueva_AM.Name) = True Then
             Dim Formulario As New frmRegistro_Acciones_Modificatorias
             Formulario.Editar = False
             Formulario.ShowDialog()
             Call Me.Filtrar()
             Call Me.Dimensionar()
-            Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+            Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nueva_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
         Else
             MessageBox.Show("Estimado: " & My.Settings.Nombre_Usuario & ", Ud no cuenta con privilegios para acceder a esta opción", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
         End If
@@ -94,15 +94,15 @@
                 If Me.dgvAccionesModificatorias.CurrentCellAddress.Y >= 0 Then
                     Datos.Imprimir_Reporte("Select * From Lista_Detalle_CN_Basica Where Año_Ejecucion='" & My.Settings.Año_Ejecucion & "' And Codigo_Secuencia_Funcional='" & Me.dgvAccionesModificatorias.CurrentRow.Cells(1).Value & "' And Codigo_Actividad='" & Me.dgvAccionesModificatorias.CurrentRow.Cells(2).Value & "' And Codigo_Unidad_Organica='" & Me.dgvAccionesModificatorias.CurrentRow.Cells(3).Value & "' Order by Abs(Tipo_Transaccion),Abs(Generica),Abs(Sub_Generica),Abs(Sub_Generica_Detalle),Abs(Especifica),Abs(Especifica_Detalle)", New Reporte_CN_Resumen, 100, "Reporte Cuadro de Necesidades", False)
                     Call Me.Filtrar()
-                    Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+                    Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nueva_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
                 Else
                     MessageBox.Show("Seleccione un C.N. para Reportar", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1)
                     Call Me.Filtrar()
-                    Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+                    Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nueva_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
                 End If
             Else
                 Call Me.Filtrar()
-                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nueva_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
             End If
         Else
             MessageBox.Show("Estimado: " & My.Settings.Nombre_Usuario & ", Ud no cuenta con privilegios para acceder a esta opción", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
@@ -111,7 +111,7 @@
     Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvAccionesModificatorias.CellContentClick
         If Me.dgvAccionesModificatorias.CurrentCellAddress.Y >= 0 Then
             Variable_Numero_Accion_Modificatoria = Me.dgvAccionesModificatorias.CurrentRow.Cells(1).Value
-            Datos.Evaluacion_Botones_Modulo_Accion_Modificatoria(My.Settings.Año_Ejecucion, Variable_Numero_Nota_Modificatoria, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Anular_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+            Datos.Evaluacion_Botones_Modulo_Accion_Modificatoria(My.Settings.Año_Ejecucion, Variable_Numero_Nota_Modificatoria, Boton_Nueva_AM, Boton_Editar_AM, Boton_Anular_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
         Else
             Variable_Numero_Accion_Modificatoria = ""
         End If
@@ -119,7 +119,7 @@
     Private Sub DataGridView1_CellContentDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvAccionesModificatorias.CellContentDoubleClick
         If Me.dgvAccionesModificatorias.CurrentCellAddress.Y >= 0 Then
             Variable_Numero_Accion_Modificatoria = Me.dgvAccionesModificatorias.CurrentRow.Cells(1).Value
-            Datos.Evaluacion_Botones_Modulo_Accion_Modificatoria(My.Settings.Año_Ejecucion, Variable_Numero_Nota_Modificatoria, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Anular_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+            Datos.Evaluacion_Botones_Modulo_Accion_Modificatoria(My.Settings.Año_Ejecucion, Variable_Numero_Nota_Modificatoria, Boton_Nueva_AM, Boton_Editar_AM, Boton_Anular_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
         Else
             Variable_Numero_Accion_Modificatoria = ""
         End If
@@ -127,7 +127,7 @@
     Private Sub DataGridView1_CellEnter(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvAccionesModificatorias.CellEnter
         If Me.dgvAccionesModificatorias.CurrentCellAddress.Y >= 0 Then
             Variable_Numero_Accion_Modificatoria = Me.dgvAccionesModificatorias.CurrentRow.Cells(1).Value
-            Datos.Evaluacion_Botones_Modulo_Accion_Modificatoria(My.Settings.Año_Ejecucion, Variable_Numero_Nota_Modificatoria, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Anular_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+            Datos.Evaluacion_Botones_Modulo_Accion_Modificatoria(My.Settings.Año_Ejecucion, Variable_Numero_Nota_Modificatoria, Boton_Nueva_AM, Boton_Editar_AM, Boton_Anular_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
         Else
             Variable_Numero_Accion_Modificatoria = ""
         End If
@@ -140,7 +140,7 @@
                 Formulario.ShowDialog()
                 Call Me.Filtrar()
                 Call Me.Dimensionar()
-                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nueva_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
             End If
         Else
             MessageBox.Show("Estimado: " & My.Settings.Nombre_Usuario & ", Ud no cuenta con privilegios para acceder a esta opción", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
@@ -155,15 +155,15 @@
                 If Me.dgvAccionesModificatorias.CurrentCellAddress.Y >= 0 Then
                     Datos.Imprimir_Reporte("Select * From Lista_Detalle_CN_Basica Where Año_Ejecucion='" & My.Settings.Año_Ejecucion & "' And Codigo_Secuencia_Funcional='" & Me.dgvAccionesModificatorias.CurrentRow.Cells(1).Value & "' And Codigo_Actividad='" & Me.dgvAccionesModificatorias.CurrentRow.Cells(2).Value & "' And Codigo_Unidad_Organica='" & Me.dgvAccionesModificatorias.CurrentRow.Cells(3).Value & "' Order by Abs(Tipo_Transaccion),Abs(Generica),Abs(Sub_Generica),Abs(Sub_Generica_Detalle),Abs(Especifica),Abs(Especifica_Detalle)", New Reporte_CN_Resumen, 100, "Reporte Cuadro Necesidades", True)
                     Call Me.Filtrar()
-                    Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+                    Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nueva_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
                 Else
                     MessageBox.Show("Seleccione un C.N. para Imprimir", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1)
                     Call Me.Filtrar()
-                    Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+                    Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nueva_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
                 End If
             Else
                 Call Me.Filtrar()
-                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nueva_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
             End If
         Else
             MessageBox.Show("Estimado: " & My.Settings.Nombre_Usuario & ", Ud no cuenta con privilegios para acceder a esta opción", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
@@ -176,10 +176,10 @@
                     Datos.Eliminar_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Unidad_Organica, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Actividad)
                 End If
                 Call Me.Filtrar()
-                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nueva_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
             Else
                 Call Me.Filtrar()
-                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nueva_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
             End If
         Else
             MessageBox.Show("Estimado: " & My.Settings.Nombre_Usuario & ", Ud no cuenta con privilegios para acceder a esta opción", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
@@ -190,13 +190,13 @@
             If Variable_Codigo_Secuencia_Funcional.Trim.Length > 0 And Variable_Codigo_Actividad.Trim.Length > 0 And Variable_Codigo_Unidad_Organica.Trim.Length > 0 Then
                 If MessageBox.Show("Deseas realmente Extornar el CN seleccionado", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.Yes Then
                     Datos.Extornar_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Unidad_Organica, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Actividad)
-                    Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+                    Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nueva_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
                 End If
                 Call Me.Filtrar()
-                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nueva_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
             Else
                 Call Me.Filtrar()
-                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nueva_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
             End If
         Else
             MessageBox.Show("Estimado: " & My.Settings.Nombre_Usuario & ", Ud no cuenta con privilegios para acceder a esta opción", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
@@ -208,13 +208,13 @@
                 If MessageBox.Show("Deseas realmente Autorizar el CN seleccionado", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.Yes Then
                     Datos.Autorizar_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Unidad_Organica, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Actividad, My.Settings.Usuario)
                     Call Me.Filtrar()
-                    Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+                    Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nueva_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
                 End If
                 Call Me.Filtrar()
-                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nueva_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
             Else
                 Call Me.Filtrar()
-                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nueva_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
             End If
         Else
             MessageBox.Show("Estimado: " & My.Settings.Nombre_Usuario & ", Ud no cuenta con privilegios para acceder a esta opción", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
@@ -226,13 +226,13 @@
                 If MessageBox.Show("Deseas realmente Autorizar el CN seleccionado", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.Yes Then
                     Datos.Aprobar_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Unidad_Organica, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Actividad, My.Settings.Usuario)
                     Call Me.Filtrar()
-                    Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+                    Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nueva_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
                 End If
                 Call Me.Filtrar()
-                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nueva_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
             Else
                 Call Me.Filtrar()
-                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nueva_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
             End If
         Else
             MessageBox.Show("Estimado: " & My.Settings.Nombre_Usuario & ", Ud no cuenta con privilegios para acceder a esta opción", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
@@ -246,11 +246,11 @@
                 End If
                 Call Me.Filtrar()
                 Call Me.Dimensionar()
-                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nueva_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
             Else
                 Call Me.Filtrar()
                 Call Me.Dimensionar()
-                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
+                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nueva_AM, Boton_Editar_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM)
             End If
         Else
             MessageBox.Show("Estimado: " & My.Settings.Nombre_Usuario & ", Ud no cuenta con privilegios para acceder a esta opción", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)

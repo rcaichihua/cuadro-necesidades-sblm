@@ -5,6 +5,7 @@
     Dim B_Busqueda_W As String = ""
     Dim B_Busqueda_O As String = ""
     Public Tipo_Catalogo As String = ""
+    Public Accion_Modificatoria_activa As Boolean = False
     Public Operacion As Integer = 0
     Public Tipo_Modulo As Integer = 0
     Dim Grupo As New DataTable
@@ -97,204 +98,19 @@
                     'Llenar(B_Busqueda_S & B_Busqueda_W & B_Busqueda_O)
                 End If
             End If
-            If Me.RadioButton2.Checked = True Then
-                If Me.txtDatos.Text.Trim.Length > 0 Then
-                    If Tipo_Modulo = 0 Then
-                        Llenar(B_Busqueda_S & " Where Codigo Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-                    Else
-                        Llenar(B_Busqueda_S & " Where a.Codigo Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-                    End If
-
+        If Me.RadioButton2.Checked = True Then
+            If Me.txtDatos.Text.Trim.Length > 0 Then
+                If Tipo_Modulo = 0 Then
+                    Llenar(B_Busqueda_S & " Where Codigo Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
                 Else
-                    'MessageBox.Show("Ingrese el codigo del item para el filtro de busqueda.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
-                    'Llenar(B_Busqueda_S & B_Busqueda_W & B_Busqueda_O)
+                    Llenar(B_Busqueda_S & " Where a.Codigo Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
                 End If
+
+            Else
+                'MessageBox.Show("Ingrese el codigo del item para el filtro de busqueda.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
+                'Llenar(B_Busqueda_S & B_Busqueda_W & B_Busqueda_O)
             End If
-        'Else
-        '    gbCombos.Enabled = True
-        '    Select Case Me.cbGrupo.SelectedIndex
-        '    Case 0
-        '        Select Case cbClase.SelectedIndex
-        '            Case 0
-        '                Select Case cbFamilia.SelectedIndex
-        '                    Case 0
-        '                        If Me.RadioButton1.Checked = True Then
-        '                            If Me.txtDatos.Text.Trim.Length > 0 Then
-        '                                Llenar(B_Busqueda_S & B_Busqueda_W & " And Descripcion_Item Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-        '                            Else
-        '                                Llenar(B_Busqueda_S & B_Busqueda_W & B_Busqueda_O)
-        '                            End If
-        '                        End If
-        '                        If Me.RadioButton2.Checked = True Then
-        '                            If Me.txtDatos.Text.Trim.Length > 0 Then
-        '                                If Tipo_Modulo = 0 Then
-        '                                    Llenar(B_Busqueda_S & " Where Codigo Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-        '                                Else
-        '                                    Llenar(B_Busqueda_S & " Where a.Codigo Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-        '                                End If
-
-        '                            Else
-        '                                Llenar(B_Busqueda_S & B_Busqueda_W & B_Busqueda_O)
-        '                            End If
-        '                        End If
-                                
-        '                    Case Is <> 0
-        '                        If Me.RadioButton1.Checked = True Then
-        '                            If Me.txtDatos.Text.Trim.Length > 0 Then
-        '                                Llenar(B_Busqueda_S & B_Busqueda_W & " And Familia='" & Me.cbFamilia.Text.Trim & "' And Descripcion_Item Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-        '                            Else
-        '                                Llenar(B_Busqueda_S & B_Busqueda_W & " And Familia='" & Me.cbFamilia.Text.Trim & "' " & B_Busqueda_O)
-        '                            End If
-        '                        End If
-        '                        If Me.RadioButton2.Checked = True Then
-        '                            If Me.txtDatos.Text.Trim.Length > 0 Then
-        '                                If Tipo_Modulo = 0 Then
-        '                                    Llenar(B_Busqueda_S & " Where Codigo Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-        '                                Else
-        '                                    Llenar(B_Busqueda_S & " Where a.Codigo Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-        '                                End If
-
-        '                            Else
-        '                                Llenar(B_Busqueda_S & B_Busqueda_W & " And Familia='" & Me.cbFamilia.Text.Trim & "' " & B_Busqueda_O)
-        '                            End If
-        '                        End If
-        '                End Select
-        '            Case Is <> 0
-        '                Select Case cbFamilia.SelectedIndex
-        '                    Case 0
-        '                        If Me.RadioButton1.Checked = True Then
-        '                            If Me.txtDatos.Text.Trim.Length > 0 Then
-        '                                Llenar(B_Busqueda_S & B_Busqueda_W & " And Clase='" & cbClase.Text.Trim & "' And Descripcion_Item Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-        '                            Else
-        '                                Llenar(B_Busqueda_S & B_Busqueda_W & " And Clase='" & cbClase.Text.Trim & "' " & B_Busqueda_O)
-        '                            End If
-        '                        End If
-        '                        If Me.RadioButton2.Checked = True Then
-        '                            If Me.txtDatos.Text.Trim.Length > 0 Then
-        '                                If Tipo_Modulo = 0 Then
-        '                                    Llenar(B_Busqueda_S & " Where Codigo Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-        '                                Else
-        '                                    Llenar(B_Busqueda_S & " Where a.Codigo Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-        '                                End If
-
-        '                            Else
-        '                                Llenar(B_Busqueda_S & B_Busqueda_W & " And Clase='" & cbClase.Text.Trim & "' " & B_Busqueda_O)
-        '                            End If
-        '                        End If
-        '                    Case Is <> 0
-        '                        If Me.RadioButton1.Checked = True Then
-        '                            If Me.txtDatos.Text.Trim.Length > 0 Then
-        '                                Llenar(B_Busqueda_S & B_Busqueda_W & " And Clase='" & cbClase.Text.Trim & "' And Familia='" & cbFamilia.Text.Trim & "' And Descripcion_Item Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-        '                            Else
-        '                                Llenar(B_Busqueda_S & B_Busqueda_W & " And Clase='" & cbClase.Text.Trim & "' And Familia='" & cbFamilia.Text.Trim & "' " & B_Busqueda_O)
-        '                            End If
-        '                        End If
-        '                        If Me.RadioButton2.Checked = True Then
-        '                            If Me.txtDatos.Text.Trim.Length > 0 Then
-        '                                If Tipo_Modulo = 0 Then
-        '                                    Llenar(B_Busqueda_S & " Where Codigo Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-        '                                Else
-        '                                    Llenar(B_Busqueda_S & " Where a.Codigo Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-        '                                End If
-
-        '                            Else
-        '                                Llenar(B_Busqueda_S & B_Busqueda_W & " And Clase='" & cbClase.Text.Trim & "' And Familia='" & cbFamilia.Text.Trim & "' " & B_Busqueda_O)
-        '                            End If
-        '                        End If
-        '                End Select
-        '        End Select
-        '    Case Is <> 0
-        '        Select Case cbClase.SelectedIndex
-        '            Case 0
-        '                Select Case cbFamilia.SelectedIndex
-        '                    Case 0
-        '                        If Me.RadioButton1.Checked = True Then
-        '                            If Me.txtDatos.Text.Trim.Length > 0 Then
-        '                                Llenar(B_Busqueda_S & B_Busqueda_W & " And Grupo='" & cbGrupo.Text.Trim & "' And Descripcion_Item Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-        '                            Else
-        '                                Llenar(B_Busqueda_S & B_Busqueda_W & " And Grupo='" & cbGrupo.Text.Trim & "' " & B_Busqueda_O)
-        '                            End If
-        '                        End If
-        '                        If Me.RadioButton2.Checked = True Then
-        '                            If Me.txtDatos.Text.Trim.Length > 0 Then
-        '                                If Tipo_Modulo = 0 Then
-        '                                    Llenar(B_Busqueda_S & " Where Codigo Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-        '                                Else
-        '                                    Llenar(B_Busqueda_S & " Where a.Codigo Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-        '                                End If
-
-        '                            Else
-        '                                Llenar(B_Busqueda_S & B_Busqueda_W & " And Grupo='" & cbGrupo.Text.Trim & "' " & B_Busqueda_O)
-        '                            End If
-        '                        End If
-        '                    Case Is <> 0
-        '                        If Me.RadioButton1.Checked = True Then
-        '                            If Me.txtDatos.Text.Trim.Length > 0 Then
-        '                                Llenar(B_Busqueda_S & B_Busqueda_W & " And Grupo='" & cbGrupo.Text.Trim & "' And Familia='" & Me.cbFamilia.Text.Trim & "' And Descripcion_Item Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-        '                            Else
-        '                                Llenar(B_Busqueda_S & B_Busqueda_W & " And Grupo='" & cbGrupo.Text.Trim & "' And Familia='" & Me.cbFamilia.Text.Trim & "' " & B_Busqueda_O)
-        '                            End If
-        '                        End If
-        '                        If Me.RadioButton2.Checked = True Then
-        '                            If Me.txtDatos.Text.Trim.Length > 0 Then
-        '                                If Tipo_Modulo = 0 Then
-        '                                    Llenar(B_Busqueda_S & " Where Codigo Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-        '                                Else
-        '                                    Llenar(B_Busqueda_S & " Where a.Codigo Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-        '                                End If
-
-        '                            Else
-        '                                Llenar(B_Busqueda_S & B_Busqueda_W & " And Grupo='" & cbGrupo.Text.Trim & "' And Familia='" & Me.cbFamilia.Text.Trim & "' " & B_Busqueda_O)
-        '                            End If
-        '                        End If
-        '                End Select
-        '            Case Is <> 0
-        '                Select Case cbFamilia.SelectedIndex
-        '                    Case 0
-        '                        If Me.RadioButton1.Checked = True Then
-        '                            If Me.txtDatos.Text.Trim.Length > 0 Then
-        '                                Llenar(B_Busqueda_S & B_Busqueda_W & " And Grupo='" & cbGrupo.Text.Trim & "' And Clase='" & cbClase.Text.Trim & "' And Descripcion_Item Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-        '                            Else
-        '                                Llenar(B_Busqueda_S & B_Busqueda_W & " And Grupo='" & cbGrupo.Text.Trim & "' And Clase='" & cbClase.Text.Trim & "' " & B_Busqueda_O)
-        '                            End If
-        '                        End If
-        '                        If Me.RadioButton2.Checked = True Then
-        '                            If Me.txtDatos.Text.Trim.Length > 0 Then
-        '                                If Tipo_Modulo = 0 Then
-        '                                    Llenar(B_Busqueda_S & " Where Codigo Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-        '                                Else
-        '                                    Llenar(B_Busqueda_S & " Where a.Codigo Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-        '                                End If
-
-        '                            Else
-        '                                Llenar(B_Busqueda_S & B_Busqueda_W & " And Grupo='" & cbGrupo.Text.Trim & "' And Clase='" & cbClase.Text.Trim & "' " & B_Busqueda_O)
-        '                            End If
-        '                        End If
-        '                    Case Is <> 0
-        '                        If Me.RadioButton1.Checked = True Then
-        '                            If Me.txtDatos.Text.Trim.Length > 0 Then
-        '                                Llenar(B_Busqueda_S & B_Busqueda_W & " And Grupo='" & cbGrupo.Text.Trim & "' And Clase='" & cbClase.Text.Trim & "' And Familia='" & cbFamilia.Text.Trim & "' And Descripcion_Item Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-        '                            Else
-        '                                Llenar(B_Busqueda_S & B_Busqueda_W & " And Grupo='" & cbGrupo.Text.Trim & "' And Clase='" & cbClase.Text.Trim & "' And Familia='" & cbFamilia.Text.Trim & "' " & B_Busqueda_O)
-        '                            End If
-        '                        End If
-        '                        If Me.RadioButton2.Checked = True Then
-        '                            If Me.txtDatos.Text.Trim.Length > 0 Then
-        '                                If Tipo_Modulo = 0 Then
-        '                                    Llenar(B_Busqueda_S & " Where Codigo Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-        '                                Else
-        '                                    Llenar(B_Busqueda_S & " Where a.Codigo Like '%" & Me.txtDatos.Text.Trim & "%' " & B_Busqueda_O)
-        '                                End If
-
-        '                            Else
-        '                                Llenar(B_Busqueda_S & B_Busqueda_W & " And Grupo='" & cbGrupo.Text.Trim & "' And Clase='" & cbClase.Text.Trim & "' And Familia='" & cbFamilia.Text.Trim & "' " & B_Busqueda_O)
-        '                            End If
-        '                        End If
-        '                End Select
-        '        End Select
-        'End Select
-        'End If
-        
+        End If
     End Sub
     Sub Llenar(ByVal S_Busqueda As String)
         Dim DT As New DataTable
@@ -541,7 +357,7 @@
     '                        Else
     '                            cbFamilia.SelectedIndex = 0
     '                        End If
-                            
+
     '                        If Tipo_Modulo = 0 Then
     '                            Call Me.Filtrar()
     '                        End If

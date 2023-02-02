@@ -24,14 +24,6 @@ Partial Class frmMenu
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMenu))
         Me.ribbonControl1 = New DevComponents.DotNetBar.RibbonControl()
-        Me.RibbonPanel4 = New DevComponents.DotNetBar.RibbonPanel()
-        Me.RibbonBar9 = New DevComponents.DotNetBar.RibbonBar()
-        Me.Boton_Salir_3 = New DevComponents.DotNetBar.ButtonItem()
-        Me.RibbonBar8 = New DevComponents.DotNetBar.RibbonBar()
-        Me.Boton_Cuadro_Necesidades = New DevComponents.DotNetBar.ButtonItem()
-        Me.Boton_Accion_Modificatoria = New DevComponents.DotNetBar.ButtonItem()
-        Me.Boton_Catalogo_Bienes = New DevComponents.DotNetBar.ButtonItem()
-        Me.Boton_Catalogo_Servicios = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonPanel2 = New DevComponents.DotNetBar.RibbonPanel()
         Me.RibbonBar7 = New DevComponents.DotNetBar.RibbonBar()
         Me.Boton_Salir_2 = New DevComponents.DotNetBar.ButtonItem()
@@ -51,13 +43,21 @@ Partial Class frmMenu
         Me.RibbonBar5 = New DevComponents.DotNetBar.RibbonBar()
         Me.Boton_Registro_Usuarios = New DevComponents.DotNetBar.ButtonItem()
         Me.Boton_Cambiar_Clave = New DevComponents.DotNetBar.ButtonItem()
+        Me.RibbonPanel4 = New DevComponents.DotNetBar.RibbonPanel()
+        Me.RibbonBar9 = New DevComponents.DotNetBar.RibbonBar()
+        Me.Boton_Salir_3 = New DevComponents.DotNetBar.ButtonItem()
+        Me.RibbonBar8 = New DevComponents.DotNetBar.RibbonBar()
+        Me.Boton_Cuadro_Necesidades = New DevComponents.DotNetBar.ButtonItem()
+        Me.Boton_Accion_Modificatoria = New DevComponents.DotNetBar.ButtonItem()
+        Me.Boton_Catalogo_Bienes = New DevComponents.DotNetBar.ButtonItem()
+        Me.Boton_Catalogo_Servicios = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonPanel3 = New DevComponents.DotNetBar.RibbonPanel()
         Me.RibbonTabItem3 = New DevComponents.DotNetBar.RibbonTabItem()
         Me.RibbonTabItem2 = New DevComponents.DotNetBar.RibbonTabItem()
-        Me.ribbonControl1.SuspendLayout
-        Me.RibbonPanel4.SuspendLayout
-        Me.RibbonPanel2.SuspendLayout
-        Me.SuspendLayout
+        Me.ribbonControl1.SuspendLayout()
+        Me.RibbonPanel2.SuspendLayout()
+        Me.RibbonPanel4.SuspendLayout()
+        Me.SuspendLayout()
         '
         'ribbonControl1
         '
@@ -66,13 +66,13 @@ Partial Class frmMenu
         '
         '
         Me.ribbonControl1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.ribbonControl1.Controls.Add(Me.RibbonPanel2)
         Me.ribbonControl1.Controls.Add(Me.RibbonPanel4)
+        Me.ribbonControl1.Controls.Add(Me.RibbonPanel2)
         Me.ribbonControl1.Controls.Add(Me.RibbonPanel3)
         Me.ribbonControl1.Dock = System.Windows.Forms.DockStyle.Top
         Me.ribbonControl1.ForeColor = System.Drawing.Color.Black
         Me.ribbonControl1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.RibbonTabItem3, Me.RibbonTabItem2})
-        Me.ribbonControl1.KeyTipsFont = New System.Drawing.Font("Tahoma", 7!)
+        Me.ribbonControl1.KeyTipsFont = New System.Drawing.Font("Tahoma", 7.0!)
         Me.ribbonControl1.Location = New System.Drawing.Point(0, 0)
         Me.ribbonControl1.Name = "ribbonControl1"
         Me.ribbonControl1.Padding = New System.Windows.Forms.Padding(0, 0, 0, 3)
@@ -96,131 +96,6 @@ Partial Class frmMenu
         Me.ribbonControl1.TabGroupHeight = 14
         Me.ribbonControl1.TabIndex = 3
         Me.ribbonControl1.Text = "ribbonControl1"
-        '
-        'RibbonPanel4
-        '
-        Me.RibbonPanel4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.RibbonPanel4.Controls.Add(Me.RibbonBar9)
-        Me.RibbonPanel4.Controls.Add(Me.RibbonBar8)
-        Me.RibbonPanel4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RibbonPanel4.Location = New System.Drawing.Point(0, 26)
-        Me.RibbonPanel4.Name = "RibbonPanel4"
-        Me.RibbonPanel4.Padding = New System.Windows.Forms.Padding(3, 0, 3, 3)
-        Me.RibbonPanel4.Size = New System.Drawing.Size(1284, 91)
-        '
-        '
-        '
-        Me.RibbonPanel4.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.RibbonPanel4.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.RibbonPanel4.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.RibbonPanel4.TabIndex = 4
-        Me.RibbonPanel4.Visible = false
-        '
-        'RibbonBar9
-        '
-        Me.RibbonBar9.AutoOverflowEnabled = true
-        '
-        '
-        '
-        Me.RibbonBar9.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.RibbonBar9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.RibbonBar9.ContainerControlProcessDialogKey = true
-        Me.RibbonBar9.Dock = System.Windows.Forms.DockStyle.Left
-        Me.RibbonBar9.DragDropSupport = true
-        Me.RibbonBar9.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.Boton_Salir_3})
-        Me.RibbonBar9.Location = New System.Drawing.Point(316, 0)
-        Me.RibbonBar9.Name = "RibbonBar9"
-        Me.RibbonBar9.Size = New System.Drawing.Size(69, 88)
-        Me.RibbonBar9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.RibbonBar9.TabIndex = 13
-        Me.RibbonBar9.Text = "Salir"
-        '
-        '
-        '
-        Me.RibbonBar9.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.RibbonBar9.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        'Boton_Salir_3
-        '
-        Me.Boton_Salir_3.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.Boton_Salir_3.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Salir
-        Me.Boton_Salir_3.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.Boton_Salir_3.Name = "Boton_Salir_3"
-        Me.Boton_Salir_3.Text = "<div align=""center"">Salir del<br/>Sistema</div>"
-        '
-        'RibbonBar8
-        '
-        Me.RibbonBar8.AutoOverflowEnabled = true
-        '
-        '
-        '
-        Me.RibbonBar8.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.RibbonBar8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.RibbonBar8.ContainerControlProcessDialogKey = true
-        Me.RibbonBar8.Dock = System.Windows.Forms.DockStyle.Left
-        Me.RibbonBar8.DragDropSupport = true
-        Me.RibbonBar8.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.Boton_Cuadro_Necesidades, Me.Boton_Accion_Modificatoria, Me.Boton_Catalogo_Bienes, Me.Boton_Catalogo_Servicios})
-        Me.RibbonBar8.Location = New System.Drawing.Point(3, 0)
-        Me.RibbonBar8.Name = "RibbonBar8"
-        Me.RibbonBar8.Size = New System.Drawing.Size(313, 88)
-        Me.RibbonBar8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.RibbonBar8.TabIndex = 2
-        Me.RibbonBar8.Text = "Cuadro de Necesidades"
-        '
-        '
-        '
-        Me.RibbonBar8.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.RibbonBar8.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        'Boton_Cuadro_Necesidades
-        '
-        Me.Boton_Cuadro_Necesidades.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.Boton_Cuadro_Necesidades.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Bienes
-        Me.Boton_Cuadro_Necesidades.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.Boton_Cuadro_Necesidades.Name = "Boton_Cuadro_Necesidades"
-        Me.Boton_Cuadro_Necesidades.Text = "<div align=""center"">Cuadro<br/>Necesidades</div>"
-        '
-        'Boton_Accion_Modificatoria
-        '
-        Me.Boton_Accion_Modificatoria.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.Boton_Accion_Modificatoria.Image = Global.SAG_SBLM.My.Resources.Resources.Editar2
-        Me.Boton_Accion_Modificatoria.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.Boton_Accion_Modificatoria.Name = "Boton_Accion_Modificatoria"
-        Me.Boton_Accion_Modificatoria.Text = "<div align=""center"">Acciones<br/>Modificatorias</div>"
-        '
-        'Boton_Catalogo_Bienes
-        '
-        Me.Boton_Catalogo_Bienes.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.Boton_Catalogo_Bienes.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Catalogo_Bienes
-        Me.Boton_Catalogo_Bienes.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.Boton_Catalogo_Bienes.Name = "Boton_Catalogo_Bienes"
-        Me.Boton_Catalogo_Bienes.Text = "<div align=""center"">Catálogo<br/>de Bienes</div>"
-        '
-        'Boton_Catalogo_Servicios
-        '
-        Me.Boton_Catalogo_Servicios.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.Boton_Catalogo_Servicios.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Catalogo_Servicios
-        Me.Boton_Catalogo_Servicios.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.Boton_Catalogo_Servicios.Name = "Boton_Catalogo_Servicios"
-        Me.Boton_Catalogo_Servicios.Text = "<div align=""center"">Catálogo<br/>de Servicios</div>"
         '
         'RibbonPanel2
         '
@@ -247,10 +122,11 @@ Partial Class frmMenu
         '
         Me.RibbonPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonPanel2.TabIndex = 2
+        Me.RibbonPanel2.Visible = False
         '
         'RibbonBar7
         '
-        Me.RibbonBar7.AutoOverflowEnabled = true
+        Me.RibbonBar7.AutoOverflowEnabled = True
         '
         '
         '
@@ -259,9 +135,9 @@ Partial Class frmMenu
         '
         '
         Me.RibbonBar7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.RibbonBar7.ContainerControlProcessDialogKey = true
+        Me.RibbonBar7.ContainerControlProcessDialogKey = True
         Me.RibbonBar7.Dock = System.Windows.Forms.DockStyle.Left
-        Me.RibbonBar7.DragDropSupport = true
+        Me.RibbonBar7.DragDropSupport = True
         Me.RibbonBar7.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.Boton_Salir_2})
         Me.RibbonBar7.Location = New System.Drawing.Point(1012, 0)
         Me.RibbonBar7.Name = "RibbonBar7"
@@ -288,7 +164,7 @@ Partial Class frmMenu
         '
         'RibbonBar23
         '
-        Me.RibbonBar23.AutoOverflowEnabled = true
+        Me.RibbonBar23.AutoOverflowEnabled = True
         '
         '
         '
@@ -297,9 +173,9 @@ Partial Class frmMenu
         '
         '
         Me.RibbonBar23.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.RibbonBar23.ContainerControlProcessDialogKey = true
+        Me.RibbonBar23.ContainerControlProcessDialogKey = True
         Me.RibbonBar23.Dock = System.Windows.Forms.DockStyle.Left
-        Me.RibbonBar23.DragDropSupport = true
+        Me.RibbonBar23.DragDropSupport = True
         Me.RibbonBar23.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.Boton_Registro_Bienes, Me.Boton_Registro_Servicios, Me.Boton_Unidades_Organicas, Me.Boton_Secuencias_Funcionales, Me.Boton_Registro_Actividades, Me.Boton_Registro_Clasificadores, Me.Boton_Registro_Cuentas_Contables, Me.Boton_Registro_Denominaciones})
         Me.RibbonBar23.Location = New System.Drawing.Point(361, 0)
         Me.RibbonBar23.Name = "RibbonBar23"
@@ -382,7 +258,7 @@ Partial Class frmMenu
         '
         'RibbonBar6
         '
-        Me.RibbonBar6.AutoOverflowEnabled = true
+        Me.RibbonBar6.AutoOverflowEnabled = True
         '
         '
         '
@@ -391,9 +267,9 @@ Partial Class frmMenu
         '
         '
         Me.RibbonBar6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.RibbonBar6.ContainerControlProcessDialogKey = true
+        Me.RibbonBar6.ContainerControlProcessDialogKey = True
         Me.RibbonBar6.Dock = System.Windows.Forms.DockStyle.Left
-        Me.RibbonBar6.DragDropSupport = true
+        Me.RibbonBar6.DragDropSupport = True
         Me.RibbonBar6.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.Boton_Eliminar_Parametros, Me.Boton_Configuracion_Base_Datos, Me.Boton_Generar_Backup})
         Me.RibbonBar6.Location = New System.Drawing.Point(121, 0)
         Me.RibbonBar6.Name = "RibbonBar6"
@@ -436,7 +312,7 @@ Partial Class frmMenu
         '
         'RibbonBar5
         '
-        Me.RibbonBar5.AutoOverflowEnabled = true
+        Me.RibbonBar5.AutoOverflowEnabled = True
         '
         '
         '
@@ -445,9 +321,9 @@ Partial Class frmMenu
         '
         '
         Me.RibbonBar5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.RibbonBar5.ContainerControlProcessDialogKey = true
+        Me.RibbonBar5.ContainerControlProcessDialogKey = True
         Me.RibbonBar5.Dock = System.Windows.Forms.DockStyle.Left
-        Me.RibbonBar5.DragDropSupport = true
+        Me.RibbonBar5.DragDropSupport = True
         Me.RibbonBar5.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.Boton_Registro_Usuarios, Me.Boton_Cambiar_Clave})
         Me.RibbonBar5.Location = New System.Drawing.Point(3, 0)
         Me.RibbonBar5.Name = "RibbonBar5"
@@ -480,6 +356,130 @@ Partial Class frmMenu
         Me.Boton_Cambiar_Clave.Name = "Boton_Cambiar_Clave"
         Me.Boton_Cambiar_Clave.Text = "<div align=""center"">Cambiar<br/>Mi Clave</div>"
         '
+        'RibbonPanel4
+        '
+        Me.RibbonPanel4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.RibbonPanel4.Controls.Add(Me.RibbonBar9)
+        Me.RibbonPanel4.Controls.Add(Me.RibbonBar8)
+        Me.RibbonPanel4.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RibbonPanel4.Location = New System.Drawing.Point(0, 26)
+        Me.RibbonPanel4.Name = "RibbonPanel4"
+        Me.RibbonPanel4.Padding = New System.Windows.Forms.Padding(3, 0, 3, 3)
+        Me.RibbonPanel4.Size = New System.Drawing.Size(1284, 91)
+        '
+        '
+        '
+        Me.RibbonPanel4.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.RibbonPanel4.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.RibbonPanel4.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.RibbonPanel4.TabIndex = 4
+        '
+        'RibbonBar9
+        '
+        Me.RibbonBar9.AutoOverflowEnabled = True
+        '
+        '
+        '
+        Me.RibbonBar9.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.RibbonBar9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.RibbonBar9.ContainerControlProcessDialogKey = True
+        Me.RibbonBar9.Dock = System.Windows.Forms.DockStyle.Left
+        Me.RibbonBar9.DragDropSupport = True
+        Me.RibbonBar9.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.Boton_Salir_3})
+        Me.RibbonBar9.Location = New System.Drawing.Point(316, 0)
+        Me.RibbonBar9.Name = "RibbonBar9"
+        Me.RibbonBar9.Size = New System.Drawing.Size(69, 88)
+        Me.RibbonBar9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.RibbonBar9.TabIndex = 13
+        Me.RibbonBar9.Text = "Salir"
+        '
+        '
+        '
+        Me.RibbonBar9.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.RibbonBar9.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        'Boton_Salir_3
+        '
+        Me.Boton_Salir_3.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.Boton_Salir_3.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Salir
+        Me.Boton_Salir_3.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.Boton_Salir_3.Name = "Boton_Salir_3"
+        Me.Boton_Salir_3.Text = "<div align=""center"">Salir del<br/>Sistema</div>"
+        '
+        'RibbonBar8
+        '
+        Me.RibbonBar8.AutoOverflowEnabled = True
+        '
+        '
+        '
+        Me.RibbonBar8.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.RibbonBar8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.RibbonBar8.ContainerControlProcessDialogKey = True
+        Me.RibbonBar8.Dock = System.Windows.Forms.DockStyle.Left
+        Me.RibbonBar8.DragDropSupport = True
+        Me.RibbonBar8.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.Boton_Cuadro_Necesidades, Me.Boton_Accion_Modificatoria, Me.Boton_Catalogo_Bienes, Me.Boton_Catalogo_Servicios})
+        Me.RibbonBar8.Location = New System.Drawing.Point(3, 0)
+        Me.RibbonBar8.Name = "RibbonBar8"
+        Me.RibbonBar8.Size = New System.Drawing.Size(313, 88)
+        Me.RibbonBar8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.RibbonBar8.TabIndex = 2
+        Me.RibbonBar8.Text = "Cuadro de Necesidades"
+        '
+        '
+        '
+        Me.RibbonBar8.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.RibbonBar8.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        'Boton_Cuadro_Necesidades
+        '
+        Me.Boton_Cuadro_Necesidades.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.Boton_Cuadro_Necesidades.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Bienes
+        Me.Boton_Cuadro_Necesidades.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.Boton_Cuadro_Necesidades.Name = "Boton_Cuadro_Necesidades"
+        Me.Boton_Cuadro_Necesidades.Text = "<div align=""center"">Cuadro<br/>Necesidades</div>"
+        '
+        'Boton_Accion_Modificatoria
+        '
+        Me.Boton_Accion_Modificatoria.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.Boton_Accion_Modificatoria.Image = Global.SAG_SBLM.My.Resources.Resources.Editar2
+        Me.Boton_Accion_Modificatoria.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.Boton_Accion_Modificatoria.Name = "Boton_Accion_Modificatoria"
+        Me.Boton_Accion_Modificatoria.Text = "<div align=""center"">Acciones<br/>Modificatorias</div>"
+        '
+        'Boton_Catalogo_Bienes
+        '
+        Me.Boton_Catalogo_Bienes.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.Boton_Catalogo_Bienes.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Catalogo_Bienes
+        Me.Boton_Catalogo_Bienes.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.Boton_Catalogo_Bienes.Name = "Boton_Catalogo_Bienes"
+        Me.Boton_Catalogo_Bienes.Text = "<div align=""center"">Catálogo<br/>de Bienes</div>"
+        '
+        'Boton_Catalogo_Servicios
+        '
+        Me.Boton_Catalogo_Servicios.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.Boton_Catalogo_Servicios.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Catalogo_Servicios
+        Me.Boton_Catalogo_Servicios.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.Boton_Catalogo_Servicios.Name = "Boton_Catalogo_Servicios"
+        Me.Boton_Catalogo_Servicios.Text = "<div align=""center"">Catálogo<br/>de Servicios</div>"
+        '
         'RibbonPanel3
         '
         Me.RibbonPanel3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -504,38 +504,38 @@ Partial Class frmMenu
         '
         'RibbonTabItem3
         '
+        Me.RibbonTabItem3.Checked = True
         Me.RibbonTabItem3.Name = "RibbonTabItem3"
         Me.RibbonTabItem3.Panel = Me.RibbonPanel4
         Me.RibbonTabItem3.Text = "Módulo del Area Usuaria"
         '
         'RibbonTabItem2
         '
-        Me.RibbonTabItem2.Checked = true
         Me.RibbonTabItem2.Name = "RibbonTabItem2"
         Me.RibbonTabItem2.Panel = Me.RibbonPanel2
         Me.RibbonTabItem2.Text = "Modulo del Administrador del Sistema"
         '
         'frmMenu
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.SAG_SBLM.My.Resources.Resources.new_fondo
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1284, 575)
         Me.Controls.Add(Me.ribbonControl1)
-        Me.DoubleBuffered = true
-        Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
-        Me.IsMdiContainer = true
+        Me.DoubleBuffered = True
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IsMdiContainer = True
         Me.Name = "frmMenu"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
-        Me.ribbonControl1.ResumeLayout(false)
-        Me.ribbonControl1.PerformLayout
-        Me.RibbonPanel4.ResumeLayout(false)
-        Me.RibbonPanel2.ResumeLayout(false)
-        Me.ResumeLayout(false)
+        Me.ribbonControl1.ResumeLayout(False)
+        Me.ribbonControl1.PerformLayout()
+        Me.RibbonPanel2.ResumeLayout(False)
+        Me.RibbonPanel4.ResumeLayout(False)
+        Me.ResumeLayout(False)
 
-End Sub
+    End Sub
     Friend WithEvents ribbonControl1 As DevComponents.DotNetBar.RibbonControl
     Friend WithEvents RibbonPanel2 As DevComponents.DotNetBar.RibbonPanel
     Friend WithEvents RibbonBar5 As DevComponents.DotNetBar.RibbonBar
