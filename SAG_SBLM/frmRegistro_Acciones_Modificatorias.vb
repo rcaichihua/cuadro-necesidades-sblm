@@ -509,7 +509,7 @@
         txtOctubre.SelectionLength = txtOctubre.Text.Length
         SumaTotalMeses()
     End Sub
-    Private Sub txtOctubre_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtOctubre.KeyPress, txtOctubre_m.KeyPress
+    Private Sub txtOctubre_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtOctubre.KeyPress
         If txtOctubre.Text.IndexOf(".") <> -1 And Asc(e.KeyChar) = 46 Then e.KeyChar = Chr(0)
         If Not IsNumeric(e.KeyChar) And Asc(e.KeyChar) <> 47 And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 13 And Asc(e.KeyChar) <> 46 Then e.KeyChar = Chr(0)
         If Not (Char.IsNumber(e.KeyChar) Or e.KeyChar.Equals(Separador) Or Char.IsControl(e.KeyChar)) Then e.Handled = True
@@ -604,7 +604,7 @@
     End Sub
     Private Sub SumaTotalMeses_modificado()
         txtCantidad_m.Text = (Convert.ToDecimal(IIf(txtEnero_m.Text.Trim() = String.Empty, "0.00", txtEnero_m.Text)) + Convert.ToDecimal(IIf(txtFebrero_m.Text.Trim() = String.Empty, "0.00", txtFebrero_m.Text)) + Convert.ToDecimal(IIf(txtMarzo_m.Text.Trim() = String.Empty, "0.00", txtMarzo_m.Text)) + Convert.ToDecimal(IIf(txtAbril_m.Text.Trim() = String.Empty, "0.00", txtAbril_m.Text)) + Convert.ToDecimal(IIf(txtMayo_m.Text.Trim() = String.Empty, "0.00", txtMayo_m.Text)) + Convert.ToDecimal(IIf(txtJunio_m.Text.Trim() = String.Empty, "0.00", txtJunio_m.Text)) + Convert.ToDecimal(IIf(txtJulio_m.Text.Trim() = String.Empty, "0.00", txtJulio_m.Text)) + Convert.ToDecimal(IIf(txtAgosto_m.Text.Trim() = String.Empty, "0.00", txtAgosto_m.Text)) + Convert.ToDecimal(IIf(txtSeptiembre_m.Text.Trim() = String.Empty, "0.00", txtSeptiembre_m.Text)) + Convert.ToDecimal(IIf(txtOctubre_m.Text.Trim() = String.Empty, "0.00", txtOctubre_m.Text) + +Convert.ToDecimal(IIf(txtNoviembre_m.Text.Trim() = String.Empty, "0.00", txtNoviembre_m.Text)) + +Convert.ToDecimal(IIf(txtDiciembre_m.Text.Trim() = String.Empty, "0.00", txtDiciembre_m.Text)))).ToString("###,###,#.00")
-        txtMonto.Text = ((Convert.ToDecimal(IIf(txtEnero_m.Text.Trim() = String.Empty, "0.00", txtEnero_m.Text)) + Convert.ToDecimal(IIf(txtFebrero_m.Text.Trim() = String.Empty, "0.00", txtFebrero_m.Text)) + Convert.ToDecimal(IIf(txtMarzo_m.Text.Trim() = String.Empty, "0.00", txtMarzo_m.Text)) + Convert.ToDecimal(IIf(txtAbril_m.Text.Trim() = String.Empty, "0.00", txtAbril_m.Text)) + Convert.ToDecimal(IIf(txtMayo_m.Text.Trim() = String.Empty, "0.00", txtMayo_m.Text)) + Convert.ToDecimal(IIf(txtJunio_m.Text.Trim() = String.Empty, "0.00", txtJunio_m.Text)) + Convert.ToDecimal(IIf(txtJulio_m.Text.Trim() = String.Empty, "0.00", txtJulio_m.Text)) + Convert.ToDecimal(IIf(txtAgosto_m.Text.Trim() = String.Empty, "0.00", txtAgosto_m.Text)) + Convert.ToDecimal(IIf(txtSeptiembre_m.Text.Trim() = String.Empty, "0.00", txtSeptiembre_m.Text)) + Convert.ToDecimal(IIf(txtOctubre_m.Text.Trim() = String.Empty, "0.00", txtOctubre_m.Text) + +Convert.ToDecimal(IIf(txtNoviembre_m.Text.Trim() = String.Empty, "0.00", txtNoviembre_m.Text)) + +Convert.ToDecimal(IIf(txtDiciembre_m.Text.Trim() = String.Empty, "0.00", txtDiciembre_m.Text)))) * Convert.ToDecimal(txtCosto.Text)).ToString("###,###,#.00")
+        txtMonto.Text = ((Convert.ToDouble(txtCantidad_m.Text)) * Convert.ToDecimal(txtCosto.Text)).ToString("###,###,#.00")
     End Sub
     Private Sub dgvDistribucionCn_CellFormatting(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles dgvDistribucionCn.CellFormatting
         If Me.dgvDistribucionCn.Columns(e.ColumnIndex).Name = "Ene." Then
@@ -659,97 +659,125 @@
                             If Me.txtTipoTransaccion.Text.Trim.Length > 0 Then
                                 If Convert.ToDouble(Me.txtTipoTransaccion.Text.Trim) > 0 Then
                                     If Me.txtItem.Text.Trim.Length > 0 Then
-                                        If Convert.ToDouble(Me.txtCantidad.Text.Trim()) > 0 Then
+                                        If Convert.ToDouble(Me.txtCantidad_m.Text.Trim()) > 0 Then
                                             If Convert.ToDouble(Me.txtCosto.Text.Trim()) > 0 Then
-                                                If Convert.ToDouble(Me.txtCantidad.Text.Trim) > 0 Then
-                                                    If Convert.ToDouble(Me.txtSaldo.Text.Trim) - Convert.ToDouble(txtCantidad.Text) * Convert.ToDouble(txtCosto.Text) >= 0 Then
-                                                        'If Datos.Verificar_Duplicidad_Grid_Global(23, Fuente_Financiaminto.Rows(Me.cbFF.SelectedIndex).Item("Codigo_FF").ToString & "." & Rubro.Rows(Me.cbRubro.SelectedIndex).Item("Codigo_Rubro").ToString & "." & Me.txtCodigoGrupo.Text.Trim & "." & Me.txtCodigoClase.Text.Trim & "." & Me.txtCodigoFamilia.Text.Trim & "." & Me.txtCodigoItem.Text.Trim & "." & Secuencia_Funcional.Rows(Me.cbSecuenciaFuncional.SelectedIndex).Item("Codigo_Secuencia_Funcional").ToString & "." & Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString & "." & Actividad.Rows(Me.cbActividad.SelectedIndex).Item("Codigo_Actividad").ToString, Me.dgvDistribucionCn) = True Then
-                                                        If Datos.Verificar_Duplicidad_Grid_CN(23, Fuente_Financiaminto.Rows(Me.cbFF.SelectedIndex).Item("Codigo_FF").ToString & "." & Rubro.Rows(Me.cbRubro.SelectedIndex).Item("Codigo_Rubro").ToString & "." & IIf(rbBienes.Checked, "B.", "S.") & Me.txtCodigoGrupo.Text.Trim & "." & Me.txtCodigoClase.Text.Trim & "." & Me.txtCodigoFamilia.Text.Trim & "." & Me.txtCodigoItem.Text.Trim & "." & Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString & "", Me.dgvDistribucionCn) = True Then
-                                                            Me.dgvDistribucionCn.Rows.Add()
-                                                            dgvDistribucionCn.Item(0, dgvDistribucionCn.Rows.Count - 1).Value = My.Settings.Año_Ejecucion
-                                                            dgvDistribucionCn.Item(1, dgvDistribucionCn.Rows.Count - 1).Value = Fuente_Financiaminto.Rows(Me.cbFF.SelectedIndex).Item("Codigo_FF").ToString
-                                                            dgvDistribucionCn.Item(2, dgvDistribucionCn.Rows.Count - 1).Value = Rubro.Rows(Me.cbRubro.SelectedIndex).Item("Codigo_Rubro").ToString
-                                                            dgvDistribucionCn.Item(3, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtTipoTransaccion.Text.Trim
-                                                            dgvDistribucionCn.Item(4, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtGenerica.Text.Trim
-                                                            dgvDistribucionCn.Item(5, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtSubGenerica.Text.Trim
-                                                            dgvDistribucionCn.Item(6, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtSubGenericaDetalle.Text.Trim
-                                                            dgvDistribucionCn.Item(7, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtEspecifica.Text.Trim
-                                                            dgvDistribucionCn.Item(8, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtEspecificaDetalle.Text.Trim
-                                                            dgvDistribucionCn.Item(9, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtTipoTransaccion.Text.Trim.Trim & "." & Me.txtGenerica.Text.Trim & "." & Me.txtSubGenerica.Text.Trim & "." & Me.txtSubGenericaDetalle.Text.Trim & "." & Me.txtEspecifica.Text.Trim & "." & Me.txtEspecificaDetalle.Text.Trim
-                                                            dgvDistribucionCn.Item(10, dgvDistribucionCn.Rows.Count - 1).Value = Secuencia_Funcional.Rows(Me.cbSecuenciaFuncional.SelectedIndex).Item("Codigo_Secuencia_Funcional").ToString
-                                                            dgvDistribucionCn.Item(11, dgvDistribucionCn.Rows.Count - 1).Value = Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString
-                                                            dgvDistribucionCn.Item(12, dgvDistribucionCn.Rows.Count - 1).Value = Actividad.Rows(Me.cbActividad.SelectedIndex).Item("Codigo_Actividad").ToString
-                                                            dgvDistribucionCn.Item(13, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtCodigoGrupo.Text.Trim
-                                                            dgvDistribucionCn.Item(14, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtCodigoClase.Text.Trim
-                                                            dgvDistribucionCn.Item(15, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtCodigoFamilia.Text.Trim
-                                                            dgvDistribucionCn.Item(16, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtCodigoItem.Text.Trim
-                                                            dgvDistribucionCn.Item(17, dgvDistribucionCn.Rows.Count - 1).Value = IIf(rbBienes.Checked, "B.", "S.") & Me.txtCodigoGrupo.Text.Trim & "." & Me.txtCodigoClase.Text.Trim & "." & Me.txtCodigoFamilia.Text.Trim & "." & Me.txtCodigoItem.Text.Trim
-                                                            dgvDistribucionCn.Item(18, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtItem.Text
-                                                            dgvDistribucionCn.Item(19, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtCodigoUnidadMedida.Text
-                                                            dgvDistribucionCn.Item(20, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtUnidadMedida.Text
+                                                If Convert.ToDouble(Me.txtCantidad_m.Text.Trim) > 0 Then
+                                                    If Convert.ToDouble(Me.txtSaldo.Text.Trim) - Convert.ToDouble(txtCantidad_m.Text) * Convert.ToDouble(txtCosto.Text) >= 0 Then
+                                                        If Me.cbMotivo.Text.Trim.Length > 0 Then
+                                                            If VerificaModificaciones() Then Return
+                                                            'If Datos.Verificar_Duplicidad_Grid_Global(23, Fuente_Financiaminto.Rows(Me.cbFF.SelectedIndex).Item("Codigo_FF").ToString & "." & Rubro.Rows(Me.cbRubro.SelectedIndex).Item("Codigo_Rubro").ToString & "." & Me.txtCodigoGrupo.Text.Trim & "." & Me.txtCodigoClase.Text.Trim & "." & Me.txtCodigoFamilia.Text.Trim & "." & Me.txtCodigoItem.Text.Trim & "." & Secuencia_Funcional.Rows(Me.cbSecuenciaFuncional.SelectedIndex).Item("Codigo_Secuencia_Funcional").ToString & "." & Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString & "." & Actividad.Rows(Me.cbActividad.SelectedIndex).Item("Codigo_Actividad").ToString, Me.dgvDistribucionCn) = True Then
+                                                            If Datos.Verificar_Duplicidad_Grid_CN(23, Fuente_Financiaminto.Rows(Me.cbFF.SelectedIndex).Item("Codigo_FF").ToString & "." & Rubro.Rows(Me.cbRubro.SelectedIndex).Item("Codigo_Rubro").ToString & "." & IIf(rbBienes.Checked, "B.", "S.") & Me.txtCodigoGrupo.Text.Trim & "." & Me.txtCodigoClase.Text.Trim & "." & Me.txtCodigoFamilia.Text.Trim & "." & Me.txtCodigoItem.Text.Trim & "." & Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString & "", Me.dgvDistribucionCn) = True Then
+                                                                Me.dgvDistribucionCn.Rows.Add()
+                                                                dgvDistribucionCn.Item(0, dgvDistribucionCn.Rows.Count - 1).Value = My.Settings.Año_Ejecucion
+                                                                dgvDistribucionCn.Item(1, dgvDistribucionCn.Rows.Count - 1).Value = Fuente_Financiaminto.Rows(Me.cbFF.SelectedIndex).Item("Codigo_FF").ToString
+                                                                dgvDistribucionCn.Item(2, dgvDistribucionCn.Rows.Count - 1).Value = Rubro.Rows(Me.cbRubro.SelectedIndex).Item("Codigo_Rubro").ToString
+                                                                dgvDistribucionCn.Item(3, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtTipoTransaccion.Text.Trim
+                                                                dgvDistribucionCn.Item(4, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtGenerica.Text.Trim
+                                                                dgvDistribucionCn.Item(5, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtSubGenerica.Text.Trim
+                                                                dgvDistribucionCn.Item(6, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtSubGenericaDetalle.Text.Trim
+                                                                dgvDistribucionCn.Item(7, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtEspecifica.Text.Trim
+                                                                dgvDistribucionCn.Item(8, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtEspecificaDetalle.Text.Trim
+                                                                dgvDistribucionCn.Item(9, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtTipoTransaccion.Text.Trim.Trim & "." & Me.txtGenerica.Text.Trim & "." & Me.txtSubGenerica.Text.Trim & "." & Me.txtSubGenericaDetalle.Text.Trim & "." & Me.txtEspecifica.Text.Trim & "." & Me.txtEspecificaDetalle.Text.Trim
+                                                                dgvDistribucionCn.Item(10, dgvDistribucionCn.Rows.Count - 1).Value = Secuencia_Funcional.Rows(Me.cbSecuenciaFuncional.SelectedIndex).Item("Codigo_Secuencia_Funcional").ToString
+                                                                dgvDistribucionCn.Item(11, dgvDistribucionCn.Rows.Count - 1).Value = Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString
+                                                                dgvDistribucionCn.Item(12, dgvDistribucionCn.Rows.Count - 1).Value = Actividad.Rows(Me.cbActividad.SelectedIndex).Item("Codigo_Actividad").ToString
+                                                                dgvDistribucionCn.Item(13, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtCodigoGrupo.Text.Trim
+                                                                dgvDistribucionCn.Item(14, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtCodigoClase.Text.Trim
+                                                                dgvDistribucionCn.Item(15, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtCodigoFamilia.Text.Trim
+                                                                dgvDistribucionCn.Item(16, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtCodigoItem.Text.Trim
+                                                                dgvDistribucionCn.Item(17, dgvDistribucionCn.Rows.Count - 1).Value = IIf(rbBienes.Checked, "B.", "S.") & Me.txtCodigoGrupo.Text.Trim & "." & Me.txtCodigoClase.Text.Trim & "." & Me.txtCodigoFamilia.Text.Trim & "." & Me.txtCodigoItem.Text.Trim
+                                                                dgvDistribucionCn.Item(18, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtItem.Text
+                                                                dgvDistribucionCn.Item(19, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtCodigoUnidadMedida.Text
+                                                                dgvDistribucionCn.Item(20, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtUnidadMedida.Text
 
-                                                            dgvDistribucionCn.Item(21, dgvDistribucionCn.Rows.Count - 1).Value = Format(Convert.ToDouble(Me.txtCantidad.Text), "###,###,#.00")
-                                                            dgvDistribucionCn.Item(22, dgvDistribucionCn.Rows.Count - 1).Value = Format(Convert.ToDouble(Me.txtCosto.Text), "###,###,#.00000")
+                                                                dgvDistribucionCn.Item(21, dgvDistribucionCn.Rows.Count - 1).Value = Format(Convert.ToDouble(Me.txtCantidad.Text), "###,###,#.00")
+                                                                dgvDistribucionCn.Item(22, dgvDistribucionCn.Rows.Count - 1).Value = Format(Convert.ToDouble(Me.txtCosto.Text), "###,###,#.00000")
 
-                                                            dgvDistribucionCn.Item(23, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtEnero.Text
-                                                            dgvDistribucionCn.Item(24, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtFebrero.Text
-                                                            dgvDistribucionCn.Item(25, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtMarzo.Text
-                                                            dgvDistribucionCn.Item(26, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtAbril.Text
-                                                            dgvDistribucionCn.Item(27, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtMayo.Text
-                                                            dgvDistribucionCn.Item(28, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtJunio.Text
-                                                            dgvDistribucionCn.Item(29, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtJulio.Text
-                                                            dgvDistribucionCn.Item(30, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtAgosto.Text
-                                                            dgvDistribucionCn.Item(31, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtSeptiembre.Text
-                                                            dgvDistribucionCn.Item(32, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtOctubre.Text
-                                                            dgvDistribucionCn.Item(33, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtNoviembre.Text
-                                                            dgvDistribucionCn.Item(34, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtDiciembre.Text
-                                                            dgvDistribucionCn.Item(35, dgvDistribucionCn.Rows.Count - 1).Value = Fuente_Financiaminto.Rows(Me.cbFF.SelectedIndex).Item("Codigo_FF").ToString & "." & Rubro.Rows(Me.cbRubro.SelectedIndex).Item("Codigo_Rubro").ToString & "." & Me.txtCodigoGrupo.Text.Trim & "." & Me.txtCodigoClase.Text.Trim & "." & Me.txtCodigoFamilia.Text.Trim & "." & Me.txtCodigoItem.Text.Trim & "." & Secuencia_Funcional.Rows(Me.cbSecuenciaFuncional.SelectedIndex).Item("Codigo_Secuencia_Funcional").ToString & "." & Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString & "." & Actividad.Rows(Me.cbActividad.SelectedIndex).Item("Codigo_Actividad").ToString
-                                                            dgvDistribucionCn.Item(36, dgvDistribucionCn.Rows.Count - 1).Value = IIf(rbBienes.Checked, "01", "02")
-                                                            dgvDistribucionCn.Item(38, dgvDistribucionCn.Rows.Count - 1).Value = Format(Math.Round(Convert.ToDouble(Me.txtCantidad.Text) * Convert.ToDouble(txtCosto.Text), 2, MidpointRounding.AwayFromZero), "###,###,#.00")
-                                                            dgvDistribucionCn.Item(41, dgvDistribucionCn.Rows.Count - 1).Value = IIf(Me.txtDB.Text.Trim() = String.Empty, "0", Me.txtDB.Text)
-                                                            Me.txtEnero.Text = "0.00"
-                                                            Me.txtFebrero.Text = "0.00"
-                                                            Me.txtMarzo.Text = "0.00"
-                                                            Me.txtAbril.Text = "0.00"
-                                                            Me.txtMayo.Text = "0.00"
-                                                            Me.txtJunio.Text = "0.00"
-                                                            Me.txtJulio.Text = "0.00"
-                                                            Me.txtAgosto.Text = "0.00"
-                                                            Me.txtSeptiembre.Text = "0.00"
-                                                            Me.txtOctubre.Text = "0.00"
-                                                            Me.txtNoviembre.Text = "0.00"
-                                                            Me.txtDiciembre.Text = "0.00"
-                                                            Me.cbUnidadOrganica.Enabled = False
+                                                                dgvDistribucionCn.Item(23, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtEnero_m.Text
+                                                                dgvDistribucionCn.Item(24, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtFebrero_m.Text
+                                                                dgvDistribucionCn.Item(25, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtMarzo_m.Text
+                                                                dgvDistribucionCn.Item(26, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtAbril_m.Text
+                                                                dgvDistribucionCn.Item(27, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtMayo_m.Text
+                                                                dgvDistribucionCn.Item(28, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtJunio_m.Text
+                                                                dgvDistribucionCn.Item(29, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtJulio_m.Text
+                                                                dgvDistribucionCn.Item(30, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtAgosto_m.Text
+                                                                dgvDistribucionCn.Item(31, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtSeptiembre_m.Text
+                                                                dgvDistribucionCn.Item(32, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtOctubre_m.Text
+                                                                dgvDistribucionCn.Item(33, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtNoviembre_m.Text
+                                                                dgvDistribucionCn.Item(34, dgvDistribucionCn.Rows.Count - 1).Value = Me.txtDiciembre_m.Text
+                                                                dgvDistribucionCn.Item(35, dgvDistribucionCn.Rows.Count - 1).Value = Fuente_Financiaminto.Rows(Me.cbFF.SelectedIndex).Item("Codigo_FF").ToString & "." & Rubro.Rows(Me.cbRubro.SelectedIndex).Item("Codigo_Rubro").ToString & "." & Me.txtCodigoGrupo.Text.Trim & "." & Me.txtCodigoClase.Text.Trim & "." & Me.txtCodigoFamilia.Text.Trim & "." & Me.txtCodigoItem.Text.Trim & "." & Secuencia_Funcional.Rows(Me.cbSecuenciaFuncional.SelectedIndex).Item("Codigo_Secuencia_Funcional").ToString & "." & Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString & "." & Actividad.Rows(Me.cbActividad.SelectedIndex).Item("Codigo_Actividad").ToString
+                                                                dgvDistribucionCn.Item(36, dgvDistribucionCn.Rows.Count - 1).Value = IIf(rbBienes.Checked, "01", "02")
+                                                                dgvDistribucionCn.Item(38, dgvDistribucionCn.Rows.Count - 1).Value = Format(Math.Round(Convert.ToDouble(Me.txtCantidad_m.Text) * Convert.ToDouble(txtCosto.Text), 2, MidpointRounding.AwayFromZero), "###,###,#.00")
+                                                                dgvDistribucionCn.Item(41, dgvDistribucionCn.Rows.Count - 1).Value = IIf(Me.txtDB.Text.Trim() = String.Empty, "0", Me.txtDB.Text)
+                                                                Me.txtEnero.Text = "0.00"
+                                                                Me.txtFebrero.Text = "0.00"
+                                                                Me.txtMarzo.Text = "0.00"
+                                                                Me.txtAbril.Text = "0.00"
+                                                                Me.txtMayo.Text = "0.00"
+                                                                Me.txtJunio.Text = "0.00"
+                                                                Me.txtJulio.Text = "0.00"
+                                                                Me.txtAgosto.Text = "0.00"
+                                                                Me.txtSeptiembre.Text = "0.00"
+                                                                Me.txtOctubre.Text = "0.00"
+                                                                Me.txtNoviembre.Text = "0.00"
+                                                                Me.txtDiciembre.Text = "0.00"
 
-                                                            Me.txtCodigoGrupo.Text = ""
-                                                            Me.txtGrupo.Text = ""
-                                                            Me.txtCodigoClase.Text = ""
-                                                            Me.txtClase.Text = ""
-                                                            Me.txtCodigoFamilia.Text = ""
-                                                            Me.txtFamilia.Text = ""
-                                                            Me.txtCodigoItem.Text = ""
-                                                            Me.txtItem.Text = ""
-                                                            Me.txtCodigoUnidadMedida.Text = ""
-                                                            Me.txtUnidadMedida.Text = ""
-                                                            Me.txtTipoTransaccion.Text = ""
-                                                            Me.txtGenerica.Text = ""
-                                                            Me.txtSubGenerica.Text = ""
-                                                            Me.txtSubGenericaDetalle.Text = ""
-                                                            Me.txtEspecifica.Text = ""
-                                                            Me.txtEspecificaDetalle.Text = ""
-                                                            Me.txtSaldo.Text = "0.00"
-                                                            Me.txtCantidad.Text = "0.00"
-                                                            Me.txtCosto.Text = "0.00"
-                                                            Variable_Codigo_Catalogo = ""
-                                                            Variable_Codigo_Grupo = ""
-                                                            Variable_Codigo_Clase = ""
-                                                            Variable_Codigo_Familia = ""
-                                                            Variable_Codigo_Item = ""
-                                                            Me.cbUnidadOrganica.Enabled = False
-                                                            Me.txtDB.Text = ""
-                                                            Me.btnBuscarItems.Focus()
+                                                                Me.txtEnero_m.Text = "0.00"
+                                                                Me.txtFebrero_m.Text = "0.00"
+                                                                Me.txtMarzo_m.Text = "0.00"
+                                                                Me.txtAbril_m.Text = "0.00"
+                                                                Me.txtMayo_m.Text = "0.00"
+                                                                Me.txtJunio_m.Text = "0.00"
+                                                                Me.txtJulio_m.Text = "0.00"
+                                                                Me.txtAgosto_m.Text = "0.00"
+                                                                Me.txtSeptiembre_m.Text = "0.00"
+                                                                Me.txtOctubre_m.Text = "0.00"
+                                                                Me.txtNoviembre_m.Text = "0.00"
+                                                                Me.txtDiciembre_m.Text = "0.00"
+
+                                                                Me.cbUnidadOrganica.Enabled = False
+                                                                Me.txtMonto.Text = "0.00"
+                                                                Me.txtCantidad_m.Text = "0.00"
+                                                                Me.CheckBox1.Checked = False
+                                                                Me.btnBuscarItems.Focus()
+                                                                Me.txtTotal.Text = Format(Me.Total, "###,###,#.00")
+                                                                Me.txtTotal2.Text = Format(Me.Total2, "###,###,#.00")
+                                                                Me.txtDiferencia.Text = Format(Me.Total() + Me.Total2(), "###,###,#.00")
+                                                                Me.cbMotivo.Enabled = False
+
+                                                                Me.txtCodigoGrupo.Text = ""
+                                                                Me.txtGrupo.Text = ""
+                                                                Me.txtCodigoClase.Text = ""
+                                                                Me.txtClase.Text = ""
+                                                                Me.txtCodigoFamilia.Text = ""
+                                                                Me.txtFamilia.Text = ""
+                                                                Me.txtCodigoItem.Text = ""
+                                                                Me.txtItem.Text = ""
+                                                                Me.txtCodigoUnidadMedida.Text = ""
+                                                                Me.txtUnidadMedida.Text = ""
+                                                                Me.txtTipoTransaccion.Text = ""
+                                                                Me.txtGenerica.Text = ""
+                                                                Me.txtSubGenerica.Text = ""
+                                                                Me.txtSubGenericaDetalle.Text = ""
+                                                                Me.txtEspecifica.Text = ""
+                                                                Me.txtEspecificaDetalle.Text = ""
+                                                                Me.txtSaldo.Text = "0.00"
+                                                                Me.txtCantidad.Text = "0.00"
+                                                                Me.txtCosto.Text = "0.00"
+                                                                Variable_Codigo_Catalogo = ""
+                                                                Variable_Codigo_Grupo = ""
+                                                                Variable_Codigo_Clase = ""
+                                                                Variable_Codigo_Familia = ""
+                                                                Variable_Codigo_Item = ""
+                                                                Me.cbUnidadOrganica.Enabled = False
+                                                                Me.txtDB.Text = ""
+                                                                Me.btnBuscarItems.Focus()
+                                                            Else
+                                                                MessageBox.Show($"Ya exite en el Detalle el Item del Catalogo con la misma FF,RB y Unidad Orgánica.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
+                                                                Me.cbMotivo.Focus()
+                                                            End If
                                                         Else
-                                                            MessageBox.Show($"Ya exite en el Detalle el Item del Catalogo con la misma FF,RB y Unidad Orgánica.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+                                                            MessageBox.Show("Debes seleccionar el motivo de gestión de la Acción Modificatoria", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                                                         End If
                                                     Else
                                                         MessageBox.Show(String.Format("No hay saldo suficiente para agregar este {0}", IIf(rbBienes.Checked, "Bien", "Servicio")), Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
@@ -764,7 +792,7 @@
                                             End If
                                         Else
                                             MessageBox.Show("Debes Ingresar la Cantidad de Items a solicitar, al menos en un mes.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1)
-                                            Me.txtItem.Focus()
+                                            Me.txtEnero_m.Focus()
                                         End If
                                     Else
                                         MessageBox.Show("Debes seleccionar un Item del Catalogo para el detalle del requerimiento.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1)
@@ -799,7 +827,54 @@
             Me.cbUnidadOrganica.Focus()
         End If
     End Sub
+    Private Function Total() As Double
+        Total = 0
 
+        If Me.dgvDistribucionCn.RowCount > 0 Then
+            For Recorrido As Integer = 0 To dgvDistribucionCn.RowCount - 1
+                If Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells("Total").Value) < 0 Then
+                    Total = Total + Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells("Total").Value)
+                End If
+            Next
+        Else
+            Total = 0
+        End If
+        Return Total
+    End Function
+    Private Function Total2() As Double
+        Total2 = 0
+
+        If Me.dgvDistribucionCn.RowCount > 0 Then
+            For Recorrido As Integer = 0 To dgvDistribucionCn.RowCount - 1
+                If Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells("Total").Value) > 0 Then
+                    Total2 = Total2 + Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells("Total").Value)
+                End If
+            Next
+        Else
+            Total2 = 0
+        End If
+        Return Total2
+    End Function
+    Private Function VerificaModificaciones() As Boolean
+        'Aqui se verifica si el Item es un nuevo Item que no se considero en CN o lo otro es que item si existe en CN pero ya se 
+        'solicito todo con los requerimientos y todo quedo en cero.
+        If (txtEnero.Text = txtEnero_m.Text And txtFebrero.Text = txtFebrero_m.Text And txtMarzo.Text = txtMarzo_m.Text And txtAbril.Text = txtAbril_m.Text And txtMayo.Text = txtMayo_m.Text And txtJunio.Text = txtJunio_m.Text And txtJulio.Text = txtJulio_m.Text And txtAgosto.Text = txtAgosto_m.Text And txtSeptiembre.Text = txtSeptiembre_m.Text And txtOctubre.Text = txtOctubre_m.Text And txtNoviembre.Text = txtNoviembre_m.Text And txtDiciembre.Text = txtDiciembre_m.Text) Then
+            MessageBox.Show("Para incluir o excluir debe realizar al menos algun cambio entre lo asignado en el CN y lo [Modificado]", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1)
+            Return True
+        End If
+        If (Convert.ToDouble(txtCantidad_m.Text) = 0.00) Then
+            If txtEnero.Text <> txtEnero_m.Text Then
+
+            End If
+        End If
+
+        If Motivo.Rows(Me.cbMotivo.SelectedIndex).Item("Codigo_Motivo_AM").ToString = "001" Then
+            If (txtEnero_m.Text = "0.00" And txtFebrero_m.Text = "0.00" And txtMarzo_m.Text = "0.00" And txtAbril_m.Text = "0.00" And txtMayo_m.Text = "0.00" And txtJunio_m.Text = "0.00" And txtJulio_m.Text = "0.00" And txtAgosto_m.Text = "0.00" And txtSeptiembre_m.Text = "0.00" And txtOctubre_m.Text = "0.00" And txtNoviembre_m.Text = "0.00" And txtDiciembre_m.Text = "0.00") Then
+                Return True
+            End If
+        End If
+        Return False
+    End Function
     Private Sub Limpiar_Busqueda_items()
         Me.txtCodigoGrupo.Text = ""
         Me.txtGrupo.Text = ""
@@ -866,18 +941,18 @@
 
             If Me.dgvDistribucionCn.Rows.Count = 0 Then Me.cbUnidadOrganica.Enabled = True Else Me.cbUnidadOrganica.Enabled = False
 
-            Me.txtEnero.Text = Me.dgvDistribucionCn.CurrentRow.Cells(23).Value
-            Me.txtFebrero.Text = Me.dgvDistribucionCn.CurrentRow.Cells(24).Value
-            Me.txtMarzo.Text = Me.dgvDistribucionCn.CurrentRow.Cells(25).Value
-            Me.txtAbril.Text = Me.dgvDistribucionCn.CurrentRow.Cells(26).Value
-            Me.txtMayo.Text = Me.dgvDistribucionCn.CurrentRow.Cells(27).Value
-            Me.txtJunio.Text = Me.dgvDistribucionCn.CurrentRow.Cells(28).Value
-            Me.txtJulio.Text = Me.dgvDistribucionCn.CurrentRow.Cells(29).Value
-            Me.txtAgosto.Text = Me.dgvDistribucionCn.CurrentRow.Cells(30).Value
-            Me.txtSeptiembre.Text = Me.dgvDistribucionCn.CurrentRow.Cells(31).Value
-            Me.txtOctubre.Text = Me.dgvDistribucionCn.CurrentRow.Cells(32).Value
-            Me.txtNoviembre.Text = Me.dgvDistribucionCn.CurrentRow.Cells(33).Value
-            Me.txtDiciembre.Text = Me.dgvDistribucionCn.CurrentRow.Cells(34).Value
+            Me.txtEnero_m.Text = Me.dgvDistribucionCn.CurrentRow.Cells(23).Value
+            Me.txtFebrero_m.Text = Me.dgvDistribucionCn.CurrentRow.Cells(24).Value
+            Me.txtMarzo_m.Text = Me.dgvDistribucionCn.CurrentRow.Cells(25).Value
+            Me.txtAbril_m.Text = Me.dgvDistribucionCn.CurrentRow.Cells(26).Value
+            Me.txtMayo_m.Text = Me.dgvDistribucionCn.CurrentRow.Cells(27).Value
+            Me.txtJunio_m.Text = Me.dgvDistribucionCn.CurrentRow.Cells(28).Value
+            Me.txtJulio_m.Text = Me.dgvDistribucionCn.CurrentRow.Cells(29).Value
+            Me.txtAgosto_m.Text = Me.dgvDistribucionCn.CurrentRow.Cells(30).Value
+            Me.txtSeptiembre_m.Text = Me.dgvDistribucionCn.CurrentRow.Cells(31).Value
+            Me.txtOctubre_m.Text = Me.dgvDistribucionCn.CurrentRow.Cells(32).Value
+            Me.txtNoviembre_m.Text = Me.dgvDistribucionCn.CurrentRow.Cells(33).Value
+            Me.txtDiciembre_m.Text = Me.dgvDistribucionCn.CurrentRow.Cells(34).Value
             Me.txtDB.Text = Me.dgvDistribucionCn.CurrentRow.Cells(41).Value
 
             SumaTotalMeses()
@@ -885,8 +960,33 @@
 
             Me.dgvDistribucionCn.Rows.Remove(Me.dgvDistribucionCn.CurrentRow)
             Call Me.Evaluar_Saldos()
-            txtSaldo.Text = Format(CDbl(txtSaldo.Text) + CDbl(txtCantidad.Text) * CDbl(txtCosto.Text), "###,###,#.00")
+            SumaTotalMeses_modificado()
+            'txtSaldo.Text = Format(CDbl(txtSaldo.Text) + CDbl(txtCantidad_m.Text) * CDbl(txtCosto.Text), "###,###,#.00")
+            'txtSaldo.Text = Format(CDbl(txtSaldo.Text) + CDbl(txtCantidad_m.Text) * CDbl(txtCosto.Text), "###,###,#.00")
+            
+            If txtCodigoGrupo.Text.Trim().Length > 0 And txtCodigoClase.Text.Trim.Length > 0 And txtCodigoFamilia.Text.Trim.Length > 0 And txtCodigoItem.Text.Trim.Length > 0 Then
+            Datos.Mostrar_Data_Item_Catalogo_Cuadro_Necesidades(txtCodigoGrupo.Text, txtCodigoClase.Text, txtCodigoFamilia.Text,
+                                                                txtCodigoItem.Text, IIf(rbBienes.Checked, 1, 2),
+                                             Convert.ToDouble(Fuente_Financiaminto.Rows(Me.cbFF.SelectedIndex).Item("Codigo_FF").ToString),
+                                             Rubro.Rows(Me.cbRubro.SelectedIndex).Item("Codigo_Rubro").ToString,
+                                             Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString,
+                                             Secuencia_Funcional.Rows(Me.cbSecuenciaFuncional.SelectedIndex).Item("Codigo_Secuencia_Funcional").ToString,
+                                             Actividad.Rows(Me.cbActividad.SelectedIndex).Item("Codigo_Actividad").ToString, Me.txtCodigoGrupo,
+                                             Me.txtGrupo, Me.txtCodigoClase, Me.txtClase, Me.txtCodigoFamilia,
+                                             Me.txtFamilia, Me.txtCodigoItem, Me.txtItem, Me.txtCodigoUnidadMedida,
+                                             Me.txtUnidadMedida, Me.txtTipoTransaccion, Me.txtGenerica, Me.txtSubGenerica,
+                                             Me.txtSubGenericaDetalle, Me.txtEspecifica, Me.txtEspecificaDetalle,
+                                             Me.txtEnero, Me.txtFebrero, Me.txtMarzo, Me.txtAbril, Me.txtMarzo, Me.txtJunio, Me.txtJulio,
+                                             Me.txtAgosto, Me.txtSeptiembre, Me.txtOctubre, Me.txtNoviembre, Me.txtDiciembre,
+                                             Me.txtEnero_m, Me.txtFebrero_m, Me.txtMarzo_m, Me.txtAbril_m, Me.txtMarzo_m, Me.txtJunio_m,
+                                             Me.txtJulio_m, Me.txtAgosto_m, Me.txtSeptiembre_m, Me.txtOctubre_m, Me.txtNoviembre_m,
+                                             Me.txtDiciembre_m, True)
+            End If
+            Me.txtEnero_m.Focus()
         End If
+        Me.txtTotal.Text = Format(Me.Total, "###,###,#.00")
+        Me.txtTotal2.Text = Format(Me.Total2, "###,###,#.00")
+        If Me.dgvDistribucionCn.Rows.Count = 0 Then Me.cbMotivo.Enabled = True
     End Sub
     Private Sub btnCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancelar.Click
         Me.Close()
@@ -896,51 +996,120 @@
             If Me.cbUnidadOrganica.Text.Trim.Length > 0 Then
                 If Me.cbSecuenciaFuncional.Text.Trim.Length > 0 Then
                     If Me.cbActividad.Text.Trim.Length > 0 Then
-                        If Datos.Verificar_Existencia_Cuadro_Necesidades(My.Settings.Año_Ejecucion, Secuencia_Funcional.Rows(Me.cbSecuenciaFuncional.SelectedIndex).Item("Codigo_Secuencia_Funcional").ToString, Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString, Actividad.Rows(Me.cbActividad.SelectedIndex).Item("Codigo_Actividad").ToString) = True Then
-                            Datos.Nuevo_Cuadro_Necesidades(My.Settings.Año_Ejecucion, Secuencia_Funcional.Rows(Me.cbSecuenciaFuncional.SelectedIndex).Item("Codigo_Secuencia_Funcional").ToString, Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString, Actividad.Rows(Me.cbActividad.SelectedIndex).Item("Codigo_Actividad").ToString, "01", Today.Date, My.Settings.Usuario)
+                        If Me.dgvDistribucionCn.RowCount > 0 Then
+                            If Me.cbMotivo.Text.Trim.Length > 0 Then
+                                Select Case Motivo.Rows(Me.cbMotivo.SelectedIndex).Item("Codigo_Motivo_AM").ToString
+                                    Case "001"
+                                        If Me.txtJustificacion.Text.Trim.Length > 0 Then
+                                            Dim Numero As String = Datos.Generar_Numero_AM(My.Settings.Año_Ejecucion)
+                                            Datos.Nueva_Accion_Modificatoria(My.Settings.Año_Ejecucion, Numero, Motivo.Rows(Me.cbMotivo.SelectedIndex).Item("Codigo_Motivo_AM").ToString, Me.txtJustificacion.Text.Trim.Trim, Today.Date, My.Settings.Usuario, "01")
+                                            
+                                            For Recorrido As Integer = 0 To Me.dgvDistribucionCn.RowCount - 1
+                                                Datos.Nuevo_Detalle_AM(Me.dgvDistribucionCn.Rows(Recorrido).Cells(0).Value, Numero, Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(1).Value), Me.dgvDistribucionCn.Rows(Recorrido).Cells(2).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(3).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(4).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(5).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(6).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(7).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(8).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(36).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(13).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(14).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(15).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(16).Value, Secuencia_Funcional.Rows(Me.cbSecuenciaFuncional.SelectedIndex).Item("Codigo_Secuencia_Funcional").ToString, Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString, Actividad.Rows(Me.cbActividad.SelectedIndex).Item("Codigo_Actividad").ToString, Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(22).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(23).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(24).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(25).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(26).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(27).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(28).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(29).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(30).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(31).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(32).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(33).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(34).Value))
+                                            Next
+                                            Me.Close()
+                                        Else
+                                            MessageBox.Show("Debes ingresar la Justificación para la Acción Modificatoria.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
+                                            Me.txtJustificacion.Focus()
+                                        End If
+                                    Case "002"
+                                        If Me.txtJustificacion.Text.Trim.Length > 0 Then
+                                            If Math.Abs(Convert.ToDecimal(Me.txtTotal.Text.Trim)) = Math.Abs(Convert.ToDecimal(Me.txtTotal2.Text.Trim)) Then
+                                                Dim Numero As String = Datos.Generar_Numero_AM(My.Settings.Año_Ejecucion)
+                                                Datos.Nueva_Accion_Modificatoria(My.Settings.Año_Ejecucion, Numero, Motivo.Rows(Me.cbMotivo.SelectedIndex).Item("Codigo_Motivo_AM").ToString, Me.txtJustificacion.Text.Trim.Trim, Today.Date, My.Settings.Usuario, "01")
 
-                            For Recorrido As Integer = 0 To Me.dgvDistribucionCn.RowCount - 1
-                                Datos.Nuevo_Detalle_Cuadro_Necesidades(Me.dgvDistribucionCn.Rows(Recorrido).Cells(0).Value, Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(1).Value), Me.dgvDistribucionCn.Rows(Recorrido).Cells(2).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(3).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(4).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(5).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(6).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(7).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(8).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(36).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(13).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(14).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(15).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(16).Value, Secuencia_Funcional.Rows(Me.cbSecuenciaFuncional.SelectedIndex).Item("Codigo_Secuencia_Funcional").ToString, Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString, Actividad.Rows(Me.cbActividad.SelectedIndex).Item("Codigo_Actividad").ToString, Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(22).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(23).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(24).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(25).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(26).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(27).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(28).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(29).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(30).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(31).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(32).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(33).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(34).Value))
-                            Next
-                            Me.Close()
+                                                For Recorrido As Integer = 0 To Me.dgvDistribucionCn.RowCount - 1
+                                                    Datos.Nuevo_Detalle_AM(Me.dgvDistribucionCn.Rows(Recorrido).Cells(0).Value, Numero, Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(1).Value), Me.dgvDistribucionCn.Rows(Recorrido).Cells(2).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(3).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(4).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(5).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(6).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(7).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(8).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(36).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(13).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(14).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(15).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(16).Value, Secuencia_Funcional.Rows(Me.cbSecuenciaFuncional.SelectedIndex).Item("Codigo_Secuencia_Funcional").ToString, Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString, Actividad.Rows(Me.cbActividad.SelectedIndex).Item("Codigo_Actividad").ToString, Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(22).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(23).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(24).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(25).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(26).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(27).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(28).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(29).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(30).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(31).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(32).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(33).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(34).Value))
+                                                Next
+                                                Me.Close()
+                                            Else
+                                                MessageBox.Show("El Monto acumudado de las Rebajas debe cubirir el Monto de las Habilitaciones.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
+                                            End If
+                                        Else
+                                            MessageBox.Show("Debes ingresar la Justificación para la Acción Modificatoria.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
+                                            Me.txtJustificacion.Focus()
+                                        End If
+                                End Select
+                            Else
+                                MessageBox.Show("Debes seleccionar el motivo de gestión de la Acción Modificatoria.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
+                                Me.cbMotivo.Focus()
+                            End If
                         Else
-                            MessageBox.Show("La Unidad Orgánica seleccionada ya cuenta con una Lista" + Environment.NewLine + "de Cuadro de Necesidades aperturado.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
+                            MessageBox.Show("Debes ingresar el detalle de la Acción modificatoria.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
+                            Me.btnBuscarItems.Focus()
                         End If
                     Else
-                        MessageBox.Show("Debes seleccionar la Actividad a Registrar", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+                        MessageBox.Show("Debes seleccionar la Actividad a Registrar.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                         Me.cbActividad.Focus()
                     End If
                 Else
-                    MessageBox.Show("Debes seleccionar la Secuencia Funcional o Meta Presupuestal a Registrar", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+                    MessageBox.Show("Debes seleccionar la Secuencia Funcional o Meta Presupuestal a Registrar.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                     Me.cbSecuenciaFuncional.Focus()
                 End If
             Else
-                MessageBox.Show("Debes seleccionar la Unidad Orgánica a Registrar", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+                MessageBox.Show("Debes seleccionar la Unidad Orgánica a Registrar.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                 Me.cbUnidadOrganica.Focus()
             End If
         Else
             If Me.cbUnidadOrganica.Text.Trim.Length > 0 Then
                 If Me.cbSecuenciaFuncional.Text.Trim.Length > 0 Then
                     If Me.cbActividad.Text.Trim.Length > 0 Then
-                        Datos.Eliminar_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Unidad_Organica, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Actividad)
-                        Datos.Nuevo_Cuadro_Necesidades(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, "01", Today.Date, My.Settings.Usuario)
+                        If Me.dgvDistribucionCn.RowCount > 0 Then
+                            If Me.cbMotivo.Text.Trim.Length > 0 Then
+                                Select Case Motivo.Rows(Me.cbMotivo.SelectedIndex).Item("Codigo_Motivo_AM").ToString
+                                    Case "001"
+                                        If Me.txtJustificacion.Text.Trim.Length > 0 Then
+                                            Datos.Eliminar_AM(My.Settings.Año_Ejecucion, Variable_Numero_Accion_Modificatoria, False)
+                                            Datos.Modificar_Acción_Modificatoria(My.Settings.Año_Ejecucion, Variable_Numero_Accion_Modificatoria, Motivo.Rows(Me.cbMotivo.SelectedIndex).Item("Codigo_Motivo_AM").ToString, Me.txtJustificacion.Text.Trim)
+                                            
+                                            For Recorrido As Integer = 0 To Me.dgvDistribucionCn.RowCount - 1
+                                                Datos.Nuevo_Detalle_AM(Me.dgvDistribucionCn.Rows(Recorrido).Cells(0).Value, Variable_Numero_Accion_Modificatoria, Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(1).Value), Me.dgvDistribucionCn.Rows(Recorrido).Cells(2).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(3).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(4).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(5).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(6).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(7).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(8).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(36).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(13).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(14).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(15).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(16).Value, Secuencia_Funcional.Rows(Me.cbSecuenciaFuncional.SelectedIndex).Item("Codigo_Secuencia_Funcional").ToString, Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString, Actividad.Rows(Me.cbActividad.SelectedIndex).Item("Codigo_Actividad").ToString, Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(22).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(23).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(24).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(25).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(26).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(27).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(28).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(29).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(30).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(31).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(32).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(33).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(34).Value))
+                                            Next
+                                            Me.Close()
+                                        Else
+                                            MessageBox.Show("Debes ingresar la Justificación para la Acción Modificatoria.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
+                                            Me.txtJustificacion.Focus()
+                                        End If
+                                    Case "002"
+                                        If Me.txtJustificacion.Text.Trim.Length > 0 Then
+                                            If Math.Abs(Convert.ToDecimal(Me.txtTotal.Text.Trim)) = Math.Abs(Convert.ToDecimal(Me.txtTotal2.Text.Trim)) Then
+                                                Datos.Eliminar_AM(My.Settings.Año_Ejecucion, Variable_Numero_Accion_Modificatoria, False)
+                                                Datos.Modificar_Acción_Modificatoria(My.Settings.Año_Ejecucion, Variable_Numero_Accion_Modificatoria, Motivo.Rows(Me.cbMotivo.SelectedIndex).Item("Codigo_Motivo_AM").ToString, Me.txtJustificacion.Text.Trim)
+                                                
+                                                For Recorrido As Integer = 0 To Me.dgvDistribucionCn.RowCount - 1
+                                                    Datos.Nuevo_Detalle_AM(Me.dgvDistribucionCn.Rows(Recorrido).Cells(0).Value, Variable_Numero_Accion_Modificatoria, Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(1).Value), Me.dgvDistribucionCn.Rows(Recorrido).Cells(2).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(3).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(4).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(5).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(6).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(7).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(8).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(36).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(13).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(14).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(15).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(16).Value, Secuencia_Funcional.Rows(Me.cbSecuenciaFuncional.SelectedIndex).Item("Codigo_Secuencia_Funcional").ToString, Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString, Actividad.Rows(Me.cbActividad.SelectedIndex).Item("Codigo_Actividad").ToString, Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(22).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(23).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(24).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(25).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(26).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(27).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(28).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(29).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(30).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(31).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(32).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(33).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(34).Value))
+                                                Next
+                                                Me.Close()
+                                            Else
+                                                MessageBox.Show("El Monto acumudado de las Rebajas debe cubirir el Monto de las Habilitaciones.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
+                                            End If
+                                        Else
+                                            MessageBox.Show("Debes ingresar la Justificación para la Acción Modificatoria.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
+                                            Me.txtJustificacion.Focus()
+                                        End If
+                                End Select
 
-                        For Recorrido As Integer = 0 To Me.dgvDistribucionCn.RowCount - 1
-                            Datos.Nuevo_Detalle_Cuadro_Necesidades(Me.dgvDistribucionCn.Rows(Recorrido).Cells(0).Value, Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(1).Value), Me.dgvDistribucionCn.Rows(Recorrido).Cells(2).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(3).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(4).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(5).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(6).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(7).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(8).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(36).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(13).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(14).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(15).Value, Me.dgvDistribucionCn.Rows(Recorrido).Cells(16).Value, Secuencia_Funcional.Rows(Me.cbSecuenciaFuncional.SelectedIndex).Item("Codigo_Secuencia_Funcional").ToString, Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString, Actividad.Rows(Me.cbActividad.SelectedIndex).Item("Codigo_Actividad").ToString, Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(22).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(23).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(24).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(25).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(26).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(27).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(28).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(29).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(30).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(31).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(32).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(33).Value), Convert.ToDouble(Me.dgvDistribucionCn.Rows(Recorrido).Cells(34).Value))
-                        Next
-                        Me.Close()
+                            Else
+                                MessageBox.Show("Debes seleccionar el motivo de gestión de la Acción Modificatoria.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
+                                Me.cbMotivo.Focus()
+                            End If
+                        Else
+                            MessageBox.Show("Debes ingresar el detalle de la Acción modificatoria.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
+                            Me.btnBuscarItems.Focus()
+                        End If
                     Else
-                        MessageBox.Show("Debes seleccionar la Actividad a Registrar", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+                        MessageBox.Show("Debes seleccionar la Actividad a Registrar.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                         Me.cbActividad.Focus()
                     End If
                 Else
-                    MessageBox.Show("Debes seleccionar la Secuencia Funcional o Meta Presupuestal a Registrar", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+                    MessageBox.Show("Debes seleccionar la Secuencia Funcional o Meta Presupuestal a Registrar.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                     Me.cbSecuenciaFuncional.Focus()
                 End If
             Else
-                MessageBox.Show("Debes seleccionar la Unidad Orgánica a Registrar", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+                MessageBox.Show("Debes seleccionar la Unidad Orgánica a Registrar.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                 Me.cbUnidadOrganica.Focus()
             End If
+
         End If
 
     End Sub
@@ -960,11 +1129,16 @@
             Fuente_Financiaminto = Datos.LLenar_Combo_Solo("Select * From Lista_FF Where Año_Ejecucion='" & My.Settings.Año_Ejecucion & "'", Me.cbFF, "Fuente")
             'Tipo_Transaccion = Datos.LLenar_Combo_Solo("Select * From Lista_Tipo_Transaccion Where Año_Ejecucion='" & My.Settings.Año_Ejecucion & "'", Me.cbTipoTransaccion, "Transaccion")
             Call Me.Dimensionar()
-            If (Datos.Cargar_CN_Para_Modificacion(My.Settings.Año_Ejecucion, Variable_Codigo_Unidad_Organica, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Actividad, Me.cbUnidadOrganica, Me.dgvDistribucionCn) = 1) Then
+            If (Datos.Cargar_AM_Para_Modificacion(My.Settings.Año_Ejecucion, Variable_Numero_Accion_Modificatoria, Variable_Codigo_Unidad_Organica, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Actividad, Me.cbUnidadOrganica, Me.dgvDistribucionCn, Me.cbMotivo, Me.txtJustificacion) = 1) Then
                 Me.Close()
             End If
             Me.cbUnidadOrganica.Enabled = False
+            Call Me.Total()
+            Call Me.Total2()
+            Me.txtTotal.Text = Format(Me.Total, "###,###,#.00")
+            Me.txtTotal2.Text = Format(Me.Total2, "###,###,#.00")
             Separador = Application.CurrentCulture.NumberFormat.NumberDecimalSeparator
+            If Me.dgvDistribucionCn.Rows.Count > 0 Then Me.cbMotivo.Enabled = False Else Me.cbMotivo.Enabled = True
         End If
 
     End Sub
@@ -984,12 +1158,6 @@
         Formulario.Tipo_Catalogo = IIf(rbBienes.Checked, "01", "02")
         Formulario.ShowDialog()
         If Variable_Codigo_Grupo.Trim.Length > 0 And Variable_Codigo_Clase.Trim.Length > 0 And Variable_Codigo_Familia.Trim.Length > 0 And Variable_Codigo_Item.Trim.Length > 0 Then
-            'Datos.Mostrar_Data_Item_Catalogo(Variable_Codigo_Grupo, Variable_Codigo_Clase, Variable_Codigo_Familia,
-            '                                 Variable_Codigo_Item, IIf(rbBienes.Checked, 1, 2), Me.txtCodigoGrupo,
-            '                                 Me.txtGrupo, Me.txtCodigoClase, Me.txtClase, Me.txtCodigoFamilia,
-            '                                 Me.txtFamilia, Me.txtCodigoItem, Me.txtItem, Me.txtCodigoUnidadMedida,
-            '                                 Me.txtUnidadMedida, Me.txtTipoTransaccion, Me.txtGenerica, Me.txtSubGenerica,
-            '                                 Me.txtSubGenericaDetalle, Me.txtEspecifica, Me.txtEspecificaDetalle)
             Datos.Mostrar_Data_Item_Catalogo_Cuadro_Necesidades(Variable_Codigo_Grupo, Variable_Codigo_Clase, Variable_Codigo_Familia,
                                              Variable_Codigo_Item, IIf(rbBienes.Checked, 1, 2),
                                              Convert.ToDouble(Fuente_Financiaminto.Rows(Me.cbFF.SelectedIndex).Item("Codigo_FF").ToString),
@@ -1005,7 +1173,7 @@
                                              Me.txtAgosto, Me.txtSeptiembre, Me.txtOctubre, Me.txtNoviembre, Me.txtDiciembre,
                                              Me.txtEnero_m, Me.txtFebrero_m, Me.txtMarzo_m, Me.txtAbril_m, Me.txtMarzo_m, Me.txtJunio_m,
                                              Me.txtJulio_m, Me.txtAgosto_m, Me.txtSeptiembre_m, Me.txtOctubre_m, Me.txtNoviembre_m,
-                                             Me.txtDiciembre_m)
+                                             Me.txtDiciembre_m, False)
             Me.txtEnero_m.Focus()
             Call Me.Evaluar_Saldos()
             Call Me.SumaTotalMeses_modificado()
@@ -1620,6 +1788,16 @@
         SumaTotalMeses_modificado()
         If Asc(e.KeyChar) = 13 Then
             Me.txtOctubre_m.Focus()
+        End If
+    End Sub
+
+    Private Sub txtOctubre_m_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtOctubre_m.KeyPress
+        If txtOctubre_m.Text.IndexOf(".") <> -1 And Asc(e.KeyChar) = 46 Then e.KeyChar = Chr(0)
+        If Not IsNumeric(e.KeyChar) And Asc(e.KeyChar) <> 47 And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 13 And Asc(e.KeyChar) <> 46 Then e.KeyChar = Chr(0)
+        If Not (Char.IsNumber(e.KeyChar) Or e.KeyChar.Equals(Separador) Or Char.IsControl(e.KeyChar)) Then e.Handled = True
+        SumaTotalMeses_modificado()
+        If Asc(e.KeyChar) = 13 Then
+            Me.txtNoviembre_m.Focus()
         End If
     End Sub
 

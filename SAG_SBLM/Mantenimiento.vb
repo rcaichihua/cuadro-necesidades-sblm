@@ -1,4 +1,5 @@
-﻿Imports System.Data.OleDb
+﻿Imports System.ComponentModel
+Imports System.Data.OleDb
 Imports System.Data.SqlClient
 Imports System.Net
 Imports System.Text
@@ -343,6 +344,23 @@ Public Class Mantenimiento
         Cm.ExecuteNonQuery()
         Cm = Nothing
     End Sub
+    Public Sub Nueva_Accion_Modificatoria(ByVal Año_Ejecucion As String, ByVal Numero As String, ByVal Codigo_Motivo_AM As String, ByVal Justificacion As String, ByVal FechaEmision As Date, ByVal UsuarioEmision As String, ByVal Codigo_Estado_AM As String)
+
+            Dim Cm As New OleDbCommand
+            Cm.CommandTimeout = 0
+            Cm.Connection = Cn
+            Cm.CommandType = CommandType.StoredProcedure
+            Cm.CommandText = "Nueva_AM"
+            Cm.Parameters.AddWithValue("@Año_Ejecucion", Año_Ejecucion)
+            Cm.Parameters.AddWithValue("@Numero", Numero)
+            Cm.Parameters.AddWithValue("@Codigo_Motivo_AM", Codigo_Motivo_AM)
+            Cm.Parameters.AddWithValue("@Justificacion", Justificacion)
+            Cm.Parameters.AddWithValue("@FechaEmision", FechaEmision)
+            Cm.Parameters.AddWithValue("@UsuarioEmision", UsuarioEmision)
+            Cm.Parameters.AddWithValue("@Codigo_Estado_AM", Codigo_Estado_AM)
+            Cm.ExecuteNonQuery()
+
+    End Sub
     Public Sub Nuevo_Detalle_Cuadro_Necesidades(ByVal Año_Ejecucion As String, ByVal Codigo_FF As Integer, ByVal Codigo_Rubro As String, ByVal Tipo_Transaccion As String, ByVal Generica As String, ByVal Sub_Generica As String, ByVal Sub_Generica_Detalle As String, ByVal Especifica As String, ByVal Especifica_Detalle As String, ByVal Codigo_Catalogo As String, ByVal Codigo_Grupo As String, ByVal Codigo_Clase As String, ByVal Codigo_Familia As String, ByVal Codigo_Item As String, ByVal Codigo_Secuencia_Funcional As String, ByVal Codigo_Unidad_Organica As String, ByVal Codigo_Actividad As String,ByVal Costo_Referencial as Double, ByVal Monto_Enero As Double, ByVal Monto_Febrero As Double, ByVal Monto_Marzo As Double, ByVal Monto_Abril As Double, ByVal Monto_Mayo As Double, ByVal Monto_Junio As Double, ByVal Monto_Julio As Double, ByVal Monto_Agosto As Double, ByVal Monto_Septiembre As Double, ByVal Monto_Octubre As Double, ByVal Monto_Noviembre As Double, ByVal Monto_Diciembre As Double)
         Dim Cm As New OleDb.OleDbCommand
         Cm.Connection = Cn
@@ -662,6 +680,75 @@ Public Class Mantenimiento
 
                 DataGridView.Item(41, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("db").ToString
             Next
+        End If
+        Return 0
+    End Function
+    Public Function Cargar_AM_Para_Modificacion(ByVal Año_Ejecución As String,ByVal Numero As String, ByVal Codigo_Unidad_Organica As String, ByVal Codigo_Secuencia_Funcional As String, ByVal Codigo_Actividad As String, ByVal Combo_Unidad_Organica As System.Windows.Forms.ComboBox, ByVal DataGridView As System.Windows.Forms.DataGridView, ByVal Combo_Motivo As System.Windows.Forms.ComboBox, ByVal Caja_Justificacion As System.Windows.Forms.TextBox) As Integer
+        Dim Da As New OleDb.OleDbDataAdapter("Select * From Lista_Detalle_AM_Basica_edicion Where Año_Ejecucion='" & Año_Ejecución & "' And Numero = '"& Numero &"'" , Cn)
+        Dim Ds As New Data.DataSet
+        Da.Fill(Ds)
+        if Ds.Tables(0).Rows.Count <= 0
+            MessageBox.Show("Al parecer la U.O. no cuenta con items registrados, elimine y vuelva a crear el C.N.", "C.N.", MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1)
+            Return 1
+        End If
+        Combo_Unidad_Organica.Text = Ds.Tables(0).Rows(0).Item("Nombre_Unidad_Organica").ToString
+        If Ds.Tables(0).Rows.Count > 0 Then
+
+            For Recorrido As Integer = 0 To Ds.Tables(0).Rows.Count - 1
+                DataGridView.Rows.Add()
+                DataGridView.Item(0, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Año_Ejecucion").ToString
+                DataGridView.Item(1, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_FF").ToString
+                DataGridView.Item(2, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_Rubro").ToString
+                DataGridView.Item(3, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Tipo_Transaccion").ToString
+                DataGridView.Item(4, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Generica").ToString
+                DataGridView.Item(5, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Sub_Generica").ToString
+                DataGridView.Item(6, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Sub_Generica_Detalle").ToString
+                DataGridView.Item(7, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Especifica").ToString
+                DataGridView.Item(8, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Especifica_Detalle").ToString
+                DataGridView.Item(9, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Clasificador").ToString
+                DataGridView.Item(10, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_Secuencia_Funcional").ToString
+                DataGridView.Item(11, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_Unidad_Organica").ToString
+                DataGridView.Item(12, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_Actividad").ToString
+
+                DataGridView.Item(13, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_Grupo").ToString
+                DataGridView.Item(14, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_Clase").ToString
+                DataGridView.Item(15, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_Familia").ToString
+                DataGridView.Item(16, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_Item").ToString
+                DataGridView.Item(17, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo").ToString
+                DataGridView.Item(18, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Item").ToString
+                DataGridView.Item(19, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_Unidad_Medida").ToString
+                DataGridView.Item(20, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Unidad").ToString
+                DataGridView.Item(21, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad").ToString
+                DataGridView.Item(22, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Costo").ToString
+
+                DataGridView.Item(23, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Enero").ToString
+                DataGridView.Item(24, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Febrero").ToString
+                DataGridView.Item(25, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Marzo").ToString
+                DataGridView.Item(26, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Abril").ToString
+                DataGridView.Item(27, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Mayo").ToString
+                DataGridView.Item(28, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Junio").ToString
+                DataGridView.Item(29, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Julio").ToString
+                DataGridView.Item(30, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Agosto").ToString
+                DataGridView.Item(31, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Septiembre").ToString
+                DataGridView.Item(32, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Octubre").ToString
+                DataGridView.Item(33, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Noviembre").ToString
+                DataGridView.Item(34, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Diciembre").ToString
+
+                DataGridView.Item(35, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cadena").ToString
+                DataGridView.Item(36, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_Catalogo").ToString
+                DataGridView.Item(37, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Descripcion_Especifica_Detalle").ToString
+                
+                DataGridView.Item(38, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Total").ToString
+
+                DataGridView.Item(41, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("db").ToString
+            Next
+        End If
+        Da = New OleDb.OleDbDataAdapter("Select * From Lista_Acciones_Modificatorias_Basica Where Año_Ejecucion='" & Año_Ejecución & "' And Numero='" & Numero & "'", Cn)
+        Ds = New Data.DataSet
+        Da.Fill(Ds)
+        If Ds.Tables(0).Rows.Count > 0 Then
+            Combo_Motivo.Text = Ds.Tables(0).Rows(0).Item("Motivo").ToString
+            Caja_Justificacion.Text = Ds.Tables(0).Rows(0).Item("Justificacion").ToString
         End If
         Return 0
     End Function
@@ -1009,6 +1096,22 @@ Public Class Mantenimiento
         Cm.ExecuteNonQuery()
         Cm = Nothing
     End Sub
+    Public Sub Eliminar_AM(ByVal Año_Ejecucion As String, ByVal Numero As String)
+        Dim Cm As New OleDb.OleDbCommand
+        Cm.CommandTimeout = 0
+        Cm.Connection = Cn
+        Cm.CommandType = CommandType.Text
+        Cm.CommandText = "Delete From Detalle_Acciones_Modificatorias Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
+        Cm.ExecuteNonQuery()
+        Cm = Nothing
+        Cm = New OleDb.OleDbCommand
+        Cm.CommandTimeout = 0
+        Cm.Connection = Cn
+        Cm.CommandType = CommandType.Text
+        Cm.CommandText = "Delete From Accion_Modificatoria Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
+        Cm.ExecuteNonQuery()
+        Cm = Nothing
+    End Sub
     Public Function Encriptar(ByVal clave As String) As String
         Dim sha1 As SHA1 = SHA1Managed.Create()
         Dim encoding As New ASCIIEncoding()
@@ -1038,6 +1141,15 @@ Public Class Mantenimiento
         Cm.ExecuteNonQuery()
         Cm = Nothing
     End Sub
+    Public Sub Autorizar_AM(ByVal Año_Ejecucion As String, ByVal Numero As String, Byval Usuario as String)
+        Dim Cm As New OleDb.OleDbCommand
+        Cm.CommandTimeout = 0
+        Cm.Connection = Cn
+        Cm.CommandType = CommandType.Text
+        Cm.CommandText = "Update Accion_Modificatoria Set Codigo_Estado_AM='02',FechaAutorizacion=GetDate(),UsuarioAutorizacion='" & Usuario.Trim & "' Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & ""
+        Cm.ExecuteNonQuery()
+        Cm = Nothing
+    End Sub
     Public Sub Aprobar_PIA(ByVal Año_Ejecucion As String, ByVal Codigo_Unidad_Organica As String, ByVal Codigo_Secuencia_Funcional As String, ByVal Codigo_Actividad As String, Optional ByVal Usuario As String = Nothing)
         Dim Cm As New OleDb.OleDbCommand
         Cm.CommandTimeout = 0
@@ -1056,6 +1168,15 @@ Public Class Mantenimiento
         Cm.ExecuteNonQuery()
         Cm = Nothing
     End Sub
+    Public Sub Aprobar_AM(ByVal Año_Ejecucion As String, ByVal Numero As String, ByVal Usuario As String)
+        Dim Cm As New OleDb.OleDbCommand
+        Cm.CommandTimeout = 0
+        Cm.Connection = Cn
+        Cm.CommandType = CommandType.Text
+        Cm.CommandText = "Update Accion_Modificatoria Set Codigo_Estado_AM='03',FechaAprobacion=GetDate(),UsuarioAprobacion='" & Usuario.Trim & "' Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
+        Cm.ExecuteNonQuery()
+        Cm = Nothing
+    End Sub
     Public Sub Extornar_PIA(ByVal Año_Ejecucion As String, ByVal Codigo_Unidad_Organica As String, ByVal Codigo_Secuencia_Funcional As String, ByVal Codigo_Actividad As String)
         Dim Cm As New OleDb.OleDbCommand
         Cm.CommandTimeout = 0
@@ -1071,6 +1192,15 @@ Public Class Mantenimiento
         Cm.Connection = Cn
         Cm.CommandType = CommandType.Text
         Cm.CommandText = "Update Cuadro_Necesidades Set Codigo_Estado_CN='01',FechaAutorizacion=Null,FechaAprobacion=Null,UsuarioAprobacion=Null,UsuarioAutorizacion=Null Where Año_Ejecucion='" & Año_Ejecucion & "' And Codigo_Unidad_Organica='" & Codigo_Unidad_Organica & "' And Codigo_Secuencia_Funcional='" & Codigo_Secuencia_Funcional & "' And Codigo_Actividad='" & Codigo_Actividad & "'"
+        Cm.ExecuteNonQuery()
+        Cm = Nothing
+    End Sub
+    Public Sub Extornar_AM(ByVal Año_Ejecucion As String, ByVal Numero As String)
+        Dim Cm As New OleDb.OleDbCommand
+        Cm.CommandTimeout = 0
+        Cm.Connection = Cn
+        Cm.CommandType = CommandType.Text
+        Cm.CommandText = "Update Accion_Modificatoria Set Codigo_Estado_AM='01',FechaAutorizacion=Null,FechaAprobacion=Null,UsuarioAprobacion=Null,UsuarioAutorizacion=Null Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
         Cm.ExecuteNonQuery()
         Cm = Nothing
     End Sub
@@ -1562,6 +1692,14 @@ Public Class Mantenimiento
         Generar_Numero_Nota = Right("0000" & Numero.ToString, 4)
         Return Generar_Numero_Nota
     End Function
+    Public Function Generar_Numero_AM(ByVal Año_Ejecucion As String) As String
+        Dim Da As New OleDb.OleDbDataAdapter("Select Isnull(Max(Abs(Numero)+1),1) As Numero From Accion_Modificatoria Where Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
+        Dim Ds As New Data.DataSet
+        Da.Fill(Ds)
+        Dim Numero As Double = Convert.ToDouble(Ds.Tables(0).Rows(0).Item("Numero").ToString)
+        Generar_Numero_AM = Right("0000" & Numero.ToString, 4)
+        Return Generar_Numero_AM
+    End Function
     Public Function Generar_Numero_Requerimiento_Bienes(ByVal Año_Ejecucion As String) As String
         Dim Da As New OleDb.OleDbDataAdapter("Select Isnull(Max(Abs(Numero)+1),1) As Numero From Requerimiento_Bienes Where Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
         Dim Ds As New Data.DataSet
@@ -1610,18 +1748,19 @@ Public Class Mantenimiento
         Cm.Parameters.AddWithValue("@Codigo_Estado_Certificado", Codigo_Estado_Nota)
         Cm.ExecuteNonQuery()
     End Sub
-    Public Sub Modificar_Nota_Modificatoria(ByVal Año_Ejecucion As String, ByVal Numero As String, ByVal Codigo_Motivo_Nota As String, ByVal Justificacion As String)
+    Public Sub Modificar_Acción_Modificatoria(ByVal Año_Ejecucion As String, ByVal Numero As String, ByVal Codigo_Motivo_AM As String, ByVal Justificacion As String)
         Dim Cm As New OleDb.OleDbCommand
         Cm.CommandTimeout = 0
         Cm.Connection = Cn
         Cm.CommandType = CommandType.StoredProcedure
-        Cm.CommandText = "Modificar_Nota"
+        Cm.CommandText = "Modificar_AM"
         Cm.Parameters.AddWithValue("@Año_Ejecucion", Año_Ejecucion)
         Cm.Parameters.AddWithValue("@Numero", Numero)
-        Cm.Parameters.AddWithValue("@Codigo_Motivo_Nota", Codigo_Motivo_Nota)
+        Cm.Parameters.AddWithValue("@Codigo_Motivo_AM", Codigo_Motivo_AM)
         Cm.Parameters.AddWithValue("@Justificacion", Justificacion)
         Cm.ExecuteNonQuery()
     End Sub
+
     Public Sub Modificar_Certificado(ByVal Año_Ejecucion As String, ByVal Numero As String, ByVal Documento As String, ByVal Justificacion As String, ByVal Monto As Double, ByVal Codigo_Tipo_Operacion As String)
         Dim Cm As New OleDb.OleDbCommand
         Cm.CommandTimeout = 0
@@ -1901,12 +2040,12 @@ Public Class Mantenimiento
             Next
         End If
     End Sub
-    Public Sub Nuevo_Detalle_Nota(ByVal Año_Ejecucion As String, ByVal Numero As String, ByVal Codigo_FF As Integer, ByVal Codigo_Rubro As String, ByVal Tipo_Transaccion As String, ByVal Generica As String, ByVal Sub_Generica As String, ByVal Sub_Generica_Detalle As String, ByVal Especifica As String, ByVal Especifica_Detalle As String, ByVal Codigo_Secuencia_Funcional As String, ByVal Codigo_Unidad_Organica As String, ByVal Codigo_Actividad As String, ByVal Monto As Double, ByVal Codigo_Tipo_Recurso As String)
+    Public Sub Nuevo_Detalle_AM(ByVal Año_Ejecucion As String, ByVal  Numero As String, ByVal Codigo_FF As Integer, ByVal Codigo_Rubro As String, ByVal Tipo_Transaccion As String, ByVal Generica As String, ByVal Sub_Generica As String, ByVal Sub_Generica_Detalle As String, ByVal Especifica As String, ByVal Especifica_Detalle As String, ByVal Codigo_Catalogo As String, ByVal Codigo_Grupo As String, ByVal Codigo_Clase As String, ByVal Codigo_Familia As String, ByVal Codigo_Item As String, ByVal Codigo_Secuencia_Funcional As String, ByVal Codigo_Unidad_Organica As String, ByVal Codigo_Actividad As String,ByVal Costo_Referencial as Double, ByVal Monto_Enero As Double, ByVal Monto_Febrero As Double, ByVal Monto_Marzo As Double, ByVal Monto_Abril As Double, ByVal Monto_Mayo As Double, ByVal Monto_Junio As Double, ByVal Monto_Julio As Double, ByVal Monto_Agosto As Double, ByVal Monto_Septiembre As Double, ByVal Monto_Octubre As Double, ByVal Monto_Noviembre As Double, ByVal Monto_Diciembre As Double)
         Dim Cm As New OleDb.OleDbCommand
-        Cm.CommandTimeout = 0
         Cm.Connection = Cn
+        Cm.CommandTimeout = 0
         Cm.CommandType = CommandType.StoredProcedure
-        Cm.CommandText = "Nuevo_Detalle_Nota"
+        Cm.CommandText = "Nuevo_Detalle_AM"
         Cm.Parameters.AddWithValue("@Año_Ejecucion", Año_Ejecucion)
         Cm.Parameters.AddWithValue("@Numero", Numero)
         Cm.Parameters.AddWithValue("@Codigo_FF", Codigo_FF)
@@ -1917,11 +2056,27 @@ Public Class Mantenimiento
         Cm.Parameters.AddWithValue("@Sub_Generica_Detalle", Sub_Generica_Detalle)
         Cm.Parameters.AddWithValue("@Especifica", Especifica)
         Cm.Parameters.AddWithValue("@Especifica_Detalle", Especifica_Detalle)
+        Cm.Parameters.AddWithValue("@Codigo_Catalogo", Codigo_Catalogo)
+        Cm.Parameters.AddWithValue("@Codigo_Grupo", Codigo_Grupo)
+        Cm.Parameters.AddWithValue("@Codigo_Clase", Codigo_Clase)
+        Cm.Parameters.AddWithValue("@Codigo_Familia", Codigo_Familia)
+        Cm.Parameters.AddWithValue("@Codigo_Item", Codigo_Item)
         Cm.Parameters.AddWithValue("@Codigo_Secuencia_Funcional", Codigo_Secuencia_Funcional)
         Cm.Parameters.AddWithValue("@Codigo_Unidad_Organica", Codigo_Unidad_Organica)
         Cm.Parameters.AddWithValue("@Codigo_Actividad", Codigo_Actividad)
-        Cm.Parameters.AddWithValue("@Monto", Monto)
-        Cm.Parameters.AddWithValue("@Codigo_Tipo_Recurso", Codigo_Tipo_Recurso)
+        Cm.Parameters.AddWithValue("@Costo_Referencial", Costo_Referencial)
+        Cm.Parameters.AddWithValue("@Cantidad_Enero", Monto_Enero)
+        Cm.Parameters.AddWithValue("@Cantidad_Febrero", Monto_Febrero)
+        Cm.Parameters.AddWithValue("@Cantidad_Marzo", Monto_Marzo)
+        Cm.Parameters.AddWithValue("@Cantidad_Abril", Monto_Abril)
+        Cm.Parameters.AddWithValue("@Cantidad_Mayo", Monto_Mayo)
+        Cm.Parameters.AddWithValue("@Cantidad_Junio", Monto_Junio)
+        Cm.Parameters.AddWithValue("@Cantidad_Julio", Monto_Julio)
+        Cm.Parameters.AddWithValue("@Cantidad_Agosto", Monto_Agosto)
+        Cm.Parameters.AddWithValue("@Cantidad_Septiembre", Monto_Septiembre)
+        Cm.Parameters.AddWithValue("@Cantidad_Octubre", Monto_Octubre)
+        Cm.Parameters.AddWithValue("@Cantidad_Noviembre", Monto_Noviembre)
+        Cm.Parameters.AddWithValue("@Cantidad_Diciembre", Monto_Diciembre)
         Cm.ExecuteNonQuery()
     End Sub
     Public Sub Eliminar_Certificado(ByVal Año_Ejecucion As String, ByVal Numero As String, ByVal Operacion As Boolean)
@@ -2362,20 +2517,20 @@ Public Class Mantenimiento
             Exit Sub
         End If
     End Sub
-    Public Sub Eliminar_Nota(ByVal Año_Ejecucion As String, ByVal Numero As String, ByVal Operacion As Boolean)
+    Public Sub Eliminar_AM(ByVal Año_Ejecucion As String, ByVal Numero As String, ByVal Operacion As Boolean)
         If Operacion = True Then
             Dim Cm As New OleDb.OleDbCommand
             Cm.CommandTimeout = 0
             Cm.Connection = Cn
             Cm.CommandType = CommandType.Text
-            Cm.CommandText = "Delete From Detalle_Nota_Modificatoria Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
+            Cm.CommandText = "Delete From Detalle_Acciones_Modificatorias Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
             Cm.ExecuteNonQuery()
             Cm = Nothing
             Cm = New OleDb.OleDbCommand
             Cm.CommandTimeout = 0
             Cm.Connection = Cn
             Cm.CommandType = CommandType.Text
-            Cm.CommandText = "Delete From Nota_Modificatoria Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
+            Cm.CommandText = "Delete From Accion_Modificatoria Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
             Cm.ExecuteNonQuery()
             Cm = Nothing
         Else
@@ -2383,7 +2538,7 @@ Public Class Mantenimiento
             Cm.CommandTimeout = 0
             Cm.Connection = Cn
             Cm.CommandType = CommandType.Text
-            Cm.CommandText = "Delete From Detalle_Nota_Modificatoria Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
+            Cm.CommandText = "Delete From Detalle_Acciones_Modificatorias Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
             Cm.ExecuteNonQuery()
             Cm = Nothing
         End If
@@ -3140,7 +3295,8 @@ Public Class Mantenimiento
         Saldo_CN_AM = 0
         'Dim Da As New OleDb.OleDbDataAdapter("Select Importe_Asignado as Saldo_CN from Lista_Movimientos_PIA_CN Where Codigo_FF=" & Codigo_FF & " And Codigo_Rubro='" & Codigo_Rubro & "' And Tipo_Transaccion='" & Tipo_Transaccion & "' And Generica='" & Generica & "' And Sub_Generica='" & Sub_Generica & "' And Sub_Generica_Detalle='" & Sub_Generica_Detalle & "' And Especifica='" & Especifica & "' And Especifica_Detalle='" & Especifica_Detalle & "' And Codigo_Secuencia_Funcional='" & Codigo_Secuencia_Funcional & "' And Codigo_Unidad_Organica='" & Codigo_Unidad_Organica & "' And Codigo_Actividad='" & Codigo_Actividad & "' And Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
         'Dim Da As New OleDb.OleDbDataAdapter("Select Importe_Asignado as Saldo_CN from Lista_PIA_para_CN Where Codigo_FF=" & Codigo_FF & " And Codigo_Rubro='" & Codigo_Rubro & "' And Tipo_Transaccion='" & Tipo_Transaccion & "' And Generica='" & Generica & "' And Sub_Generica='" & Sub_Generica & "' And Sub_Generica_Detalle='" & Sub_Generica_Detalle & "' And Especifica='" & Especifica & "' And Especifica_Detalle='" & Especifica_Detalle & "' And Codigo_Secuencia_Funcional='" & Codigo_Secuencia_Funcional & "' And Codigo_Unidad_Organica='" & Codigo_Unidad_Organica & "' And Codigo_Actividad='" & Codigo_Actividad & "' And Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
-        Dim Da As New OleDb.OleDbDataAdapter("Select Saldo as Saldo_CN from Lista_Movimientos_PIA_PIM_Certificados_Saldos Where Codigo_FF=" & Codigo_FF & " And Codigo_Rubro='" & Codigo_Rubro & "' And Tipo_Transaccion='" & Tipo_Transaccion & "' And Generica='" & Generica & "' And Sub_Generica='" & Sub_Generica & "' And Sub_Generica_Detalle='" & Sub_Generica_Detalle & "' And Especifica='" & Especifica & "' And Especifica_Detalle='" & Especifica_Detalle & "' And Codigo_Secuencia_Funcional='" & Codigo_Secuencia_Funcional & "' And Codigo_Unidad_Organica='" & Codigo_Unidad_Organica & "' And Codigo_Actividad='" & Codigo_Actividad & "' And Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
+        'Dim Da As New OleDb.OleDbDataAdapter("Select Saldo as Saldo_CN from Lista_Movimientos_PIA_PIM_Certificados_Saldos Where Codigo_FF=" & Codigo_FF & " And Codigo_Rubro='" & Codigo_Rubro & "' And Tipo_Transaccion='" & Tipo_Transaccion & "' And Generica='" & Generica & "' And Sub_Generica='" & Sub_Generica & "' And Sub_Generica_Detalle='" & Sub_Generica_Detalle & "' And Especifica='" & Especifica & "' And Especifica_Detalle='" & Especifica_Detalle & "' And Codigo_Secuencia_Funcional='" & Codigo_Secuencia_Funcional & "' And Codigo_Unidad_Organica='" & Codigo_Unidad_Organica & "' And Codigo_Actividad='" & Codigo_Actividad & "' And Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
+        Dim Da As New OleDb.OleDbDataAdapter("Select Saldo as Saldo_CN from Lista_Movimientos_PIA_PIM_CN_Saldo Where Codigo_FF=" & Codigo_FF & " And Codigo_Rubro='" & Codigo_Rubro & "' And Tipo_Transaccion='" & Tipo_Transaccion & "' And Generica='" & Generica & "' And Sub_Generica='" & Sub_Generica & "' And Sub_Generica_Detalle='" & Sub_Generica_Detalle & "' And Especifica='" & Especifica & "' And Especifica_Detalle='" & Especifica_Detalle & "' And Codigo_Secuencia_Funcional='" & Codigo_Secuencia_Funcional & "' And Codigo_Unidad_Organica='" & Codigo_Unidad_Organica & "' And Codigo_Actividad='" & Codigo_Actividad & "' And Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
         Dim Ds As New Data.DataSet
 
         Da.Fill(Ds)
@@ -3192,6 +3348,15 @@ Public Class Mantenimiento
         Cm.Connection = Cn
         Cm.CommandType = CommandType.Text
         Cm.CommandText = "Update Nota_Modificatoria Set Codigo_Estado_Nota='04',FechaAnulacion=GetDate(),UsuarioAnulacion='" & Usuario & "' Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
+        Cm.ExecuteNonQuery()
+        Cm = Nothing
+    End Sub
+    Public Sub Anular_Accion_Modificatoria(ByVal Año_Ejecucion As String, ByVal Numero As String, ByVal Usuario As String)
+        Dim Cm As New OleDb.OleDbCommand
+        Cm.CommandTimeout = 0
+        Cm.Connection = Cn
+        Cm.CommandType = CommandType.Text
+        Cm.CommandText = "Update Accion_Modificatoria Set Codigo_Estado_Nota='04',FechaAnulacion=GetDate(),UsuarioAnulacion='" & Usuario & "' Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
         Cm.ExecuteNonQuery()
         Cm = Nothing
     End Sub
@@ -3273,7 +3438,7 @@ Public Class Mantenimiento
         Dim Ds As New Data.DataSet
         Da.Fill(Ds)
         If Ds.Tables(0).Rows.Count > 0 Then
-            Select Case Ds.Tables(0).Rows(0).Item("Codigo_Estado_Accion").ToString
+            Select Case Ds.Tables(0).Rows(0).Item("Codigo_Estado_AM").ToString
                 Case "01" 'EMITIDO()
                     Nuevo.Enabled = True
                     Editar.Enabled = True
@@ -4841,12 +5006,15 @@ Public Class Mantenimiento
         End If
         Return Cadena_Unidades_Organicas_Por_Usuario
     End Function
-    Public Sub Mostrar_Data_Item_Catalogo_Cuadro_Necesidades(ByVal Codigo_Grupo As String, ByVal Codigo_Clase As String, ByVal Codigo_Familia As String, ByVal Codigo_Item As String, ByVal Tipo As Integer, ByVal Codigo_FF As Double, ByVal Codigo_Rubro As String, ByVal Codigo_Unidad_Organica As String, ByVal Codigo_Secuencia_Funcional As String, ByVal Codigo_Actividad As String, ByVal Caja_Codigo_Grupo As System.Windows.Forms.TextBox, ByVal Caja_Grupo As System.Windows.Forms.TextBox, ByVal Caja_Codigo_Clase As System.Windows.Forms.TextBox, ByVal Caja_Clase As System.Windows.Forms.TextBox, ByVal Caja_Codigo_Familia As System.Windows.Forms.TextBox, ByVal Caja_Familia As System.Windows.Forms.TextBox, ByVal Caja_Codigo_Item As System.Windows.Forms.TextBox, ByVal Caja_Item As System.Windows.Forms.TextBox, ByVal Caja_Codigo_Unidad_Medida As System.Windows.Forms.TextBox, ByVal Caja_Unidad_Medida As System.Windows.Forms.TextBox, ByVal Caja_Tipo_Transaccion As System.Windows.Forms.TextBox, ByVal Caja_Generica As System.Windows.Forms.TextBox, ByVal Caja_Sub_Generica As System.Windows.Forms.TextBox, ByVal Caja_Sub_Generica_Detalle As System.Windows.Forms.TextBox, ByVal Caja_Especifica As System.Windows.Forms.TextBox, ByVal Caja_Especifica_Detalle As System.Windows.Forms.TextBox, ByVal txtEnero As TextBox, ByVal txtFebrero As TextBox, ByVal txtMarzo As TextBox, ByVal txtAbril As TextBox, ByVal txtMayo As TextBox, ByVal txtJunio As TextBox, ByVal txtJulio As TextBox, ByVal txtAgosto As TextBox, ByVal txtSeptiembre As TextBox, ByVal txtOctubre As TextBox, ByVal txtNoviembre As TextBox, ByVal txtDiciembre As TextBox, ByVal txtEnero_m As TextBox, ByVal txtFebrero_m As TextBox, ByVal txtMarzo_m As TextBox, ByVal txtAbril_m As TextBox, ByVal txtMayo_m As TextBox, ByVal txtJunio_m As TextBox, ByVal txtJulio_m As TextBox, ByVal txtAgosto_m As TextBox, ByVal txtSeptiembre_m As TextBox, ByVal txtOctubre_m As TextBox, ByVal txtNoviembre_m As TextBox, ByVal txtDiciembre_m As TextBox)
+    Public Sub Mostrar_Data_Item_Catalogo_Cuadro_Necesidades(ByVal Codigo_Grupo As String, ByVal Codigo_Clase As String, ByVal Codigo_Familia As String, ByVal Codigo_Item As String, ByVal Tipo As Integer, ByVal Codigo_FF As Double, ByVal Codigo_Rubro As String, ByVal Codigo_Unidad_Organica As String, ByVal Codigo_Secuencia_Funcional As String, ByVal Codigo_Actividad As String, ByVal Caja_Codigo_Grupo As System.Windows.Forms.TextBox, ByVal Caja_Grupo As System.Windows.Forms.TextBox, ByVal Caja_Codigo_Clase As System.Windows.Forms.TextBox, ByVal Caja_Clase As System.Windows.Forms.TextBox, ByVal Caja_Codigo_Familia As System.Windows.Forms.TextBox, ByVal Caja_Familia As System.Windows.Forms.TextBox, ByVal Caja_Codigo_Item As System.Windows.Forms.TextBox, ByVal Caja_Item As System.Windows.Forms.TextBox, ByVal Caja_Codigo_Unidad_Medida As System.Windows.Forms.TextBox, ByVal Caja_Unidad_Medida As System.Windows.Forms.TextBox, ByVal Caja_Tipo_Transaccion As System.Windows.Forms.TextBox, ByVal Caja_Generica As System.Windows.Forms.TextBox, ByVal Caja_Sub_Generica As System.Windows.Forms.TextBox, ByVal Caja_Sub_Generica_Detalle As System.Windows.Forms.TextBox, ByVal Caja_Especifica As System.Windows.Forms.TextBox, ByVal Caja_Especifica_Detalle As System.Windows.Forms.TextBox, ByVal txtEnero As TextBox, ByVal txtFebrero As TextBox, ByVal txtMarzo As TextBox, ByVal txtAbril As TextBox, ByVal txtMayo As TextBox, ByVal txtJunio As TextBox, ByVal txtJulio As TextBox, ByVal txtAgosto As TextBox, ByVal txtSeptiembre As TextBox, ByVal txtOctubre As TextBox, ByVal txtNoviembre As TextBox, ByVal txtDiciembre As TextBox, ByVal txtEnero_m As TextBox, ByVal txtFebrero_m As TextBox, ByVal txtMarzo_m As TextBox, ByVal txtAbril_m As TextBox, ByVal txtMayo_m As TextBox, ByVal txtJunio_m As TextBox, ByVal txtJulio_m As TextBox, ByVal txtAgosto_m As TextBox, ByVal txtSeptiembre_m As TextBox, ByVal txtOctubre_m As TextBox, ByVal txtNoviembre_m As TextBox, ByVal txtDiciembre_m As TextBox, ByVal edita As Boolean)
         Select Case Tipo
             Case 1
                 Dim Da As New OleDb.OleDbDataAdapter("Select * From Detalle_Cuadro_Necesidades a inner join Catalogo_Bienes b on a.Codigo_Catalogo=b.Codigo_Catalogo and a.Codigo_Grupo=b.Codigo_Grupo and a.Codigo_Clase=b.Codigo_Clase and a.Codigo_Familia=b.Codigo_Familia and a.Codigo_Item=b.Codigo_Item Where Año_Ejecucion = '" + My.Settings.Año_Ejecucion + "' and Codigo_Unidad_Organica='" + Codigo_Unidad_Organica + "' and Codigo_Secuencia_Funcional='" + Codigo_Secuencia_Funcional + "' and Codigo_Actividad='" + Codigo_Actividad + "' and Codigo_FF = " + Codigo_FF.ToString() + " and Codigo_Rubro='" + Codigo_Rubro + "' and a.Codigo_Grupo='" & Codigo_Grupo & "' And a.Codigo_Clase='" & Codigo_Clase & "' And a.Codigo_Familia='" & Codigo_Familia & "' And a.Codigo_Item='" & Codigo_Item & "'", Cn)
+                Dim Da_Catalogo As New OleDb.OleDbDataAdapter("Select * From Catalogo_Bienes Where Codigo_Grupo='" & Codigo_Grupo & "' And Codigo_Clase='" & Codigo_Clase & "' And Codigo_Familia='" & Codigo_Familia & "' And Codigo_Item='" & Codigo_Item & "'", Cn)
                 Dim Ds As New Data.DataSet
+                Dim Ds_Catalogo As New Data.DataSet
                 Da.Fill(Ds)
+                Da_Catalogo.Fill(Ds_Catalogo)
                 If Ds.Tables(0).Rows.Count > 0 Then
                     Caja_Codigo_Grupo.Text = Ds.Tables(0).Rows(0).Item("Codigo_Grupo").ToString
                     Caja_Grupo.Text = Ds.Tables(0).Rows(0).Item("Descripcion_Grupo").ToString
@@ -4876,48 +5044,98 @@ Public Class Mantenimiento
                     txtOctubre.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Octubre").ToString
                     txtNoviembre.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Noviembre").ToString
                     txtDiciembre.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Diciembre").ToString
-                    txtEnero_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Enero").ToString
-                    txtFebrero_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Febrero").ToString
-                    txtMarzo_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Marzo").ToString
-                    txtAbril_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Abril").ToString
-                    txtMayo_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Mayo").ToString
-                    txtJunio_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Junio").ToString
-                    txtJulio_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Julio").ToString
-                    txtAgosto_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Agosto").ToString
-                    txtSeptiembre_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Septiembre").ToString
-                    txtOctubre_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Octubre").ToString
-                    txtNoviembre_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Noviembre").ToString
-                    txtDiciembre_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Diciembre").ToString
+                    if not edita
+                        txtEnero_m.Text = "0.00"
+                        txtFebrero_m.Text = "0.00"
+                        txtMarzo_m.Text = "0.00"
+                        txtAbril_m.Text = "0.00"
+                        txtMayo_m.Text = "0.00"
+                        txtJunio_m.Text = "0.00"
+                        txtJulio_m.Text = "0.00"
+                        txtAgosto_m.Text = "0.00"
+                        txtSeptiembre_m.Text = "0.00"
+                        txtOctubre_m.Text = "0.00"
+                        txtNoviembre_m.Text = "0.00"
+                        txtDiciembre_m.Text = "0.00"
+                    End If
+                    
                 Else
-                    Caja_Codigo_Grupo.Text = String.Empty
-                    Caja_Grupo.Text = String.Empty
-                    Caja_Codigo_Clase.Text = String.Empty
-                    Caja_Clase.Text = String.Empty
-                    Caja_Codigo_Familia.Text = String.Empty
-                    Caja_Familia.Text = String.Empty
-                    Caja_Codigo_Item.Text = String.Empty
-                    Caja_Item.Text = String.Empty
-                    Caja_Codigo_Unidad_Medida.Text = String.Empty
-                    Caja_Unidad_Medida.Text = String.Empty
-                    Caja_Tipo_Transaccion.Text = String.Empty
-                    Caja_Generica.Text = String.Empty
-                    Caja_Sub_Generica.Text = String.Empty
-                    Caja_Sub_Generica_Detalle.Text = String.Empty
-                    Caja_Especifica.Text = String.Empty
-                    Caja_Especifica_Detalle.Text = String.Empty
+                    If Ds_Catalogo.Tables(0).Rows.Count > 0 Then
+                        Caja_Codigo_Grupo.Text = Ds_Catalogo.Tables(0).Rows(0).Item("Codigo_Grupo").ToString
+                        Caja_Grupo.Text = Ds_Catalogo.Tables(0).Rows(0).Item("Descripcion_Grupo").ToString
+                        Caja_Codigo_Clase.Text = Ds_Catalogo.Tables(0).Rows(0).Item("Codigo_Clase").ToString
+                        Caja_Clase.Text = Ds_Catalogo.Tables(0).Rows(0).Item("Descripcion_Clase").ToString
+                        Caja_Codigo_Familia.Text = Ds_Catalogo.Tables(0).Rows(0).Item("Codigo_Familia").ToString
+                        Caja_Familia.Text = Ds_Catalogo.Tables(0).Rows(0).Item("Descripcion_Familia").ToString
+                        Caja_Codigo_Item.Text = Ds_Catalogo.Tables(0).Rows(0).Item("Codigo_Item").ToString
+                        Caja_Item.Text = Ds_Catalogo.Tables(0).Rows(0).Item("Descripcion_Item").ToString
+                        Caja_Codigo_Unidad_Medida.Text = Ds_Catalogo.Tables(0).Rows(0).Item("Codigo_Unidad_Medida").ToString
+                        Caja_Unidad_Medida.Text = Ds_Catalogo.Tables(0).Rows(0).Item("Descripcion_Unidad_Medida").ToString
+                        Caja_Tipo_Transaccion.Text = Ds_Catalogo.Tables(0).Rows(0).Item("Tipo_Transaccion").ToString
+                        Caja_Generica.Text = Ds_Catalogo.Tables(0).Rows(0).Item("Generica").ToString
+                        Caja_Sub_Generica.Text = Ds_Catalogo.Tables(0).Rows(0).Item("Sub_Generica").ToString
+                        Caja_Sub_Generica_Detalle.Text = Ds_Catalogo.Tables(0).Rows(0).Item("Sub_Generica_Detalle").ToString
+                        Caja_Especifica.Text = Ds_Catalogo.Tables(0).Rows(0).Item("Especifica").ToString
+                        Caja_Especifica_Detalle.Text = Ds_Catalogo.Tables(0).Rows(0).Item("Especifica_Detalle").ToString
 
-                    txtEnero.Text = "0.00"
-                    txtFebrero.Text = "0.00"
-                    txtMarzo.Text = "0.00"
-                    txtAbril.Text = "0.00"
-                    txtMayo.Text = "0.00"
-                    txtJunio.Text = "0.00"
-                    txtJulio.Text = "0.00"
-                    txtAgosto.Text = "0.00"
-                    txtSeptiembre.Text = "0.00"
-                    txtOctubre.Text = "0.00"
-                    txtNoviembre.Text = "0.00"
-                    txtDiciembre.Text = "0.00"
+                        if not edita
+                            txtEnero_m.Text = "0.00"
+                            txtFebrero_m.Text = "0.00"
+                            txtMarzo_m.Text = "0.00"
+                            txtAbril_m.Text = "0.00"
+                            txtMayo_m.Text = "0.00"
+                            txtJunio_m.Text = "0.00"
+                            txtJulio_m.Text = "0.00"
+                            txtAgosto_m.Text = "0.00"
+                            txtSeptiembre_m.Text = "0.00"
+                            txtOctubre_m.Text = "0.00"
+                            txtNoviembre_m.Text = "0.00"
+                            txtDiciembre_m.Text = "0.00"
+                        End If
+
+                        txtEnero.Text = "0.00"
+                        txtFebrero.Text = "0.00"
+                        txtMarzo.Text = "0.00"
+                        txtAbril.Text = "0.00"
+                        txtMayo.Text = "0.00"
+                        txtJunio.Text = "0.00"
+                        txtJulio.Text = "0.00"
+                        txtAgosto.Text = "0.00"
+                        txtSeptiembre.Text = "0.00"
+                        txtOctubre.Text = "0.00"
+                        txtNoviembre.Text = "0.00"
+                        txtDiciembre.Text = "0.00"
+                    Else
+                        Caja_Codigo_Grupo.Text = String.Empty
+                        Caja_Grupo.Text = String.Empty
+                        Caja_Codigo_Clase.Text = String.Empty
+                        Caja_Clase.Text = String.Empty
+                        Caja_Codigo_Familia.Text = String.Empty
+                        Caja_Familia.Text = String.Empty
+                        Caja_Codigo_Item.Text = String.Empty
+                        Caja_Item.Text = String.Empty
+                        Caja_Codigo_Unidad_Medida.Text = String.Empty
+                        Caja_Unidad_Medida.Text = String.Empty
+                        Caja_Tipo_Transaccion.Text = String.Empty
+                        Caja_Generica.Text = String.Empty
+                        Caja_Sub_Generica.Text = String.Empty
+                        Caja_Sub_Generica_Detalle.Text = String.Empty
+                        Caja_Especifica.Text = String.Empty
+                        Caja_Especifica_Detalle.Text = String.Empty
+
+                        txtEnero.Text = "0.00"
+                        txtFebrero.Text = "0.00"
+                        txtMarzo.Text = "0.00"
+                        txtAbril.Text = "0.00"
+                        txtMayo.Text = "0.00"
+                        txtJunio.Text = "0.00"
+                        txtJulio.Text = "0.00"
+                        txtAgosto.Text = "0.00"
+                        txtSeptiembre.Text = "0.00"
+                        txtOctubre.Text = "0.00"
+                        txtNoviembre.Text = "0.00"
+                        txtDiciembre.Text = "0.00"
+                    End If
                     Return
                 End If
             Case 2
@@ -4953,18 +5171,20 @@ Public Class Mantenimiento
                     txtOctubre.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Octubre").ToString
                     txtNoviembre.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Noviembre").ToString
                     txtDiciembre.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Diciembre").ToString
-                    txtEnero_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Enero").ToString
-                    txtFebrero_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Febrero").ToString
-                    txtMarzo_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Marzo").ToString
-                    txtAbril_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Abril").ToString
-                    txtMayo_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Mayo").ToString
-                    txtJunio_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Junio").ToString
-                    txtJulio_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Julio").ToString
-                    txtAgosto_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Agosto").ToString
-                    txtSeptiembre_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Septiembre").ToString
-                    txtOctubre_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Octubre").ToString
-                    txtNoviembre_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Noviembre").ToString
-                    txtDiciembre_m.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Diciembre").ToString
+                    if not edita
+                        txtEnero_m.Text = "0.00"
+                        txtFebrero_m.Text = "0.00"
+                        txtMarzo_m.Text = "0.00"
+                        txtAbril_m.Text = "0.00"
+                        txtMayo_m.Text = "0.00"
+                        txtJunio_m.Text = "0.00"
+                        txtJulio_m.Text = "0.00"
+                        txtAgosto_m.Text = "0.00"
+                        txtSeptiembre_m.Text = "0.00"
+                        txtOctubre_m.Text = "0.00"
+                        txtNoviembre_m.Text = "0.00"
+                        txtDiciembre_m.Text = "0.00"
+                    End If
                 Else
                     Caja_Codigo_Grupo.Text = String.Empty
                     Caja_Grupo.Text = String.Empty
@@ -4982,6 +5202,21 @@ Public Class Mantenimiento
                     Caja_Sub_Generica_Detalle.Text = String.Empty
                     Caja_Especifica.Text = String.Empty
                     Caja_Especifica_Detalle.Text = String.Empty
+
+                    if not edita
+                        txtEnero_m.Text = "0.00"
+                        txtFebrero_m.Text = "0.00"
+                        txtMarzo_m.Text = "0.00"
+                        txtAbril_m.Text = "0.00"
+                        txtMayo_m.Text = "0.00"
+                        txtJunio_m.Text = "0.00"
+                        txtJulio_m.Text = "0.00"
+                        txtAgosto_m.Text = "0.00"
+                        txtSeptiembre_m.Text = "0.00"
+                        txtOctubre_m.Text = "0.00"
+                        txtNoviembre_m.Text = "0.00"
+                        txtDiciembre_m.Text = "0.00"
+                    End If
 
                     txtEnero.Text = "0.00"
                     txtFebrero.Text = "0.00"
