@@ -111,6 +111,18 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.Label28 = New System.Windows.Forms.Label()
         Me.cbMotivo = New System.Windows.Forms.ComboBox()
         Me.gbModificado = New System.Windows.Forms.GroupBox()
+        Me.chkRebajaDiciembre = New System.Windows.Forms.CheckBox()
+        Me.chkRebajaAgosto = New System.Windows.Forms.CheckBox()
+        Me.chkRebajaAbril = New System.Windows.Forms.CheckBox()
+        Me.chkRebajaNoviembre = New System.Windows.Forms.CheckBox()
+        Me.chkRebajaJulio = New System.Windows.Forms.CheckBox()
+        Me.chkRebajaMarzo = New System.Windows.Forms.CheckBox()
+        Me.chkRebajaOctubre = New System.Windows.Forms.CheckBox()
+        Me.chkRebajaJunio = New System.Windows.Forms.CheckBox()
+        Me.chkRebajaFebrero = New System.Windows.Forms.CheckBox()
+        Me.chkRebajaSeptiembre = New System.Windows.Forms.CheckBox()
+        Me.chkRebajaMayo = New System.Windows.Forms.CheckBox()
+        Me.chkRebajaEnero = New System.Windows.Forms.CheckBox()
         Me.txtDiciembre_m = New System.Windows.Forms.TextBox()
         Me.txtJunio_m = New System.Windows.Forms.TextBox()
         Me.Label29 = New System.Windows.Forms.Label()
@@ -136,26 +148,26 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.txtEnero_m = New System.Windows.Forms.TextBox()
         Me.Label40 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.chkRebajar = New System.Windows.Forms.CheckBox()
         Me.txtDiferencia = New System.Windows.Forms.TextBox()
-        Me.Label41 = New System.Windows.Forms.Label()
+        Me.lblDiferencia = New System.Windows.Forms.Label()
         Me.txtTotal2 = New System.Windows.Forms.TextBox()
         Me.Label42 = New System.Windows.Forms.Label()
         Me.txtTotal = New System.Windows.Forms.TextBox()
         Me.Label43 = New System.Windows.Forms.Label()
         Me.txtMonto = New System.Windows.Forms.TextBox()
         Me.Label44 = New System.Windows.Forms.Label()
-        Me.gbDatosGenerales.SuspendLayout()
-        Me.gbOriginal.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
-        Me.gbDetalle.SuspendLayout()
-        CType(Me.dgvDistribucionCn, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gbCatalogo.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
-        Me.GroupBox4.SuspendLayout()
-        Me.gbModificado.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
-        Me.SuspendLayout()
+        Me.gbDatosGenerales.SuspendLayout
+        Me.gbOriginal.SuspendLayout
+        Me.GroupBox2.SuspendLayout
+        Me.gbDetalle.SuspendLayout
+        CType(Me.dgvDistribucionCn,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.gbCatalogo.SuspendLayout
+        Me.GroupBox3.SuspendLayout
+        Me.GroupBox4.SuspendLayout
+        Me.gbModificado.SuspendLayout
+        Me.GroupBox1.SuspendLayout
+        Me.SuspendLayout
         '
         'gbDatosGenerales
         '
@@ -169,17 +181,17 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.gbDatosGenerales.Controls.Add(Me.cbFF)
         Me.gbDatosGenerales.Controls.Add(Me.cbUnidadOrganica)
         Me.gbDatosGenerales.Controls.Add(Me.Label1)
-        Me.gbDatosGenerales.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbDatosGenerales.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.gbDatosGenerales.Location = New System.Drawing.Point(12, 12)
         Me.gbDatosGenerales.Name = "gbDatosGenerales"
         Me.gbDatosGenerales.Size = New System.Drawing.Size(710, 134)
         Me.gbDatosGenerales.TabIndex = 0
-        Me.gbDatosGenerales.TabStop = False
+        Me.gbDatosGenerales.TabStop = false
         Me.gbDatosGenerales.Text = "Datos Generales:"
         '
         'Label5
         '
-        Me.Label5.AutoSize = True
+        Me.Label5.AutoSize = true
         Me.Label5.Location = New System.Drawing.Point(270, 108)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(64, 13)
@@ -188,7 +200,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label4
         '
-        Me.Label4.AutoSize = True
+        Me.Label4.AutoSize = true
         Me.Label4.Location = New System.Drawing.Point(20, 108)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(130, 13)
@@ -197,7 +209,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label3
         '
-        Me.Label3.AutoSize = True
+        Me.Label3.AutoSize = true
         Me.Label3.Location = New System.Drawing.Point(20, 81)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(45, 13)
@@ -206,7 +218,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label2
         '
-        Me.Label2.AutoSize = True
+        Me.Label2.AutoSize = true
         Me.Label2.Location = New System.Drawing.Point(20, 54)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(139, 13)
@@ -216,8 +228,8 @@ Partial Class frmRegistro_Acciones_Modificatorias
         'cbActividad
         '
         Me.cbActividad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbActividad.Enabled = False
-        Me.cbActividad.FormattingEnabled = True
+        Me.cbActividad.Enabled = false
+        Me.cbActividad.FormattingEnabled = true
         Me.cbActividad.Location = New System.Drawing.Point(340, 105)
         Me.cbActividad.Name = "cbActividad"
         Me.cbActividad.Size = New System.Drawing.Size(364, 21)
@@ -226,8 +238,8 @@ Partial Class frmRegistro_Acciones_Modificatorias
         'cbSecuenciaFuncional
         '
         Me.cbSecuenciaFuncional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbSecuenciaFuncional.Enabled = False
-        Me.cbSecuenciaFuncional.FormattingEnabled = True
+        Me.cbSecuenciaFuncional.Enabled = false
+        Me.cbSecuenciaFuncional.FormattingEnabled = true
         Me.cbSecuenciaFuncional.Location = New System.Drawing.Point(165, 105)
         Me.cbSecuenciaFuncional.Name = "cbSecuenciaFuncional"
         Me.cbSecuenciaFuncional.Size = New System.Drawing.Size(99, 21)
@@ -236,7 +248,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         'cbRubro
         '
         Me.cbRubro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbRubro.FormattingEnabled = True
+        Me.cbRubro.FormattingEnabled = true
         Me.cbRubro.Location = New System.Drawing.Point(165, 78)
         Me.cbRubro.Name = "cbRubro"
         Me.cbRubro.Size = New System.Drawing.Size(539, 21)
@@ -245,7 +257,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         'cbFF
         '
         Me.cbFF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbFF.FormattingEnabled = True
+        Me.cbFF.FormattingEnabled = true
         Me.cbFF.Location = New System.Drawing.Point(165, 51)
         Me.cbFF.Name = "cbFF"
         Me.cbFF.Size = New System.Drawing.Size(539, 21)
@@ -254,7 +266,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         'cbUnidadOrganica
         '
         Me.cbUnidadOrganica.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbUnidadOrganica.FormattingEnabled = True
+        Me.cbUnidadOrganica.FormattingEnabled = true
         Me.cbUnidadOrganica.Location = New System.Drawing.Point(165, 24)
         Me.cbUnidadOrganica.Name = "cbUnidadOrganica"
         Me.cbUnidadOrganica.Size = New System.Drawing.Size(539, 21)
@@ -262,7 +274,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label1
         '
-        Me.Label1.AutoSize = True
+        Me.Label1.AutoSize = true
         Me.Label1.Location = New System.Drawing.Point(20, 27)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(106, 13)
@@ -295,19 +307,19 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.gbOriginal.Controls.Add(Me.Label18)
         Me.gbOriginal.Controls.Add(Me.txtEnero)
         Me.gbOriginal.Controls.Add(Me.Label12)
-        Me.gbOriginal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbOriginal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.gbOriginal.Location = New System.Drawing.Point(12, 152)
         Me.gbOriginal.Name = "gbOriginal"
         Me.gbOriginal.Size = New System.Drawing.Size(710, 98)
         Me.gbOriginal.TabIndex = 2
-        Me.gbOriginal.TabStop = False
+        Me.gbOriginal.TabStop = false
         Me.gbOriginal.Text = "Cantidad / Importe Mensualizados"
         '
         'txtDiciembre
         '
         Me.txtDiciembre.Location = New System.Drawing.Point(600, 70)
         Me.txtDiciembre.Name = "txtDiciembre"
-        Me.txtDiciembre.ReadOnly = True
+        Me.txtDiciembre.ReadOnly = true
         Me.txtDiciembre.Size = New System.Drawing.Size(100, 20)
         Me.txtDiciembre.TabIndex = 11
         Me.txtDiciembre.Text = "0.00"
@@ -317,7 +329,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         Me.txtJunio.Location = New System.Drawing.Point(240, 45)
         Me.txtJunio.Name = "txtJunio"
-        Me.txtJunio.ReadOnly = True
+        Me.txtJunio.ReadOnly = true
         Me.txtJunio.Size = New System.Drawing.Size(100, 20)
         Me.txtJunio.TabIndex = 5
         Me.txtJunio.Text = "0.00"
@@ -325,7 +337,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label23
         '
-        Me.Label23.AutoSize = True
+        Me.Label23.AutoSize = true
         Me.Label23.Location = New System.Drawing.Point(526, 73)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(67, 13)
@@ -334,7 +346,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label17
         '
-        Me.Label17.AutoSize = True
+        Me.Label17.AutoSize = true
         Me.Label17.Location = New System.Drawing.Point(180, 48)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(41, 13)
@@ -345,7 +357,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         Me.txtNoviembre.Location = New System.Drawing.Point(420, 70)
         Me.txtNoviembre.Name = "txtNoviembre"
-        Me.txtNoviembre.ReadOnly = True
+        Me.txtNoviembre.ReadOnly = true
         Me.txtNoviembre.Size = New System.Drawing.Size(100, 20)
         Me.txtNoviembre.TabIndex = 10
         Me.txtNoviembre.Text = "0.00"
@@ -355,7 +367,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         Me.txtMayo.Location = New System.Drawing.Point(74, 45)
         Me.txtMayo.Name = "txtMayo"
-        Me.txtMayo.ReadOnly = True
+        Me.txtMayo.ReadOnly = true
         Me.txtMayo.Size = New System.Drawing.Size(100, 20)
         Me.txtMayo.TabIndex = 4
         Me.txtMayo.Text = "0.00"
@@ -363,7 +375,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label22
         '
-        Me.Label22.AutoSize = True
+        Me.Label22.AutoSize = true
         Me.Label22.Location = New System.Drawing.Point(348, 73)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(71, 13)
@@ -372,7 +384,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label16
         '
-        Me.Label16.AutoSize = True
+        Me.Label16.AutoSize = true
         Me.Label16.Location = New System.Drawing.Point(6, 48)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(41, 13)
@@ -383,7 +395,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         Me.txtOctubre.Location = New System.Drawing.Point(240, 70)
         Me.txtOctubre.Name = "txtOctubre"
-        Me.txtOctubre.ReadOnly = True
+        Me.txtOctubre.ReadOnly = true
         Me.txtOctubre.Size = New System.Drawing.Size(100, 20)
         Me.txtOctubre.TabIndex = 9
         Me.txtOctubre.Text = "0.00"
@@ -393,7 +405,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         Me.txtAbril.Location = New System.Drawing.Point(600, 20)
         Me.txtAbril.Name = "txtAbril"
-        Me.txtAbril.ReadOnly = True
+        Me.txtAbril.ReadOnly = true
         Me.txtAbril.Size = New System.Drawing.Size(100, 20)
         Me.txtAbril.TabIndex = 3
         Me.txtAbril.Text = "0.00"
@@ -401,7 +413,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label21
         '
-        Me.Label21.AutoSize = True
+        Me.Label21.AutoSize = true
         Me.Label21.Location = New System.Drawing.Point(180, 73)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(56, 13)
@@ -410,7 +422,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label15
         '
-        Me.Label15.AutoSize = True
+        Me.Label15.AutoSize = true
         Me.Label15.Location = New System.Drawing.Point(526, 23)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(36, 13)
@@ -421,7 +433,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         Me.txtSeptiembre.Location = New System.Drawing.Point(74, 70)
         Me.txtSeptiembre.Name = "txtSeptiembre"
-        Me.txtSeptiembre.ReadOnly = True
+        Me.txtSeptiembre.ReadOnly = true
         Me.txtSeptiembre.Size = New System.Drawing.Size(100, 20)
         Me.txtSeptiembre.TabIndex = 8
         Me.txtSeptiembre.Text = "0.00"
@@ -431,7 +443,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         Me.txtMarzo.Location = New System.Drawing.Point(420, 20)
         Me.txtMarzo.Name = "txtMarzo"
-        Me.txtMarzo.ReadOnly = True
+        Me.txtMarzo.ReadOnly = true
         Me.txtMarzo.Size = New System.Drawing.Size(100, 20)
         Me.txtMarzo.TabIndex = 2
         Me.txtMarzo.Text = "0.00"
@@ -439,7 +451,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label20
         '
-        Me.Label20.AutoSize = True
+        Me.Label20.AutoSize = true
         Me.Label20.Location = New System.Drawing.Point(6, 73)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(74, 13)
@@ -448,7 +460,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label14
         '
-        Me.Label14.AutoSize = True
+        Me.Label14.AutoSize = true
         Me.Label14.Location = New System.Drawing.Point(348, 23)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(45, 13)
@@ -459,7 +471,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         Me.txtAgosto.Location = New System.Drawing.Point(600, 45)
         Me.txtAgosto.Name = "txtAgosto"
-        Me.txtAgosto.ReadOnly = True
+        Me.txtAgosto.ReadOnly = true
         Me.txtAgosto.Size = New System.Drawing.Size(100, 20)
         Me.txtAgosto.TabIndex = 7
         Me.txtAgosto.Text = "0.00"
@@ -469,7 +481,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         Me.txtFebrero.Location = New System.Drawing.Point(240, 20)
         Me.txtFebrero.Name = "txtFebrero"
-        Me.txtFebrero.ReadOnly = True
+        Me.txtFebrero.ReadOnly = true
         Me.txtFebrero.Size = New System.Drawing.Size(100, 20)
         Me.txtFebrero.TabIndex = 1
         Me.txtFebrero.Text = "0.00"
@@ -477,7 +489,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label19
         '
-        Me.Label19.AutoSize = True
+        Me.Label19.AutoSize = true
         Me.Label19.Location = New System.Drawing.Point(526, 48)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(50, 13)
@@ -486,7 +498,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label13
         '
-        Me.Label13.AutoSize = True
+        Me.Label13.AutoSize = true
         Me.Label13.Location = New System.Drawing.Point(180, 23)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(54, 13)
@@ -497,7 +509,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         Me.txtJulio.Location = New System.Drawing.Point(420, 45)
         Me.txtJulio.Name = "txtJulio"
-        Me.txtJulio.ReadOnly = True
+        Me.txtJulio.ReadOnly = true
         Me.txtJulio.Size = New System.Drawing.Size(100, 20)
         Me.txtJulio.TabIndex = 6
         Me.txtJulio.Text = "0.00"
@@ -505,7 +517,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label18
         '
-        Me.Label18.AutoSize = True
+        Me.Label18.AutoSize = true
         Me.Label18.Location = New System.Drawing.Point(348, 48)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(37, 13)
@@ -516,7 +528,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         Me.txtEnero.Location = New System.Drawing.Point(74, 20)
         Me.txtEnero.Name = "txtEnero"
-        Me.txtEnero.ReadOnly = True
+        Me.txtEnero.ReadOnly = true
         Me.txtEnero.Size = New System.Drawing.Size(100, 20)
         Me.txtEnero.TabIndex = 0
         Me.txtEnero.Text = "0.00"
@@ -524,7 +536,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label12
         '
-        Me.Label12.AutoSize = True
+        Me.Label12.AutoSize = true
         Me.Label12.Location = New System.Drawing.Point(6, 23)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(44, 13)
@@ -536,71 +548,70 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.GroupBox2.Controls.Add(Me.btnGuardar)
         Me.GroupBox2.Controls.Add(Me.btnCancelar)
         Me.GroupBox2.Controls.Add(Me.btnExportarExcel)
-        Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 459)
+        Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox2.Location = New System.Drawing.Point(728, 407)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(660, 63)
+        Me.GroupBox2.Size = New System.Drawing.Size(572, 46)
         Me.GroupBox2.TabIndex = 12
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Opciones de Registro"
+        Me.GroupBox2.TabStop = false
         '
         'btnGuardar
         '
         Me.btnGuardar.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Guadar
         Me.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnGuardar.Location = New System.Drawing.Point(6, 19)
+        Me.btnGuardar.Location = New System.Drawing.Point(6, 7)
         Me.btnGuardar.Name = "btnGuardar"
-        Me.btnGuardar.Size = New System.Drawing.Size(211, 34)
+        Me.btnGuardar.Size = New System.Drawing.Size(180, 34)
         Me.btnGuardar.TabIndex = 0
         Me.btnGuardar.Text = "Generar Registro AM"
         Me.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnGuardar.UseVisualStyleBackColor = True
+        Me.btnGuardar.UseVisualStyleBackColor = true
         '
         'btnCancelar
         '
         Me.btnCancelar.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Salir
         Me.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCancelar.Location = New System.Drawing.Point(223, 19)
+        Me.btnCancelar.Location = New System.Drawing.Point(192, 7)
         Me.btnCancelar.Name = "btnCancelar"
-        Me.btnCancelar.Size = New System.Drawing.Size(211, 34)
+        Me.btnCancelar.Size = New System.Drawing.Size(180, 34)
         Me.btnCancelar.TabIndex = 1
-        Me.btnCancelar.Text = "Cancelar Registro AM y Salir"
+        Me.btnCancelar.Text = "Cancelar AM y Salir"
         Me.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnCancelar.UseVisualStyleBackColor = True
+        Me.btnCancelar.UseVisualStyleBackColor = true
         '
         'btnExportarExcel
         '
         Me.btnExportarExcel.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Ampliacion_Certificaciones
         Me.btnExportarExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnExportarExcel.Location = New System.Drawing.Point(440, 19)
+        Me.btnExportarExcel.Location = New System.Drawing.Point(378, 7)
         Me.btnExportarExcel.Name = "btnExportarExcel"
-        Me.btnExportarExcel.Size = New System.Drawing.Size(211, 34)
+        Me.btnExportarExcel.Size = New System.Drawing.Size(180, 34)
         Me.btnExportarExcel.TabIndex = 2
         Me.btnExportarExcel.Text = "Exportar a Excel"
         Me.btnExportarExcel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnExportarExcel.UseVisualStyleBackColor = True
+        Me.btnExportarExcel.UseVisualStyleBackColor = true
         '
         'rbServicios
         '
-        Me.rbServicios.AutoSize = True
+        Me.rbServicios.AutoSize = true
         Me.rbServicios.Location = New System.Drawing.Point(277, 188)
         Me.rbServicios.Name = "rbServicios"
         Me.rbServicios.Size = New System.Drawing.Size(77, 17)
         Me.rbServicios.TabIndex = 4
         Me.rbServicios.Text = "Servicios"
-        Me.rbServicios.UseVisualStyleBackColor = True
+        Me.rbServicios.UseVisualStyleBackColor = true
         '
         'rbBienes
         '
-        Me.rbBienes.AutoSize = True
-        Me.rbBienes.Checked = True
+        Me.rbBienes.AutoSize = true
+        Me.rbBienes.Checked = true
         Me.rbBienes.Location = New System.Drawing.Point(208, 188)
         Me.rbBienes.Name = "rbBienes"
         Me.rbBienes.Size = New System.Drawing.Size(63, 17)
         Me.rbBienes.TabIndex = 3
-        Me.rbBienes.TabStop = True
+        Me.rbBienes.TabStop = true
         Me.rbBienes.Text = "Bienes"
-        Me.rbBienes.UseVisualStyleBackColor = True
+        Me.rbBienes.UseVisualStyleBackColor = true
         '
         'btnAgregar
         '
@@ -612,28 +623,28 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.btnAgregar.TabIndex = 0
         Me.btnAgregar.Text = "Agregar al Detalle"
         Me.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnAgregar.UseVisualStyleBackColor = True
+        Me.btnAgregar.UseVisualStyleBackColor = true
         '
         'gbDetalle
         '
         Me.gbDetalle.Controls.Add(Me.dgvDistribucionCn)
-        Me.gbDetalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.gbDetalle.Location = New System.Drawing.Point(12, 528)
+        Me.gbDetalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.gbDetalle.Location = New System.Drawing.Point(12, 454)
         Me.gbDetalle.Name = "gbDetalle"
-        Me.gbDetalle.Size = New System.Drawing.Size(1297, 121)
+        Me.gbDetalle.Size = New System.Drawing.Size(1297, 134)
         Me.gbDetalle.TabIndex = 5
-        Me.gbDetalle.TabStop = False
+        Me.gbDetalle.TabStop = false
         '
         'dgvDistribucionCn
         '
-        Me.dgvDistribucionCn.AllowUserToAddRows = False
-        Me.dgvDistribucionCn.AllowUserToDeleteRows = False
-        Me.dgvDistribucionCn.AllowUserToResizeColumns = False
-        Me.dgvDistribucionCn.AllowUserToResizeRows = False
+        Me.dgvDistribucionCn.AllowUserToAddRows = false
+        Me.dgvDistribucionCn.AllowUserToDeleteRows = false
+        Me.dgvDistribucionCn.AllowUserToResizeColumns = false
+        Me.dgvDistribucionCn.AllowUserToResizeRows = false
         Me.dgvDistribucionCn.BackgroundColor = System.Drawing.Color.White
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = System.Drawing.Color.SaddleBrown
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         DataGridViewCellStyle1.ForeColor = System.Drawing.Color.LightYellow
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Navy
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
@@ -643,18 +654,18 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.dgvDistribucionCn.Cursor = System.Windows.Forms.Cursors.Hand
         Me.dgvDistribucionCn.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvDistribucionCn.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.dgvDistribucionCn.EnableHeadersVisualStyles = False
+        Me.dgvDistribucionCn.EnableHeadersVisualStyles = false
         Me.dgvDistribucionCn.Location = New System.Drawing.Point(3, 16)
-        Me.dgvDistribucionCn.MultiSelect = False
+        Me.dgvDistribucionCn.MultiSelect = false
         Me.dgvDistribucionCn.Name = "dgvDistribucionCn"
-        Me.dgvDistribucionCn.RowHeadersVisible = False
+        Me.dgvDistribucionCn.RowHeadersVisible = false
         DataGridViewCellStyle2.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Calibri", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Calibri", 8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
         Me.dgvDistribucionCn.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvDistribucionCn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvDistribucionCn.Size = New System.Drawing.Size(1291, 102)
-        Me.dgvDistribucionCn.StandardTab = True
+        Me.dgvDistribucionCn.Size = New System.Drawing.Size(1291, 115)
+        Me.dgvDistribucionCn.StandardTab = true
         Me.dgvDistribucionCn.TabIndex = 18
         '
         'gbCatalogo
@@ -684,17 +695,17 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.gbCatalogo.Controls.Add(Me.Label9)
         Me.gbCatalogo.Controls.Add(Me.btnBuscarItems)
         Me.gbCatalogo.Controls.Add(Me.Label10)
-        Me.gbCatalogo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbCatalogo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.gbCatalogo.Location = New System.Drawing.Point(728, 12)
         Me.gbCatalogo.Name = "gbCatalogo"
         Me.gbCatalogo.Size = New System.Drawing.Size(581, 215)
         Me.gbCatalogo.TabIndex = 1
-        Me.gbCatalogo.TabStop = False
+        Me.gbCatalogo.TabStop = false
         Me.gbCatalogo.Text = "Catalogo de Bienes"
         '
         'Label7
         '
-        Me.Label7.AutoSize = True
+        Me.Label7.AutoSize = true
         Me.Label7.Location = New System.Drawing.Point(20, 108)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(114, 13)
@@ -705,15 +716,15 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         Me.txtItem.BackColor = System.Drawing.Color.White
         Me.txtItem.Location = New System.Drawing.Point(208, 132)
-        Me.txtItem.Multiline = True
+        Me.txtItem.Multiline = true
         Me.txtItem.Name = "txtItem"
-        Me.txtItem.ReadOnly = True
+        Me.txtItem.ReadOnly = true
         Me.txtItem.Size = New System.Drawing.Size(362, 55)
         Me.txtItem.TabIndex = 16
         '
         'Label11
         '
-        Me.Label11.AutoSize = True
+        Me.Label11.AutoSize = true
         Me.Label11.Location = New System.Drawing.Point(20, 135)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(113, 13)
@@ -725,7 +736,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.txtUnidadMedida.BackColor = System.Drawing.Color.White
         Me.txtUnidadMedida.Location = New System.Drawing.Point(208, 105)
         Me.txtUnidadMedida.Name = "txtUnidadMedida"
-        Me.txtUnidadMedida.ReadOnly = True
+        Me.txtUnidadMedida.ReadOnly = true
         Me.txtUnidadMedida.Size = New System.Drawing.Size(94, 20)
         Me.txtUnidadMedida.TabIndex = 11
         '
@@ -734,7 +745,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.txtCodigoItem.BackColor = System.Drawing.Color.White
         Me.txtCodigoItem.Location = New System.Drawing.Point(165, 132)
         Me.txtCodigoItem.Name = "txtCodigoItem"
-        Me.txtCodigoItem.ReadOnly = True
+        Me.txtCodigoItem.ReadOnly = true
         Me.txtCodigoItem.Size = New System.Drawing.Size(37, 20)
         Me.txtCodigoItem.TabIndex = 15
         '
@@ -743,7 +754,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.txtCodigoUnidadMedida.BackColor = System.Drawing.Color.White
         Me.txtCodigoUnidadMedida.Location = New System.Drawing.Point(165, 105)
         Me.txtCodigoUnidadMedida.Name = "txtCodigoUnidadMedida"
-        Me.txtCodigoUnidadMedida.ReadOnly = True
+        Me.txtCodigoUnidadMedida.ReadOnly = true
         Me.txtCodigoUnidadMedida.Size = New System.Drawing.Size(37, 20)
         Me.txtCodigoUnidadMedida.TabIndex = 10
         '
@@ -752,7 +763,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.txtFamilia.BackColor = System.Drawing.Color.White
         Me.txtFamilia.Location = New System.Drawing.Point(208, 78)
         Me.txtFamilia.Name = "txtFamilia"
-        Me.txtFamilia.ReadOnly = True
+        Me.txtFamilia.ReadOnly = true
         Me.txtFamilia.Size = New System.Drawing.Size(364, 20)
         Me.txtFamilia.TabIndex = 8
         '
@@ -761,7 +772,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.txtCodigoFamilia.BackColor = System.Drawing.Color.White
         Me.txtCodigoFamilia.Location = New System.Drawing.Point(165, 78)
         Me.txtCodigoFamilia.Name = "txtCodigoFamilia"
-        Me.txtCodigoFamilia.ReadOnly = True
+        Me.txtCodigoFamilia.ReadOnly = true
         Me.txtCodigoFamilia.Size = New System.Drawing.Size(37, 20)
         Me.txtCodigoFamilia.TabIndex = 7
         '
@@ -770,7 +781,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.txtClase.BackColor = System.Drawing.Color.White
         Me.txtClase.Location = New System.Drawing.Point(208, 51)
         Me.txtClase.Name = "txtClase"
-        Me.txtClase.ReadOnly = True
+        Me.txtClase.ReadOnly = true
         Me.txtClase.Size = New System.Drawing.Size(364, 20)
         Me.txtClase.TabIndex = 5
         '
@@ -779,7 +790,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.txtCodigoClase.BackColor = System.Drawing.Color.White
         Me.txtCodigoClase.Location = New System.Drawing.Point(165, 51)
         Me.txtCodigoClase.Name = "txtCodigoClase"
-        Me.txtCodigoClase.ReadOnly = True
+        Me.txtCodigoClase.ReadOnly = true
         Me.txtCodigoClase.Size = New System.Drawing.Size(37, 20)
         Me.txtCodigoClase.TabIndex = 4
         '
@@ -788,7 +799,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.txtGrupo.BackColor = System.Drawing.Color.White
         Me.txtGrupo.Location = New System.Drawing.Point(208, 24)
         Me.txtGrupo.Name = "txtGrupo"
-        Me.txtGrupo.ReadOnly = True
+        Me.txtGrupo.ReadOnly = true
         Me.txtGrupo.Size = New System.Drawing.Size(364, 20)
         Me.txtGrupo.TabIndex = 5
         '
@@ -797,7 +808,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.txtCodigoGrupo.BackColor = System.Drawing.Color.White
         Me.txtCodigoGrupo.Location = New System.Drawing.Point(165, 24)
         Me.txtCodigoGrupo.Name = "txtCodigoGrupo"
-        Me.txtCodigoGrupo.ReadOnly = True
+        Me.txtCodigoGrupo.ReadOnly = true
         Me.txtCodigoGrupo.Size = New System.Drawing.Size(37, 20)
         Me.txtCodigoGrupo.TabIndex = 1
         '
@@ -806,7 +817,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.txtEspecificaDetalle.BackColor = System.Drawing.Color.White
         Me.txtEspecificaDetalle.Location = New System.Drawing.Point(550, 105)
         Me.txtEspecificaDetalle.Name = "txtEspecificaDetalle"
-        Me.txtEspecificaDetalle.ReadOnly = True
+        Me.txtEspecificaDetalle.ReadOnly = true
         Me.txtEspecificaDetalle.Size = New System.Drawing.Size(20, 20)
         Me.txtEspecificaDetalle.TabIndex = 13
         Me.txtEspecificaDetalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -816,7 +827,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.txtEspecifica.BackColor = System.Drawing.Color.White
         Me.txtEspecifica.Location = New System.Drawing.Point(530, 105)
         Me.txtEspecifica.Name = "txtEspecifica"
-        Me.txtEspecifica.ReadOnly = True
+        Me.txtEspecifica.ReadOnly = true
         Me.txtEspecifica.Size = New System.Drawing.Size(20, 20)
         Me.txtEspecifica.TabIndex = 13
         Me.txtEspecifica.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -826,7 +837,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.txtSubGenericaDetalle.BackColor = System.Drawing.Color.White
         Me.txtSubGenericaDetalle.Location = New System.Drawing.Point(510, 105)
         Me.txtSubGenericaDetalle.Name = "txtSubGenericaDetalle"
-        Me.txtSubGenericaDetalle.ReadOnly = True
+        Me.txtSubGenericaDetalle.ReadOnly = true
         Me.txtSubGenericaDetalle.Size = New System.Drawing.Size(20, 20)
         Me.txtSubGenericaDetalle.TabIndex = 13
         Me.txtSubGenericaDetalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -836,7 +847,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.txtSubGenerica.BackColor = System.Drawing.Color.White
         Me.txtSubGenerica.Location = New System.Drawing.Point(490, 105)
         Me.txtSubGenerica.Name = "txtSubGenerica"
-        Me.txtSubGenerica.ReadOnly = True
+        Me.txtSubGenerica.ReadOnly = true
         Me.txtSubGenerica.Size = New System.Drawing.Size(20, 20)
         Me.txtSubGenerica.TabIndex = 13
         Me.txtSubGenerica.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -846,7 +857,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.txtGenerica.BackColor = System.Drawing.Color.White
         Me.txtGenerica.Location = New System.Drawing.Point(470, 105)
         Me.txtGenerica.Name = "txtGenerica"
-        Me.txtGenerica.ReadOnly = True
+        Me.txtGenerica.ReadOnly = true
         Me.txtGenerica.Size = New System.Drawing.Size(20, 20)
         Me.txtGenerica.TabIndex = 13
         Me.txtGenerica.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -856,14 +867,14 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.txtTipoTransaccion.BackColor = System.Drawing.Color.White
         Me.txtTipoTransaccion.Location = New System.Drawing.Point(450, 105)
         Me.txtTipoTransaccion.Name = "txtTipoTransaccion"
-        Me.txtTipoTransaccion.ReadOnly = True
+        Me.txtTipoTransaccion.ReadOnly = true
         Me.txtTipoTransaccion.Size = New System.Drawing.Size(20, 20)
         Me.txtTipoTransaccion.TabIndex = 13
         Me.txtTipoTransaccion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label6
         '
-        Me.Label6.AutoSize = True
+        Me.Label6.AutoSize = true
         Me.Label6.Location = New System.Drawing.Point(308, 108)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(133, 13)
@@ -872,7 +883,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label8
         '
-        Me.Label8.AutoSize = True
+        Me.Label8.AutoSize = true
         Me.Label8.Location = New System.Drawing.Point(20, 81)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(79, 13)
@@ -881,7 +892,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label9
         '
-        Me.Label9.AutoSize = True
+        Me.Label9.AutoSize = true
         Me.Label9.Location = New System.Drawing.Point(20, 54)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(71, 13)
@@ -898,11 +909,11 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.btnBuscarItems.TabIndex = 0
         Me.btnBuscarItems.Text = "Buscar Items"
         Me.btnBuscarItems.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnBuscarItems.UseVisualStyleBackColor = True
+        Me.btnBuscarItems.UseVisualStyleBackColor = true
         '
         'Label10
         '
-        Me.Label10.AutoSize = True
+        Me.Label10.AutoSize = true
         Me.Label10.Location = New System.Drawing.Point(20, 27)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(74, 13)
@@ -922,12 +933,12 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.GroupBox3.Controls.Add(Me.Label45)
         Me.GroupBox3.Controls.Add(Me.txtCantidad)
         Me.GroupBox3.Controls.Add(Me.Label26)
-        Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.GroupBox3.Location = New System.Drawing.Point(728, 233)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(581, 95)
         Me.GroupBox3.TabIndex = 3
-        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.TabStop = false
         Me.GroupBox3.Text = "Cantidad:"
         '
         'btnSaldos
@@ -940,13 +951,13 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.btnSaldos.TabIndex = 0
         Me.btnSaldos.Text = "Saldos"
         Me.btnSaldos.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnSaldos.UseVisualStyleBackColor = True
+        Me.btnSaldos.UseVisualStyleBackColor = true
         '
         'txtSaldo
         '
         Me.txtSaldo.Location = New System.Drawing.Point(165, 68)
         Me.txtSaldo.Name = "txtSaldo"
-        Me.txtSaldo.ReadOnly = True
+        Me.txtSaldo.ReadOnly = true
         Me.txtSaldo.Size = New System.Drawing.Size(103, 20)
         Me.txtSaldo.TabIndex = 5
         Me.txtSaldo.Text = "0.00"
@@ -954,7 +965,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label24
         '
-        Me.Label24.AutoSize = True
+        Me.Label24.AutoSize = true
         Me.Label24.Location = New System.Drawing.Point(24, 71)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(135, 13)
@@ -965,7 +976,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         Me.txtCosto.Location = New System.Drawing.Point(447, 16)
         Me.txtCosto.Name = "txtCosto"
-        Me.txtCosto.ReadOnly = True
+        Me.txtCosto.ReadOnly = true
         Me.txtCosto.Size = New System.Drawing.Size(123, 20)
         Me.txtCosto.TabIndex = 3
         Me.txtCosto.Text = "0.00"
@@ -976,14 +987,14 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.txtDB.BackColor = System.Drawing.Color.White
         Me.txtDB.Location = New System.Drawing.Point(297, 63)
         Me.txtDB.Name = "txtDB"
-        Me.txtDB.ReadOnly = True
+        Me.txtDB.ReadOnly = true
         Me.txtDB.Size = New System.Drawing.Size(37, 20)
         Me.txtDB.TabIndex = 15
-        Me.txtDB.Visible = False
+        Me.txtDB.Visible = false
         '
         'Label25
         '
-        Me.Label25.AutoSize = True
+        Me.Label25.AutoSize = true
         Me.Label25.Location = New System.Drawing.Point(308, 19)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(112, 13)
@@ -994,7 +1005,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         Me.txtCantidad_m.Location = New System.Drawing.Point(165, 42)
         Me.txtCantidad_m.Name = "txtCantidad_m"
-        Me.txtCantidad_m.ReadOnly = True
+        Me.txtCantidad_m.ReadOnly = true
         Me.txtCantidad_m.Size = New System.Drawing.Size(103, 20)
         Me.txtCantidad_m.TabIndex = 1
         Me.txtCantidad_m.Text = "0.00"
@@ -1002,7 +1013,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label45
         '
-        Me.Label45.AutoSize = True
+        Me.Label45.AutoSize = true
         Me.Label45.Location = New System.Drawing.Point(4, 46)
         Me.Label45.Name = "Label45"
         Me.Label45.Size = New System.Drawing.Size(155, 13)
@@ -1013,7 +1024,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         Me.txtCantidad.Location = New System.Drawing.Point(165, 16)
         Me.txtCantidad.Name = "txtCantidad"
-        Me.txtCantidad.ReadOnly = True
+        Me.txtCantidad.ReadOnly = true
         Me.txtCantidad.Size = New System.Drawing.Size(103, 20)
         Me.txtCantidad.TabIndex = 1
         Me.txtCantidad.Text = "0.00"
@@ -1021,7 +1032,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label26
         '
-        Me.Label26.AutoSize = True
+        Me.Label26.AutoSize = true
         Me.Label26.Location = New System.Drawing.Point(15, 19)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(144, 13)
@@ -1034,12 +1045,12 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.GroupBox4.Controls.Add(Me.Label27)
         Me.GroupBox4.Controls.Add(Me.Label28)
         Me.GroupBox4.Controls.Add(Me.cbMotivo)
-        Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.GroupBox4.Location = New System.Drawing.Point(12, 360)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(710, 93)
         Me.GroupBox4.TabIndex = 6
-        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.TabStop = false
         Me.GroupBox4.Text = "Documentación y Justificación"
         '
         'txtJustificacion
@@ -1047,7 +1058,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.txtJustificacion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtJustificacion.Location = New System.Drawing.Point(165, 47)
         Me.txtJustificacion.MaxLength = 2000
-        Me.txtJustificacion.Multiline = True
+        Me.txtJustificacion.Multiline = true
         Me.txtJustificacion.Name = "txtJustificacion"
         Me.txtJustificacion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtJustificacion.Size = New System.Drawing.Size(539, 40)
@@ -1055,7 +1066,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label27
         '
-        Me.Label27.AutoSize = True
+        Me.Label27.AutoSize = true
         Me.Label27.Location = New System.Drawing.Point(6, 47)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(113, 13)
@@ -1064,7 +1075,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label28
         '
-        Me.Label28.AutoSize = True
+        Me.Label28.AutoSize = true
         Me.Label28.Location = New System.Drawing.Point(6, 23)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(157, 13)
@@ -1074,7 +1085,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         'cbMotivo
         '
         Me.cbMotivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbMotivo.FormattingEnabled = True
+        Me.cbMotivo.FormattingEnabled = true
         Me.cbMotivo.Location = New System.Drawing.Point(165, 19)
         Me.cbMotivo.Name = "cbMotivo"
         Me.cbMotivo.Size = New System.Drawing.Size(539, 21)
@@ -1082,6 +1093,18 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'gbModificado
         '
+        Me.gbModificado.Controls.Add(Me.chkRebajaDiciembre)
+        Me.gbModificado.Controls.Add(Me.chkRebajaAgosto)
+        Me.gbModificado.Controls.Add(Me.chkRebajaAbril)
+        Me.gbModificado.Controls.Add(Me.chkRebajaNoviembre)
+        Me.gbModificado.Controls.Add(Me.chkRebajaJulio)
+        Me.gbModificado.Controls.Add(Me.chkRebajaMarzo)
+        Me.gbModificado.Controls.Add(Me.chkRebajaOctubre)
+        Me.gbModificado.Controls.Add(Me.chkRebajaJunio)
+        Me.gbModificado.Controls.Add(Me.chkRebajaFebrero)
+        Me.gbModificado.Controls.Add(Me.chkRebajaSeptiembre)
+        Me.gbModificado.Controls.Add(Me.chkRebajaMayo)
+        Me.gbModificado.Controls.Add(Me.chkRebajaEnero)
         Me.gbModificado.Controls.Add(Me.txtDiciembre_m)
         Me.gbModificado.Controls.Add(Me.txtJunio_m)
         Me.gbModificado.Controls.Add(Me.Label29)
@@ -1106,13 +1129,133 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.gbModificado.Controls.Add(Me.Label39)
         Me.gbModificado.Controls.Add(Me.txtEnero_m)
         Me.gbModificado.Controls.Add(Me.Label40)
-        Me.gbModificado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbModificado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.gbModificado.Location = New System.Drawing.Point(12, 256)
         Me.gbModificado.Name = "gbModificado"
         Me.gbModificado.Size = New System.Drawing.Size(710, 98)
         Me.gbModificado.TabIndex = 2
-        Me.gbModificado.TabStop = False
+        Me.gbModificado.TabStop = false
         Me.gbModificado.Text = "Cantidad / Importe Mensualizados [Modificado]"
+        '
+        'chkRebajaDiciembre
+        '
+        Me.chkRebajaDiciembre.AutoSize = true
+        Me.chkRebajaDiciembre.Location = New System.Drawing.Point(600, 73)
+        Me.chkRebajaDiciembre.Name = "chkRebajaDiciembre"
+        Me.chkRebajaDiciembre.Size = New System.Drawing.Size(15, 14)
+        Me.chkRebajaDiciembre.TabIndex = 25
+        Me.chkRebajaDiciembre.UseVisualStyleBackColor = true
+        Me.chkRebajaDiciembre.Visible = false
+        '
+        'chkRebajaAgosto
+        '
+        Me.chkRebajaAgosto.AutoSize = true
+        Me.chkRebajaAgosto.Location = New System.Drawing.Point(600, 48)
+        Me.chkRebajaAgosto.Name = "chkRebajaAgosto"
+        Me.chkRebajaAgosto.Size = New System.Drawing.Size(15, 14)
+        Me.chkRebajaAgosto.TabIndex = 25
+        Me.chkRebajaAgosto.UseVisualStyleBackColor = true
+        Me.chkRebajaAgosto.Visible = false
+        '
+        'chkRebajaAbril
+        '
+        Me.chkRebajaAbril.AutoSize = true
+        Me.chkRebajaAbril.Location = New System.Drawing.Point(600, 22)
+        Me.chkRebajaAbril.Name = "chkRebajaAbril"
+        Me.chkRebajaAbril.Size = New System.Drawing.Size(15, 14)
+        Me.chkRebajaAbril.TabIndex = 25
+        Me.chkRebajaAbril.UseVisualStyleBackColor = true
+        Me.chkRebajaAbril.Visible = false
+        '
+        'chkRebajaNoviembre
+        '
+        Me.chkRebajaNoviembre.AutoSize = true
+        Me.chkRebajaNoviembre.Location = New System.Drawing.Point(420, 73)
+        Me.chkRebajaNoviembre.Name = "chkRebajaNoviembre"
+        Me.chkRebajaNoviembre.Size = New System.Drawing.Size(15, 14)
+        Me.chkRebajaNoviembre.TabIndex = 25
+        Me.chkRebajaNoviembre.UseVisualStyleBackColor = true
+        Me.chkRebajaNoviembre.Visible = false
+        '
+        'chkRebajaJulio
+        '
+        Me.chkRebajaJulio.AutoSize = true
+        Me.chkRebajaJulio.Location = New System.Drawing.Point(420, 48)
+        Me.chkRebajaJulio.Name = "chkRebajaJulio"
+        Me.chkRebajaJulio.Size = New System.Drawing.Size(15, 14)
+        Me.chkRebajaJulio.TabIndex = 25
+        Me.chkRebajaJulio.UseVisualStyleBackColor = true
+        Me.chkRebajaJulio.Visible = false
+        '
+        'chkRebajaMarzo
+        '
+        Me.chkRebajaMarzo.AutoSize = true
+        Me.chkRebajaMarzo.Location = New System.Drawing.Point(420, 22)
+        Me.chkRebajaMarzo.Name = "chkRebajaMarzo"
+        Me.chkRebajaMarzo.Size = New System.Drawing.Size(15, 14)
+        Me.chkRebajaMarzo.TabIndex = 25
+        Me.chkRebajaMarzo.UseVisualStyleBackColor = true
+        Me.chkRebajaMarzo.Visible = false
+        '
+        'chkRebajaOctubre
+        '
+        Me.chkRebajaOctubre.AutoSize = true
+        Me.chkRebajaOctubre.Location = New System.Drawing.Point(240, 73)
+        Me.chkRebajaOctubre.Name = "chkRebajaOctubre"
+        Me.chkRebajaOctubre.Size = New System.Drawing.Size(15, 14)
+        Me.chkRebajaOctubre.TabIndex = 25
+        Me.chkRebajaOctubre.UseVisualStyleBackColor = true
+        Me.chkRebajaOctubre.Visible = false
+        '
+        'chkRebajaJunio
+        '
+        Me.chkRebajaJunio.AutoSize = true
+        Me.chkRebajaJunio.Location = New System.Drawing.Point(240, 48)
+        Me.chkRebajaJunio.Name = "chkRebajaJunio"
+        Me.chkRebajaJunio.Size = New System.Drawing.Size(15, 14)
+        Me.chkRebajaJunio.TabIndex = 25
+        Me.chkRebajaJunio.UseVisualStyleBackColor = true
+        Me.chkRebajaJunio.Visible = false
+        '
+        'chkRebajaFebrero
+        '
+        Me.chkRebajaFebrero.AutoSize = true
+        Me.chkRebajaFebrero.Location = New System.Drawing.Point(240, 22)
+        Me.chkRebajaFebrero.Name = "chkRebajaFebrero"
+        Me.chkRebajaFebrero.Size = New System.Drawing.Size(15, 14)
+        Me.chkRebajaFebrero.TabIndex = 25
+        Me.chkRebajaFebrero.UseVisualStyleBackColor = true
+        Me.chkRebajaFebrero.Visible = false
+        '
+        'chkRebajaSeptiembre
+        '
+        Me.chkRebajaSeptiembre.AutoSize = true
+        Me.chkRebajaSeptiembre.Location = New System.Drawing.Point(74, 72)
+        Me.chkRebajaSeptiembre.Name = "chkRebajaSeptiembre"
+        Me.chkRebajaSeptiembre.Size = New System.Drawing.Size(15, 14)
+        Me.chkRebajaSeptiembre.TabIndex = 25
+        Me.chkRebajaSeptiembre.UseVisualStyleBackColor = true
+        Me.chkRebajaSeptiembre.Visible = false
+        '
+        'chkRebajaMayo
+        '
+        Me.chkRebajaMayo.AutoSize = true
+        Me.chkRebajaMayo.Location = New System.Drawing.Point(74, 48)
+        Me.chkRebajaMayo.Name = "chkRebajaMayo"
+        Me.chkRebajaMayo.Size = New System.Drawing.Size(15, 14)
+        Me.chkRebajaMayo.TabIndex = 25
+        Me.chkRebajaMayo.UseVisualStyleBackColor = true
+        Me.chkRebajaMayo.Visible = false
+        '
+        'chkRebajaEnero
+        '
+        Me.chkRebajaEnero.AutoSize = true
+        Me.chkRebajaEnero.Location = New System.Drawing.Point(74, 23)
+        Me.chkRebajaEnero.Name = "chkRebajaEnero"
+        Me.chkRebajaEnero.Size = New System.Drawing.Size(15, 14)
+        Me.chkRebajaEnero.TabIndex = 25
+        Me.chkRebajaEnero.UseVisualStyleBackColor = true
+        Me.chkRebajaEnero.Visible = false
         '
         'txtDiciembre_m
         '
@@ -1127,14 +1270,14 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         Me.txtJunio_m.Location = New System.Drawing.Point(240, 45)
         Me.txtJunio_m.Name = "txtJunio_m"
-        Me.txtJunio_m.Size = New System.Drawing.Size(100, 20)
+        Me.txtJunio_m.Size = New System.Drawing.Size(99, 20)
         Me.txtJunio_m.TabIndex = 5
         Me.txtJunio_m.Text = "0.00"
         Me.txtJunio_m.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label29
         '
-        Me.Label29.AutoSize = True
+        Me.Label29.AutoSize = true
         Me.Label29.Location = New System.Drawing.Point(526, 73)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(67, 13)
@@ -1143,7 +1286,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label30
         '
-        Me.Label30.AutoSize = True
+        Me.Label30.AutoSize = true
         Me.Label30.Location = New System.Drawing.Point(180, 48)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(41, 13)
@@ -1154,7 +1297,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         Me.txtNoviembre_m.Location = New System.Drawing.Point(420, 70)
         Me.txtNoviembre_m.Name = "txtNoviembre_m"
-        Me.txtNoviembre_m.Size = New System.Drawing.Size(100, 20)
+        Me.txtNoviembre_m.Size = New System.Drawing.Size(99, 20)
         Me.txtNoviembre_m.TabIndex = 10
         Me.txtNoviembre_m.Text = "0.00"
         Me.txtNoviembre_m.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -1170,7 +1313,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label31
         '
-        Me.Label31.AutoSize = True
+        Me.Label31.AutoSize = true
         Me.Label31.Location = New System.Drawing.Point(348, 73)
         Me.Label31.Name = "Label31"
         Me.Label31.Size = New System.Drawing.Size(71, 13)
@@ -1179,7 +1322,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label32
         '
-        Me.Label32.AutoSize = True
+        Me.Label32.AutoSize = true
         Me.Label32.Location = New System.Drawing.Point(6, 48)
         Me.Label32.Name = "Label32"
         Me.Label32.Size = New System.Drawing.Size(41, 13)
@@ -1190,7 +1333,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         Me.txtOctubre_m.Location = New System.Drawing.Point(240, 70)
         Me.txtOctubre_m.Name = "txtOctubre_m"
-        Me.txtOctubre_m.Size = New System.Drawing.Size(100, 20)
+        Me.txtOctubre_m.Size = New System.Drawing.Size(99, 20)
         Me.txtOctubre_m.TabIndex = 9
         Me.txtOctubre_m.Text = "0.00"
         Me.txtOctubre_m.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -1206,7 +1349,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label33
         '
-        Me.Label33.AutoSize = True
+        Me.Label33.AutoSize = true
         Me.Label33.Location = New System.Drawing.Point(180, 73)
         Me.Label33.Name = "Label33"
         Me.Label33.Size = New System.Drawing.Size(56, 13)
@@ -1215,7 +1358,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label34
         '
-        Me.Label34.AutoSize = True
+        Me.Label34.AutoSize = true
         Me.Label34.Location = New System.Drawing.Point(526, 23)
         Me.Label34.Name = "Label34"
         Me.Label34.Size = New System.Drawing.Size(36, 13)
@@ -1235,14 +1378,14 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         Me.txtMarzo_m.Location = New System.Drawing.Point(420, 20)
         Me.txtMarzo_m.Name = "txtMarzo_m"
-        Me.txtMarzo_m.Size = New System.Drawing.Size(100, 20)
+        Me.txtMarzo_m.Size = New System.Drawing.Size(99, 20)
         Me.txtMarzo_m.TabIndex = 2
         Me.txtMarzo_m.Text = "0.00"
         Me.txtMarzo_m.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label35
         '
-        Me.Label35.AutoSize = True
+        Me.Label35.AutoSize = true
         Me.Label35.Location = New System.Drawing.Point(6, 73)
         Me.Label35.Name = "Label35"
         Me.Label35.Size = New System.Drawing.Size(74, 13)
@@ -1251,7 +1394,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label36
         '
-        Me.Label36.AutoSize = True
+        Me.Label36.AutoSize = true
         Me.Label36.Location = New System.Drawing.Point(348, 23)
         Me.Label36.Name = "Label36"
         Me.Label36.Size = New System.Drawing.Size(45, 13)
@@ -1271,14 +1414,14 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         Me.txtFebrero_m.Location = New System.Drawing.Point(240, 20)
         Me.txtFebrero_m.Name = "txtFebrero_m"
-        Me.txtFebrero_m.Size = New System.Drawing.Size(100, 20)
+        Me.txtFebrero_m.Size = New System.Drawing.Size(99, 20)
         Me.txtFebrero_m.TabIndex = 1
         Me.txtFebrero_m.Text = "0.00"
         Me.txtFebrero_m.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label37
         '
-        Me.Label37.AutoSize = True
+        Me.Label37.AutoSize = true
         Me.Label37.Location = New System.Drawing.Point(526, 48)
         Me.Label37.Name = "Label37"
         Me.Label37.Size = New System.Drawing.Size(50, 13)
@@ -1287,7 +1430,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label38
         '
-        Me.Label38.AutoSize = True
+        Me.Label38.AutoSize = true
         Me.Label38.Location = New System.Drawing.Point(180, 23)
         Me.Label38.Name = "Label38"
         Me.Label38.Size = New System.Drawing.Size(54, 13)
@@ -1298,14 +1441,14 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         Me.txtJulio_m.Location = New System.Drawing.Point(420, 45)
         Me.txtJulio_m.Name = "txtJulio_m"
-        Me.txtJulio_m.Size = New System.Drawing.Size(100, 20)
+        Me.txtJulio_m.Size = New System.Drawing.Size(99, 20)
         Me.txtJulio_m.TabIndex = 6
         Me.txtJulio_m.Text = "0.00"
         Me.txtJulio_m.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label39
         '
-        Me.Label39.AutoSize = True
+        Me.Label39.AutoSize = true
         Me.Label39.Location = New System.Drawing.Point(348, 48)
         Me.Label39.Name = "Label39"
         Me.Label39.Size = New System.Drawing.Size(37, 13)
@@ -1323,7 +1466,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label40
         '
-        Me.Label40.AutoSize = True
+        Me.Label40.AutoSize = true
         Me.Label40.Location = New System.Drawing.Point(6, 23)
         Me.Label40.Name = "Label40"
         Me.Label40.Size = New System.Drawing.Size(44, 13)
@@ -1332,60 +1475,60 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.CheckBox1)
+        Me.GroupBox1.Controls.Add(Me.chkRebajar)
         Me.GroupBox1.Controls.Add(Me.txtDiferencia)
-        Me.GroupBox1.Controls.Add(Me.Label41)
+        Me.GroupBox1.Controls.Add(Me.lblDiferencia)
         Me.GroupBox1.Controls.Add(Me.txtTotal2)
         Me.GroupBox1.Controls.Add(Me.Label42)
         Me.GroupBox1.Controls.Add(Me.txtTotal)
         Me.GroupBox1.Controls.Add(Me.Label43)
         Me.GroupBox1.Controls.Add(Me.txtMonto)
         Me.GroupBox1.Controls.Add(Me.Label44)
-        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(728, 334)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(572, 100)
+        Me.GroupBox1.Size = New System.Drawing.Size(572, 75)
         Me.GroupBox1.TabIndex = 13
-        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.TabStop = false
         Me.GroupBox1.Text = "Montos"
         '
-        'CheckBox1
+        'chkRebajar
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Enabled = False
-        Me.CheckBox1.Location = New System.Drawing.Point(307, 23)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(70, 17)
-        Me.CheckBox1.TabIndex = 25
-        Me.CheckBox1.Text = "Rebajar"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.chkRebajar.AutoSize = true
+        Me.chkRebajar.Enabled = false
+        Me.chkRebajar.Location = New System.Drawing.Point(277, 21)
+        Me.chkRebajar.Name = "chkRebajar"
+        Me.chkRebajar.Size = New System.Drawing.Size(70, 17)
+        Me.chkRebajar.TabIndex = 25
+        Me.chkRebajar.Text = "Rebajar"
+        Me.chkRebajar.UseVisualStyleBackColor = true
         '
         'txtDiferencia
         '
-        Me.txtDiferencia.Location = New System.Drawing.Point(426, 72)
+        Me.txtDiferencia.Location = New System.Drawing.Point(431, 19)
         Me.txtDiferencia.Name = "txtDiferencia"
-        Me.txtDiferencia.ReadOnly = True
+        Me.txtDiferencia.ReadOnly = true
         Me.txtDiferencia.Size = New System.Drawing.Size(135, 20)
         Me.txtDiferencia.TabIndex = 1
         Me.txtDiferencia.Text = "0.00"
         Me.txtDiferencia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtDiferencia.Visible = False
+        Me.txtDiferencia.Visible = false
         '
-        'Label41
+        'lblDiferencia
         '
-        Me.Label41.AutoSize = True
-        Me.Label41.Location = New System.Drawing.Point(355, 75)
-        Me.Label41.Name = "Label41"
-        Me.Label41.Size = New System.Drawing.Size(65, 13)
-        Me.Label41.TabIndex = 0
-        Me.Label41.Text = "Diferencia"
-        Me.Label41.Visible = False
+        Me.lblDiferencia.AutoSize = true
+        Me.lblDiferencia.Location = New System.Drawing.Point(360, 22)
+        Me.lblDiferencia.Name = "lblDiferencia"
+        Me.lblDiferencia.Size = New System.Drawing.Size(65, 13)
+        Me.lblDiferencia.TabIndex = 0
+        Me.lblDiferencia.Text = "Diferencia"
+        Me.lblDiferencia.Visible = false
         '
         'txtTotal2
         '
-        Me.txtTotal2.Location = New System.Drawing.Point(167, 72)
+        Me.txtTotal2.Location = New System.Drawing.Point(431, 45)
         Me.txtTotal2.Name = "txtTotal2"
-        Me.txtTotal2.ReadOnly = True
+        Me.txtTotal2.ReadOnly = true
         Me.txtTotal2.Size = New System.Drawing.Size(135, 20)
         Me.txtTotal2.TabIndex = 1
         Me.txtTotal2.Text = "0.00"
@@ -1393,8 +1536,8 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label42
         '
-        Me.Label42.AutoSize = True
-        Me.Label42.Location = New System.Drawing.Point(9, 75)
+        Me.Label42.AutoSize = true
+        Me.Label42.Location = New System.Drawing.Point(307, 48)
         Me.Label42.Name = "Label42"
         Me.Label42.Size = New System.Drawing.Size(118, 13)
         Me.Label42.TabIndex = 0
@@ -1402,9 +1545,9 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'txtTotal
         '
-        Me.txtTotal.Location = New System.Drawing.Point(167, 46)
+        Me.txtTotal.Location = New System.Drawing.Point(136, 45)
         Me.txtTotal.Name = "txtTotal"
-        Me.txtTotal.ReadOnly = True
+        Me.txtTotal.ReadOnly = true
         Me.txtTotal.Size = New System.Drawing.Size(135, 20)
         Me.txtTotal.TabIndex = 1
         Me.txtTotal.Text = "0.00"
@@ -1412,8 +1555,8 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label43
         '
-        Me.Label43.AutoSize = True
-        Me.Label43.Location = New System.Drawing.Point(10, 49)
+        Me.Label43.AutoSize = true
+        Me.Label43.Location = New System.Drawing.Point(40, 48)
         Me.Label43.Name = "Label43"
         Me.Label43.Size = New System.Drawing.Size(90, 13)
         Me.Label43.TabIndex = 0
@@ -1421,7 +1564,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'txtMonto
         '
-        Me.txtMonto.Location = New System.Drawing.Point(167, 20)
+        Me.txtMonto.Location = New System.Drawing.Point(136, 19)
         Me.txtMonto.Name = "txtMonto"
         Me.txtMonto.Size = New System.Drawing.Size(135, 20)
         Me.txtMonto.TabIndex = 1
@@ -1430,8 +1573,8 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'Label44
         '
-        Me.Label44.AutoSize = True
-        Me.Label44.Location = New System.Drawing.Point(6, 23)
+        Me.Label44.AutoSize = true
+        Me.Label44.Location = New System.Drawing.Point(7, 22)
         Me.Label44.Name = "Label44"
         Me.Label44.Size = New System.Drawing.Size(123, 13)
         Me.Label44.TabIndex = 0
@@ -1439,9 +1582,9 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'frmRegistro_Acciones_Modificatorias
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1309, 652)
+        Me.ClientSize = New System.Drawing.Size(1309, 589)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox4)
@@ -1451,34 +1594,34 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.Controls.Add(Me.gbOriginal)
         Me.Controls.Add(Me.gbDetalle)
         Me.Controls.Add(Me.gbDatosGenerales)
-        Me.DoubleBuffered = True
+        Me.DoubleBuffered = true
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
+        Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
+        Me.MaximizeBox = false
+        Me.MinimizeBox = false
         Me.Name = "frmRegistro_Acciones_Modificatorias"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = " ..:: Registro General de la Accion Modificatoria ::.."
-        Me.gbDatosGenerales.ResumeLayout(False)
-        Me.gbDatosGenerales.PerformLayout()
-        Me.gbOriginal.ResumeLayout(False)
-        Me.gbOriginal.PerformLayout()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.gbDetalle.ResumeLayout(False)
-        CType(Me.dgvDistribucionCn, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.gbCatalogo.ResumeLayout(False)
-        Me.gbCatalogo.PerformLayout()
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
-        Me.GroupBox4.ResumeLayout(False)
-        Me.GroupBox4.PerformLayout()
-        Me.gbModificado.ResumeLayout(False)
-        Me.gbModificado.PerformLayout()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        Me.ResumeLayout(False)
+        Me.gbDatosGenerales.ResumeLayout(false)
+        Me.gbDatosGenerales.PerformLayout
+        Me.gbOriginal.ResumeLayout(false)
+        Me.gbOriginal.PerformLayout
+        Me.GroupBox2.ResumeLayout(false)
+        Me.gbDetalle.ResumeLayout(false)
+        CType(Me.dgvDistribucionCn,System.ComponentModel.ISupportInitialize).EndInit
+        Me.gbCatalogo.ResumeLayout(false)
+        Me.gbCatalogo.PerformLayout
+        Me.GroupBox3.ResumeLayout(false)
+        Me.GroupBox3.PerformLayout
+        Me.GroupBox4.ResumeLayout(false)
+        Me.GroupBox4.PerformLayout
+        Me.gbModificado.ResumeLayout(false)
+        Me.gbModificado.PerformLayout
+        Me.GroupBox1.ResumeLayout(false)
+        Me.GroupBox1.PerformLayout
+        Me.ResumeLayout(false)
 
-    End Sub
+End Sub
     Friend WithEvents gbDatosGenerales As System.Windows.Forms.GroupBox
     Friend WithEvents cbUnidadOrganica As System.Windows.Forms.ComboBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
@@ -1588,9 +1731,9 @@ Partial Class frmRegistro_Acciones_Modificatorias
     Friend WithEvents txtEnero_m As TextBox
     Friend WithEvents Label40 As Label
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents chkRebajar As CheckBox
     Friend WithEvents txtDiferencia As TextBox
-    Friend WithEvents Label41 As Label
+    Friend WithEvents lblDiferencia As Label
     Friend WithEvents txtTotal2 As TextBox
     Friend WithEvents Label42 As Label
     Friend WithEvents txtTotal As TextBox
@@ -1599,4 +1742,16 @@ Partial Class frmRegistro_Acciones_Modificatorias
     Friend WithEvents Label44 As Label
     Friend WithEvents txtCantidad_m As TextBox
     Friend WithEvents Label45 As Label
+    Friend WithEvents chkRebajaDiciembre As CheckBox
+    Friend WithEvents chkRebajaAgosto As CheckBox
+    Friend WithEvents chkRebajaAbril As CheckBox
+    Friend WithEvents chkRebajaNoviembre As CheckBox
+    Friend WithEvents chkRebajaJulio As CheckBox
+    Friend WithEvents chkRebajaMarzo As CheckBox
+    Friend WithEvents chkRebajaOctubre As CheckBox
+    Friend WithEvents chkRebajaJunio As CheckBox
+    Friend WithEvents chkRebajaFebrero As CheckBox
+    Friend WithEvents chkRebajaSeptiembre As CheckBox
+    Friend WithEvents chkRebajaMayo As CheckBox
+    Friend WithEvents chkRebajaEnero As CheckBox
 End Class
