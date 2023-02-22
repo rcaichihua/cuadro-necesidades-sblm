@@ -381,4 +381,25 @@ codigo, item, unidad, costo, cantidad, Cantidad_Enero as Cantidad_Enero, Cantida
             MessageBox.Show("Estimado: " & My.Settings.Nombre_Usuario & ", Ud no cuenta con privilegios para acceder a esta opción", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
         End If
     End Sub
+
+    Private Sub Boton_Reporte_CN_Saldos_Click(sender As Object, e As EventArgs) Handles Boton_Reporte_CN_Saldos.Click
+        If Datos.Acceso_Sub_Boton(My.Settings.Usuario.Trim, "Boton_Cuadro_Necesidades", Me.Boton_Reporte_CN_Saldos.Name) = True Then
+           If Variable_Codigo_Secuencia_Funcional.Trim.Length > 0 And Variable_Codigo_Actividad.Trim.Length > 0 And Variable_Codigo_Unidad_Organica.Trim.Length > 0 Then
+                If Me.dgvCuadroDeNecesidades.CurrentCellAddress.Y >= 0 Then
+                    Datos.Imprimir_Reporte("Select Año_Ejecucion,Unidad_O,Meta,Actividad,Codigo_Catalogo,Clasificador as Partida,Nombre_Partida,Codigo,Descripcion_Item,unidad_medida,precio_unitario, Cantidad_Enero,Cantidad_Febrero, Cantidad_Marzo, Cantidad_Abril, Cantidad_Mayo, Cantidad_Junio, Cantidad_Julio, Cantidad_Agosto, Cantidad_Septiembre, Cantidad_Octubre, Cantidad_Noviembre, Cantidad_Diciembre From Lista_saldos_CN_AM_Requerimientos_Saldos Where Año_Ejecucion='" & My.Settings.Año_Ejecucion & "' And Codigo_Secuencia_Funcional='" & Me.dgvCuadroDeNecesidades.CurrentRow.Cells(1).Value & "' And Codigo_Actividad='" & Me.dgvCuadroDeNecesidades.CurrentRow.Cells(2).Value & "' And Codigo_Unidad_Organica='" & Me.dgvCuadroDeNecesidades.CurrentRow.Cells(3).Value & "' Order by Codigo_Catalogo, Clasificador, Nombre_Partida asc", New Reporte_CN_Resumen_General_Saldos, 100, "Reporte Cuadro de Necesidades Saldos", False)
+                    Call Me.Filtrar()
+                    Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_CN, Boton_Editar_CN, Boton_Eliminar_CN, Boton_Extornar_CN, Boton_Autorizar_CN, Boton_Aprobar_CN, Me.Boton_Visualizar_CN, Me.Boton_Imprimir_CN)
+                Else
+                    MessageBox.Show("Seleccione un C.N. para Reportar", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1)
+                    Call Me.Filtrar()
+                    Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_CN, Boton_Editar_CN, Boton_Eliminar_CN, Boton_Extornar_CN, Boton_Autorizar_CN, Boton_Aprobar_CN, Me.Boton_Visualizar_CN, Me.Boton_Imprimir_CN)
+                End If
+            Else
+                Call Me.Filtrar()
+                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_CN, Boton_Editar_CN, Boton_Eliminar_CN, Boton_Extornar_CN, Boton_Autorizar_CN, Boton_Aprobar_CN, Me.Boton_Visualizar_CN, Me.Boton_Imprimir_CN)
+            End If
+        Else
+            MessageBox.Show("Estimado: " & My.Settings.Nombre_Usuario & ", Ud no cuenta con privilegios para acceder a esta opción", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+        End If
+    End Sub
 End Class

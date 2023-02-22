@@ -3487,7 +3487,7 @@ Public Class Mantenimiento
             End Select
         End If
     End Sub
-    Public Sub Evaluacion_Botones_Modulo_Accion_Modificatoria(ByVal Año_Ejecucion As String, ByVal Numero As String, ByVal Nuevo As DevComponents.DotNetBar.ButtonItem, ByVal Editar As DevComponents.DotNetBar.ButtonItem, ByVal Anular As DevComponents.DotNetBar.ButtonItem, ByVal Eliminar As DevComponents.DotNetBar.ButtonItem, ByVal Extornar As DevComponents.DotNetBar.ButtonItem, ByVal Autorizar As DevComponents.DotNetBar.ButtonItem, ByVal Aprobar As DevComponents.DotNetBar.ButtonItem, ByVal Visualizar As DevComponents.DotNetBar.ButtonItem, ByVal Imprimir As DevComponents.DotNetBar.ButtonItem)
+    Public Sub Evaluacion_Botones_Modulo_Accion_Modificatoria(ByVal Año_Ejecucion As String, ByVal Numero As String, ByVal Nuevo As DevComponents.DotNetBar.ButtonItem, ByVal Editar As DevComponents.DotNetBar.ButtonItem, ByVal Anular As DevComponents.DotNetBar.ButtonItem, ByVal Eliminar As DevComponents.DotNetBar.ButtonItem, ByVal Extornar As DevComponents.DotNetBar.ButtonItem, ByVal Autorizar As DevComponents.DotNetBar.ButtonItem, ByVal Aprobar As DevComponents.DotNetBar.ButtonItem, ByVal Visualizar As DevComponents.DotNetBar.ButtonItem, ByVal Imprimir As DevComponents.DotNetBar.ButtonItem, ByVal Reenumerar As DevComponents.DotNetBar.ButtonItem)
         Dim Da As New OleDb.OleDbDataAdapter("Select * From Lista_Acciones_Modificatorias_Basica Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'", Cn)
         Dim Ds As New Data.DataSet
         Da.Fill(Ds)
@@ -3503,6 +3503,7 @@ Public Class Mantenimiento
                     Aprobar.Enabled = False
                     Visualizar.Enabled = True
                     Imprimir.Enabled = True
+                    Reenumerar.Enabled = True
                 Case "02" 'AUTORIZADO()
                     Nuevo.Enabled = True
                     Editar.Enabled = False
@@ -3513,6 +3514,7 @@ Public Class Mantenimiento
                     Aprobar.Enabled = True
                     Visualizar.Enabled = True
                     Imprimir.Enabled = True
+                    Reenumerar.Enabled = False
                 Case "03" 'APROBADO()
                     Nuevo.Enabled = True
                     Editar.Enabled = False
@@ -3523,6 +3525,7 @@ Public Class Mantenimiento
                     Aprobar.Enabled = False
                     Visualizar.Enabled = True
                     Imprimir.Enabled = True
+                    Reenumerar.Enabled = False
                 Case "04" 'ANULADO()
                     Nuevo.Enabled = True
                     Editar.Enabled = False
@@ -3533,6 +3536,7 @@ Public Class Mantenimiento
                     Aprobar.Enabled = False
                     Visualizar.Enabled = True
                     Imprimir.Enabled = True
+                    Reenumerar.Enabled = False
                 Case Else
                     Nuevo.Enabled = True
                     Editar.Enabled = False
@@ -3543,6 +3547,7 @@ Public Class Mantenimiento
                     Aprobar.Enabled = False
                     Visualizar.Enabled = False
                     Imprimir.Enabled = False
+                    Reenumerar.Enabled = False
             End Select
         End If
     End Sub
@@ -5091,15 +5096,43 @@ Public Class Mantenimiento
         End If
         Return Cadena_Unidades_Organicas_Por_Usuario
     End Function
+    Public Function Verifica_Si_Existe_en_CN_AM(ByVal Codigo_Grupo As String, ByVal Codigo_Clase As String, ByVal Codigo_Familia As String, ByVal Codigo_Item As String, ByVal Tipo As Integer, ByVal Codigo_FF As Double, ByVal Codigo_Rubro As String, ByVal Codigo_Unidad_Organica As String, ByVal Codigo_Secuencia_Funcional As String, ByVal Codigo_Actividad As String) As Boolean
+        Verifica_Si_Existe_en_CN_AM = True
+        Select Case Tipo
+            Case 1
+                Dim Da As New OleDb.OleDbDataAdapter("Select * From Lista_CN_AM_aprobados_Bienes_Saldos Where Año_Ejecucion = '" + My.Settings.Año_Ejecucion + "' and Codigo_Unidad_Organica='" + Codigo_Unidad_Organica + "' and Codigo_Secuencia_Funcional='" + Codigo_Secuencia_Funcional + "' and Codigo_Actividad='" + Codigo_Actividad + "' and Codigo_FF = " + Codigo_FF.ToString() + " and Codigo_Rubro='" + Codigo_Rubro + "' and Codigo_Grupo='" & Codigo_Grupo & "' And Codigo_Clase='" & Codigo_Clase & "' And Codigo_Familia='" & Codigo_Familia & "' And Codigo_Item='" & Codigo_Item & "'", Cn)
+                Dim Ds As New Data.DataSet
+                Da.Fill(Ds)
+                If Ds.Tables(0).Rows.Count > 0 Then
+                    Verifica_Si_Existe_en_CN_AM = True
+                Else
+                    Verifica_Si_Existe_en_CN_AM = False
+                End If
+            Case 2
+                Dim Da As New OleDb.OleDbDataAdapter("Select * From Lista_CN_AM_aprobados_Servicios_Saldos Where Año_Ejecucion = '" + My.Settings.Año_Ejecucion + "' and Codigo_Unidad_Organica='" + Codigo_Unidad_Organica + "' and Codigo_Secuencia_Funcional='" + Codigo_Secuencia_Funcional + "' and Codigo_Actividad='" + Codigo_Actividad + "' and Codigo_FF = " + Codigo_FF.ToString() + " and Codigo_Rubro='" + Codigo_Rubro + "' and Codigo_Grupo='" & Codigo_Grupo & "' And Codigo_Clase='" & Codigo_Clase & "' And Codigo_Familia='" & Codigo_Familia & "' And Codigo_Item='" & Codigo_Item & "'", Cn)
+                Dim Ds As New Data.DataSet
+                Da.Fill(Ds)
+                Da.Fill(Ds)
+                If Ds.Tables(0).Rows.Count > 0 Then
+                    Verifica_Si_Existe_en_CN_AM = True
+                Else
+                    Verifica_Si_Existe_en_CN_AM = False    
+                End If
+        End Select
+        Return Verifica_Si_Existe_en_CN_AM
+    End Function
     Public Sub Mostrar_Data_Item_Catalogo_Cuadro_Necesidades(ByVal Codigo_Grupo As String, ByVal Codigo_Clase As String, ByVal Codigo_Familia As String, ByVal Codigo_Item As String, ByVal Tipo As Integer, ByVal Codigo_FF As Double, ByVal Codigo_Rubro As String, ByVal Codigo_Unidad_Organica As String, ByVal Codigo_Secuencia_Funcional As String, ByVal Codigo_Actividad As String, ByVal Caja_Codigo_Grupo As System.Windows.Forms.TextBox, ByVal Caja_Grupo As System.Windows.Forms.TextBox, ByVal Caja_Codigo_Clase As System.Windows.Forms.TextBox, ByVal Caja_Clase As System.Windows.Forms.TextBox, ByVal Caja_Codigo_Familia As System.Windows.Forms.TextBox, ByVal Caja_Familia As System.Windows.Forms.TextBox, ByVal Caja_Codigo_Item As System.Windows.Forms.TextBox, ByVal Caja_Item As System.Windows.Forms.TextBox, ByVal Caja_Codigo_Unidad_Medida As System.Windows.Forms.TextBox, ByVal Caja_Unidad_Medida As System.Windows.Forms.TextBox, ByVal Caja_Tipo_Transaccion As System.Windows.Forms.TextBox, ByVal Caja_Generica As System.Windows.Forms.TextBox, ByVal Caja_Sub_Generica As System.Windows.Forms.TextBox, ByVal Caja_Sub_Generica_Detalle As System.Windows.Forms.TextBox, ByVal Caja_Especifica As System.Windows.Forms.TextBox, ByVal Caja_Especifica_Detalle As System.Windows.Forms.TextBox, ByVal txtEnero As TextBox, ByVal txtFebrero As TextBox, ByVal txtMarzo As TextBox, ByVal txtAbril As TextBox, ByVal txtMayo As TextBox, ByVal txtJunio As TextBox, ByVal txtJulio As TextBox, ByVal txtAgosto As TextBox, ByVal txtSeptiembre As TextBox, ByVal txtOctubre As TextBox, ByVal txtNoviembre As TextBox, ByVal txtDiciembre As TextBox, ByVal txtEnero_m As TextBox, ByVal txtFebrero_m As TextBox, ByVal txtMarzo_m As TextBox, ByVal txtAbril_m As TextBox, ByVal txtMayo_m As TextBox, ByVal txtJunio_m As TextBox, ByVal txtJulio_m As TextBox, ByVal txtAgosto_m As TextBox, ByVal txtSeptiembre_m As TextBox, ByVal txtOctubre_m As TextBox, ByVal txtNoviembre_m As TextBox, ByVal txtDiciembre_m As TextBox, ByVal edita As Boolean)
         Select Case Tipo
             Case 1
                 'Dim Da As New OleDb.OleDbDataAdapter("Select * From Detalle_Cuadro_Necesidades a inner join Catalogo_Bienes b on a.Codigo_Catalogo=b.Codigo_Catalogo and a.Codigo_Grupo=b.Codigo_Grupo and a.Codigo_Clase=b.Codigo_Clase and a.Codigo_Familia=b.Codigo_Familia and a.Codigo_Item=b.Codigo_Item Where Año_Ejecucion = '" + My.Settings.Año_Ejecucion + "' and Codigo_Unidad_Organica='" + Codigo_Unidad_Organica + "' and Codigo_Secuencia_Funcional='" + Codigo_Secuencia_Funcional + "' and Codigo_Actividad='" + Codigo_Actividad + "' and Codigo_FF = " + Codigo_FF.ToString() + " and Codigo_Rubro='" + Codigo_Rubro + "' and a.Codigo_Grupo='" & Codigo_Grupo & "' And a.Codigo_Clase='" & Codigo_Clase & "' And a.Codigo_Familia='" & Codigo_Familia & "' And a.Codigo_Item='" & Codigo_Item & "'", Cn)
                 Dim Da As New OleDb.OleDbDataAdapter("Select * From Lista_CN_AM_aprobados_Bienes_Saldos Where Año_Ejecucion = '" + My.Settings.Año_Ejecucion + "' and Codigo_Unidad_Organica='" + Codigo_Unidad_Organica + "' and Codigo_Secuencia_Funcional='" + Codigo_Secuencia_Funcional + "' and Codigo_Actividad='" + Codigo_Actividad + "' and Codigo_FF = " + Codigo_FF.ToString() + " and Codigo_Rubro='" + Codigo_Rubro + "' and Codigo_Grupo='" & Codigo_Grupo & "' And Codigo_Clase='" & Codigo_Clase & "' And Codigo_Familia='" & Codigo_Familia & "' And Codigo_Item='" & Codigo_Item & "'", Cn)
+                Dim Da_Saldos As New OleDb.OleDbDataAdapter("Select * From Lista_saldos_CN_AM_Requerimientos Where Año_Ejecucion = '" + My.Settings.Año_Ejecucion + "' and Codigo_Unidad_Organica='" + Codigo_Unidad_Organica + "' and Codigo_Secuencia_Funcional='" + Codigo_Secuencia_Funcional + "' and Codigo_Actividad='" + Codigo_Actividad + "' and Codigo_FF = " + Codigo_FF.ToString() + " and Codigo_Rubro='" + Codigo_Rubro + "' and Codigo_Grupo='" & Codigo_Grupo & "' And Codigo_Clase='" & Codigo_Clase & "' And Codigo_Familia='" & Codigo_Familia & "' And Codigo_Item='" & Codigo_Item & "'", Cn)
                 Dim Da_Catalogo As New OleDb.OleDbDataAdapter("Select * From Catalogo_Bienes Where Codigo_Grupo='" & Codigo_Grupo & "' And Codigo_Clase='" & Codigo_Clase & "' And Codigo_Familia='" & Codigo_Familia & "' And Codigo_Item='" & Codigo_Item & "'", Cn)
                 Dim Ds As New Data.DataSet
+                Dim Ds_Saldos As New Data.DataSet
                 Dim Ds_Catalogo As New Data.DataSet
                 Da.Fill(Ds)
+                Da_Saldos.Fill(Ds_Saldos)
                 Da_Catalogo.Fill(Ds_Catalogo)
                 If Ds.Tables(0).Rows.Count > 0 Then
                     Caja_Codigo_Grupo.Text = Ds.Tables(0).Rows(0).Item("Codigo_Grupo").ToString
@@ -5118,18 +5151,18 @@ Public Class Mantenimiento
                     Caja_Sub_Generica_Detalle.Text = Ds.Tables(0).Rows(0).Item("Sub_Generica_Detalle").ToString
                     Caja_Especifica.Text = Ds.Tables(0).Rows(0).Item("Especifica").ToString
                     Caja_Especifica_Detalle.Text = Ds.Tables(0).Rows(0).Item("Especifica_Detalle").ToString
-                    txtEnero.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Enero").ToString
-                    txtFebrero.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Febrero").ToString
-                    txtMarzo.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Marzo").ToString
-                    txtAbril.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Abril").ToString
-                    txtMayo.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Mayo").ToString
-                    txtJunio.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Junio").ToString
-                    txtJulio.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Julio").ToString
-                    txtAgosto.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Agosto").ToString
-                    txtSeptiembre.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Septiembre").ToString
-                    txtOctubre.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Octubre").ToString
-                    txtNoviembre.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Noviembre").ToString
-                    txtDiciembre.Text = Ds.Tables(0).Rows(0).Item("Cantidad_Diciembre").ToString
+                    txtEnero.Text = Ds_Saldos.Tables(0).Rows(0).Item("Cantidad_Enero").ToString
+                    txtFebrero.Text = Ds_Saldos.Tables(0).Rows(0).Item("Cantidad_Febrero").ToString
+                    txtMarzo.Text = Ds_Saldos.Tables(0).Rows(0).Item("Cantidad_Marzo").ToString
+                    txtAbril.Text = Ds_Saldos.Tables(0).Rows(0).Item("Cantidad_Abril").ToString
+                    txtMayo.Text = Ds_Saldos.Tables(0).Rows(0).Item("Cantidad_Mayo").ToString
+                    txtJunio.Text = Ds_Saldos.Tables(0).Rows(0).Item("Cantidad_Junio").ToString
+                    txtJulio.Text = Ds_Saldos.Tables(0).Rows(0).Item("Cantidad_Julio").ToString
+                    txtAgosto.Text = Ds_Saldos.Tables(0).Rows(0).Item("Cantidad_Agosto").ToString
+                    txtSeptiembre.Text = Ds_Saldos.Tables(0).Rows(0).Item("Cantidad_Septiembre").ToString
+                    txtOctubre.Text = Ds_Saldos.Tables(0).Rows(0).Item("Cantidad_Octubre").ToString
+                    txtNoviembre.Text = Ds_Saldos.Tables(0).Rows(0).Item("Cantidad_Noviembre").ToString
+                    txtDiciembre.Text = Ds_Saldos.Tables(0).Rows(0).Item("Cantidad_Diciembre").ToString
                     if not edita
                         txtEnero_m.Text = "0.00"
                         txtFebrero_m.Text = "0.00"
@@ -5571,6 +5604,77 @@ Public Class Mantenimiento
             Caja_Usuario.Text = Ds.Tables(0).Rows(0).Item("Usuario").ToString
         End If
     End Sub
+    Public function Evalua_Saldo_del_Mes(Mes As Integer, Codigo_FF As String,Codigo_Rubro As String ,Variable_Codigo_Grupo As String, Variable_Codigo_Clase As String, Variable_Codigo_Familia  As String, Variable_Codigo_Item  As String, Codigo_Secuencia_Funcional As String, Codigo_Unidad_Organica As String, Codigo_Actividad As String , Año_Ejecucion As String)
+        Select Case Mes
+                Case 1
+                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_ENERO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    Dim Ds As New Data.DataSet
+                    Da.Fill(Ds)
+                    Return IIf(Ds.Tables(0).Rows.Count>0,Convert.ToDecimal(Ds.Tables(0).Rows(0)(0)),Convert.ToDecimal("0.00"))
+                Case 2
+                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_FEBRERO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    Dim Ds As New Data.DataSet
+                    Da.Fill(Ds)
+                    Return IIf(Ds.Tables(0).Rows.Count>0,Convert.ToDecimal(Ds.Tables(0).Rows(0)(0)),Convert.ToDecimal("0.00"))
+                Case 3
+                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_MARZO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    Dim Ds As New Data.DataSet
+                    Da.Fill(Ds)
+                    Return IIf(Ds.Tables(0).Rows.Count>0,Convert.ToDecimal(Ds.Tables(0).Rows(0)(0)),Convert.ToDecimal("0.00"))
+                Case 4
+                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_ABRIL_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    Dim Ds As New Data.DataSet
+                    Da.Fill(Ds)
+                    Return IIf(Ds.Tables(0).Rows.Count>0,Convert.ToDecimal(Ds.Tables(0).Rows(0)(0)),Convert.ToDecimal("0.00"))
+                Case 5
+                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_MAYO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    Dim Ds As New Data.DataSet
+                    Da.Fill(Ds)
+                    Return IIf(Ds.Tables(0).Rows.Count>0,Convert.ToDecimal(Ds.Tables(0).Rows(0)(0)),Convert.ToDecimal("0.00"))
+                Case 6
+                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_JUNIO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    Dim Ds As New Data.DataSet
+                    Da.Fill(Ds)
+                    Return IIf(Ds.Tables(0).Rows.Count>0,Convert.ToDecimal(Ds.Tables(0).Rows(0)(0)),Convert.ToDecimal("0.00"))
+                Case 7
+                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_JULIO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    Dim Ds As New Data.DataSet
+                    Da.Fill(Ds)
+                    Return IIf(Ds.Tables(0).Rows.Count>0,Convert.ToDecimal(Ds.Tables(0).Rows(0)(0)),Convert.ToDecimal("0.00"))
+                Case 8
+                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_AGOSTO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    Dim Ds As New Data.DataSet
+                    Da.Fill(Ds)
+                    Return IIf(Ds.Tables(0).Rows.Count>0,Convert.ToDecimal(Ds.Tables(0).Rows(0)(0)),Convert.ToDecimal("0.00"))
+                Case 9
+                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_SEPTIEMBRE_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    Dim Ds As New Data.DataSet
+                    Da.Fill(Ds)
+                    Return IIf(Ds.Tables(0).Rows.Count>0,Convert.ToDecimal(Ds.Tables(0).Rows(0)(0)),Convert.ToDecimal("0.00"))
+                Case 10
+                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_OCTUBRE_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    Dim Ds As New Data.DataSet
+                    Da.Fill(Ds)
+                    Return IIf(Ds.Tables(0).Rows.Count>0,Convert.ToDecimal(Ds.Tables(0).Rows(0)(0)),Convert.ToDecimal("0.00"))
+                Case 11
+                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_NOVIEMBRE_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    Dim Ds As New Data.DataSet
+                    Da.Fill(Ds)
+                    Return IIf(Ds.Tables(0).Rows.Count>0,Convert.ToDecimal(Ds.Tables(0).Rows(0)(0)),Convert.ToDecimal("0.00"))
+                Case 12
+                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_DICIEMBRE_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    Dim Ds As New Data.DataSet
+                    Da.Fill(Ds)
+                    Return IIf(Ds.Tables(0).Rows.Count>0,Convert.ToDecimal(Ds.Tables(0).Rows(0)(0)),Convert.ToDecimal("0.00"))
+         end Select
+        Return 0.00
+    End function
+    Public Function Obtiene_Mes_Actual() As String
+        Dim Da As New OleDb.OleDbDataAdapter("Select MONTH(GETDATE())", Cn)
+        Dim Ds As New Data.DataSet
+        Da.Fill(Ds)
+        Return Ds.Tables(0).Rows(0)(0).ToString()
+    End Function
     Public Sub Cambiar_Clave(ByVal Usuaro As String, ByVal Clave As String)
         Dim Cm As New OleDb.OleDbCommand
         Cm.CommandTimeout = 0
@@ -8267,59 +8371,7 @@ Public Class Mantenimiento
         If Numero_Maximo_Documento_Presupuesto = True Then
             Select Case Operacion
                 Case 1
-                    Dim Da As New OleDb.OleDbDataAdapter("Select Abs(Max(Numero)) as Numero From Certificado Where Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
-                    Dim Ds As New Data.DataSet
-                    Da.Fill(Ds)
-                    If Ds.Tables(0).Rows.Count > 0 Then
-                        If Convert.ToInt32(Ds.Tables(0).Rows(0).Item("Numero").ToString) = Convert.ToInt32(Numero) Then
-                            Numero_Maximo_Documento_Presupuesto = True
-                        Else
-                            Numero_Maximo_Documento_Presupuesto = False
-                        End If
-                    Else
-                        Numero_Maximo_Documento_Presupuesto = False
-                    End If
-                Case 2
-                    Dim Da As New OleDb.OleDbDataAdapter("Select Abs(Max(Numero)) As Numero From Nota_Modificatoria Where Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
-                    Dim Ds As New Data.DataSet
-                    Da.Fill(Ds)
-                    If Ds.Tables(0).Rows.Count > 0 Then
-                        If Convert.ToInt32(Ds.Tables(0).Rows(0).Item("Numero").ToString) = Convert.ToInt32(Numero) Then
-                            Numero_Maximo_Documento_Presupuesto = True
-                        Else
-                            Numero_Maximo_Documento_Presupuesto = False
-                        End If
-                    Else
-                        Numero_Maximo_Documento_Presupuesto = False
-                    End If
-                Case 3
-                    Dim Da As New OleDb.OleDbDataAdapter("Select Abs(Max(Numero)) As Numero From Ampliacion Where Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
-                    Dim Ds As New Data.DataSet
-                    Da.Fill(Ds)
-                    If Ds.Tables(0).Rows.Count > 0 Then
-                        If Convert.ToInt32(Ds.Tables(0).Rows(0).Item("Numero").ToString) = Convert.ToInt32(Numero) Then
-                            Numero_Maximo_Documento_Presupuesto = True
-                        Else
-                            Numero_Maximo_Documento_Presupuesto = False
-                        End If
-                    Else
-                        Numero_Maximo_Documento_Presupuesto = False
-                    End If
-                Case 4
-                    Dim Da As New OleDb.OleDbDataAdapter("Select Abs(Max(Numero)) As Numero From Rebaja Where Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
-                    Dim Ds As New Data.DataSet
-                    Da.Fill(Ds)
-                    If Ds.Tables(0).Rows.Count > 0 Then
-                        If Convert.ToInt32(Ds.Tables(0).Rows(0).Item("Numero").ToString) = Convert.ToInt32(Numero) Then
-                            Numero_Maximo_Documento_Presupuesto = True
-                        Else
-                            Numero_Maximo_Documento_Presupuesto = False
-                        End If
-                    Else
-                        Numero_Maximo_Documento_Presupuesto = False
-                    End If
-                Case 5
-                    Dim Da As New OleDb.OleDbDataAdapter("Select Abs(Max(Numero)) As Numero From Prevision Where Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
+                    Dim Da As New OleDb.OleDbDataAdapter("Select Abs(Max(Numero)) As Numero From Accion_Modificatoria Where Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
                     Dim Ds As New Data.DataSet
                     Da.Fill(Ds)
                     If Ds.Tables(0).Rows.Count > 0 Then
@@ -8340,59 +8392,7 @@ Public Class Mantenimiento
         If Numero_Primero_Documento_Presupuesto = True Then
             Select Case Operacion
                 Case 1
-                    Dim Da As New OleDb.OleDbDataAdapter("Select Abs(Min(Numero)) as Numero From Certificado Where Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
-                    Dim Ds As New Data.DataSet
-                    Da.Fill(Ds)
-                    If Ds.Tables(0).Rows.Count > 0 Then
-                        If Convert.ToInt32(Ds.Tables(0).Rows(0).Item("Numero").ToString) = Convert.ToInt32(Numero) Then
-                            Numero_Primero_Documento_Presupuesto = True
-                        Else
-                            Numero_Primero_Documento_Presupuesto = False
-                        End If
-                    Else
-                        Numero_Primero_Documento_Presupuesto = False
-                    End If
-                Case 2
-                    Dim Da As New OleDb.OleDbDataAdapter("Select Abs(Min(Numero)) As Numero From Nota_Modificatoria Where Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
-                    Dim Ds As New Data.DataSet
-                    Da.Fill(Ds)
-                    If Ds.Tables(0).Rows.Count > 0 Then
-                        If Convert.ToInt32(Ds.Tables(0).Rows(0).Item("Numero").ToString) = Convert.ToInt32(Numero) Then
-                            Numero_Primero_Documento_Presupuesto = True
-                        Else
-                            Numero_Primero_Documento_Presupuesto = False
-                        End If
-                    Else
-                        Numero_Primero_Documento_Presupuesto = False
-                    End If
-                Case 3
-                    Dim Da As New OleDb.OleDbDataAdapter("Select Abs(Min(Numero)) As Numero From Ampliacion Where Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
-                    Dim Ds As New Data.DataSet
-                    Da.Fill(Ds)
-                    If Ds.Tables(0).Rows.Count > 0 Then
-                        If Convert.ToInt32(Ds.Tables(0).Rows(0).Item("Numero").ToString) = Convert.ToInt32(Numero) Then
-                            Numero_Primero_Documento_Presupuesto = True
-                        Else
-                            Numero_Primero_Documento_Presupuesto = False
-                        End If
-                    Else
-                        Numero_Primero_Documento_Presupuesto = False
-                    End If
-                Case 4
-                    Dim Da As New OleDb.OleDbDataAdapter("Select Abs(Min(Numero)) As Numero From Rebaja Where Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
-                    Dim Ds As New Data.DataSet
-                    Da.Fill(Ds)
-                    If Ds.Tables(0).Rows.Count > 0 Then
-                        If Convert.ToInt32(Ds.Tables(0).Rows(0).Item("Numero").ToString) = Convert.ToInt32(Numero) Then
-                            Numero_Primero_Documento_Presupuesto = True
-                        Else
-                            Numero_Primero_Documento_Presupuesto = False
-                        End If
-                    Else
-                        Numero_Primero_Documento_Presupuesto = False
-                    End If
-                Case 5
-                    Dim Da As New OleDb.OleDbDataAdapter("Select Abs(Min(Numero)) As Numero From Prevision Where Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
+                    Dim Da As New OleDb.OleDbDataAdapter("Select Abs(Min(Numero)) As Numero From Accion_Modificatoria Where Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
                     Dim Ds As New Data.DataSet
                     Da.Fill(Ds)
                     If Ds.Tables(0).Rows.Count > 0 Then
@@ -8419,7 +8419,7 @@ Public Class Mantenimiento
                         Else
                             Dim Fecha_Anterior As Date = Nothing
                             Dim Fecha_Posterior As Date = Nothing
-                            Dim Da As New OleDb.OleDbDataAdapter("Select * From Certificado Where Año_Ejecucion='" & Año_Ejecucion & "' And Abs(Numero) >" & Convert.ToInt32(Numero) & " Order By Año_Ejecucion,Abs(Numero)", Cn)
+                            Dim Da As New OleDb.OleDbDataAdapter("Select * From Accion_Modificatoria Where Año_Ejecucion='" & Año_Ejecucion & "' And Abs(Numero) >" & Convert.ToInt32(Numero) & " Order By Año_Ejecucion,Abs(Numero)", Cn)
                             Dim Ds As New Data.DataSet
                             Da.Fill(Ds)
                             If Ds.Tables(0).Rows.Count > 0 Then
@@ -8435,7 +8435,7 @@ Public Class Mantenimiento
                         If Me.Numero_Maximo_Documento_Presupuesto(Año_Ejecucion, Numero, 1) = True Then
                             Dim Fecha_Anterior As Date = Nothing
                             Dim Fecha_Posterior As Date = Nothing
-                            Dim Da As New OleDb.OleDbDataAdapter("Select * From Certificado Where Año_Ejecucion='" & Año_Ejecucion & "' And Abs(Numero) <" & Convert.ToInt32(Numero) & " Order By Año_Ejecucion,Abs(Numero)", Cn)
+                            Dim Da As New OleDb.OleDbDataAdapter("Select * From Accion_Modificatoria Where Año_Ejecucion='" & Año_Ejecucion & "' And Abs(Numero) <" & Convert.ToInt32(Numero) & " Order By Año_Ejecucion,Abs(Numero)", Cn)
                             Dim Ds As New Data.DataSet
                             Da.Fill(Ds)
                             If Ds.Tables(0).Rows.Count > 0 Then
@@ -8449,7 +8449,7 @@ Public Class Mantenimiento
                         Else
                             Dim Fecha_Anterior As Date = Nothing
                             Dim Fecha_Posterior As Date = Nothing
-                            Dim Da As New OleDb.OleDbDataAdapter("Select * From Certificado Where Año_Ejecucion='" & Año_Ejecucion & "' And Abs(Numero) <" & Convert.ToInt32(Numero) & " Order By Año_Ejecucion,Abs(Numero)", Cn)
+                            Dim Da As New OleDb.OleDbDataAdapter("Select * From Accion_Modificatoria Where Año_Ejecucion='" & Año_Ejecucion & "' And Abs(Numero) <" & Convert.ToInt32(Numero) & " Order By Año_Ejecucion,Abs(Numero)", Cn)
                             Dim Ds As New Data.DataSet
                             Da.Fill(Ds)
                             If Ds.Tables(0).Rows.Count > 0 Then
@@ -8457,7 +8457,7 @@ Public Class Mantenimiento
                             End If
                             Ds = Nothing
                             Da = Nothing
-                            Da = New OleDb.OleDbDataAdapter("Select * From Certificado Where Año_Ejecucion='" & Año_Ejecucion & "' And Abs(Numero) >" & Convert.ToInt32(Numero) & " Order By Año_Ejecucion,Abs(Numero)", Cn)
+                            Da = New OleDb.OleDbDataAdapter("Select * From Accion_Modificatoria Where Año_Ejecucion='" & Año_Ejecucion & "' And Abs(Numero) >" & Convert.ToInt32(Numero) & " Order By Año_Ejecucion,Abs(Numero)", Cn)
                             Ds = New Data.DataSet
                             Da.Fill(Ds)
                             If Ds.Tables(0).Rows.Count > 0 Then
@@ -8470,240 +8470,6 @@ Public Class Mantenimiento
                             End If
                         End If
                     End If
-                Case 2
-                    If Me.Numero_Primero_Documento_Presupuesto(Año_Ejecucion, Numero, 2) = True Then
-                        If Me.Numero_Maximo_Documento_Presupuesto(Año_Ejecucion, Numero, 2) = True Then
-                            Valida_Fecha_Presupuesto_Documentos_Reenumeracion = True
-                        Else
-                            Dim Fecha_Anterior As Date = Nothing
-                            Dim Fecha_Posterior As Date = Nothing
-                            Dim Da As New OleDb.OleDbDataAdapter("Select * From Nota_Modificatoria Where Año_Ejecucion='" & Año_Ejecucion & "' And Abs(Numero) >" & Convert.ToInt32(Numero) & " Order By Año_Ejecucion,Abs(Numero)", Cn)
-                            Dim Ds As New Data.DataSet
-                            Da.Fill(Ds)
-                            If Ds.Tables(0).Rows.Count > 0 Then
-                                Fecha_Posterior = DateValue(Ds.Tables(0).Rows(0).Item("FechaEmision").ToString)
-                            End If
-                            If DateValue(Fecha_Posterior) >= Nueva_Fecha Then
-                                Valida_Fecha_Presupuesto_Documentos_Reenumeracion = True
-                            Else
-                                Valida_Fecha_Presupuesto_Documentos_Reenumeracion = False
-                            End If
-                        End If
-                    Else
-                        If Me.Numero_Maximo_Documento_Presupuesto(Año_Ejecucion, Numero, 2) = True Then
-                            Dim Fecha_Anterior As Date = Nothing
-                            Dim Fecha_Posterior As Date = Nothing
-                            Dim Da As New OleDb.OleDbDataAdapter("Select * From Nota_Modificatoria Where Año_Ejecucion='" & Año_Ejecucion & "' And Abs(Numero) <" & Convert.ToInt32(Numero) & " Order By Año_Ejecucion,Abs(Numero)", Cn)
-                            Dim Ds As New Data.DataSet
-                            Da.Fill(Ds)
-                            If Ds.Tables(0).Rows.Count > 0 Then
-                                Fecha_Anterior = DateValue(Ds.Tables(0).Rows(Ds.Tables(0).Rows.Count - 1).Item("FechaEmision").ToString)
-                            End If
-                            If DateValue(Nueva_Fecha) >= DateValue(Fecha_Anterior) Then
-                                Valida_Fecha_Presupuesto_Documentos_Reenumeracion = True
-                            Else
-                                Valida_Fecha_Presupuesto_Documentos_Reenumeracion = False
-                            End If
-                        Else
-                            Dim Fecha_Anterior As Date = Nothing
-                            Dim Fecha_Posterior As Date = Nothing
-                            Dim Da As New OleDb.OleDbDataAdapter("Select * From Nota_Modificatoria Where Año_Ejecucion='" & Año_Ejecucion & "' And Abs(Numero) <" & Convert.ToInt32(Numero) & " Order By Año_Ejecucion,Abs(Numero)", Cn)
-                            Dim Ds As New Data.DataSet
-                            Da.Fill(Ds)
-                            If Ds.Tables(0).Rows.Count > 0 Then
-                                Fecha_Anterior = DateValue(Ds.Tables(0).Rows(Ds.Tables(0).Rows.Count - 1).Item("FechaEmision").ToString)
-                            End If
-                            Ds = Nothing
-                            Da = Nothing
-                            Da = New OleDb.OleDbDataAdapter("Select * From Nota_Modificatoria Where Año_Ejecucion='" & Año_Ejecucion & "' And Abs(Numero) >" & Convert.ToInt32(Numero) & " Order By Año_Ejecucion,Abs(Numero)", Cn)
-                            Ds = New Data.DataSet
-                            Da.Fill(Ds)
-                            If Ds.Tables(0).Rows.Count > 0 Then
-                                Fecha_Posterior = DateValue(Ds.Tables(0).Rows(0).Item("FechaEmision").ToString)
-                            End If
-                            If DateValue(Fecha_Posterior) >= DateValue(Nueva_Fecha) And DateValue(Fecha_Anterior) <= DateValue(Nueva_Fecha) Then
-                                Valida_Fecha_Presupuesto_Documentos_Reenumeracion = True
-                            Else
-                                Valida_Fecha_Presupuesto_Documentos_Reenumeracion = False
-                            End If
-                        End If
-                    End If
-
-                Case 3
-                    If Me.Numero_Primero_Documento_Presupuesto(Año_Ejecucion, Numero, 3) = True Then
-                        If Me.Numero_Maximo_Documento_Presupuesto(Año_Ejecucion, Numero, 3) = True Then
-                            Valida_Fecha_Presupuesto_Documentos_Reenumeracion = True
-                        Else
-                            Dim Fecha_Anterior As Date = Nothing
-                            Dim Fecha_Posterior As Date = Nothing
-                            Dim Da As New OleDb.OleDbDataAdapter("Select * From Ampliacion Where Año_Ejecucion='" & Año_Ejecucion & "' And Abs(Numero) >" & Convert.ToInt32(Numero) & " Order By Año_Ejecucion,Abs(Numero)", Cn)
-                            Dim Ds As New Data.DataSet
-                            Da.Fill(Ds)
-                            If Ds.Tables(0).Rows.Count > 0 Then
-                                Fecha_Posterior = DateValue(Ds.Tables(0).Rows(0).Item("FechaEmision").ToString)
-                            End If
-                            If DateValue(Fecha_Posterior) >= Nueva_Fecha Then
-                                Valida_Fecha_Presupuesto_Documentos_Reenumeracion = True
-                            Else
-                                Valida_Fecha_Presupuesto_Documentos_Reenumeracion = False
-                            End If
-                        End If
-                    Else
-                        If Me.Numero_Maximo_Documento_Presupuesto(Año_Ejecucion, Numero, 3) = True Then
-                            Dim Fecha_Anterior As Date = Nothing
-                            Dim Fecha_Posterior As Date = Nothing
-                            Dim Da As New OleDb.OleDbDataAdapter("Select * From Ampliacion Where Año_Ejecucion='" & Año_Ejecucion & "' And Abs(Numero) <" & Convert.ToInt32(Numero) & " Order By Año_Ejecucion,Abs(Numero)", Cn)
-                            Dim Ds As New Data.DataSet
-                            Da.Fill(Ds)
-                            If Ds.Tables(0).Rows.Count > 0 Then
-                                Fecha_Anterior = DateValue(Ds.Tables(0).Rows(Ds.Tables(0).Rows.Count - 1).Item("FechaEmision").ToString)
-                            End If
-                            If DateValue(Nueva_Fecha) >= DateValue(Fecha_Anterior) Then
-                                Valida_Fecha_Presupuesto_Documentos_Reenumeracion = True
-                            Else
-                                Valida_Fecha_Presupuesto_Documentos_Reenumeracion = False
-                            End If
-                        Else
-                            Dim Fecha_Anterior As Date = Nothing
-                            Dim Fecha_Posterior As Date = Nothing
-                            Dim Da As New OleDb.OleDbDataAdapter("Select * From Ampliacion Where Año_Ejecucion='" & Año_Ejecucion & "' And Abs(Numero) <" & Convert.ToInt32(Numero) & " Order By Año_Ejecucion,Abs(Numero)", Cn)
-                            Dim Ds As New Data.DataSet
-                            Da.Fill(Ds)
-                            If Ds.Tables(0).Rows.Count > 0 Then
-                                Fecha_Anterior = DateValue(Ds.Tables(0).Rows(Ds.Tables(0).Rows.Count - 1).Item("FechaEmision").ToString)
-                            End If
-                            Ds = Nothing
-                            Da = Nothing
-                            Da = New OleDb.OleDbDataAdapter("Select * From Ampliacion Where Año_Ejecucion='" & Año_Ejecucion & "' And Abs(Numero) >" & Convert.ToInt32(Numero) & " Order By Año_Ejecucion,Abs(Numero)", Cn)
-                            Ds = New Data.DataSet
-                            Da.Fill(Ds)
-                            If Ds.Tables(0).Rows.Count > 0 Then
-                                Fecha_Posterior = DateValue(Ds.Tables(0).Rows(0).Item("FechaEmision").ToString)
-                            End If
-                            If DateValue(Fecha_Posterior) >= DateValue(Nueva_Fecha) And DateValue(Fecha_Anterior) <= DateValue(Nueva_Fecha) Then
-                                Valida_Fecha_Presupuesto_Documentos_Reenumeracion = True
-                            Else
-                                Valida_Fecha_Presupuesto_Documentos_Reenumeracion = False
-                            End If
-                        End If
-                    End If
-                Case 4
-                    If Me.Numero_Primero_Documento_Presupuesto(Año_Ejecucion, Numero, 4) = True Then
-                        If Me.Numero_Maximo_Documento_Presupuesto(Año_Ejecucion, Numero, 4) = True Then
-                            Valida_Fecha_Presupuesto_Documentos_Reenumeracion = True
-                        Else
-                            Dim Fecha_Anterior As Date = Nothing
-                            Dim Fecha_Posterior As Date = Nothing
-                            Dim Da As New OleDb.OleDbDataAdapter("Select * From Rebaja Where Año_Ejecucion='" & Año_Ejecucion & "' And Abs(Numero) >" & Convert.ToInt32(Numero) & " Order By Año_Ejecucion,Abs(Numero)", Cn)
-                            Dim Ds As New Data.DataSet
-                            Da.Fill(Ds)
-                            If Ds.Tables(0).Rows.Count > 0 Then
-                                Fecha_Posterior = DateValue(Ds.Tables(0).Rows(0).Item("FechaEmision").ToString)
-                            End If
-                            If DateValue(Fecha_Posterior) >= Nueva_Fecha Then
-                                Valida_Fecha_Presupuesto_Documentos_Reenumeracion = True
-                            Else
-                                Valida_Fecha_Presupuesto_Documentos_Reenumeracion = False
-                            End If
-                        End If
-                    Else
-                        If Me.Numero_Maximo_Documento_Presupuesto(Año_Ejecucion, Numero, 4) = True Then
-                            Dim Fecha_Anterior As Date = Nothing
-                            Dim Fecha_Posterior As Date = Nothing
-                            Dim Da As New OleDb.OleDbDataAdapter("Select * From Rebaja Where Año_Ejecucion='" & Año_Ejecucion & "' And Abs(Numero) <" & Convert.ToInt32(Numero) & " Order By Año_Ejecucion,Abs(Numero)", Cn)
-                            Dim Ds As New Data.DataSet
-                            Da.Fill(Ds)
-                            If Ds.Tables(0).Rows.Count > 0 Then
-                                Fecha_Anterior = DateValue(Ds.Tables(0).Rows(Ds.Tables(0).Rows.Count - 1).Item("FechaEmision").ToString)
-                            End If
-                            If DateValue(Nueva_Fecha) >= DateValue(Fecha_Anterior) Then
-                                Valida_Fecha_Presupuesto_Documentos_Reenumeracion = True
-                            Else
-                                Valida_Fecha_Presupuesto_Documentos_Reenumeracion = False
-                            End If
-                        Else
-                            Dim Fecha_Anterior As Date = Nothing
-                            Dim Fecha_Posterior As Date = Nothing
-                            Dim Da As New OleDb.OleDbDataAdapter("Select * From Rebaja Where Año_Ejecucion='" & Año_Ejecucion & "' And Abs(Numero) <" & Convert.ToInt32(Numero) & " Order By Año_Ejecucion,Abs(Numero)", Cn)
-                            Dim Ds As New Data.DataSet
-                            Da.Fill(Ds)
-                            If Ds.Tables(0).Rows.Count > 0 Then
-                                Fecha_Anterior = DateValue(Ds.Tables(0).Rows(Ds.Tables(0).Rows.Count - 1).Item("FechaEmision").ToString)
-                            End If
-                            Ds = Nothing
-                            Da = Nothing
-                            Da = New OleDb.OleDbDataAdapter("Select * From Rebaja Where Año_Ejecucion='" & Año_Ejecucion & "' And Abs(Numero) >" & Convert.ToInt32(Numero) & " Order By Año_Ejecucion,Abs(Numero)", Cn)
-                            Ds = New Data.DataSet
-                            Da.Fill(Ds)
-                            If Ds.Tables(0).Rows.Count > 0 Then
-                                Fecha_Posterior = DateValue(Ds.Tables(0).Rows(0).Item("FechaEmision").ToString)
-                            End If
-                            If DateValue(Fecha_Posterior) >= DateValue(Nueva_Fecha) And DateValue(Fecha_Anterior) <= DateValue(Nueva_Fecha) Then
-                                Valida_Fecha_Presupuesto_Documentos_Reenumeracion = True
-                            Else
-                                Valida_Fecha_Presupuesto_Documentos_Reenumeracion = False
-                            End If
-                        End If
-                    End If
-                Case 5
-                    If Me.Numero_Primero_Documento_Presupuesto(Año_Ejecucion, Numero, 5) = True Then
-                        If Me.Numero_Maximo_Documento_Presupuesto(Año_Ejecucion, Numero, 5) = True Then
-                            Valida_Fecha_Presupuesto_Documentos_Reenumeracion = True
-                        Else
-                            Dim Fecha_Anterior As Date = Nothing
-                            Dim Fecha_Posterior As Date = Nothing
-                            Dim Da As New OleDb.OleDbDataAdapter("Select * From Prevision Where Año_Ejecucion='" & Año_Ejecucion & "' And Abs(Numero) >" & Convert.ToInt32(Numero) & " Order By Año_Ejecucion,Abs(Numero)", Cn)
-                            Dim Ds As New Data.DataSet
-                            Da.Fill(Ds)
-                            If Ds.Tables(0).Rows.Count > 0 Then
-                                Fecha_Posterior = DateValue(Ds.Tables(0).Rows(0).Item("FechaEmision").ToString)
-                            End If
-                            If DateValue(Fecha_Posterior) >= Nueva_Fecha Then
-                                Valida_Fecha_Presupuesto_Documentos_Reenumeracion = True
-                            Else
-                                Valida_Fecha_Presupuesto_Documentos_Reenumeracion = False
-                            End If
-                        End If
-                    Else
-                        If Me.Numero_Maximo_Documento_Presupuesto(Año_Ejecucion, Numero, 5) = True Then
-                            Dim Fecha_Anterior As Date = Nothing
-                            Dim Fecha_Posterior As Date = Nothing
-                            Dim Da As New OleDb.OleDbDataAdapter("Select * From Prevision Where Año_Ejecucion='" & Año_Ejecucion & "' And Abs(Numero) <" & Convert.ToInt32(Numero) & " Order By Año_Ejecucion,Abs(Numero)", Cn)
-                            Dim Ds As New Data.DataSet
-                            Da.Fill(Ds)
-                            If Ds.Tables(0).Rows.Count > 0 Then
-                                Fecha_Anterior = DateValue(Ds.Tables(0).Rows(Ds.Tables(0).Rows.Count - 1).Item("FechaEmision").ToString)
-                            End If
-                            If DateValue(Nueva_Fecha) >= DateValue(Fecha_Anterior) Then
-                                Valida_Fecha_Presupuesto_Documentos_Reenumeracion = True
-                            Else
-                                Valida_Fecha_Presupuesto_Documentos_Reenumeracion = False
-                            End If
-                        Else
-                            Dim Fecha_Anterior As Date = Nothing
-                            Dim Fecha_Posterior As Date = Nothing
-                            Dim Da As New OleDb.OleDbDataAdapter("Select * From Prevision Where Año_Ejecucion='" & Año_Ejecucion & "' And Abs(Numero) <" & Convert.ToInt32(Numero) & " Order By Año_Ejecucion,Abs(Numero)", Cn)
-                            Dim Ds As New Data.DataSet
-                            Da.Fill(Ds)
-                            If Ds.Tables(0).Rows.Count > 0 Then
-                                Fecha_Anterior = DateValue(Ds.Tables(0).Rows(Ds.Tables(0).Rows.Count - 1).Item("FechaEmision").ToString)
-                            End If
-                            Ds = Nothing
-                            Da = Nothing
-                            Da = New OleDb.OleDbDataAdapter("Select * From Prevision Where Año_Ejecucion='" & Año_Ejecucion & "' And Abs(Numero) >" & Convert.ToInt32(Numero) & " Order By Año_Ejecucion,Abs(Numero)", Cn)
-                            Ds = New Data.DataSet
-                            Da.Fill(Ds)
-                            If Ds.Tables(0).Rows.Count > 0 Then
-                                Fecha_Posterior = DateValue(Ds.Tables(0).Rows(0).Item("FechaEmision").ToString)
-                            End If
-                            If DateValue(Fecha_Posterior) >= DateValue(Nueva_Fecha) And DateValue(Fecha_Anterior) <= DateValue(Nueva_Fecha) Then
-                                Valida_Fecha_Presupuesto_Documentos_Reenumeracion = True
-                            Else
-                                Valida_Fecha_Presupuesto_Documentos_Reenumeracion = False
-                            End If
-                        End If
-                    End If
-
             End Select
         End If
         Return Valida_Fecha_Presupuesto_Documentos_Reenumeracion
@@ -8711,7 +8477,7 @@ Public Class Mantenimiento
     Public Sub Reenumerar_Documentos_Presupuesto(ByVal Año_Ejecucion As String, ByVal Numero As String, ByVal Anterior As String, ByVal Operacion As Integer, ByVal Nueva_Fecha As Date)
         Select Case Operacion
             Case 1
-                Dim Da As New OleDb.OleDbDataAdapter("Select * From Certificado Where Año_Ejecucion='" & Año_Ejecucion & "' and Numero='" & Numero & "'", Cn)
+                Dim Da As New OleDb.OleDbDataAdapter("Select * From Accion_Modificatoria Where Año_Ejecucion='" & Año_Ejecucion & "' and Numero='" & Numero & "'", Cn)
                 Dim Ds As New Data.DataSet
                 Da.Fill(Ds)
                 If Ds.Tables(0).Rows.Count = 0 Then
@@ -8719,92 +8485,11 @@ Public Class Mantenimiento
                     Cm.CommandTimeout = 0
                     Cm.Connection = Cn
                     Cm.CommandType = CommandType.Text
-                    Cm.CommandText = "Update Certificado Set Numero='" & Numero & "',FechaEmision='" & DateValue(Nueva_Fecha) & "' Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Anterior & "'"
+                    Cm.CommandText = "Update Accion_Modificatoria Set Numero='" & Numero & "',FechaEmision='" & DateValue(Nueva_Fecha) & "' Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Anterior & "'"
                     Cm.ExecuteNonQuery()
                     Cm = Nothing
                 Else
-                    MessageBox.Show("No Se puede asignar el Número de Certificado porque está en uso", "..:: Reenumeración de Certificados ::..", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                End If
-            Case 2
-                Dim Da As New OleDb.OleDbDataAdapter("Select * From Nota_Modificatoria Where Año_Ejecucion='" & Año_Ejecucion & "' and Numero='" & Numero & "'", Cn)
-                Dim Ds As New Data.DataSet
-                Da.Fill(Ds)
-                If Ds.Tables(0).Rows.Count = 0 Then
-                    Dim Cm As New OleDb.OleDbCommand
-                    Cm.CommandTimeout = 0
-                    Cm.Connection = Cn
-                    Cm.CommandType = CommandType.Text
-                    Cm.CommandText = "Update Nota_Modificatoria Set Numero='" & Numero & "',FechaEmision='" & DateValue(Nueva_Fecha) & "' Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Anterior & "'"
-                    Cm.ExecuteNonQuery()
-                    Cm = Nothing
-                Else
-                    MessageBox.Show("No Se puede asignar el Número de Nota Modificatoria porque está en uso", "..:: Reenumeración de Certificados ::..", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                End If
-            Case 3
-                Dim Da As New OleDb.OleDbDataAdapter("Select * From Ampliacion Where Año_Ejecucion='" & Año_Ejecucion & "' and Numero='" & Numero & "'", Cn)
-                Dim Ds As New Data.DataSet
-                Da.Fill(Ds)
-                If Ds.Tables(0).Rows.Count = 0 Then
-                    Dim Cm As New OleDb.OleDbCommand
-                    Cm.CommandTimeout = 0
-                    Cm.Connection = Cn
-                    Cm.CommandType = CommandType.Text
-                    Cm.CommandText = "Update Ampliacion Set Numero='" & Numero & "',FechaEmision='" & DateValue(Nueva_Fecha) & "' Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Anterior & "'"
-                    Cm.ExecuteNonQuery()
-                    Cm = Nothing
-                    Cm = New OleDb.OleDbCommand
-                    Cm.CommandTimeout = 0
-                    Cm.Connection = Cn
-                    Cm.CommandType = CommandType.Text
-                    Cm.CommandText = "Update Detalle_Certificado_Movimientos Set Numero_Documento='" & Numero & "' Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero_Documento='" & Anterior & "' And Codigo_Tipo_Operacion='03'"
-                    Cm.ExecuteNonQuery()
-                    Cm = Nothing
-                    Cm = New OleDb.OleDbCommand
-                    Cm.CommandTimeout = 0
-                    Cm.Connection = Cn
-                    Cm.CommandType = CommandType.Text
-                    Cm.CommandText = "Update Detalle_Certificado Set Ampliacion='" & Numero & "' Where Año_Ejecucion='" & Año_Ejecucion & "' And Ampliacion='" & Anterior & "'"
-                    Cm.ExecuteNonQuery()
-                    Cm = Nothing
-                Else
-                    MessageBox.Show("No Se puede asignar el Número de Ampliación porque está en uso", "..:: Reenumeración de Certificados ::..", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                End If
-            Case 4
-                Dim Da As New OleDb.OleDbDataAdapter("Select * From Rebaja Where Año_Ejecucion='" & Año_Ejecucion & "' and Numero='" & Numero & "'", Cn)
-                Dim Ds As New Data.DataSet
-                Da.Fill(Ds)
-                If Ds.Tables(0).Rows.Count = 0 Then
-                    Dim Cm As New OleDb.OleDbCommand
-                    Cm.CommandTimeout = 0
-                    Cm.Connection = Cn
-                    Cm.CommandType = CommandType.Text
-                    Cm.CommandText = "Update Rebaja Set Numero='" & Numero & "',FechaEmision='" & DateValue(Nueva_Fecha) & "' Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Anterior & "'"
-                    Cm.ExecuteNonQuery()
-                    Cm = Nothing
-                    Cm = New OleDb.OleDbCommand
-                    Cm.CommandTimeout = 0
-                    Cm.Connection = Cn
-                    Cm.CommandType = CommandType.Text
-                    Cm.CommandText = "Update Detalle_Certificado_Movimientos Set Numero_Documento='" & Numero & "' Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero_Documento='" & Anterior & "' And Codigo_Tipo_Operacion='02'"
-                    Cm.ExecuteNonQuery()
-                    Cm = Nothing
-                Else
-                    MessageBox.Show("No Se puede asignar el Número de Rebaja porque está en uso", "..:: Reenumeración de Certificados ::..", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                End If
-            Case 5
-                Dim Da As New OleDb.OleDbDataAdapter("Select * From Prevision Where Año_Ejecucion='" & Año_Ejecucion & "' and Numero='" & Numero & "'", Cn)
-                Dim Ds As New Data.DataSet
-                Da.Fill(Ds)
-                If Ds.Tables(0).Rows.Count = 0 Then
-                    Dim Cm As New OleDb.OleDbCommand
-                    Cm.CommandTimeout = 0
-                    Cm.Connection = Cn
-                    Cm.CommandType = CommandType.Text
-                    Cm.CommandText = "Update Prevision Set Numero='" & Numero & "',FechaEmision='" & DateValue(Nueva_Fecha) & "' Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Anterior & "'"
-                    Cm.ExecuteNonQuery()
-                    Cm = Nothing
-                Else
-                    MessageBox.Show("No Se puede asignar el Número de Prevision porque está en uso", "..:: Reenumeración de Certificados ::..", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    MessageBox.Show("No Se puede asignar el Número de Acción Modificatoria porque está en uso", "..:: Reenumeración de A.M. ::..", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 End If
         End Select
     End Sub
@@ -9603,39 +9288,7 @@ Public Class Mantenimiento
                 Cm.CommandTimeout = 0
                 Cm.Connection = Cn
                 Cm.CommandType = CommandType.Text
-                Cm.CommandText = "Update Certificado Set FechaEmision='" & DateValue(FechaEmision) & "' Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
-                Cm.ExecuteNonQuery()
-                Cm = Nothing
-            Case 2
-                Dim Cm As New OleDb.OleDbCommand
-                Cm.CommandTimeout = 0
-                Cm.Connection = Cn
-                Cm.CommandType = CommandType.Text
-                Cm.CommandText = "Update Nota_Modificatoria Set FechaEmision='" & DateValue(FechaEmision) & "' Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
-                Cm.ExecuteNonQuery()
-                Cm = Nothing
-            Case 3
-                Dim Cm As New OleDb.OleDbCommand
-                Cm.CommandTimeout = 0
-                Cm.Connection = Cn
-                Cm.CommandType = CommandType.Text
-                Cm.CommandText = "Update Ampliacion Set FechaEmision='" & DateValue(FechaEmision) & "' Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
-                Cm.ExecuteNonQuery()
-                Cm = Nothing
-            Case 4
-                Dim Cm As New OleDb.OleDbCommand
-                Cm.CommandTimeout = 0
-                Cm.Connection = Cn
-                Cm.CommandType = CommandType.Text
-                Cm.CommandText = "Update Rebaja Set FechaEmision='" & DateValue(FechaEmision) & "' Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
-                Cm.ExecuteNonQuery()
-                Cm = Nothing
-            Case 5
-                Dim Cm As New OleDb.OleDbCommand
-                Cm.CommandTimeout = 0
-                Cm.Connection = Cn
-                Cm.CommandType = CommandType.Text
-                Cm.CommandText = "Update Prevision Set FechaEmision='" & DateValue(FechaEmision) & "' Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
+                Cm.CommandText = "Update Accion_Modificatoria Set FechaEmision='" & DateValue(FechaEmision) & "' Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
                 Cm.ExecuteNonQuery()
                 Cm = Nothing
         End Select

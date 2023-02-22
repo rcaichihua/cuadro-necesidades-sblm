@@ -56,15 +56,17 @@ Partial Class frmModulo_Acciones_Modificatorias
         Me.Label3 = New System.Windows.Forms.Label()
         Me.cbCriterio = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.ribbonBarMergeContainer1.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
-        CType(Me.dgvAccionesModificatorias, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox2.SuspendLayout()
-        Me.gbFiltros.SuspendLayout()
-        Me.GroupBox5.SuspendLayout()
-        Me.GroupBox4.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
-        Me.SuspendLayout()
+        Me.Boton_Reenumerar_Nota = New DevComponents.DotNetBar.ButtonItem()
+        Me.Boton_Reenumerar_AM = New DevComponents.DotNetBar.ButtonItem()
+        Me.ribbonBarMergeContainer1.SuspendLayout
+        Me.GroupBox1.SuspendLayout
+        CType(Me.dgvAccionesModificatorias,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupBox2.SuspendLayout
+        Me.gbFiltros.SuspendLayout
+        Me.GroupBox5.SuspendLayout
+        Me.GroupBox4.SuspendLayout
+        Me.GroupBox3.SuspendLayout
+        Me.SuspendLayout
         '
         'ribbonBarMergeContainer1
         '
@@ -90,11 +92,11 @@ Partial Class frmModulo_Acciones_Modificatorias
         '
         Me.ribbonBarMergeContainer1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ribbonBarMergeContainer1.TabIndex = 5
-        Me.ribbonBarMergeContainer1.Visible = False
+        Me.ribbonBarMergeContainer1.Visible = false
         '
         'RibbonBar3
         '
-        Me.RibbonBar3.AutoOverflowEnabled = True
+        Me.RibbonBar3.AutoOverflowEnabled = true
         '
         '
         '
@@ -103,11 +105,11 @@ Partial Class frmModulo_Acciones_Modificatorias
         '
         '
         Me.RibbonBar3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.RibbonBar3.ContainerControlProcessDialogKey = True
+        Me.RibbonBar3.ContainerControlProcessDialogKey = true
         Me.RibbonBar3.Dock = System.Windows.Forms.DockStyle.Left
-        Me.RibbonBar3.DragDropSupport = True
+        Me.RibbonBar3.DragDropSupport = true
         Me.RibbonBar3.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.Boton_Salir})
-        Me.RibbonBar3.Location = New System.Drawing.Point(526, 0)
+        Me.RibbonBar3.Location = New System.Drawing.Point(587, 0)
         Me.RibbonBar3.Name = "RibbonBar3"
         Me.RibbonBar3.Size = New System.Drawing.Size(69, 83)
         Me.RibbonBar3.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
@@ -132,7 +134,7 @@ Partial Class frmModulo_Acciones_Modificatorias
         '
         'RibbonBar4
         '
-        Me.RibbonBar4.AutoOverflowEnabled = True
+        Me.RibbonBar4.AutoOverflowEnabled = true
         '
         '
         '
@@ -141,11 +143,11 @@ Partial Class frmModulo_Acciones_Modificatorias
         '
         '
         Me.RibbonBar4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.RibbonBar4.ContainerControlProcessDialogKey = True
+        Me.RibbonBar4.ContainerControlProcessDialogKey = true
         Me.RibbonBar4.Dock = System.Windows.Forms.DockStyle.Left
-        Me.RibbonBar4.DragDropSupport = True
+        Me.RibbonBar4.DragDropSupport = true
         Me.RibbonBar4.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM})
-        Me.RibbonBar4.Location = New System.Drawing.Point(406, 0)
+        Me.RibbonBar4.Location = New System.Drawing.Point(467, 0)
         Me.RibbonBar4.Name = "RibbonBar4"
         Me.RibbonBar4.Size = New System.Drawing.Size(120, 83)
         Me.RibbonBar4.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
@@ -178,7 +180,7 @@ Partial Class frmModulo_Acciones_Modificatorias
         '
         'RibbonBar2
         '
-        Me.RibbonBar2.AutoOverflowEnabled = True
+        Me.RibbonBar2.AutoOverflowEnabled = true
         '
         '
         '
@@ -187,11 +189,11 @@ Partial Class frmModulo_Acciones_Modificatorias
         '
         '
         Me.RibbonBar2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.RibbonBar2.ContainerControlProcessDialogKey = True
+        Me.RibbonBar2.ContainerControlProcessDialogKey = true
         Me.RibbonBar2.Dock = System.Windows.Forms.DockStyle.Left
-        Me.RibbonBar2.DragDropSupport = True
+        Me.RibbonBar2.DragDropSupport = true
         Me.RibbonBar2.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.Boton_Autorizar_AM, Me.Boton_Aprobar_AM})
-        Me.RibbonBar2.Location = New System.Drawing.Point(293, 0)
+        Me.RibbonBar2.Location = New System.Drawing.Point(354, 0)
         Me.RibbonBar2.Name = "RibbonBar2"
         Me.RibbonBar2.Size = New System.Drawing.Size(113, 83)
         Me.RibbonBar2.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
@@ -224,7 +226,7 @@ Partial Class frmModulo_Acciones_Modificatorias
         '
         'ribbonBar1
         '
-        Me.ribbonBar1.AutoOverflowEnabled = True
+        Me.ribbonBar1.AutoOverflowEnabled = true
         '
         '
         '
@@ -233,13 +235,13 @@ Partial Class frmModulo_Acciones_Modificatorias
         '
         '
         Me.ribbonBar1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.ribbonBar1.ContainerControlProcessDialogKey = True
+        Me.ribbonBar1.ContainerControlProcessDialogKey = true
         Me.ribbonBar1.Dock = System.Windows.Forms.DockStyle.Left
-        Me.ribbonBar1.DragDropSupport = True
-        Me.ribbonBar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.Boton_Nueva_AM, Me.Boton_Editar_AM, Me.Boton_Eliminar_AM, Me.Boton_Extornar_AM, Me.Boton_Anular_AM, Me.Boton_Actualizar_Registros})
+        Me.ribbonBar1.DragDropSupport = true
+        Me.ribbonBar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.Boton_Nueva_AM, Me.Boton_Editar_AM, Me.Boton_Eliminar_AM, Me.Boton_Extornar_AM, Me.Boton_Anular_AM, Me.Boton_Actualizar_Registros, Me.Boton_Reenumerar_AM})
         Me.ribbonBar1.Location = New System.Drawing.Point(0, 0)
         Me.ribbonBar1.Name = "ribbonBar1"
-        Me.ribbonBar1.Size = New System.Drawing.Size(293, 83)
+        Me.ribbonBar1.Size = New System.Drawing.Size(354, 83)
         Me.ribbonBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
         Me.ribbonBar1.TabIndex = 0
         Me.ribbonBar1.Text = "Opciones Básicas"
@@ -298,29 +300,30 @@ Partial Class frmModulo_Acciones_Modificatorias
         Me.Boton_Actualizar_Registros.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Actualizar
         Me.Boton_Actualizar_Registros.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
         Me.Boton_Actualizar_Registros.Name = "Boton_Actualizar_Registros"
+        Me.Boton_Actualizar_Registros.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.Boton_Reenumerar_Nota})
         Me.Boton_Actualizar_Registros.Text = "<div align=""center"">Actualizar<br/>Registros</div>"
         '
         'GroupBox1
         '
         Me.GroupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.GroupBox1.Controls.Add(Me.dgvAccionesModificatorias)
-        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(11, 91)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(869, 445)
         Me.GroupBox1.TabIndex = 7
-        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.TabStop = false
         '
         'dgvAccionesModificatorias
         '
-        Me.dgvAccionesModificatorias.AllowUserToAddRows = False
-        Me.dgvAccionesModificatorias.AllowUserToDeleteRows = False
-        Me.dgvAccionesModificatorias.AllowUserToResizeColumns = False
-        Me.dgvAccionesModificatorias.AllowUserToResizeRows = False
+        Me.dgvAccionesModificatorias.AllowUserToAddRows = false
+        Me.dgvAccionesModificatorias.AllowUserToDeleteRows = false
+        Me.dgvAccionesModificatorias.AllowUserToResizeColumns = false
+        Me.dgvAccionesModificatorias.AllowUserToResizeRows = false
         Me.dgvAccionesModificatorias.BackgroundColor = System.Drawing.Color.White
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = System.Drawing.Color.SaddleBrown
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         DataGridViewCellStyle1.ForeColor = System.Drawing.Color.LightYellow
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Navy
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
@@ -330,34 +333,34 @@ Partial Class frmModulo_Acciones_Modificatorias
         Me.dgvAccionesModificatorias.Cursor = System.Windows.Forms.Cursors.Hand
         Me.dgvAccionesModificatorias.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvAccionesModificatorias.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.dgvAccionesModificatorias.EnableHeadersVisualStyles = False
+        Me.dgvAccionesModificatorias.EnableHeadersVisualStyles = false
         Me.dgvAccionesModificatorias.Location = New System.Drawing.Point(3, 16)
-        Me.dgvAccionesModificatorias.MultiSelect = False
+        Me.dgvAccionesModificatorias.MultiSelect = false
         Me.dgvAccionesModificatorias.Name = "dgvAccionesModificatorias"
-        Me.dgvAccionesModificatorias.RowHeadersVisible = False
+        Me.dgvAccionesModificatorias.RowHeadersVisible = false
         DataGridViewCellStyle2.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Calibri", 9!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
         Me.dgvAccionesModificatorias.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvAccionesModificatorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvAccionesModificatorias.Size = New System.Drawing.Size(863, 426)
-        Me.dgvAccionesModificatorias.StandardTab = True
+        Me.dgvAccionesModificatorias.StandardTab = true
         Me.dgvAccionesModificatorias.TabIndex = 19
         '
         'GroupBox2
         '
         Me.GroupBox2.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.GroupBox2.Controls.Add(Me.lblRegistros)
-        Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.GroupBox2.Location = New System.Drawing.Point(11, 542)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(869, 40)
         Me.GroupBox2.TabIndex = 7
-        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.TabStop = false
         '
         'lblRegistros
         '
-        Me.lblRegistros.AutoSize = True
+        Me.lblRegistros.AutoSize = true
         Me.lblRegistros.Location = New System.Drawing.Point(6, 16)
         Me.lblRegistros.Name = "lblRegistros"
         Me.lblRegistros.Size = New System.Drawing.Size(0, 13)
@@ -369,12 +372,12 @@ Partial Class frmModulo_Acciones_Modificatorias
         Me.gbFiltros.Controls.Add(Me.GroupBox5)
         Me.gbFiltros.Controls.Add(Me.GroupBox4)
         Me.gbFiltros.Controls.Add(Me.GroupBox3)
-        Me.gbFiltros.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbFiltros.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.gbFiltros.Location = New System.Drawing.Point(12, 12)
         Me.gbFiltros.Name = "gbFiltros"
         Me.gbFiltros.Size = New System.Drawing.Size(877, 73)
         Me.gbFiltros.TabIndex = 9
-        Me.gbFiltros.TabStop = False
+        Me.gbFiltros.TabStop = false
         Me.gbFiltros.Text = "Opciones de Búsqueda Avanzada..."
         '
         'GroupBox5
@@ -384,13 +387,13 @@ Partial Class frmModulo_Acciones_Modificatorias
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(142, 48)
         Me.GroupBox5.TabIndex = 2
-        Me.GroupBox5.TabStop = False
+        Me.GroupBox5.TabStop = false
         Me.GroupBox5.Text = "Seleccione Mes"
         '
         'cbMes
         '
         Me.cbMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbMes.FormattingEnabled = True
+        Me.cbMes.FormattingEnabled = true
         Me.cbMes.Location = New System.Drawing.Point(15, 19)
         Me.cbMes.Name = "cbMes"
         Me.cbMes.Size = New System.Drawing.Size(115, 21)
@@ -403,13 +406,13 @@ Partial Class frmModulo_Acciones_Modificatorias
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(158, 48)
         Me.GroupBox4.TabIndex = 1
-        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.TabStop = false
         Me.GroupBox4.Text = "Seleccione Estado"
         '
         'cbEstado
         '
         Me.cbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbEstado.FormattingEnabled = True
+        Me.cbEstado.FormattingEnabled = true
         Me.cbEstado.Location = New System.Drawing.Point(15, 19)
         Me.cbEstado.Name = "cbEstado"
         Me.cbEstado.Size = New System.Drawing.Size(127, 21)
@@ -426,13 +429,13 @@ Partial Class frmModulo_Acciones_Modificatorias
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(547, 48)
         Me.GroupBox3.TabIndex = 0
-        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.TabStop = false
         Me.GroupBox3.Text = "Por Campos Basicos"
         '
         'txtDatos
         '
         Me.txtDatos.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtDatos.Enabled = False
+        Me.txtDatos.Enabled = false
         Me.txtDatos.Location = New System.Drawing.Point(370, 21)
         Me.txtDatos.Name = "txtDatos"
         Me.txtDatos.Size = New System.Drawing.Size(84, 20)
@@ -445,11 +448,11 @@ Partial Class frmModulo_Acciones_Modificatorias
         Me.btnBuscar.Size = New System.Drawing.Size(75, 23)
         Me.btnBuscar.TabIndex = 4
         Me.btnBuscar.Text = "&Buscar"
-        Me.btnBuscar.UseVisualStyleBackColor = True
+        Me.btnBuscar.UseVisualStyleBackColor = true
         '
         'Label3
         '
-        Me.Label3.AutoSize = True
+        Me.Label3.AutoSize = true
         Me.Label3.Location = New System.Drawing.Point(221, 24)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(143, 13)
@@ -459,7 +462,7 @@ Partial Class frmModulo_Acciones_Modificatorias
         'cbCriterio
         '
         Me.cbCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbCriterio.FormattingEnabled = True
+        Me.cbCriterio.FormattingEnabled = true
         Me.cbCriterio.Location = New System.Drawing.Point(129, 21)
         Me.cbCriterio.Name = "cbCriterio"
         Me.cbCriterio.Size = New System.Drawing.Size(86, 21)
@@ -467,12 +470,28 @@ Partial Class frmModulo_Acciones_Modificatorias
         '
         'Label1
         '
-        Me.Label1.AutoSize = True
+        Me.Label1.AutoSize = true
         Me.Label1.Location = New System.Drawing.Point(6, 24)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(116, 13)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Seleccione Campo:"
+        '
+        'Boton_Reenumerar_Nota
+        '
+        Me.Boton_Reenumerar_Nota.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.Boton_Reenumerar_Nota.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Reenumerar_Orden
+        Me.Boton_Reenumerar_Nota.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.Boton_Reenumerar_Nota.Name = "Boton_Reenumerar_Nota"
+        Me.Boton_Reenumerar_Nota.Text = "<div align=""center"">Reenumerar<br/>Nota</div>"
+        '
+        'Boton_Reenumerar_AM
+        '
+        Me.Boton_Reenumerar_AM.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.Boton_Reenumerar_AM.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Reenumerar_Orden
+        Me.Boton_Reenumerar_AM.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.Boton_Reenumerar_AM.Name = "Boton_Reenumerar_AM"
+        Me.Boton_Reenumerar_AM.Text = "<div align=""center"">Reenumerar<br/>A.M.</div>"
         '
         'frmModulo_Acciones_Modificatorias
         '
@@ -534,4 +553,6 @@ End Sub
     Friend WithEvents Label1 As Label
     Friend WithEvents Boton_Anular_AM As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents txtDatos As TextBox
+    Friend WithEvents Boton_Reenumerar_Nota As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents Boton_Reenumerar_AM As DevComponents.DotNetBar.ButtonItem
 End Class

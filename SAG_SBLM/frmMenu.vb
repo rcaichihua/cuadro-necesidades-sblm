@@ -7,7 +7,7 @@
         Me.Text = "..:: Sistema Administrativo de Gestión - SBLM ::.. " & "Usuario: " & My.Settings.Nombre_Usuario & " - Año de Ejecución: " & My.Settings.Año_Ejecucion
     End Sub
 
-    Private Sub Boton_Salir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub Boton_Salir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) 
         Close()
     End Sub
 
@@ -82,7 +82,7 @@
             MessageBox.Show("Estimado: " & My.Settings.Nombre_Usuario & ", Ud no cuenta con privilegios para acceder a esta opción", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
         End If
     End Sub
-    Private Sub Boton_Salir_3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Boton_Salir_3.Click 
+    Private Sub Boton_Salir_3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Boton_Salir_3.Click  
         me.Close()
     End Sub
     Private Sub Boton_Cambiar_Clave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Boton_Cambiar_Clave.Click 
@@ -265,6 +265,22 @@
     Private Sub Boton_Accion_Modificatoria_Click(sender As Object, e As EventArgs) Handles Boton_Accion_Modificatoria.Click
         If Datos.Acceso_Boton(My.Settings.Usuario.Trim, Me.Boton_Accion_Modificatoria.Name) = True Then
             Datos.Llamar_Formulario_Unico(frmModulo_Acciones_Modificatorias, Me)
+        Else
+            MessageBox.Show("Estimado: " & My.Settings.Nombre_Usuario & ", Ud no cuenta con privilegios para acceder a esta opción", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+        End If
+    End Sub
+
+    Private Sub Boton_Requerimiento_Bienes_Click(sender As Object, e As EventArgs) Handles Boton_Requerimiento_Bienes.Click
+        If Datos.Acceso_Boton(My.Settings.Usuario.Trim, Me.Boton_Requerimiento_Bienes.Name) = True Then
+            Datos.Llamar_Formulario_Unico(frmModulo_Requerimiento_Bienes, Me)
+        Else
+            MessageBox.Show("Estimado: " & My.Settings.Nombre_Usuario & ", Ud no cuenta con privilegios para acceder a esta opción", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+        End If
+    End Sub
+
+    Private Sub Boton_Requerimiento_Servicios_Click(sender As Object, e As EventArgs) Handles Boton_Requerimiento_Servicios.Click
+         If Datos.Acceso_Boton(My.Settings.Usuario.Trim, Me.Boton_Requerimiento_Servicios.Name) = True Then
+            Datos.Llamar_Formulario_Unico(frmModulo_Requerimiento_Servicios, Me)
         Else
             MessageBox.Show("Estimado: " & My.Settings.Nombre_Usuario & ", Ud no cuenta con privilegios para acceder a esta opción", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
         End If

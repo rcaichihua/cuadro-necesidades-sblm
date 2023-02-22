@@ -52,6 +52,7 @@ Partial Class frmModulo_CN
         Me.dgvCuadroDeNecesidades = New System.Windows.Forms.DataGridView()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.lblRegistros = New System.Windows.Forms.Label()
+        Me.Boton_Reporte_CN_Saldos = New DevComponents.DotNetBar.ButtonItem()
         Me.ribbonBarMergeContainer1.SuspendLayout
         Me.gbFiltros.SuspendLayout
         Me.GroupBox1.SuspendLayout
@@ -100,7 +101,7 @@ Partial Class frmModulo_CN
         Me.RibbonBar3.Dock = System.Windows.Forms.DockStyle.Left
         Me.RibbonBar3.DragDropSupport = true
         Me.RibbonBar3.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.Boton_Salir})
-        Me.RibbonBar3.Location = New System.Drawing.Point(710, 0)
+        Me.RibbonBar3.Location = New System.Drawing.Point(783, 0)
         Me.RibbonBar3.Name = "RibbonBar3"
         Me.RibbonBar3.Size = New System.Drawing.Size(69, 83)
         Me.RibbonBar3.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
@@ -137,10 +138,10 @@ Partial Class frmModulo_CN
         Me.RibbonBar4.ContainerControlProcessDialogKey = true
         Me.RibbonBar4.Dock = System.Windows.Forms.DockStyle.Left
         Me.RibbonBar4.DragDropSupport = true
-        Me.RibbonBar4.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.Boton_Imprimir_CN, Me.Boton_Visualizar_CN, Me.Boton_Visualizar_Saldos_CN, Me.Boton_Exportar_Excel_CN_General, Me.Boton_Reporte_General_CN})
+        Me.RibbonBar4.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.Boton_Imprimir_CN, Me.Boton_Visualizar_CN, Me.Boton_Visualizar_Saldos_CN, Me.Boton_Exportar_Excel_CN_General, Me.Boton_Reporte_General_CN, Me.Boton_Reporte_CN_Saldos})
         Me.RibbonBar4.Location = New System.Drawing.Point(371, 0)
         Me.RibbonBar4.Name = "RibbonBar4"
-        Me.RibbonBar4.Size = New System.Drawing.Size(339, 83)
+        Me.RibbonBar4.Size = New System.Drawing.Size(412, 83)
         Me.RibbonBar4.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
         Me.RibbonBar4.TabIndex = 3
         Me.RibbonBar4.Text = "Reportes Individuales"
@@ -175,7 +176,7 @@ Partial Class frmModulo_CN
         Me.Boton_Visualizar_Saldos_CN.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Registro_Prevision
         Me.Boton_Visualizar_Saldos_CN.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
         Me.Boton_Visualizar_Saldos_CN.Name = "Boton_Visualizar_Saldos_CN"
-        Me.Boton_Visualizar_Saldos_CN.Text = "<div align=""center"">Ver<br/>Saldos</div>"
+        Me.Boton_Visualizar_Saldos_CN.Text = "<div align=""center"">Ver P.I.A<br/>Saldos</div>"
         '
         'Boton_Exportar_Excel_CN_General
         '
@@ -422,6 +423,15 @@ Partial Class frmModulo_CN
         Me.lblRegistros.Size = New System.Drawing.Size(0, 13)
         Me.lblRegistros.TabIndex = 0
         '
+        'Boton_Reporte_CN_Saldos
+        '
+        Me.Boton_Reporte_CN_Saldos.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.Boton_Reporte_CN_Saldos.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Certificcion
+        Me.Boton_Reporte_CN_Saldos.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.Boton_Reporte_CN_Saldos.Name = "Boton_Reporte_CN_Saldos"
+        Me.Boton_Reporte_CN_Saldos.SubItemsExpandWidth = 14
+        Me.Boton_Reporte_CN_Saldos.Text = "<div align=""center"">Reporte<br/>C.N. Saldos</div>"
+        '
         'frmModulo_CN
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
@@ -475,4 +485,5 @@ End Sub
     Friend WithEvents Boton_Visualizar_Saldos_CN As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents Boton_Exportar_Excel_CN_General As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents Boton_Reporte_General_CN As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents Boton_Reporte_CN_Saldos As DevComponents.DotNetBar.ButtonItem
 End Class

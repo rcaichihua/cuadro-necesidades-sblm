@@ -1067,20 +1067,20 @@ Partial Class frmRegistro_Acciones_Modificatorias
         'Label27
         '
         Me.Label27.AutoSize = true
-        Me.Label27.Location = New System.Drawing.Point(6, 47)
+        Me.Label27.Location = New System.Drawing.Point(34, 50)
         Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(113, 13)
+        Me.Label27.Size = New System.Drawing.Size(125, 13)
         Me.Label27.TabIndex = 2
-        Me.Label27.Text = "Justificación Nota:"
+        Me.Label27.Text = "Justificación Acción:"
         '
         'Label28
         '
         Me.Label28.AutoSize = true
-        Me.Label28.Location = New System.Drawing.Point(6, 23)
+        Me.Label28.Location = New System.Drawing.Point(32, 22)
         Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(157, 13)
+        Me.Label28.Size = New System.Drawing.Size(127, 13)
         Me.Label28.TabIndex = 0
-        Me.Label28.Text = "Motivo Nota Modificatoria:"
+        Me.Label28.Text = "Motivo Acción Modif."
         '
         'cbMotivo
         '

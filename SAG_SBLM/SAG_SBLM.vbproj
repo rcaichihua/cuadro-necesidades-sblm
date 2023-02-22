@@ -273,6 +273,18 @@
     <Compile Include="frmModulo_CN.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmModulo_Requerimiento_Bienes.designer.vb">
+      <DependentUpon>frmModulo_Requerimiento_Bienes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmModulo_Requerimiento_Bienes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmModulo_Requerimiento_Servicios.designer.vb">
+      <DependentUpon>frmModulo_Requerimiento_Servicios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmModulo_Requerimiento_Servicios.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmModulo_Usuarios.Designer.vb">
       <DependentUpon>frmModulo_Usuarios.vb</DependentUpon>
     </Compile>
@@ -301,6 +313,12 @@
       <DependentUpon>frmProveedor.vb</DependentUpon>
     </Compile>
     <Compile Include="frmProveedor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReenumerar_Certificado.designer.vb">
+      <DependentUpon>frmReenumerar_Certificado.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmReenumerar_Certificado.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmRegistro_Acciones_Modificatorias.designer.vb">
@@ -428,10 +446,28 @@
       <DependentUpon>Reporte_CN_Resumen_General.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\Reporte_CN_Resumen_General_Saldos.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reporte_CN_Resumen_General_Saldos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\Reporte_CN_Resumen_por_item.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reporte_CN_Resumen_por_item.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\Requerimiento_Bienes.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Requerimiento_Bienes.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\Requerimiento_Servicios.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Requerimiento_Servicios.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\rptCnGeneral.vb">
@@ -450,6 +486,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rpt_lista_saldos_generales.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\Reporte_Accion_Modificatoria.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reporte_Accion_Modificatoria.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Settings.vb" />
@@ -521,6 +563,12 @@
     <EmbeddedResource Include="frmModulo_CN.resx">
       <DependentUpon>frmModulo_CN.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmModulo_Requerimiento_Bienes.resx">
+      <DependentUpon>frmModulo_Requerimiento_Bienes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmModulo_Requerimiento_Servicios.resx">
+      <DependentUpon>frmModulo_Requerimiento_Servicios.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmModulo_Usuarios.resx">
       <DependentUpon>frmModulo_Usuarios.vb</DependentUpon>
     </EmbeddedResource>
@@ -535,6 +583,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmProveedor.resx">
       <DependentUpon>frmProveedor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReenumerar_Certificado.resx">
+      <DependentUpon>frmReenumerar_Certificado.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRegistro_Acciones_Modificatorias.resx">
       <DependentUpon>frmRegistro_Acciones_Modificatorias.vb</DependentUpon>
@@ -598,9 +649,21 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Reporte_CN_Resumen_General.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Reporte_CN_Resumen_General_Saldos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Reporte_CN_Resumen_General_Saldos.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Reporte_CN_Resumen_por_item.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Reporte_CN_Resumen_por_item.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Requerimiento_Bienes.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Requerimiento_Bienes.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Requerimiento_Servicios.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Requerimiento_Servicios.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptCnGeneral.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -613,6 +676,10 @@
     <EmbeddedResource Include="Reportes\rpt_lista_saldos_generales.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rpt_lista_saldos_generales.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Reporte_Accion_Modificatoria.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Reporte_Accion_Modificatoria.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

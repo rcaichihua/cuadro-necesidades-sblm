@@ -197,6 +197,7 @@
                                             If Me.txtCosto.Text.Trim.Length > 0 Then
                                                 If Convert.ToDouble(Me.txtCantidad.Text.Trim) > 0 Then
                                                     If Datos.Verificar_Duplicidad_Grid_Global(23, Fuente_Financiaminto.Rows(Me.cbFF.SelectedIndex).Item("Codigo_FF").ToString & "." & Rubro.Rows(Me.cbRubro.SelectedIndex).Item("Codigo_Rubro").ToString & "." & Me.txtCodigoGrupo.Text.Trim & "." & Me.txtCodigoClase.Text.Trim & "." & Me.txtCodigoFamilia.Text.Trim & "." & Me.txtCodigoItem.Text.Trim & "." & Secuencia_Funcional.Rows(Me.cbSecuenciaFuncional.SelectedIndex).Item("Codigo_Secuencia_Funcional").ToString & "." & Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString & "." & Actividad.Rows(Me.cbActividad.SelectedIndex).Item("Codigo_Actividad").ToString, Me.DataGridView1) = True Then
+                                                        If ValidarSaldos() Then return
                                                         Me.DataGridView1.Rows.Add()
                                                         DataGridView1.Item(0, DataGridView1.Rows.Count - 1).Value = My.Settings.Año_Ejecucion
                                                         DataGridView1.Item(1, DataGridView1.Rows.Count - 1).Value = Fuente_Financiaminto.Rows(Me.cbFF.SelectedIndex).Item("Codigo_FF").ToString
@@ -296,6 +297,23 @@
             Me.cbUnidadOrganica.Focus()
         End If
     End Sub
+    Private Function ValidarSaldos() As Boolean
+        ValidarSaldos = False
+        If txtCosto.ReadOnly
+            If Convert.ToDecimal(txtCantidad.Text)<=Convert.ToDecimal(txtSaldoMes.Text)
+                If (Convert.ToDecimal(txtCantidad.Text)*Convert.ToDecimal(txtCosto.Text)<=Convert.ToDecimal(txtSaldo.Text))
+                    ValidarSaldos=False
+                Else
+                    MessageBox.Show("El total a agregar supera el saldo presupuestal.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1)
+                    ValidarSaldos = True
+                End If
+            Else
+                MessageBox.Show("La cantidad asignada supera el saldo.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1)
+                ValidarSaldos = True
+            End If
+        End If
+        Return ValidarSaldos
+    End Function
     Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
         If DataGridView1.Columns(e.ColumnIndex).Name = "btnEliminar" Then
             Me.DataGridView1.Rows.Remove(Me.DataGridView1.CurrentRow)
@@ -411,6 +429,9 @@
         End If
         Return Total
     End Function
+    Public Function Obtiene_Mes_Actual() As String
+        Return Datos.Obtiene_Mes_Actual()
+    End Function
     Private Sub Evaluar_Saldos()
         If Me.cbUnidadOrganica.Text.Trim.Length > 0 Then
             If Me.cbFF.Text.Trim.Length > 0 Then
@@ -469,8 +490,61 @@
         Formulario.ShowDialog()
         If Variable_Codigo_Grupo.Trim.Length > 0 And Variable_Codigo_Clase.Trim.Length > 0 And Variable_Codigo_Familia.Trim.Length > 0 And Variable_Codigo_Item.Trim.Length > 0 Then
             Datos.Mostrar_Data_Item_Catalogo(Variable_Codigo_Grupo, Variable_Codigo_Clase, Variable_Codigo_Familia, Variable_Codigo_Item, 1, Me.txtCodigoGrupo, Me.txtGrupo, Me.txtCodigoClase, Me.txtClase, Me.txtCodigoFamilia, Me.txtFamilia, Me.txtCodigoItem, Me.txtItem, Me.txtCodigoUnidadMedida, Me.txtUnidadMedida, Me.txtTipoTransaccion, Me.txtGenerica, Me.txtSubGenerica, Me.txtSubGenericaDetalle, Me.txtEspecifica, Me.txtEspecificaDetalle)
-            Me.txtCantidad.Focus()
-            Call Me.Evaluar_Saldos()
+            if (Datos.Verifica_Si_Existe_en_CN_AM(Variable_Codigo_Grupo, Variable_Codigo_Clase, Variable_Codigo_Familia,
+                                             Variable_Codigo_Item, 1,
+                                             Convert.ToDouble(Fuente_Financiaminto.Rows(Me.cbFF.SelectedIndex).Item("Codigo_FF").ToString),
+                                             Rubro.Rows(Me.cbRubro.SelectedIndex).Item("Codigo_Rubro").ToString,
+                                             Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString,
+                                             Secuencia_Funcional.Rows(Me.cbSecuenciaFuncional.SelectedIndex).Item("Codigo_Secuencia_Funcional").ToString,
+                                             Actividad.Rows(Me.cbActividad.SelectedIndex).Item("Codigo_Actividad").ToString))
+                
+                txtCosto.Text = Format(Datos.Precio_ref_CN(txtCodigoGrupo.Text, txtCodigoClase.Text, txtCodigoFamilia.Text, txtCodigoItem.Text, My.Settings.Año_Ejecucion.ToString), "###,###,#.00")
+                txtCosto.ReadOnly=True
+                txtCantidad.Focus()
+                Call Evaluar_Saldos()
+                Call Evalua_Saldo_del_Mes()
+                Call Evalua_Saldo_del_Acumulado()
+            Else
+               If MessageBox.Show("El Item Seleccionado no se ha encontrado en el Cuadro de Necesidades de la Unidad Organica Seleccionada." + 
+                                  Environment.NewLine+"¿Desea Agregarlo de todas Formas?", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.No Then
+                    Me.txtCodigoGrupo.Text = ""
+                    Me.txtGrupo.Text = ""
+                    Me.txtCodigoClase.Text = ""
+                    Me.txtClase.Text = ""
+                    Me.txtCodigoFamilia.Text = ""
+                    Me.txtFamilia.Text = ""
+                    Me.txtCodigoItem.Text = ""
+                    Me.txtItem.Text = ""
+                    Me.txtCodigoUnidadMedida.Text = ""
+                    Me.txtUnidadMedida.Text = ""
+                    Me.txtTipoTransaccion.Text = ""
+                    Me.txtGenerica.Text = ""
+                    Me.txtSubGenerica.Text = ""
+                    Me.txtSubGenericaDetalle.Text = ""
+                    Me.txtEspecifica.Text = ""
+                    Me.txtEspecificaDetalle.Text = ""
+
+                    Variable_Codigo_Catalogo = ""
+                    Variable_Codigo_Grupo = ""
+                    Variable_Codigo_Clase = ""
+                    Variable_Codigo_Familia = ""
+                    Variable_Codigo_Item = ""
+
+                    txtCantidad.Text="0.00"
+                    txtSaldoMes.Text="0.00"
+                    txtSaldo.Text= "0.00"
+                    txtSaldoTotalCN.Text="0.00"
+                    txtCosto.Text="0.00"
+                    txtCosto.ReadOnly=True
+                Else
+                    txtCantidad.Text="0.00"
+                    txtSaldoMes.Text="0.00"
+                    'txtSaldo.Text="0.00"
+                    txtSaldoTotalCN.Text="0.00"
+                    txtCosto.Text="0.00"
+                    txtCosto.ReadOnly=false
+               End If
+            End If
         Else
             Me.txtCodigoGrupo.Text = ""
             Me.txtGrupo.Text = ""
@@ -489,6 +563,18 @@
             Me.txtEspecifica.Text = ""
             Me.txtEspecificaDetalle.Text = ""
         End If
+    End Sub
+    Private Sub Evalua_Saldo_del_Mes()
+        Me.txtSaldoMes.Text = Format(Datos.Evalua_Saldo_del_Mes(Obtiene_Mes_Actual(),Convert.ToDouble(Fuente_Financiaminto.Rows(Me.cbFF.SelectedIndex).Item("Codigo_FF").ToString), Rubro.Rows(Me.cbRubro.SelectedIndex).Item("Codigo_Rubro").ToString,Variable_Codigo_Grupo, Variable_Codigo_Clase, Variable_Codigo_Familia, Variable_Codigo_Item, Secuencia_Funcional.Rows(Me.cbSecuenciaFuncional.SelectedIndex).Item("Codigo_Secuencia_Funcional").ToString, Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString, Actividad.Rows(Me.cbActividad.SelectedIndex).Item("Codigo_Actividad").ToString, My.Settings.Año_Ejecucion.ToString), "###,###,#.00")
+    End Sub
+    Private Sub Evalua_Saldo_del_Acumulado()
+        Dim acululado_Mes as Decimal
+
+        For i as integer = 1 To 12
+            acululado_Mes = acululado_Mes + Datos.Evalua_Saldo_del_Mes(i,Convert.ToDouble(Fuente_Financiaminto.Rows(Me.cbFF.SelectedIndex).Item("Codigo_FF").ToString), Rubro.Rows(Me.cbRubro.SelectedIndex).Item("Codigo_Rubro").ToString,Variable_Codigo_Grupo, Variable_Codigo_Clase, Variable_Codigo_Familia, Variable_Codigo_Item, Secuencia_Funcional.Rows(Me.cbSecuenciaFuncional.SelectedIndex).Item("Codigo_Secuencia_Funcional").ToString, Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString, Actividad.Rows(Me.cbActividad.SelectedIndex).Item("Codigo_Actividad").ToString, My.Settings.Año_Ejecucion.ToString)
+        Next
+
+        Me.txtSaldoTotalCN.Text = Format(acululado_Mes, "###,###,#.00")
     End Sub
     Private Sub txtCosto_Enter(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtCosto.Enter
         txtCosto.SelectionStart = 0

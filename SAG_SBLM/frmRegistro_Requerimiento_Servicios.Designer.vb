@@ -22,69 +22,73 @@ Partial Class frmRegistro_Requerimiento_Servicios
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmRegistro_Requerimiento_Servicios))
-        Me.gbDatosGenerales = New System.Windows.Forms.GroupBox
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.cbActividad = New System.Windows.Forms.ComboBox
-        Me.cbSecuenciaFuncional = New System.Windows.Forms.ComboBox
-        Me.cbRubro = New System.Windows.Forms.ComboBox
-        Me.cbFF = New System.Windows.Forms.ComboBox
-        Me.cbUnidadOrganica = New System.Windows.Forms.ComboBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.btnAgregar = New System.Windows.Forms.Button
-        Me.txtSaldo = New System.Windows.Forms.TextBox
-        Me.Label13 = New System.Windows.Forms.Label
-        Me.txtCosto = New System.Windows.Forms.TextBox
-        Me.Label14 = New System.Windows.Forms.Label
-        Me.txtCantidad = New System.Windows.Forms.TextBox
-        Me.Label12 = New System.Windows.Forms.Label
-        Me.gbDetalle = New System.Windows.Forms.GroupBox
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.btnCancelar = New System.Windows.Forms.Button
-        Me.btnGuardar = New System.Windows.Forms.Button
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox
-        Me.txtJustificacion = New System.Windows.Forms.TextBox
-        Me.Label15 = New System.Windows.Forms.Label
-        Me.btnBuscarItems = New System.Windows.Forms.Button
-        Me.gbCatalogo = New System.Windows.Forms.GroupBox
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.txtItem = New System.Windows.Forms.TextBox
-        Me.Label11 = New System.Windows.Forms.Label
-        Me.txtUnidadMedida = New System.Windows.Forms.TextBox
-        Me.txtCodigoItem = New System.Windows.Forms.TextBox
-        Me.txtCodigoUnidadMedida = New System.Windows.Forms.TextBox
-        Me.txtFamilia = New System.Windows.Forms.TextBox
-        Me.txtCodigoFamilia = New System.Windows.Forms.TextBox
-        Me.txtClase = New System.Windows.Forms.TextBox
-        Me.txtCodigoClase = New System.Windows.Forms.TextBox
-        Me.txtGrupo = New System.Windows.Forms.TextBox
-        Me.txtCodigoGrupo = New System.Windows.Forms.TextBox
-        Me.txtEspecificaDetalle = New System.Windows.Forms.TextBox
-        Me.txtEspecifica = New System.Windows.Forms.TextBox
-        Me.txtSubGenericaDetalle = New System.Windows.Forms.TextBox
-        Me.txtSubGenerica = New System.Windows.Forms.TextBox
-        Me.txtGenerica = New System.Windows.Forms.TextBox
-        Me.txtTipoTransaccion = New System.Windows.Forms.TextBox
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.gbDatosGenerales.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
-        Me.gbDetalle.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox2.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
-        Me.gbCatalogo.SuspendLayout()
-        Me.SuspendLayout()
+        Me.gbDatosGenerales = New System.Windows.Forms.GroupBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.cbActividad = New System.Windows.Forms.ComboBox()
+        Me.cbSecuenciaFuncional = New System.Windows.Forms.ComboBox()
+        Me.cbRubro = New System.Windows.Forms.ComboBox()
+        Me.cbFF = New System.Windows.Forms.ComboBox()
+        Me.cbUnidadOrganica = New System.Windows.Forms.ComboBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnAgregar = New System.Windows.Forms.Button()
+        Me.txtSaldo = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.txtCosto = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.txtCantidad = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.gbDetalle = New System.Windows.Forms.GroupBox()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnCancelar = New System.Windows.Forms.Button()
+        Me.btnGuardar = New System.Windows.Forms.Button()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.txtJustificacion = New System.Windows.Forms.TextBox()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.btnBuscarItems = New System.Windows.Forms.Button()
+        Me.gbCatalogo = New System.Windows.Forms.GroupBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.txtItem = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txtUnidadMedida = New System.Windows.Forms.TextBox()
+        Me.txtCodigoItem = New System.Windows.Forms.TextBox()
+        Me.txtCodigoUnidadMedida = New System.Windows.Forms.TextBox()
+        Me.txtFamilia = New System.Windows.Forms.TextBox()
+        Me.txtCodigoFamilia = New System.Windows.Forms.TextBox()
+        Me.txtClase = New System.Windows.Forms.TextBox()
+        Me.txtCodigoClase = New System.Windows.Forms.TextBox()
+        Me.txtGrupo = New System.Windows.Forms.TextBox()
+        Me.txtCodigoGrupo = New System.Windows.Forms.TextBox()
+        Me.txtEspecificaDetalle = New System.Windows.Forms.TextBox()
+        Me.txtEspecifica = New System.Windows.Forms.TextBox()
+        Me.txtSubGenericaDetalle = New System.Windows.Forms.TextBox()
+        Me.txtSubGenerica = New System.Windows.Forms.TextBox()
+        Me.txtGenerica = New System.Windows.Forms.TextBox()
+        Me.txtTipoTransaccion = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.txtSaldoTotalCN = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.txtSaldoMes = New System.Windows.Forms.TextBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.gbDatosGenerales.SuspendLayout
+        Me.GroupBox1.SuspendLayout
+        Me.gbDetalle.SuspendLayout
+        CType(Me.DataGridView1,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupBox2.SuspendLayout
+        Me.GroupBox3.SuspendLayout
+        Me.gbCatalogo.SuspendLayout
+        Me.SuspendLayout
         '
         'gbDatosGenerales
         '
@@ -98,17 +102,17 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.gbDatosGenerales.Controls.Add(Me.cbFF)
         Me.gbDatosGenerales.Controls.Add(Me.cbUnidadOrganica)
         Me.gbDatosGenerales.Controls.Add(Me.Label1)
-        Me.gbDatosGenerales.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbDatosGenerales.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.gbDatosGenerales.Location = New System.Drawing.Point(12, 12)
         Me.gbDatosGenerales.Name = "gbDatosGenerales"
         Me.gbDatosGenerales.Size = New System.Drawing.Size(710, 143)
         Me.gbDatosGenerales.TabIndex = 0
-        Me.gbDatosGenerales.TabStop = False
+        Me.gbDatosGenerales.TabStop = false
         Me.gbDatosGenerales.Text = "Datos Generales:"
         '
         'Label5
         '
-        Me.Label5.AutoSize = True
+        Me.Label5.AutoSize = true
         Me.Label5.Location = New System.Drawing.Point(270, 108)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(64, 13)
@@ -117,7 +121,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         '
         'Label4
         '
-        Me.Label4.AutoSize = True
+        Me.Label4.AutoSize = true
         Me.Label4.Location = New System.Drawing.Point(20, 108)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(130, 13)
@@ -126,7 +130,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         '
         'Label3
         '
-        Me.Label3.AutoSize = True
+        Me.Label3.AutoSize = true
         Me.Label3.Location = New System.Drawing.Point(20, 81)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(45, 13)
@@ -135,7 +139,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         '
         'Label2
         '
-        Me.Label2.AutoSize = True
+        Me.Label2.AutoSize = true
         Me.Label2.Location = New System.Drawing.Point(20, 54)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(139, 13)
@@ -145,7 +149,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         'cbActividad
         '
         Me.cbActividad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbActividad.FormattingEnabled = True
+        Me.cbActividad.FormattingEnabled = true
         Me.cbActividad.Location = New System.Drawing.Point(340, 105)
         Me.cbActividad.Name = "cbActividad"
         Me.cbActividad.Size = New System.Drawing.Size(364, 21)
@@ -154,7 +158,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         'cbSecuenciaFuncional
         '
         Me.cbSecuenciaFuncional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbSecuenciaFuncional.FormattingEnabled = True
+        Me.cbSecuenciaFuncional.FormattingEnabled = true
         Me.cbSecuenciaFuncional.Location = New System.Drawing.Point(165, 105)
         Me.cbSecuenciaFuncional.Name = "cbSecuenciaFuncional"
         Me.cbSecuenciaFuncional.Size = New System.Drawing.Size(99, 21)
@@ -163,7 +167,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         'cbRubro
         '
         Me.cbRubro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbRubro.FormattingEnabled = True
+        Me.cbRubro.FormattingEnabled = true
         Me.cbRubro.Location = New System.Drawing.Point(165, 78)
         Me.cbRubro.Name = "cbRubro"
         Me.cbRubro.Size = New System.Drawing.Size(539, 21)
@@ -172,7 +176,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         'cbFF
         '
         Me.cbFF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbFF.FormattingEnabled = True
+        Me.cbFF.FormattingEnabled = true
         Me.cbFF.Location = New System.Drawing.Point(165, 51)
         Me.cbFF.Name = "cbFF"
         Me.cbFF.Size = New System.Drawing.Size(539, 21)
@@ -181,7 +185,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         'cbUnidadOrganica
         '
         Me.cbUnidadOrganica.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbUnidadOrganica.FormattingEnabled = True
+        Me.cbUnidadOrganica.FormattingEnabled = true
         Me.cbUnidadOrganica.Location = New System.Drawing.Point(165, 24)
         Me.cbUnidadOrganica.Name = "cbUnidadOrganica"
         Me.cbUnidadOrganica.Size = New System.Drawing.Size(539, 21)
@@ -189,7 +193,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         '
         'Label1
         '
-        Me.Label1.AutoSize = True
+        Me.Label1.AutoSize = true
         Me.Label1.Location = New System.Drawing.Point(20, 27)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(106, 13)
@@ -198,6 +202,10 @@ Partial Class frmRegistro_Requerimiento_Servicios
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.txtSaldoMes)
+        Me.GroupBox1.Controls.Add(Me.Label16)
+        Me.GroupBox1.Controls.Add(Me.txtSaldoTotalCN)
+        Me.GroupBox1.Controls.Add(Me.Label17)
         Me.GroupBox1.Controls.Add(Me.btnAgregar)
         Me.GroupBox1.Controls.Add(Me.txtSaldo)
         Me.GroupBox1.Controls.Add(Me.Label13)
@@ -205,31 +213,31 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.GroupBox1.Controls.Add(Me.Label14)
         Me.GroupBox1.Controls.Add(Me.txtCantidad)
         Me.GroupBox1.Controls.Add(Me.Label12)
-        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(728, 218)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(581, 91)
         Me.GroupBox1.TabIndex = 2
-        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.TabStop = false
         Me.GroupBox1.Text = "Cantidad:"
         '
         'btnAgregar
         '
         Me.btnAgregar.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Aprobacion_Requerimiento
         Me.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAgregar.Location = New System.Drawing.Point(411, 43)
+        Me.btnAgregar.Location = New System.Drawing.Point(426, 43)
         Me.btnAgregar.Name = "btnAgregar"
-        Me.btnAgregar.Size = New System.Drawing.Size(161, 42)
+        Me.btnAgregar.Size = New System.Drawing.Size(146, 42)
         Me.btnAgregar.TabIndex = 6
         Me.btnAgregar.Text = "Agregar al Detalle"
         Me.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnAgregar.UseVisualStyleBackColor = True
+        Me.btnAgregar.UseVisualStyleBackColor = true
         '
         'txtSaldo
         '
-        Me.txtSaldo.Location = New System.Drawing.Point(165, 43)
+        Me.txtSaldo.Location = New System.Drawing.Point(134, 65)
         Me.txtSaldo.Name = "txtSaldo"
-        Me.txtSaldo.ReadOnly = True
+        Me.txtSaldo.ReadOnly = true
         Me.txtSaldo.Size = New System.Drawing.Size(103, 20)
         Me.txtSaldo.TabIndex = 5
         Me.txtSaldo.Text = "0.00"
@@ -237,12 +245,12 @@ Partial Class frmRegistro_Requerimiento_Servicios
         '
         'Label13
         '
-        Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(6, 46)
+        Me.Label13.AutoSize = true
+        Me.Label13.Location = New System.Drawing.Point(13, 68)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(135, 13)
+        Me.Label13.Size = New System.Drawing.Size(115, 13)
         Me.Label13.TabIndex = 4
-        Me.Label13.Text = "Saldo Total Disponible"
+        Me.Label13.Text = "Saldo presupuestal"
         '
         'txtCosto
         '
@@ -255,7 +263,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         '
         'Label14
         '
-        Me.Label14.AutoSize = True
+        Me.Label14.AutoSize = true
         Me.Label14.Location = New System.Drawing.Point(308, 19)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(112, 13)
@@ -264,7 +272,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         '
         'txtCantidad
         '
-        Me.txtCantidad.Location = New System.Drawing.Point(165, 16)
+        Me.txtCantidad.Location = New System.Drawing.Point(134, 19)
         Me.txtCantidad.Name = "txtCantidad"
         Me.txtCantidad.Size = New System.Drawing.Size(103, 20)
         Me.txtCantidad.TabIndex = 1
@@ -273,8 +281,8 @@ Partial Class frmRegistro_Requerimiento_Servicios
         '
         'Label12
         '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(6, 23)
+        Me.Label12.AutoSize = true
+        Me.Label12.Location = New System.Drawing.Point(6, 22)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(122, 13)
         Me.Label12.TabIndex = 0
@@ -283,23 +291,23 @@ Partial Class frmRegistro_Requerimiento_Servicios
         'gbDetalle
         '
         Me.gbDetalle.Controls.Add(Me.DataGridView1)
-        Me.gbDetalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbDetalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.gbDetalle.Location = New System.Drawing.Point(13, 308)
         Me.gbDetalle.Name = "gbDetalle"
         Me.gbDetalle.Size = New System.Drawing.Size(1296, 276)
         Me.gbDetalle.TabIndex = 5
-        Me.gbDetalle.TabStop = False
+        Me.gbDetalle.TabStop = false
         '
         'DataGridView1
         '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.AllowUserToResizeColumns = False
-        Me.DataGridView1.AllowUserToResizeRows = False
+        Me.DataGridView1.AllowUserToAddRows = false
+        Me.DataGridView1.AllowUserToDeleteRows = false
+        Me.DataGridView1.AllowUserToResizeColumns = false
+        Me.DataGridView1.AllowUserToResizeRows = false
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = System.Drawing.Color.SaddleBrown
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         DataGridViewCellStyle1.ForeColor = System.Drawing.Color.LightYellow
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Navy
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
@@ -308,18 +316,18 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.DataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.DataGridView1.EnableHeadersVisualStyles = False
+        Me.DataGridView1.EnableHeadersVisualStyles = false
         Me.DataGridView1.Location = New System.Drawing.Point(6, 19)
-        Me.DataGridView1.MultiSelect = False
+        Me.DataGridView1.MultiSelect = false
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowHeadersVisible = False
+        Me.DataGridView1.RowHeadersVisible = false
         DataGridViewCellStyle2.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Calibri", 9.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Calibri", 9.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
         Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(1279, 251)
-        Me.DataGridView1.StandardTab = True
+        Me.DataGridView1.StandardTab = true
         Me.DataGridView1.TabIndex = 18
         '
         'GroupBox2
@@ -327,12 +335,12 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.GroupBox2.Controls.Add(Me.Button1)
         Me.GroupBox2.Controls.Add(Me.btnCancelar)
         Me.GroupBox2.Controls.Add(Me.btnGuardar)
-        Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.GroupBox2.Location = New System.Drawing.Point(12, 246)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(710, 63)
         Me.GroupBox2.TabIndex = 4
-        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.TabStop = false
         Me.GroupBox2.Text = "Opciones de Registro"
         '
         'Button1
@@ -345,7 +353,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "Exportar Detalle a Excel"
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.UseVisualStyleBackColor = true
         '
         'btnCancelar
         '
@@ -357,7 +365,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.btnCancelar.TabIndex = 0
         Me.btnCancelar.Text = "Cancelar Registro de Requerimiento"
         Me.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnCancelar.UseVisualStyleBackColor = True
+        Me.btnCancelar.UseVisualStyleBackColor = true
         '
         'btnGuardar
         '
@@ -369,18 +377,18 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.btnGuardar.TabIndex = 0
         Me.btnGuardar.Text = "Guardar y/o Crear Requerimiento"
         Me.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnGuardar.UseVisualStyleBackColor = True
+        Me.btnGuardar.UseVisualStyleBackColor = true
         '
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.txtJustificacion)
         Me.GroupBox3.Controls.Add(Me.Label15)
-        Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.GroupBox3.Location = New System.Drawing.Point(12, 161)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(710, 79)
         Me.GroupBox3.TabIndex = 3
-        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.TabStop = false
         Me.GroupBox3.Text = "Justificación"
         '
         'txtJustificacion
@@ -388,7 +396,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.txtJustificacion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtJustificacion.Location = New System.Drawing.Point(165, 19)
         Me.txtJustificacion.MaxLength = 300
-        Me.txtJustificacion.Multiline = True
+        Me.txtJustificacion.Multiline = true
         Me.txtJustificacion.Name = "txtJustificacion"
         Me.txtJustificacion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtJustificacion.Size = New System.Drawing.Size(539, 53)
@@ -396,7 +404,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         '
         'Label15
         '
-        Me.Label15.AutoSize = True
+        Me.Label15.AutoSize = true
         Me.Label15.Location = New System.Drawing.Point(6, 22)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(128, 13)
@@ -413,7 +421,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.btnBuscarItems.TabIndex = 17
         Me.btnBuscarItems.Text = "Buscar Items"
         Me.btnBuscarItems.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnBuscarItems.UseVisualStyleBackColor = True
+        Me.btnBuscarItems.UseVisualStyleBackColor = true
         '
         'gbCatalogo
         '
@@ -440,17 +448,17 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.gbCatalogo.Controls.Add(Me.Label9)
         Me.gbCatalogo.Controls.Add(Me.btnBuscarItems)
         Me.gbCatalogo.Controls.Add(Me.Label10)
-        Me.gbCatalogo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbCatalogo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.gbCatalogo.Location = New System.Drawing.Point(728, 12)
         Me.gbCatalogo.Name = "gbCatalogo"
         Me.gbCatalogo.Size = New System.Drawing.Size(581, 200)
         Me.gbCatalogo.TabIndex = 1
-        Me.gbCatalogo.TabStop = False
+        Me.gbCatalogo.TabStop = false
         Me.gbCatalogo.Text = "Catalogo de Servicios"
         '
         'Label7
         '
-        Me.Label7.AutoSize = True
+        Me.Label7.AutoSize = true
         Me.Label7.Location = New System.Drawing.Point(20, 108)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(114, 13)
@@ -461,15 +469,15 @@ Partial Class frmRegistro_Requerimiento_Servicios
         '
         Me.txtItem.BackColor = System.Drawing.Color.White
         Me.txtItem.Location = New System.Drawing.Point(208, 132)
-        Me.txtItem.Multiline = True
+        Me.txtItem.Multiline = true
         Me.txtItem.Name = "txtItem"
-        Me.txtItem.ReadOnly = True
+        Me.txtItem.ReadOnly = true
         Me.txtItem.Size = New System.Drawing.Size(362, 55)
         Me.txtItem.TabIndex = 16
         '
         'Label11
         '
-        Me.Label11.AutoSize = True
+        Me.Label11.AutoSize = true
         Me.Label11.Location = New System.Drawing.Point(20, 135)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(113, 13)
@@ -481,7 +489,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.txtUnidadMedida.BackColor = System.Drawing.Color.White
         Me.txtUnidadMedida.Location = New System.Drawing.Point(208, 105)
         Me.txtUnidadMedida.Name = "txtUnidadMedida"
-        Me.txtUnidadMedida.ReadOnly = True
+        Me.txtUnidadMedida.ReadOnly = true
         Me.txtUnidadMedida.Size = New System.Drawing.Size(94, 20)
         Me.txtUnidadMedida.TabIndex = 11
         '
@@ -490,7 +498,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.txtCodigoItem.BackColor = System.Drawing.Color.White
         Me.txtCodigoItem.Location = New System.Drawing.Point(165, 132)
         Me.txtCodigoItem.Name = "txtCodigoItem"
-        Me.txtCodigoItem.ReadOnly = True
+        Me.txtCodigoItem.ReadOnly = true
         Me.txtCodigoItem.Size = New System.Drawing.Size(37, 20)
         Me.txtCodigoItem.TabIndex = 15
         '
@@ -499,7 +507,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.txtCodigoUnidadMedida.BackColor = System.Drawing.Color.White
         Me.txtCodigoUnidadMedida.Location = New System.Drawing.Point(165, 105)
         Me.txtCodigoUnidadMedida.Name = "txtCodigoUnidadMedida"
-        Me.txtCodigoUnidadMedida.ReadOnly = True
+        Me.txtCodigoUnidadMedida.ReadOnly = true
         Me.txtCodigoUnidadMedida.Size = New System.Drawing.Size(37, 20)
         Me.txtCodigoUnidadMedida.TabIndex = 10
         '
@@ -508,7 +516,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.txtFamilia.BackColor = System.Drawing.Color.White
         Me.txtFamilia.Location = New System.Drawing.Point(208, 78)
         Me.txtFamilia.Name = "txtFamilia"
-        Me.txtFamilia.ReadOnly = True
+        Me.txtFamilia.ReadOnly = true
         Me.txtFamilia.Size = New System.Drawing.Size(364, 20)
         Me.txtFamilia.TabIndex = 8
         '
@@ -517,7 +525,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.txtCodigoFamilia.BackColor = System.Drawing.Color.White
         Me.txtCodigoFamilia.Location = New System.Drawing.Point(165, 78)
         Me.txtCodigoFamilia.Name = "txtCodigoFamilia"
-        Me.txtCodigoFamilia.ReadOnly = True
+        Me.txtCodigoFamilia.ReadOnly = true
         Me.txtCodigoFamilia.Size = New System.Drawing.Size(37, 20)
         Me.txtCodigoFamilia.TabIndex = 7
         '
@@ -526,7 +534,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.txtClase.BackColor = System.Drawing.Color.White
         Me.txtClase.Location = New System.Drawing.Point(208, 51)
         Me.txtClase.Name = "txtClase"
-        Me.txtClase.ReadOnly = True
+        Me.txtClase.ReadOnly = true
         Me.txtClase.Size = New System.Drawing.Size(364, 20)
         Me.txtClase.TabIndex = 5
         '
@@ -535,7 +543,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.txtCodigoClase.BackColor = System.Drawing.Color.White
         Me.txtCodigoClase.Location = New System.Drawing.Point(165, 51)
         Me.txtCodigoClase.Name = "txtCodigoClase"
-        Me.txtCodigoClase.ReadOnly = True
+        Me.txtCodigoClase.ReadOnly = true
         Me.txtCodigoClase.Size = New System.Drawing.Size(37, 20)
         Me.txtCodigoClase.TabIndex = 4
         '
@@ -544,7 +552,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.txtGrupo.BackColor = System.Drawing.Color.White
         Me.txtGrupo.Location = New System.Drawing.Point(208, 24)
         Me.txtGrupo.Name = "txtGrupo"
-        Me.txtGrupo.ReadOnly = True
+        Me.txtGrupo.ReadOnly = true
         Me.txtGrupo.Size = New System.Drawing.Size(364, 20)
         Me.txtGrupo.TabIndex = 5
         '
@@ -553,7 +561,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.txtCodigoGrupo.BackColor = System.Drawing.Color.White
         Me.txtCodigoGrupo.Location = New System.Drawing.Point(165, 24)
         Me.txtCodigoGrupo.Name = "txtCodigoGrupo"
-        Me.txtCodigoGrupo.ReadOnly = True
+        Me.txtCodigoGrupo.ReadOnly = true
         Me.txtCodigoGrupo.Size = New System.Drawing.Size(37, 20)
         Me.txtCodigoGrupo.TabIndex = 1
         '
@@ -562,7 +570,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.txtEspecificaDetalle.BackColor = System.Drawing.Color.White
         Me.txtEspecificaDetalle.Location = New System.Drawing.Point(550, 105)
         Me.txtEspecificaDetalle.Name = "txtEspecificaDetalle"
-        Me.txtEspecificaDetalle.ReadOnly = True
+        Me.txtEspecificaDetalle.ReadOnly = true
         Me.txtEspecificaDetalle.Size = New System.Drawing.Size(20, 20)
         Me.txtEspecificaDetalle.TabIndex = 13
         Me.txtEspecificaDetalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -572,7 +580,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.txtEspecifica.BackColor = System.Drawing.Color.White
         Me.txtEspecifica.Location = New System.Drawing.Point(530, 105)
         Me.txtEspecifica.Name = "txtEspecifica"
-        Me.txtEspecifica.ReadOnly = True
+        Me.txtEspecifica.ReadOnly = true
         Me.txtEspecifica.Size = New System.Drawing.Size(20, 20)
         Me.txtEspecifica.TabIndex = 13
         Me.txtEspecifica.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -582,7 +590,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.txtSubGenericaDetalle.BackColor = System.Drawing.Color.White
         Me.txtSubGenericaDetalle.Location = New System.Drawing.Point(510, 105)
         Me.txtSubGenericaDetalle.Name = "txtSubGenericaDetalle"
-        Me.txtSubGenericaDetalle.ReadOnly = True
+        Me.txtSubGenericaDetalle.ReadOnly = true
         Me.txtSubGenericaDetalle.Size = New System.Drawing.Size(20, 20)
         Me.txtSubGenericaDetalle.TabIndex = 13
         Me.txtSubGenericaDetalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -592,7 +600,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.txtSubGenerica.BackColor = System.Drawing.Color.White
         Me.txtSubGenerica.Location = New System.Drawing.Point(490, 105)
         Me.txtSubGenerica.Name = "txtSubGenerica"
-        Me.txtSubGenerica.ReadOnly = True
+        Me.txtSubGenerica.ReadOnly = true
         Me.txtSubGenerica.Size = New System.Drawing.Size(20, 20)
         Me.txtSubGenerica.TabIndex = 13
         Me.txtSubGenerica.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -602,7 +610,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.txtGenerica.BackColor = System.Drawing.Color.White
         Me.txtGenerica.Location = New System.Drawing.Point(470, 105)
         Me.txtGenerica.Name = "txtGenerica"
-        Me.txtGenerica.ReadOnly = True
+        Me.txtGenerica.ReadOnly = true
         Me.txtGenerica.Size = New System.Drawing.Size(20, 20)
         Me.txtGenerica.TabIndex = 13
         Me.txtGenerica.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -612,14 +620,14 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.txtTipoTransaccion.BackColor = System.Drawing.Color.White
         Me.txtTipoTransaccion.Location = New System.Drawing.Point(450, 105)
         Me.txtTipoTransaccion.Name = "txtTipoTransaccion"
-        Me.txtTipoTransaccion.ReadOnly = True
+        Me.txtTipoTransaccion.ReadOnly = true
         Me.txtTipoTransaccion.Size = New System.Drawing.Size(20, 20)
         Me.txtTipoTransaccion.TabIndex = 13
         Me.txtTipoTransaccion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label6
         '
-        Me.Label6.AutoSize = True
+        Me.Label6.AutoSize = true
         Me.Label6.Location = New System.Drawing.Point(308, 108)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(133, 13)
@@ -628,7 +636,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         '
         'Label8
         '
-        Me.Label8.AutoSize = True
+        Me.Label8.AutoSize = true
         Me.Label8.Location = New System.Drawing.Point(20, 81)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(79, 13)
@@ -637,7 +645,7 @@ Partial Class frmRegistro_Requerimiento_Servicios
         '
         'Label9
         '
-        Me.Label9.AutoSize = True
+        Me.Label9.AutoSize = true
         Me.Label9.Location = New System.Drawing.Point(20, 54)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(71, 13)
@@ -646,16 +654,54 @@ Partial Class frmRegistro_Requerimiento_Servicios
         '
         'Label10
         '
-        Me.Label10.AutoSize = True
+        Me.Label10.AutoSize = true
         Me.Label10.Location = New System.Drawing.Point(20, 27)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(74, 13)
         Me.Label10.TabIndex = 0
         Me.Label10.Text = "Grupo Bien:"
         '
+        'txtSaldoTotalCN
+        '
+        Me.txtSaldoTotalCN.Location = New System.Drawing.Point(317, 43)
+        Me.txtSaldoTotalCN.Name = "txtSaldoTotalCN"
+        Me.txtSaldoTotalCN.ReadOnly = true
+        Me.txtSaldoTotalCN.Size = New System.Drawing.Size(103, 20)
+        Me.txtSaldoTotalCN.TabIndex = 8
+        Me.txtSaldoTotalCN.Text = "0.00"
+        Me.txtSaldoTotalCN.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label17
+        '
+        Me.Label17.Location = New System.Drawing.Point(242, 46)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(69, 34)
+        Me.Label17.TabIndex = 7
+        Me.Label17.Text = "Saldo C.N. Total"
+        Me.Label17.TextAlign = System.Drawing.ContentAlignment.TopRight
+        '
+        'txtSaldoMes
+        '
+        Me.txtSaldoMes.Location = New System.Drawing.Point(134, 43)
+        Me.txtSaldoMes.Name = "txtSaldoMes"
+        Me.txtSaldoMes.ReadOnly = true
+        Me.txtSaldoMes.Size = New System.Drawing.Size(103, 20)
+        Me.txtSaldoMes.TabIndex = 10
+        Me.txtSaldoMes.Text = "0.00"
+        Me.txtSaldoMes.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = true
+        Me.Label16.Location = New System.Drawing.Point(33, 46)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(95, 13)
+        Me.Label16.TabIndex = 9
+        Me.Label16.Text = "Saldo C.N. Mes"
+        '
         'frmRegistro_Requerimiento_Servicios
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1321, 594)
         Me.Controls.Add(Me.GroupBox2)
@@ -664,28 +710,28 @@ Partial Class frmRegistro_Requerimiento_Servicios
         Me.Controls.Add(Me.gbDetalle)
         Me.Controls.Add(Me.gbCatalogo)
         Me.Controls.Add(Me.gbDatosGenerales)
-        Me.DoubleBuffered = True
+        Me.DoubleBuffered = true
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
+        Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
+        Me.MaximizeBox = false
+        Me.MinimizeBox = false
         Me.Name = "frmRegistro_Requerimiento_Servicios"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "..:: Registro General de Requerimiento de Servicios ::.."
-        Me.gbDatosGenerales.ResumeLayout(False)
-        Me.gbDatosGenerales.PerformLayout()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        Me.gbDetalle.ResumeLayout(False)
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
-        Me.gbCatalogo.ResumeLayout(False)
-        Me.gbCatalogo.PerformLayout()
-        Me.ResumeLayout(False)
+        Me.gbDatosGenerales.ResumeLayout(false)
+        Me.gbDatosGenerales.PerformLayout
+        Me.GroupBox1.ResumeLayout(false)
+        Me.GroupBox1.PerformLayout
+        Me.gbDetalle.ResumeLayout(false)
+        CType(Me.DataGridView1,System.ComponentModel.ISupportInitialize).EndInit
+        Me.GroupBox2.ResumeLayout(false)
+        Me.GroupBox3.ResumeLayout(false)
+        Me.GroupBox3.PerformLayout
+        Me.gbCatalogo.ResumeLayout(false)
+        Me.gbCatalogo.PerformLayout
+        Me.ResumeLayout(false)
 
-    End Sub
+End Sub
     Friend WithEvents gbDatosGenerales As System.Windows.Forms.GroupBox
     Friend WithEvents cbUnidadOrganica As System.Windows.Forms.ComboBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
@@ -738,4 +784,8 @@ Partial Class frmRegistro_Requerimiento_Servicios
     Friend WithEvents txtEspecificaDetalle As System.Windows.Forms.TextBox
     Friend WithEvents txtEspecifica As System.Windows.Forms.TextBox
     Friend WithEvents txtSubGenericaDetalle As System.Windows.Forms.TextBox
+    Friend WithEvents txtSaldoTotalCN As TextBox
+    Friend WithEvents Label17 As Label
+    Friend WithEvents txtSaldoMes As TextBox
+    Friend WithEvents Label16 As Label
 End Class
