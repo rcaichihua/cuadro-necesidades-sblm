@@ -396,7 +396,7 @@
         Else
             If Me.DataGridView1.RowCount > 0 Then
                 If Me.txtJustificacion.Text.Trim.Length > 0 Then
-                    Datos.Eliminar_Requerimiento_Bien(My.Settings.Año_Ejecucion, Variable_Numero_Requerimiento_Bien, False)
+                    Datos.Eliminar_Requerimiento_Bien(My.Settings.Año_Ejecucion, Variable_Numero_Requerimiento_Bien, False,My.Settings.Usuario)
                     Datos.Modificar_Requerimiento_Bienes(My.Settings.Año_Ejecucion, Variable_Numero_Requerimiento_Bien, Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString, Me.txtJustificacion.Text.Trim, Me.Total)
 
                     For Recorrido As Integer = 0 To Me.DataGridView1.RowCount - 1

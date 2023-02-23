@@ -288,7 +288,7 @@ Public Class frmModulo_CN
         End If
     End Sub
 
-    Private Sub Boton_Exportar_Excel_CN_General_Click(sender As Object, e As EventArgs) Handles Boton_Exportar_Excel_CN_General.Click
+    Private Sub Boton_Exportar_Excel_CN_General_Click(sender As Object, e As EventArgs) Handles Boton_Agrupado_Por_Item_y_UO.Click
        '  If Datos.Acceso_Sub_Boton(My.Settings.Usuario.Trim, "Boton_Cuadro_Necesidades", Me.Boton_Exportar_Excel_CN_General.Name) = True Then
        '     Dim Query As String = "Select Unidad_O as Unidad_Organica, Año_Ejecucion,case when Codigo_Catalogo='01' then 'BIEN' else 'SERVICIO' END TipoCatalogo, Clasificador, Descripcion_Especifica_Detalle, 
        '     codigo, item, unidad, costo, cantidad, Cantidad_Enero as Cantidad_Enero, Cantidad_Febrero as Cantidad_Febrero,
@@ -309,7 +309,7 @@ Public Class frmModulo_CN
        ' End If
         Dim Reporte As CrystalDecisions.CrystalReports.Engine.ReportDocument
         Reporte = new rptListadoPorItemCN
-         If Datos.Acceso_Sub_Boton(My.Settings.Usuario.Trim, "Boton_Cuadro_Necesidades", Me.Boton_Exportar_Excel_CN_General.Name) = True Then
+         If Datos.Acceso_Sub_Boton(My.Settings.Usuario.Trim, "Boton_Cuadro_Necesidades", Me.Boton_Agrupado_Por_Item_y_UO.Name) = True Then
                 Dim DT As New DataTable
 
                 Dim Query As String = "Select b.Abreviatura as Unidad_Organica, a.Año_Ejecucion,case when Codigo_Catalogo='01' then 'BIEN' else 'SERVICIO' END TipoCatalogo, Clasificador, Descripcion_Especifica_Detalle, 

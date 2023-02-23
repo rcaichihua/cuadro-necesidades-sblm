@@ -235,7 +235,7 @@
         If Datos.Acceso_Sub_Boton(My.Settings.Usuario.Trim, "Boton_Requerimiento_Servicios", Me.Boton_Eliminar_Requerimiento_Servicios.Name) = True Then
             If Variable_Numero_Requerimiento_Servicio.Trim.Length > 0 Then
                 If MessageBox.Show("Deseas realmente Eliminar el Requerimiento seleccionado", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.Yes Then
-                    Datos.Eliminar_Requerimiento_Servicio(My.Settings.Año_Ejecucion, Variable_Numero_Requerimiento_Servicio, True)
+                    Datos.Eliminar_Requerimiento_Servicio(My.Settings.Año_Ejecucion, Variable_Numero_Requerimiento_Servicio, True,My.Settings.Usuario)
                 End If
                 Call Me.Filtrar()
                 Call Me.Dimensionar()
@@ -253,7 +253,11 @@
         If Datos.Acceso_Sub_Boton(My.Settings.Usuario.Trim, "Boton_Requerimiento_Servicios", Me.Boton_Extornar_Requerimiento_Servicios.Name) = True Then
             If Variable_Numero_Requerimiento_Servicio.Trim.Length > 0 Then
                 If MessageBox.Show("Deseas realmente Extornar el Requerimiento seleccionado", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.Yes Then
-                    Datos.Extornar_Requerimiento_Servicio(My.Settings.Año_Ejecucion, Variable_Numero_Requerimiento_Servicio)
+                    If Not Datos.Verifica_Orden_Compra_Con_Requerimiento(my.Settings.Año_Ejecucion,Variable_Numero_Requerimiento_Servicio, "S")
+                        Datos.Extornar_Requerimiento_Servicio(My.Settings.Año_Ejecucion, Variable_Numero_Requerimiento_Servicio, My.Settings.Usuario)
+                    Else
+                        MessageBox.Show("No se puede extornar el requerimiento, ya se generó una Orden de Compra.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+                    End If
                 End If
                 Call Me.Filtrar()
                 Call Me.Dimensionar()

@@ -7,9 +7,9 @@
     Dim Mes As New DataTable
     Dim Datos As New Mantenimiento
     Private Sub frmModulo_Acciones_Modificatorias_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        B_Busqueda_S = " select Año_Ejecucion As Año,Numero,Justificacion,IsNull(Convert(VarChar(10),FechaEmision,103),'00/00/0000') as Emisión,IsNull(Convert(VarChar(10),FechaAutorizacion,103),'00/00/0000') as Autorización,IsNull(Convert(VarChar(10),FechaAprobacion,103),'00/00/0000') As Aprobación,Descripcion_Estado_AM as Estado from Lista_Acciones_Modificatorias_Basica "
-        B_Busqueda_W = " Where Año_Ejecucion ='" & My.Settings.Año_Ejecucion & "' And Codigo_Unidad_Organica In (" & Datos.Cadena_Unidades_Organicas_Por_Usuario(My.Settings.Año_Ejecucion, My.Settings.Usuario) & ")"
-        B_Busqueda_O = " Order By Año_Ejecucion,Numero"
+        B_Busqueda_S = " select a.Año_Ejecucion As Año,a.Numero,b.Abreviatura as [U.O.],Justificacion,IsNull(Convert(VarChar(10),FechaEmision,103),'00/00/0000') as Emisión,IsNull(Convert(VarChar(10),FechaAutorizacion,103),'00/00/0000') as Autorización,IsNull(Convert(VarChar(10),FechaAprobacion,103),'00/00/0000') As Aprobación,Descripcion_Estado_AM as Estado from Lista_Acciones_Modificatorias_Basica a inner join Unidad_Organica b on a.Año_Ejecucion=b.Año_Ejecucion and a.Codigo_Unidad_Organica=b.Codigo_Unidad_Organica"
+        B_Busqueda_W = " Where a.Año_Ejecucion ='" & My.Settings.Año_Ejecucion & "' And a.Codigo_Unidad_Organica In (" & Datos.Cadena_Unidades_Organicas_Por_Usuario(My.Settings.Año_Ejecucion, My.Settings.Usuario) & ")"
+        B_Busqueda_O = " Order By a.Año_Ejecucion,a.Numero"
         Estado = Datos.LLenar_Combo("Select * From Estado_Accion", Me.cbEstado, "Descripcion_Estado_Accion")
         Me.cbEstado.SelectedIndex = 0
         Mes = Datos.LLenar_Combo("Select * From Mes", Me.cbMes, "Nombre_Mes")
@@ -55,11 +55,12 @@
     Private Sub Dimensionar()
         Me.dgvAccionesModificatorias.Columns(0).Width = 50
         Me.dgvAccionesModificatorias.Columns(1).Width = 70
-        Me.dgvAccionesModificatorias.Columns(2).Width = 370
-        Me.dgvAccionesModificatorias.Columns(3).Width = 85
+        Me.dgvAccionesModificatorias.Columns(2).Width = 50
+        Me.dgvAccionesModificatorias.Columns(3).Width = 320
         Me.dgvAccionesModificatorias.Columns(4).Width = 85
         Me.dgvAccionesModificatorias.Columns(5).Width = 85
-        Me.dgvAccionesModificatorias.Columns(6).Width = 90
+        Me.dgvAccionesModificatorias.Columns(6).Width = 85
+        Me.dgvAccionesModificatorias.Columns(7).Width = 90
         Me.dgvAccionesModificatorias.RowsDefaultCellStyle.BackColor = Color.White
         Me.dgvAccionesModificatorias.AlternatingRowsDefaultCellStyle.BackColor = Color.AliceBlue
         Me.dgvAccionesModificatorias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
@@ -68,10 +69,11 @@
         Me.dgvAccionesModificatorias.Columns(0).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         Me.dgvAccionesModificatorias.Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         Me.dgvAccionesModificatorias.Columns(2).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-        Me.dgvAccionesModificatorias.Columns(3).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        Me.dgvAccionesModificatorias.Columns(3).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
         Me.dgvAccionesModificatorias.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         Me.dgvAccionesModificatorias.Columns(5).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        Me.dgvAccionesModificatorias.Columns(6).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+        Me.dgvAccionesModificatorias.Columns(6).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        Me.dgvAccionesModificatorias.Columns(7).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
     End Sub
     Private Sub Boton_Nueva_AM_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Boton_Nueva_AM.Click
         If Datos.Acceso_Sub_Boton(My.Settings.Usuario.Trim, "Boton_Accion_Modificatoria", Me.Boton_Nueva_AM.Name) = True Then
@@ -177,8 +179,8 @@
     Private Sub Boton_Eliminar_AM_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Boton_Eliminar_AM.Click
         If Datos.Acceso_Sub_Boton(My.Settings.Usuario.Trim, "Boton_Accion_Modificatoria", Me.Boton_Eliminar_AM.Name) = True Then
             If Variable_Numero_Accion_Modificatoria.Trim.Length > 0 Then
-                If MessageBox.Show("¿Deseas realmente Eliminar el CN seleccionado?", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.Yes Then
-                    Datos.Eliminar_AM(My.Settings.Año_Ejecucion, Variable_Numero_Accion_Modificatoria)
+                If MessageBox.Show("¿Deseas realmente Eliminar la A.M. seleccionado?", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.Yes Then
+                    Datos.Eliminar_AM(My.Settings.Año_Ejecucion, Variable_Numero_Accion_Modificatoria,My.Settings.Usuario)
                 End If
                 Call Me.Filtrar()
                 Datos.Evaluacion_Botones_Modulo_Accion_Modificatoria(My.Settings.Año_Ejecucion, Variable_Numero_Accion_Modificatoria, Boton_Nueva_AM, Boton_Editar_AM, Boton_Anular_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM, Me.Boton_Reenumerar_AM)
@@ -194,7 +196,7 @@
         If Datos.Acceso_Sub_Boton(My.Settings.Usuario.Trim, "Boton_Accion_Modificatoria", Me.Boton_Extornar_AM.Name) = True Then
             If Variable_Numero_Accion_Modificatoria.Trim.Length > 0 Then
                 If MessageBox.Show("¿Deseas realmente Extornar la Acción Modificatoria seleccionada?", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.Yes Then
-                    Datos.Extornar_AM(My.Settings.Año_Ejecucion, Variable_Numero_Accion_Modificatoria)
+                    Datos.Extornar_AM(My.Settings.Año_Ejecucion, Variable_Numero_Accion_Modificatoria, My.Settings.Usuario)
                     Datos.Evaluacion_Botones_Modulo_Accion_Modificatoria(My.Settings.Año_Ejecucion, Variable_Numero_Accion_Modificatoria, Boton_Nueva_AM, Boton_Editar_AM, Boton_Anular_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM, Me.Boton_Reenumerar_AM)
                 End If
                 Call Me.Filtrar()

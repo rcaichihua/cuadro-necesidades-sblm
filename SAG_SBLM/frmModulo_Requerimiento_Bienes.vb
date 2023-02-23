@@ -235,7 +235,7 @@
         If Datos.Acceso_Sub_Boton(My.Settings.Usuario.Trim, "Boton_Requerimiento_Bienes", Me.Boton_Eliminar_Requerimiento_Bienes.Name) = True Then
             If Variable_Numero_Requerimiento_Bien.Trim.Length > 0 Then
                 If MessageBox.Show("Deseas realmente Eliminar el Requerimiento seleccionado", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.Yes Then
-                    Datos.Eliminar_Requerimiento_Bien(My.Settings.Año_Ejecucion, Variable_Numero_Requerimiento_Bien, True)
+                    Datos.Eliminar_Requerimiento_Bien(My.Settings.Año_Ejecucion, Variable_Numero_Requerimiento_Bien, True,My.Settings.Usuario)
                 End If
                 Call Me.Filtrar()
                 Call Me.Dimensionar()
@@ -253,7 +253,11 @@
         If Datos.Acceso_Sub_Boton(My.Settings.Usuario.Trim, "Boton_Requerimiento_Bienes", Me.Boton_Extornar_Requerimiento_Bienes.Name) = True Then
             If Variable_Numero_Requerimiento_Bien.Trim.Length > 0 Then
                 If MessageBox.Show("Deseas realmente Extornar el Requerimiento seleccionado", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.Yes Then
-                    Datos.Extornar_Requerimiento_Bien(My.Settings.Año_Ejecucion, Variable_Numero_Requerimiento_Bien)
+                    If Not Datos.Verifica_Orden_Compra_Con_Requerimiento(my.Settings.Año_Ejecucion,Variable_Numero_Requerimiento_Bien,"B")
+                        Datos.Extornar_Requerimiento_Bien(My.Settings.Año_Ejecucion, Variable_Numero_Requerimiento_Bien, My.Settings.Usuario)
+                    Else
+                        MessageBox.Show("No se puede extornar el requerimiento, ya se generó una Orden de Compra.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+                    End If
                 End If
                 Call Me.Filtrar()
                 Call Me.Dimensionar()

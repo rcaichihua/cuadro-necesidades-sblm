@@ -1150,8 +1150,26 @@ Public Class Mantenimiento
         Cm.ExecuteNonQuery()
         Cm = Nothing
     End Sub
-    Public Sub Eliminar_AM(ByVal Año_Ejecucion As String, ByVal Numero As String)
+    Public Sub Eliminar_AM(ByVal Año_Ejecucion As String, ByVal Numero As String, ByVal Usuario As String)
+        Dim Da As New OleDb.OleDbDataAdapter("Select CONVERT(varchar(10), FechaEmision,103) as FechaEmision,UsuarioEmision From Accion_Modificatoria Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'", Cn)
+        Dim Ds As New Data.DataSet
+        Dim FechaEmision As String=""
+        Dim UsuarioEmision As String=""
+
+        Da.Fill(Ds)
+        If (Ds.Tables(0).Rows.Count > 0) Then
+            FechaEmision = Ds.Tables(0).Rows(0)(0).ToString()
+            UsuarioEmision = Ds.Tables(0).Rows(0)(1).ToString()
+        End If
+
         Dim Cm As New OleDb.OleDbCommand
+        Cm.CommandTimeout = 0
+        Cm.Connection = Cn
+        Cm.CommandType = CommandType.Text
+        Cm.CommandText = "insert into Auditoria_Eliminacion_Documentos(Tipo_Documento,Año_Ejecucion,Numero,FechaEmision,UsuarioEmision,FechaElimina,UsuarioElimina) values('Accion_Modificatoria','"+Año_Ejecucion+"','"+Numero+"','"+FechaEmision+"','"+UsuarioEmision+"',GETDATE(),'"+Usuario+"') "
+        Cm.ExecuteNonQuery()
+        Cm = Nothing
+        Cm = New OleDb.OleDbCommand
         Cm.CommandTimeout = 0
         Cm.Connection = Cn
         Cm.CommandType = CommandType.Text
@@ -1249,12 +1267,12 @@ Public Class Mantenimiento
         Cm.ExecuteNonQuery()
         Cm = Nothing
     End Sub
-    Public Sub Extornar_AM(ByVal Año_Ejecucion As String, ByVal Numero As String)
+    Public Sub Extornar_AM(ByVal Año_Ejecucion As String, ByVal Numero As String, ByVal Usuario As String)
         Dim Cm As New OleDb.OleDbCommand
         Cm.CommandTimeout = 0
         Cm.Connection = Cn
         Cm.CommandType = CommandType.Text
-        Cm.CommandText = "Update Accion_Modificatoria Set Codigo_Estado_AM='01',FechaAutorizacion=Null,FechaAprobacion=Null,UsuarioAprobacion=Null,UsuarioAutorizacion=Null Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
+        Cm.CommandText = "Update Accion_Modificatoria Set Codigo_Estado_AM='01',FechaAutorizacion=Null,FechaAprobacion=Null,UsuarioAprobacion=Null,UsuarioAutorizacion=Null, FechaExtorno=getdate(), UsuarioExtorno='"+Usuario+"' Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
         Cm.ExecuteNonQuery()
         Cm = Nothing
     End Sub
@@ -1333,7 +1351,7 @@ Public Class Mantenimiento
         Da.Fill(Ds)
         If Ds.Tables(0).Rows.Count > 0 Then
             Select Case Ds.Tables(0).Rows(0).Item("Codigo_Estado_CN").ToString
-                Case "03" 'EMITIDO() 01
+                Case "01" 'EMITIDO() 01
                     Nuevo.Enabled = True
                     Editar.Enabled = True
                     Eliminar.Enabled = True
@@ -1351,7 +1369,7 @@ Public Class Mantenimiento
                     Aprobar.Enabled = True
                     Visualizar.Enabled = True
                     Imprimir.Enabled = True
-                Case "01" 'APROBADO() 03
+                Case "03" 'APROBADO() 03
                     Nuevo.Enabled = True
                     Editar.Enabled = False
                     Eliminar.Enabled = False
@@ -2407,9 +2425,26 @@ Public Class Mantenimiento
             Cm = Nothing
         End If
     End Sub
-    Public Sub Eliminar_Requerimiento_Bien(ByVal Año_Ejecucion As String, ByVal Numero As String, ByVal Operacion As Boolean)
+    Public Sub Eliminar_Requerimiento_Bien(ByVal Año_Ejecucion As String, ByVal Numero As String, ByVal Operacion As Boolean, ByVal Usuario As String)
         If Operacion = True Then
+            Dim Da As New OleDb.OleDbDataAdapter("Select CONVERT(varchar(10), FechaEmision,103) as FechaEmision,UsuarioEmision From Requerimiento_Bienes Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'", Cn)
+            Dim Ds As New Data.DataSet
+            Dim FechaEmision As String=""
+            Dim UsuarioEmision As String=""
+
+            Da.Fill(Ds)
+            If (Ds.Tables(0).Rows.Count > 0) Then
+                FechaEmision = Ds.Tables(0).Rows(0)(0).ToString()
+                UsuarioEmision = Ds.Tables(0).Rows(0)(1).ToString()
+            End If
+
             Dim Cm As New OleDb.OleDbCommand
+            Cm.CommandTimeout = 0
+            Cm.Connection = Cn
+            Cm.CommandType = CommandType.Text
+            Cm.CommandText = "insert into Auditoria_Eliminacion_Documentos(Tipo_Documento,Año_Ejecucion,Numero,FechaEmision,UsuarioEmision,FechaElimina,UsuarioElimina) values('Requerimiento_Bienes','"+Año_Ejecucion+"','"+Numero+"','"+FechaEmision+"','"+UsuarioEmision+"',GETDATE(),'"+Usuario+"') "
+            Cm.ExecuteNonQuery()
+            Cm = Nothing
             Cm.CommandTimeout = 0
             Cm.Connection = Cn
             Cm.CommandType = CommandType.Text
@@ -2433,9 +2468,26 @@ Public Class Mantenimiento
             Cm = Nothing
         End If
     End Sub
-    Public Sub Eliminar_Requerimiento_Servicio(ByVal Año_Ejecucion As String, ByVal Numero As String, ByVal Operacion As Boolean)
+    Public Sub Eliminar_Requerimiento_Servicio(ByVal Año_Ejecucion As String, ByVal Numero As String, ByVal Operacion As Boolean, ByVal Usuario As String)
         If Operacion = True Then
+            Dim Da As New OleDb.OleDbDataAdapter("Select CONVERT(varchar(10), FechaEmision,103) as FechaEmision,UsuarioEmision From Requerimiento_Servicios Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'", Cn)
+            Dim Ds As New Data.DataSet
+            Dim FechaEmision As String=""
+            Dim UsuarioEmision As String=""
+
+            Da.Fill(Ds)
+            If (Ds.Tables(0).Rows.Count > 0) Then
+                FechaEmision = Ds.Tables(0).Rows(0)(0).ToString()
+                UsuarioEmision = Ds.Tables(0).Rows(0)(1).ToString()
+            End If
+            
             Dim Cm As New OleDb.OleDbCommand
+            Cm.CommandTimeout = 0
+            Cm.Connection = Cn
+            Cm.CommandType = CommandType.Text
+            Cm.CommandText = "insert into Auditoria_Eliminacion_Documentos(Tipo_Documento,Año_Ejecucion,Numero,FechaEmision,UsuarioEmision,FechaElimina,UsuarioElimina) values('Requerimiento_Servicio','"+Año_Ejecucion+"','"+Numero+"','"+FechaEmision+"','"+UsuarioEmision+"',GETDATE(),'"+Usuario+"') "
+            Cm.ExecuteNonQuery()
+            Cm = Nothing
             Cm.CommandTimeout = 0
             Cm.Connection = Cn
             Cm.CommandType = CommandType.Text
@@ -3233,21 +3285,21 @@ Public Class Mantenimiento
         Cm.ExecuteNonQuery()
         Cm = Nothing
     End Sub
-    Public Sub Extornar_Requerimiento_Bien(ByVal Año_Ejecucion As String, ByVal Numero As String)
+    Public Sub Extornar_Requerimiento_Bien(ByVal Año_Ejecucion As String, ByVal Numero As String, Byval Usuario As String)
         Dim Cm As New OleDb.OleDbCommand
         Cm.CommandTimeout = 0
         Cm.Connection = Cn
         Cm.CommandType = CommandType.Text
-        Cm.CommandText = "Update Requerimiento_Bienes Set Codigo_Estado_Requerimiento='01',FechaAutorizacion=Null,FechaAprobacion=Null,UsuarioAutorizacion=Null,UsuarioAprobacion=Null Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
+        Cm.CommandText = "Update Requerimiento_Bienes Set Codigo_Estado_Requerimiento='01',FechaAutorizacion=Null,FechaAprobacion=Null,UsuarioAutorizacion=Null,UsuarioAprobacion=Null, FechaExtorno=getdate(), UsuarioExtorno='"+Usuario+"' Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
         Cm.ExecuteNonQuery()
         Cm = Nothing
     End Sub
-    Public Sub Extornar_Requerimiento_Servicio(ByVal Año_Ejecucion As String, ByVal Numero As String)
+    Public Sub Extornar_Requerimiento_Servicio(ByVal Año_Ejecucion As String, ByVal Numero As String, ByVal Usuario As String)
         Dim Cm As New OleDb.OleDbCommand
         Cm.CommandTimeout = 0
         Cm.Connection = Cn
         Cm.CommandType = CommandType.Text
-        Cm.CommandText = "Update Requerimiento_Servicios Set Codigo_Estado_Requerimiento='01',FechaAutorizacion=Null,FechaAprobacion=Null,UsuarioAutorizacion=Null,UsuarioAprobacion=Null Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
+        Cm.CommandText = "Update Requerimiento_Servicios Set Codigo_Estado_Requerimiento='01',FechaAutorizacion=Null,FechaAprobacion=Null,UsuarioAutorizacion=Null,UsuarioAprobacion=Null, FechaExtorno=getdate(), UsuarioExtorno='"+Usuario+"' Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
         Cm.ExecuteNonQuery()
         Cm = Nothing
     End Sub
@@ -3295,6 +3347,17 @@ Public Class Mantenimiento
             Saldo = 0
         End If
         Return Saldo
+    End Function
+
+    Public Function Verifica_Orden_Compra_Con_Requerimiento(ByVal Año_Ejecucion As String, ByVal Numero_Requerimiento As String, Byval Tipo As String) As Boolean
+        Verifica_Orden_Compra_Con_Requerimiento = False
+        Dim Da As New OleDb.OleDbDataAdapter("select * from "+IIf(Tipo="B","Orden_Compra","Orden_Servicio")+" where Año_Ejecucion='"+Año_Ejecucion+"' and Requerimiento='"+Numero_Requerimiento+"' and Codigo_Estado_Orden in ('01','02','03')", Cn)
+        Dim Ds As New Data.DataSet
+        Da.Fill(Ds)
+        If Ds.Tables(0).Rows.Count > 0 Then
+            Verifica_Orden_Compra_Con_Requerimiento = True
+        End If
+        Return Verifica_Orden_Compra_Con_Requerimiento
     End Function
 
     Public Function Saldo_CN(ByVal Codigo_FF As Integer, ByVal Codigo_Rubro As String, ByVal Tipo_Transaccion As String, ByVal Generica As String, ByVal Sub_Generica As String, ByVal Sub_Generica_Detalle As String, ByVal Especifica As String, ByVal Especifica_Detalle As String, ByVal Codigo_Secuencia_Funcional As String, ByVal Codigo_Unidad_Organica As String, ByVal Codigo_Actividad As String, ByVal Año_Ejecucion As String) As Double
