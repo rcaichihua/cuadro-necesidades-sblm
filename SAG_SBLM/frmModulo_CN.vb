@@ -63,6 +63,8 @@ Public Class frmModulo_CN
         Me.dgvCuadroDeNecesidades.Columns(6).Width = 80
         Me.dgvCuadroDeNecesidades.Columns(7).Width = 80
         Me.dgvCuadroDeNecesidades.Columns(8).Width = 100
+        Me.dgvCuadroDeNecesidades.Columns(1).Visible = False
+        Me.dgvCuadroDeNecesidades.Columns(2).Visible = False
         Me.dgvCuadroDeNecesidades.RowsDefaultCellStyle.BackColor = Color.White
         Me.dgvCuadroDeNecesidades.AlternatingRowsDefaultCellStyle.BackColor = Color.AliceBlue
         Me.dgvCuadroDeNecesidades.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing

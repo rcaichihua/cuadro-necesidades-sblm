@@ -136,6 +136,7 @@
         Me.dgvDistribucionCn.Columns(6).Visible = False
         Me.dgvDistribucionCn.Columns(7).Visible = False
         Me.dgvDistribucionCn.Columns(8).Visible = False
+        Me.dgvDistribucionCn.Columns(10).Visible = False 'modificacion por la Meta que no salga
         Me.dgvDistribucionCn.Columns(13).Visible = False
         Me.dgvDistribucionCn.Columns(14).Visible = False
         Me.dgvDistribucionCn.Columns(15).Visible = False
@@ -1550,14 +1551,14 @@
         If Editar = False Then
             Motivo = Datos.LLenar_Combo_Solo("select Codigo_Motivo_AM, Descripcion_Motivo_AM, (Codigo_Motivo_AM + ' - ' + Descripcion_Motivo_AM) as Motivo from Motivo_Acccion_Modificatoria", Me.cbMotivo, "Motivo")
             Unidad_Organica = Datos.LLenar_Combo_Solo("Select * From Unidad_Organica Where Año_Ejecucion='" & My.Settings.Año_Ejecucion & "' And Codigo_Unidad_Organica In (" & Datos.Cadena_Unidades_Organicas_Por_Usuario(My.Settings.Año_Ejecucion, My.Settings.Usuario) & ")", Me.cbUnidadOrganica, "Nombre_Unidad_Organica")
-            Fuente_Financiaminto = Datos.LLenar_Combo_Solo("Select * From Lista_FF Where Año_Ejecucion='" & My.Settings.Año_Ejecucion & "'", Me.cbFF, "Fuente")
+            Fuente_Financiaminto = Datos.LLenar_Combo_Solo("Select * From Lista_FF Where Año_Ejecucion='" & My.Settings.Año_Ejecucion & "' And Codigo_FF In(2,4)", Me.cbFF, "Fuente")
             'Tipo_Transaccion = Datos.LLenar_Combo_Solo("Select * From Lista_Tipo_Transaccion Where Año_Ejecucion='" & My.Settings.Año_Ejecucion & "'", Me.cb, "Transaccion")
             Call Me.Dimensionar()
             Separador = Application.CurrentCulture.NumberFormat.NumberDecimalSeparator
         Else
             Motivo = Datos.LLenar_Combo_Solo("select Codigo_Motivo_AM, Descripcion_Motivo_AM, (Codigo_Motivo_AM + ' - ' + Descripcion_Motivo_AM) as Motivo from Motivo_Acccion_Modificatoria", Me.cbMotivo, "Motivo")
             Unidad_Organica = Datos.LLenar_Combo_Solo("Select * From Unidad_Organica Where Año_Ejecucion='" & My.Settings.Año_Ejecucion & "' And Codigo_Unidad_Organica In (" & Datos.Cadena_Unidades_Organicas_Por_Usuario(My.Settings.Año_Ejecucion, My.Settings.Usuario) & ")", Me.cbUnidadOrganica, "Nombre_Unidad_Organica")
-            Fuente_Financiaminto = Datos.LLenar_Combo_Solo("Select * From Lista_FF Where Año_Ejecucion='" & My.Settings.Año_Ejecucion & "'", Me.cbFF, "Fuente")
+            Fuente_Financiaminto = Datos.LLenar_Combo_Solo("Select * From Lista_FF Where Año_Ejecucion='" & My.Settings.Año_Ejecucion & "' And Codigo_FF In(2,4)", Me.cbFF, "Fuente")
             'Tipo_Transaccion = Datos.LLenar_Combo_Solo("Select * From Lista_Tipo_Transaccion Where Año_Ejecucion='" & My.Settings.Año_Ejecucion & "'", Me.cbTipoTransaccion, "Transaccion")
             Call Me.Dimensionar()
             If (Datos.Cargar_AM_Para_Modificacion(My.Settings.Año_Ejecucion, Variable_Numero_Accion_Modificatoria, Variable_Codigo_Unidad_Organica, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Actividad, Me.cbUnidadOrganica, Me.dgvDistribucionCn, Me.cbMotivo, Me.txtJustificacion) = 1) Then
@@ -1914,10 +1915,14 @@
             '    End If
             'End If
 
+            'if (row.Cells("FF").Value = Codigo_FF And row.Cells("R").Value = Codigo_Rubro And row.Cells("TT").Value = Tipo_Transaccion And
+            '    row.Cells("G").Value = Generica And row.Cells("SG").Value = Sub_Generica And row.Cells("SGD").Value = Sub_Generica_Detalle And
+            '    row.Cells("E").Value = Especifica And row.Cells("ED").Value = Especifica_Detalle And row.Cells("Meta").Value = Codigo_Secuencia_Funcional And
+            '    row.Cells("UO").Value = Codigo_Unidad_Organica and row.Cells("CA").Value = Codigo_Actividad and row.Cells("Año").Value = Año_Ejecucion)
             if (row.Cells("FF").Value = Codigo_FF And row.Cells("R").Value = Codigo_Rubro And row.Cells("TT").Value = Tipo_Transaccion And
                 row.Cells("G").Value = Generica And row.Cells("SG").Value = Sub_Generica And row.Cells("SGD").Value = Sub_Generica_Detalle And
-                row.Cells("E").Value = Especifica And row.Cells("ED").Value = Especifica_Detalle And row.Cells("Meta").Value = Codigo_Secuencia_Funcional And
-                row.Cells("UO").Value = Codigo_Unidad_Organica and row.Cells("CA").Value = Codigo_Actividad and row.Cells("Año").Value = Año_Ejecucion)
+                row.Cells("E").Value = Especifica And row.Cells("ED").Value = Especifica_Detalle And
+                row.Cells("UO").Value = Codigo_Unidad_Organica and row.Cells("Año").Value = Año_Ejecucion)
 
                 Acumulado = (Convert.ToDouble(IIf(row.Cells("Ene.").Value.ToString() = string.Empty, "0.00", row.Cells("Ene.").Value)) +
                                       Convert.ToDouble(IIf(row.Cells("Feb.").Value.ToString() = string.Empty, "0.00", row.Cells("Feb.").Value)) +

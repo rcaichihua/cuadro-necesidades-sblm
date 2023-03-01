@@ -70,7 +70,7 @@ Partial Class frmModulo_CN
         Me.ribbonBarMergeContainer1.Location = New System.Drawing.Point(12, 588)
         Me.ribbonBarMergeContainer1.Name = "ribbonBarMergeContainer1"
         Me.ribbonBarMergeContainer1.RibbonTabText = "Opciones del CN"
-        Me.ribbonBarMergeContainer1.Size = New System.Drawing.Size(1053, 83)
+        Me.ribbonBarMergeContainer1.Size = New System.Drawing.Size(965, 83)
         '
         '
         '
@@ -327,9 +327,9 @@ Partial Class frmModulo_CN
         Me.gbFiltros.Controls.Add(Me.cbUnidadOrganica)
         Me.gbFiltros.Controls.Add(Me.Label1)
         Me.gbFiltros.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.gbFiltros.Location = New System.Drawing.Point(12, 12)
+        Me.gbFiltros.Location = New System.Drawing.Point(3, 12)
         Me.gbFiltros.Name = "gbFiltros"
-        Me.gbFiltros.Size = New System.Drawing.Size(1053, 54)
+        Me.gbFiltros.Size = New System.Drawing.Size(974, 54)
         Me.gbFiltros.TabIndex = 6
         Me.gbFiltros.TabStop = false
         Me.gbFiltros.Text = "Opciones de Filtro..."
@@ -338,7 +338,7 @@ Partial Class frmModulo_CN
         '
         Me.cbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbEstado.FormattingEnabled = true
-        Me.cbEstado.Location = New System.Drawing.Point(854, 19)
+        Me.cbEstado.Location = New System.Drawing.Point(807, 19)
         Me.cbEstado.Name = "cbEstado"
         Me.cbEstado.Size = New System.Drawing.Size(160, 21)
         Me.cbEstado.TabIndex = 3
@@ -346,7 +346,7 @@ Partial Class frmModulo_CN
         'Label2
         '
         Me.Label2.AutoSize = true
-        Me.Label2.Location = New System.Drawing.Point(774, 22)
+        Me.Label2.Location = New System.Drawing.Point(722, 22)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(79, 13)
         Me.Label2.TabIndex = 2
@@ -358,7 +358,7 @@ Partial Class frmModulo_CN
         Me.cbUnidadOrganica.FormattingEnabled = true
         Me.cbUnidadOrganica.Location = New System.Drawing.Point(146, 19)
         Me.cbUnidadOrganica.Name = "cbUnidadOrganica"
-        Me.cbUnidadOrganica.Size = New System.Drawing.Size(617, 21)
+        Me.cbUnidadOrganica.Size = New System.Drawing.Size(526, 21)
         Me.cbUnidadOrganica.TabIndex = 1
         '
         'Label1
@@ -375,9 +375,9 @@ Partial Class frmModulo_CN
         Me.GroupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.GroupBox1.Controls.Add(Me.dgvCuadroDeNecesidades)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 72)
+        Me.GroupBox1.Location = New System.Drawing.Point(3, 72)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1053, 464)
+        Me.GroupBox1.Size = New System.Drawing.Size(974, 464)
         Me.GroupBox1.TabIndex = 7
         Me.GroupBox1.TabStop = false
         '
@@ -398,9 +398,10 @@ Partial Class frmModulo_CN
         Me.dgvCuadroDeNecesidades.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvCuadroDeNecesidades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvCuadroDeNecesidades.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.dgvCuadroDeNecesidades.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvCuadroDeNecesidades.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvCuadroDeNecesidades.EnableHeadersVisualStyles = false
-        Me.dgvCuadroDeNecesidades.Location = New System.Drawing.Point(6, 19)
+        Me.dgvCuadroDeNecesidades.Location = New System.Drawing.Point(3, 16)
         Me.dgvCuadroDeNecesidades.MultiSelect = false
         Me.dgvCuadroDeNecesidades.Name = "dgvCuadroDeNecesidades"
         Me.dgvCuadroDeNecesidades.RowHeadersVisible = false
@@ -409,7 +410,7 @@ Partial Class frmModulo_CN
         DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
         Me.dgvCuadroDeNecesidades.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvCuadroDeNecesidades.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvCuadroDeNecesidades.Size = New System.Drawing.Size(1041, 439)
+        Me.dgvCuadroDeNecesidades.Size = New System.Drawing.Size(968, 445)
         Me.dgvCuadroDeNecesidades.StandardTab = true
         Me.dgvCuadroDeNecesidades.TabIndex = 19
         '
@@ -418,9 +419,9 @@ Partial Class frmModulo_CN
         Me.GroupBox2.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.GroupBox2.Controls.Add(Me.lblRegistros)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 542)
+        Me.GroupBox2.Location = New System.Drawing.Point(3, 542)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(1053, 40)
+        Me.GroupBox2.Size = New System.Drawing.Size(974, 40)
         Me.GroupBox2.TabIndex = 7
         Me.GroupBox2.TabStop = false
         '
@@ -436,7 +437,7 @@ Partial Class frmModulo_CN
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1091, 675)
+        Me.ClientSize = New System.Drawing.Size(982, 675)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.gbFiltros)

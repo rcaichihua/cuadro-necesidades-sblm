@@ -171,12 +171,8 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         'gbDatosGenerales
         '
-        Me.gbDatosGenerales.Controls.Add(Me.Label5)
-        Me.gbDatosGenerales.Controls.Add(Me.Label4)
         Me.gbDatosGenerales.Controls.Add(Me.Label3)
         Me.gbDatosGenerales.Controls.Add(Me.Label2)
-        Me.gbDatosGenerales.Controls.Add(Me.cbActividad)
-        Me.gbDatosGenerales.Controls.Add(Me.cbSecuenciaFuncional)
         Me.gbDatosGenerales.Controls.Add(Me.cbRubro)
         Me.gbDatosGenerales.Controls.Add(Me.cbFF)
         Me.gbDatosGenerales.Controls.Add(Me.cbUnidadOrganica)
@@ -184,7 +180,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.gbDatosGenerales.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.gbDatosGenerales.Location = New System.Drawing.Point(12, 12)
         Me.gbDatosGenerales.Name = "gbDatosGenerales"
-        Me.gbDatosGenerales.Size = New System.Drawing.Size(710, 134)
+        Me.gbDatosGenerales.Size = New System.Drawing.Size(710, 108)
         Me.gbDatosGenerales.TabIndex = 0
         Me.gbDatosGenerales.TabStop = false
         Me.gbDatosGenerales.Text = "Datos Generales:"
@@ -192,20 +188,22 @@ Partial Class frmRegistro_Acciones_Modificatorias
         'Label5
         '
         Me.Label5.AutoSize = true
-        Me.Label5.Location = New System.Drawing.Point(270, 108)
+        Me.Label5.Location = New System.Drawing.Point(496, 509)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(64, 13)
+        Me.Label5.Size = New System.Drawing.Size(54, 13)
         Me.Label5.TabIndex = 8
         Me.Label5.Text = "Actividad:"
+        Me.Label5.Visible = false
         '
         'Label4
         '
         Me.Label4.AutoSize = true
-        Me.Label4.Location = New System.Drawing.Point(20, 108)
+        Me.Label4.Location = New System.Drawing.Point(246, 509)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(130, 13)
+        Me.Label4.Size = New System.Drawing.Size(110, 13)
         Me.Label4.TabIndex = 6
         Me.Label4.Text = "Secuencia Funcional:"
+        Me.Label4.Visible = false
         '
         'Label3
         '
@@ -228,22 +226,22 @@ Partial Class frmRegistro_Acciones_Modificatorias
         'cbActividad
         '
         Me.cbActividad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbActividad.Enabled = false
         Me.cbActividad.FormattingEnabled = true
-        Me.cbActividad.Location = New System.Drawing.Point(340, 105)
+        Me.cbActividad.Location = New System.Drawing.Point(566, 506)
         Me.cbActividad.Name = "cbActividad"
         Me.cbActividad.Size = New System.Drawing.Size(364, 21)
         Me.cbActividad.TabIndex = 4
+        Me.cbActividad.Visible = false
         '
         'cbSecuenciaFuncional
         '
         Me.cbSecuenciaFuncional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbSecuenciaFuncional.Enabled = false
         Me.cbSecuenciaFuncional.FormattingEnabled = true
-        Me.cbSecuenciaFuncional.Location = New System.Drawing.Point(165, 105)
+        Me.cbSecuenciaFuncional.Location = New System.Drawing.Point(391, 506)
         Me.cbSecuenciaFuncional.Name = "cbSecuenciaFuncional"
         Me.cbSecuenciaFuncional.Size = New System.Drawing.Size(99, 21)
         Me.cbSecuenciaFuncional.TabIndex = 3
+        Me.cbSecuenciaFuncional.Visible = false
         '
         'cbRubro
         '
@@ -308,7 +306,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.gbOriginal.Controls.Add(Me.txtEnero)
         Me.gbOriginal.Controls.Add(Me.Label12)
         Me.gbOriginal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.gbOriginal.Location = New System.Drawing.Point(12, 152)
+        Me.gbOriginal.Location = New System.Drawing.Point(12, 126)
         Me.gbOriginal.Name = "gbOriginal"
         Me.gbOriginal.Size = New System.Drawing.Size(710, 98)
         Me.gbOriginal.TabIndex = 2
@@ -629,9 +627,9 @@ Partial Class frmRegistro_Acciones_Modificatorias
         '
         Me.gbDetalle.Controls.Add(Me.dgvDistribucionCn)
         Me.gbDetalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.gbDetalle.Location = New System.Drawing.Point(12, 454)
+        Me.gbDetalle.Location = New System.Drawing.Point(12, 459)
         Me.gbDetalle.Name = "gbDetalle"
-        Me.gbDetalle.Size = New System.Drawing.Size(1297, 134)
+        Me.gbDetalle.Size = New System.Drawing.Size(1297, 129)
         Me.gbDetalle.TabIndex = 5
         Me.gbDetalle.TabStop = false
         '
@@ -664,7 +662,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
         Me.dgvDistribucionCn.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvDistribucionCn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvDistribucionCn.Size = New System.Drawing.Size(1291, 115)
+        Me.dgvDistribucionCn.Size = New System.Drawing.Size(1291, 110)
         Me.dgvDistribucionCn.StandardTab = true
         Me.dgvDistribucionCn.TabIndex = 18
         '
@@ -952,6 +950,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.btnSaldos.Text = "Saldos"
         Me.btnSaldos.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSaldos.UseVisualStyleBackColor = true
+        Me.btnSaldos.Visible = false
         '
         'txtSaldo
         '
@@ -1046,9 +1045,9 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.GroupBox4.Controls.Add(Me.Label28)
         Me.GroupBox4.Controls.Add(Me.cbMotivo)
         Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.GroupBox4.Location = New System.Drawing.Point(12, 360)
+        Me.GroupBox4.Location = New System.Drawing.Point(12, 334)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(710, 93)
+        Me.GroupBox4.Size = New System.Drawing.Size(710, 119)
         Me.GroupBox4.TabIndex = 6
         Me.GroupBox4.TabStop = false
         Me.GroupBox4.Text = "Documentación y Justificación"
@@ -1061,7 +1060,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.txtJustificacion.Multiline = true
         Me.txtJustificacion.Name = "txtJustificacion"
         Me.txtJustificacion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtJustificacion.Size = New System.Drawing.Size(539, 40)
+        Me.txtJustificacion.Size = New System.Drawing.Size(539, 66)
         Me.txtJustificacion.TabIndex = 3
         '
         'Label27
@@ -1130,7 +1129,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.gbModificado.Controls.Add(Me.txtEnero_m)
         Me.gbModificado.Controls.Add(Me.Label40)
         Me.gbModificado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.gbModificado.Location = New System.Drawing.Point(12, 256)
+        Me.gbModificado.Location = New System.Drawing.Point(12, 230)
         Me.gbModificado.Name = "gbModificado"
         Me.gbModificado.Size = New System.Drawing.Size(710, 98)
         Me.gbModificado.TabIndex = 2
@@ -1594,6 +1593,10 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.Controls.Add(Me.gbOriginal)
         Me.Controls.Add(Me.gbDetalle)
         Me.Controls.Add(Me.gbDatosGenerales)
+        Me.Controls.Add(Me.cbSecuenciaFuncional)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.cbActividad)
         Me.DoubleBuffered = true
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
@@ -1620,6 +1623,7 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.GroupBox1.ResumeLayout(false)
         Me.GroupBox1.PerformLayout
         Me.ResumeLayout(false)
+        Me.PerformLayout
 
 End Sub
     Friend WithEvents gbDatosGenerales As System.Windows.Forms.GroupBox

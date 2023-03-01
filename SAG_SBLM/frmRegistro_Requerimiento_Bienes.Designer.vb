@@ -49,7 +49,7 @@ Partial Class frmRegistro_Requerimiento_Bienes
         Me.txtCantidad = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.gbDetalle = New System.Windows.Forms.GroupBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.dgvRequerimientoBienes = New System.Windows.Forms.DataGridView()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.btnCancelar = New System.Windows.Forms.Button()
@@ -84,7 +84,7 @@ Partial Class frmRegistro_Requerimiento_Bienes
         Me.gbDatosGenerales.SuspendLayout
         Me.GroupBox1.SuspendLayout
         Me.gbDetalle.SuspendLayout
-        CType(Me.DataGridView1,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.dgvRequerimientoBienes,System.ComponentModel.ISupportInitialize).BeginInit
         Me.GroupBox2.SuspendLayout
         Me.GroupBox3.SuspendLayout
         Me.gbCatalogo.SuspendLayout
@@ -207,8 +207,6 @@ Partial Class frmRegistro_Requerimiento_Bienes
         Me.GroupBox1.Controls.Add(Me.Label17)
         Me.GroupBox1.Controls.Add(Me.txtSaldoMes)
         Me.GroupBox1.Controls.Add(Me.Label16)
-        Me.GroupBox1.Controls.Add(Me.txtSaldo)
-        Me.GroupBox1.Controls.Add(Me.Label13)
         Me.GroupBox1.Controls.Add(Me.txtCosto)
         Me.GroupBox1.Controls.Add(Me.Label14)
         Me.GroupBox1.Controls.Add(Me.txtCantidad)
@@ -235,7 +233,7 @@ Partial Class frmRegistro_Requerimiento_Bienes
         '
         'txtSaldoTotalCN
         '
-        Me.txtSaldoTotalCN.Location = New System.Drawing.Point(318, 42)
+        Me.txtSaldoTotalCN.Location = New System.Drawing.Point(156, 68)
         Me.txtSaldoTotalCN.Name = "txtSaldoTotalCN"
         Me.txtSaldoTotalCN.ReadOnly = true
         Me.txtSaldoTotalCN.Size = New System.Drawing.Size(103, 20)
@@ -245,16 +243,17 @@ Partial Class frmRegistro_Requerimiento_Bienes
         '
         'Label17
         '
-        Me.Label17.Location = New System.Drawing.Point(243, 45)
+        Me.Label17.AutoSize = true
+        Me.Label17.Location = New System.Drawing.Point(35, 71)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(69, 34)
+        Me.Label17.Size = New System.Drawing.Size(115, 13)
         Me.Label17.TabIndex = 4
-        Me.Label17.Text = "Saldo C.N. Total"
+        Me.Label17.Text = "Saldo C.N. del Año"
         Me.Label17.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'txtSaldoMes
         '
-        Me.txtSaldoMes.Location = New System.Drawing.Point(134, 42)
+        Me.txtSaldoMes.Location = New System.Drawing.Point(156, 42)
         Me.txtSaldoMes.Name = "txtSaldoMes"
         Me.txtSaldoMes.ReadOnly = true
         Me.txtSaldoMes.Size = New System.Drawing.Size(103, 20)
@@ -265,30 +264,32 @@ Partial Class frmRegistro_Requerimiento_Bienes
         'Label16
         '
         Me.Label16.AutoSize = true
-        Me.Label16.Location = New System.Drawing.Point(33, 45)
+        Me.Label16.Location = New System.Drawing.Point(34, 45)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(95, 13)
+        Me.Label16.Size = New System.Drawing.Size(116, 13)
         Me.Label16.TabIndex = 4
-        Me.Label16.Text = "Saldo C.N. Mes"
+        Me.Label16.Text = "Saldo C.N. del Mes"
         '
         'txtSaldo
         '
-        Me.txtSaldo.Location = New System.Drawing.Point(134, 67)
+        Me.txtSaldo.Location = New System.Drawing.Point(825, 407)
         Me.txtSaldo.Name = "txtSaldo"
         Me.txtSaldo.ReadOnly = true
         Me.txtSaldo.Size = New System.Drawing.Size(103, 20)
         Me.txtSaldo.TabIndex = 5
         Me.txtSaldo.Text = "0.00"
         Me.txtSaldo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtSaldo.Visible = false
         '
         'Label13
         '
         Me.Label13.AutoSize = true
-        Me.Label13.Location = New System.Drawing.Point(12, 70)
+        Me.Label13.Location = New System.Drawing.Point(703, 410)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(116, 13)
+        Me.Label13.Size = New System.Drawing.Size(98, 13)
         Me.Label13.TabIndex = 4
         Me.Label13.Text = "Saldo Presupuestal"
+        Me.Label13.Visible = false
         '
         'txtCosto
         '
@@ -311,7 +312,7 @@ Partial Class frmRegistro_Requerimiento_Bienes
         '
         'txtCantidad
         '
-        Me.txtCantidad.Location = New System.Drawing.Point(134, 16)
+        Me.txtCantidad.Location = New System.Drawing.Point(156, 16)
         Me.txtCantidad.Name = "txtCantidad"
         Me.txtCantidad.Size = New System.Drawing.Size(103, 20)
         Me.txtCantidad.TabIndex = 1
@@ -321,7 +322,7 @@ Partial Class frmRegistro_Requerimiento_Bienes
         'Label12
         '
         Me.Label12.AutoSize = true
-        Me.Label12.Location = New System.Drawing.Point(6, 23)
+        Me.Label12.Location = New System.Drawing.Point(28, 19)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(122, 13)
         Me.Label12.TabIndex = 0
@@ -329,7 +330,7 @@ Partial Class frmRegistro_Requerimiento_Bienes
         '
         'gbDetalle
         '
-        Me.gbDetalle.Controls.Add(Me.DataGridView1)
+        Me.gbDetalle.Controls.Add(Me.dgvRequerimientoBienes)
         Me.gbDetalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.gbDetalle.Location = New System.Drawing.Point(13, 308)
         Me.gbDetalle.Name = "gbDetalle"
@@ -337,13 +338,13 @@ Partial Class frmRegistro_Requerimiento_Bienes
         Me.gbDetalle.TabIndex = 5
         Me.gbDetalle.TabStop = false
         '
-        'DataGridView1
+        'dgvRequerimientoBienes
         '
-        Me.DataGridView1.AllowUserToAddRows = false
-        Me.DataGridView1.AllowUserToDeleteRows = false
-        Me.DataGridView1.AllowUserToResizeColumns = false
-        Me.DataGridView1.AllowUserToResizeRows = false
-        Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
+        Me.dgvRequerimientoBienes.AllowUserToAddRows = false
+        Me.dgvRequerimientoBienes.AllowUserToDeleteRows = false
+        Me.dgvRequerimientoBienes.AllowUserToResizeColumns = false
+        Me.dgvRequerimientoBienes.AllowUserToResizeRows = false
+        Me.dgvRequerimientoBienes.BackgroundColor = System.Drawing.Color.White
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = System.Drawing.Color.SaddleBrown
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
@@ -351,23 +352,23 @@ Partial Class frmRegistro_Requerimiento_Bienes
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Navy
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.DataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.DataGridView1.EnableHeadersVisualStyles = false
-        Me.DataGridView1.Location = New System.Drawing.Point(6, 19)
-        Me.DataGridView1.MultiSelect = false
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowHeadersVisible = false
+        Me.dgvRequerimientoBienes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.dgvRequerimientoBienes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvRequerimientoBienes.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.dgvRequerimientoBienes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
+        Me.dgvRequerimientoBienes.EnableHeadersVisualStyles = false
+        Me.dgvRequerimientoBienes.Location = New System.Drawing.Point(6, 19)
+        Me.dgvRequerimientoBienes.MultiSelect = false
+        Me.dgvRequerimientoBienes.Name = "dgvRequerimientoBienes"
+        Me.dgvRequerimientoBienes.RowHeadersVisible = false
         DataGridViewCellStyle2.BackColor = System.Drawing.Color.White
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Calibri", 9.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle2
-        Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(1279, 251)
-        Me.DataGridView1.StandardTab = true
-        Me.DataGridView1.TabIndex = 18
+        Me.dgvRequerimientoBienes.RowsDefaultCellStyle = DataGridViewCellStyle2
+        Me.dgvRequerimientoBienes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvRequerimientoBienes.Size = New System.Drawing.Size(1279, 251)
+        Me.dgvRequerimientoBienes.StandardTab = true
+        Me.dgvRequerimientoBienes.TabIndex = 18
         '
         'GroupBox2
         '
@@ -386,9 +387,9 @@ Partial Class frmRegistro_Requerimiento_Bienes
         '
         Me.Button1.Image = Global.SAG_SBLM.My.Resources.Resources.Aceptar
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(503, 18)
+        Me.Button1.Location = New System.Drawing.Point(503, 19)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(201, 42)
+        Me.Button1.Size = New System.Drawing.Size(201, 41)
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "Exportar Detalle a Excel"
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -710,7 +711,9 @@ Partial Class frmRegistro_Requerimiento_Bienes
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.gbDetalle)
         Me.Controls.Add(Me.gbCatalogo)
+        Me.Controls.Add(Me.txtSaldo)
         Me.Controls.Add(Me.gbDatosGenerales)
+        Me.Controls.Add(Me.Label13)
         Me.DoubleBuffered = true
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
@@ -724,13 +727,14 @@ Partial Class frmRegistro_Requerimiento_Bienes
         Me.GroupBox1.ResumeLayout(false)
         Me.GroupBox1.PerformLayout
         Me.gbDetalle.ResumeLayout(false)
-        CType(Me.DataGridView1,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.dgvRequerimientoBienes,System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupBox2.ResumeLayout(false)
         Me.GroupBox3.ResumeLayout(false)
         Me.GroupBox3.PerformLayout
         Me.gbCatalogo.ResumeLayout(false)
         Me.gbCatalogo.PerformLayout
         Me.ResumeLayout(false)
+        Me.PerformLayout
 
 End Sub
     Friend WithEvents gbDatosGenerales As System.Windows.Forms.GroupBox
@@ -745,7 +749,7 @@ End Sub
     Friend WithEvents cbActividad As System.Windows.Forms.ComboBox
     Friend WithEvents cbSecuenciaFuncional As System.Windows.Forms.ComboBox
     Friend WithEvents gbDetalle As System.Windows.Forms.GroupBox
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents dgvRequerimientoBienes As System.Windows.Forms.DataGridView
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents txtCantidad As System.Windows.Forms.TextBox
     Friend WithEvents Label12 As System.Windows.Forms.Label

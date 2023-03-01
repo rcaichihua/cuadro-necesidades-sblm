@@ -114,12 +114,8 @@ Partial Class frmRegistro_CN
         '
         'gbDatosGenerales
         '
-        Me.gbDatosGenerales.Controls.Add(Me.Label5)
-        Me.gbDatosGenerales.Controls.Add(Me.Label4)
         Me.gbDatosGenerales.Controls.Add(Me.Label3)
         Me.gbDatosGenerales.Controls.Add(Me.Label2)
-        Me.gbDatosGenerales.Controls.Add(Me.cbActividad)
-        Me.gbDatosGenerales.Controls.Add(Me.cbSecuenciaFuncional)
         Me.gbDatosGenerales.Controls.Add(Me.cbRubro)
         Me.gbDatosGenerales.Controls.Add(Me.cbFF)
         Me.gbDatosGenerales.Controls.Add(Me.cbUnidadOrganica)
@@ -127,7 +123,7 @@ Partial Class frmRegistro_CN
         Me.gbDatosGenerales.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.gbDatosGenerales.Location = New System.Drawing.Point(12, 12)
         Me.gbDatosGenerales.Name = "gbDatosGenerales"
-        Me.gbDatosGenerales.Size = New System.Drawing.Size(710, 134)
+        Me.gbDatosGenerales.Size = New System.Drawing.Size(710, 108)
         Me.gbDatosGenerales.TabIndex = 0
         Me.gbDatosGenerales.TabStop = false
         Me.gbDatosGenerales.Text = "Datos Generales:"
@@ -135,20 +131,22 @@ Partial Class frmRegistro_CN
         'Label5
         '
         Me.Label5.AutoSize = true
-        Me.Label5.Location = New System.Drawing.Point(270, 108)
+        Me.Label5.Location = New System.Drawing.Point(393, 367)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(64, 13)
+        Me.Label5.Size = New System.Drawing.Size(54, 13)
         Me.Label5.TabIndex = 8
         Me.Label5.Text = "Actividad:"
+        Me.Label5.Visible = false
         '
         'Label4
         '
         Me.Label4.AutoSize = true
-        Me.Label4.Location = New System.Drawing.Point(20, 108)
+        Me.Label4.Location = New System.Drawing.Point(143, 367)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(130, 13)
+        Me.Label4.Size = New System.Drawing.Size(110, 13)
         Me.Label4.TabIndex = 6
         Me.Label4.Text = "Secuencia Funcional:"
+        Me.Label4.Visible = false
         '
         'Label3
         '
@@ -171,22 +169,22 @@ Partial Class frmRegistro_CN
         'cbActividad
         '
         Me.cbActividad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbActividad.Enabled = false
         Me.cbActividad.FormattingEnabled = true
-        Me.cbActividad.Location = New System.Drawing.Point(340, 105)
+        Me.cbActividad.Location = New System.Drawing.Point(463, 364)
         Me.cbActividad.Name = "cbActividad"
         Me.cbActividad.Size = New System.Drawing.Size(364, 21)
         Me.cbActividad.TabIndex = 4
+        Me.cbActividad.Visible = false
         '
         'cbSecuenciaFuncional
         '
         Me.cbSecuenciaFuncional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbSecuenciaFuncional.Enabled = false
         Me.cbSecuenciaFuncional.FormattingEnabled = true
-        Me.cbSecuenciaFuncional.Location = New System.Drawing.Point(165, 105)
+        Me.cbSecuenciaFuncional.Location = New System.Drawing.Point(288, 364)
         Me.cbSecuenciaFuncional.Name = "cbSecuenciaFuncional"
         Me.cbSecuenciaFuncional.Size = New System.Drawing.Size(99, 21)
         Me.cbSecuenciaFuncional.TabIndex = 3
+        Me.cbSecuenciaFuncional.Visible = false
         '
         'cbRubro
         '
@@ -252,9 +250,9 @@ Partial Class frmRegistro_CN
         Me.GroupBox1.Controls.Add(Me.txtEnero)
         Me.GroupBox1.Controls.Add(Me.Label12)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 152)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 126)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(710, 157)
+        Me.GroupBox1.Size = New System.Drawing.Size(710, 183)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = false
         Me.GroupBox1.Text = "Cantidad / Importe Mensualizados"
@@ -267,7 +265,7 @@ Partial Class frmRegistro_CN
         Me.GroupBox2.Controls.Add(Me.btnGuardar)
         Me.GroupBox2.Controls.Add(Me.btnCancelar)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(9, 96)
+        Me.GroupBox2.Location = New System.Drawing.Point(6, 115)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(691, 53)
         Me.GroupBox2.TabIndex = 12
@@ -960,7 +958,11 @@ Partial Class frmRegistro_CN
         Me.Controls.Add(Me.gbCatalogo)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.gbDetalle)
+        Me.Controls.Add(Me.cbActividad)
+        Me.Controls.Add(Me.cbSecuenciaFuncional)
         Me.Controls.Add(Me.gbDatosGenerales)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.Label4)
         Me.DoubleBuffered = true
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
@@ -982,6 +984,7 @@ Partial Class frmRegistro_CN
         Me.GroupBox3.ResumeLayout(false)
         Me.GroupBox3.PerformLayout
         Me.ResumeLayout(false)
+        Me.PerformLayout
 
 End Sub
     Friend WithEvents gbDatosGenerales As System.Windows.Forms.GroupBox

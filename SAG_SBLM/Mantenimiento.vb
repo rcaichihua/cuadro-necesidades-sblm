@@ -71,6 +71,16 @@ Public Class Mantenimiento
             Next
         End If
     End Function
+    Public Function Verificar_Duplicidad_Grid_Requerimiento(ByVal Columna As Integer, ByVal Dato As String, ByVal DataGridView As System.Windows.Forms.DataGridView) As Boolean
+        Verificar_Duplicidad_Grid_Requerimiento = True
+        If Verificar_Duplicidad_Grid_Requerimiento = True Then
+            For Recorrido As Integer = 0 To DataGridView.Rows.Count - 1
+                If Dato.Trim = DataGridView.Rows(Recorrido).Cells.Item(1).Value & "." & DataGridView.Rows(Recorrido).Cells.Item(2).Value & "." & DataGridView.Rows(Recorrido).Cells.Item(17).Value & "." & DataGridView.Rows(Recorrido).Cells.Item(11).Value & "." & DataGridView.Rows(Recorrido).Cells.Item(10).Value & "." & DataGridView.Rows(Recorrido).Cells.Item(12).Value Then
+                    Verificar_Duplicidad_Grid_Requerimiento = False
+                End If
+            Next
+        End If
+    End Function
     Public Function Verificar_Items_No_Autorizados_AM(ByVal DataGridView As DataGridView, Numero as String) As Boolean
         Verificar_Items_No_Autorizados_AM = True
 
@@ -2444,16 +2454,16 @@ Public Class Mantenimiento
             Cm.CommandType = CommandType.Text
             Cm.CommandText = "insert into Auditoria_Eliminacion_Documentos(Tipo_Documento,Año_Ejecucion,Numero,FechaEmision,UsuarioEmision,FechaElimina,UsuarioElimina) values('Requerimiento_Bienes','"+Año_Ejecucion+"','"+Numero+"','"+FechaEmision+"','"+UsuarioEmision+"',GETDATE(),'"+Usuario+"') "
             Cm.ExecuteNonQuery()
-            Cm = Nothing
-            Cm.CommandTimeout = 0
-            Cm.Connection = Cn
+            'Cm = Nothing
+            'Cm.CommandTimeout = 0
+            'Cm.Connection = Cn
             Cm.CommandType = CommandType.Text
             Cm.CommandText = "Delete From Detalle_Requerimiento_Bienes Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
             Cm.ExecuteNonQuery()
-            Cm = Nothing
-            Cm = New OleDb.OleDbCommand
-            Cm.CommandTimeout = 0
-            Cm.Connection = Cn
+            'Cm = Nothing
+            'Cm = New OleDb.OleDbCommand
+            'Cm.CommandTimeout = 0
+            'Cm.Connection = Cn
             Cm.CommandType = CommandType.Text
             Cm.CommandText = "Delete From Requerimiento_Bienes Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
             Cm.ExecuteNonQuery()
@@ -2487,16 +2497,16 @@ Public Class Mantenimiento
             Cm.CommandType = CommandType.Text
             Cm.CommandText = "insert into Auditoria_Eliminacion_Documentos(Tipo_Documento,Año_Ejecucion,Numero,FechaEmision,UsuarioEmision,FechaElimina,UsuarioElimina) values('Requerimiento_Servicio','"+Año_Ejecucion+"','"+Numero+"','"+FechaEmision+"','"+UsuarioEmision+"',GETDATE(),'"+Usuario+"') "
             Cm.ExecuteNonQuery()
-            Cm = Nothing
-            Cm.CommandTimeout = 0
-            Cm.Connection = Cn
+            'Cm = Nothing
+            'Cm.CommandTimeout = 0
+            'Cm.Connection = Cn
             Cm.CommandType = CommandType.Text
             Cm.CommandText = "Delete From Detalle_Requerimiento_Servicios Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
             Cm.ExecuteNonQuery()
-            Cm = Nothing
-            Cm = New OleDb.OleDbCommand
-            Cm.CommandTimeout = 0
-            Cm.Connection = Cn
+            'Cm = Nothing
+            'Cm = New OleDb.OleDbCommand
+            'Cm.CommandTimeout = 0
+            'Cm.Connection = Cn
             Cm.CommandType = CommandType.Text
             Cm.CommandText = "Delete From Requerimiento_Servicios Where Año_Ejecucion='" & Año_Ejecucion & "' And Numero='" & Numero & "'"
             Cm.ExecuteNonQuery()
@@ -3413,7 +3423,8 @@ Public Class Mantenimiento
         'Dim Da As New OleDb.OleDbDataAdapter("Select Importe_Asignado as Saldo_CN from Lista_Movimientos_PIA_CN Where Codigo_FF=" & Codigo_FF & " And Codigo_Rubro='" & Codigo_Rubro & "' And Tipo_Transaccion='" & Tipo_Transaccion & "' And Generica='" & Generica & "' And Sub_Generica='" & Sub_Generica & "' And Sub_Generica_Detalle='" & Sub_Generica_Detalle & "' And Especifica='" & Especifica & "' And Especifica_Detalle='" & Especifica_Detalle & "' And Codigo_Secuencia_Funcional='" & Codigo_Secuencia_Funcional & "' And Codigo_Unidad_Organica='" & Codigo_Unidad_Organica & "' And Codigo_Actividad='" & Codigo_Actividad & "' And Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
         'Dim Da As New OleDb.OleDbDataAdapter("Select Importe_Asignado as Saldo_CN from Lista_PIA_para_CN Where Codigo_FF=" & Codigo_FF & " And Codigo_Rubro='" & Codigo_Rubro & "' And Tipo_Transaccion='" & Tipo_Transaccion & "' And Generica='" & Generica & "' And Sub_Generica='" & Sub_Generica & "' And Sub_Generica_Detalle='" & Sub_Generica_Detalle & "' And Especifica='" & Especifica & "' And Especifica_Detalle='" & Especifica_Detalle & "' And Codigo_Secuencia_Funcional='" & Codigo_Secuencia_Funcional & "' And Codigo_Unidad_Organica='" & Codigo_Unidad_Organica & "' And Codigo_Actividad='" & Codigo_Actividad & "' And Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
         'Dim Da As New OleDb.OleDbDataAdapter("Select Saldo as Saldo_CN from Lista_Movimientos_PIA_PIM_Certificados_Saldos Where Codigo_FF=" & Codigo_FF & " And Codigo_Rubro='" & Codigo_Rubro & "' And Tipo_Transaccion='" & Tipo_Transaccion & "' And Generica='" & Generica & "' And Sub_Generica='" & Sub_Generica & "' And Sub_Generica_Detalle='" & Sub_Generica_Detalle & "' And Especifica='" & Especifica & "' And Especifica_Detalle='" & Especifica_Detalle & "' And Codigo_Secuencia_Funcional='" & Codigo_Secuencia_Funcional & "' And Codigo_Unidad_Organica='" & Codigo_Unidad_Organica & "' And Codigo_Actividad='" & Codigo_Actividad & "' And Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
-        Dim Da As New OleDb.OleDbDataAdapter("Select Saldo as Saldo_CN from Lista_Movimientos_PIA_PIM_CN_AM_Saldo Where Codigo_FF=" & Codigo_FF & " And Codigo_Rubro='" & Codigo_Rubro & "' And Tipo_Transaccion='" & Tipo_Transaccion & "' And Generica='" & Generica & "' And Sub_Generica='" & Sub_Generica & "' And Sub_Generica_Detalle='" & Sub_Generica_Detalle & "' And Especifica='" & Especifica & "' And Especifica_Detalle='" & Especifica_Detalle & "' And Codigo_Secuencia_Funcional='" & Codigo_Secuencia_Funcional & "' And Codigo_Unidad_Organica='" & Codigo_Unidad_Organica & "' And Codigo_Actividad='" & Codigo_Actividad & "' And Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
+        'Dim Da As New OleDb.OleDbDataAdapter("Select Saldo as Saldo_CN from Lista_Movimientos_PIA_PIM_CN_AM_Saldo Where Codigo_FF=" & Codigo_FF & " And Codigo_Rubro='" & Codigo_Rubro & "' And Tipo_Transaccion='" & Tipo_Transaccion & "' And Generica='" & Generica & "' And Sub_Generica='" & Sub_Generica & "' And Sub_Generica_Detalle='" & Sub_Generica_Detalle & "' And Especifica='" & Especifica & "' And Especifica_Detalle='" & Especifica_Detalle & "' And Codigo_Secuencia_Funcional='" & Codigo_Secuencia_Funcional & "' And Codigo_Unidad_Organica='" & Codigo_Unidad_Organica & "' And Codigo_Actividad='" & Codigo_Actividad & "' And Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
+        Dim Da As New OleDb.OleDbDataAdapter("Select Saldo as Saldo_CN from Lista_Movimientos_PIA_PIM_CN_AM_Saldo Where Codigo_FF=" & Codigo_FF & " And Codigo_Rubro='" & Codigo_Rubro & "' And Tipo_Transaccion='" & Tipo_Transaccion & "' And Generica='" & Generica & "' And Sub_Generica='" & Sub_Generica & "' And Sub_Generica_Detalle='" & Sub_Generica_Detalle & "' And Especifica='" & Especifica & "' And Especifica_Detalle='" & Especifica_Detalle & "' And Codigo_Unidad_Organica='" & Codigo_Unidad_Organica & "' And Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
         Dim Ds As New Data.DataSet
 
         Da.Fill(Ds)
@@ -5163,7 +5174,8 @@ Public Class Mantenimiento
         Verifica_Si_Existe_en_CN_AM = True
         Select Case Tipo
             Case 1
-                Dim Da As New OleDb.OleDbDataAdapter("Select * From Lista_CN_AM_aprobados_Bienes_Saldos Where Año_Ejecucion = '" + My.Settings.Año_Ejecucion + "' and Codigo_Unidad_Organica='" + Codigo_Unidad_Organica + "' and Codigo_Secuencia_Funcional='" + Codigo_Secuencia_Funcional + "' and Codigo_Actividad='" + Codigo_Actividad + "' and Codigo_FF = " + Codigo_FF.ToString() + " and Codigo_Rubro='" + Codigo_Rubro + "' and Codigo_Grupo='" & Codigo_Grupo & "' And Codigo_Clase='" & Codigo_Clase & "' And Codigo_Familia='" & Codigo_Familia & "' And Codigo_Item='" & Codigo_Item & "'", Cn)
+                'Dim Da As New OleDb.OleDbDataAdapter("Select * From Lista_CN_AM_aprobados_Bienes_Saldos Where Año_Ejecucion = '" + My.Settings.Año_Ejecucion + "' and Codigo_Unidad_Organica='" + Codigo_Unidad_Organica + "' and Codigo_Secuencia_Funcional='" + Codigo_Secuencia_Funcional + "' and Codigo_Actividad='" + Codigo_Actividad + "' and Codigo_FF = " + Codigo_FF.ToString() + " and Codigo_Rubro='" + Codigo_Rubro + "' and Codigo_Grupo='" & Codigo_Grupo & "' And Codigo_Clase='" & Codigo_Clase & "' And Codigo_Familia='" & Codigo_Familia & "' And Codigo_Item='" & Codigo_Item & "'", Cn)
+                Dim Da As New OleDb.OleDbDataAdapter("Select * From Lista_CN_AM_aprobados_Bienes_Saldos Where Año_Ejecucion = '" + My.Settings.Año_Ejecucion + "' and Codigo_Unidad_Organica='" + Codigo_Unidad_Organica + "' and Codigo_FF = " + Codigo_FF.ToString() + " and Codigo_Rubro='" + Codigo_Rubro + "' and Codigo_Grupo='" & Codigo_Grupo & "' And Codigo_Clase='" & Codigo_Clase & "' And Codigo_Familia='" & Codigo_Familia & "' And Codigo_Item='" & Codigo_Item & "'", Cn)
                 Dim Ds As New Data.DataSet
                 Da.Fill(Ds)
                 If Ds.Tables(0).Rows.Count > 0 Then
@@ -5172,9 +5184,9 @@ Public Class Mantenimiento
                     Verifica_Si_Existe_en_CN_AM = False
                 End If
             Case 2
-                Dim Da As New OleDb.OleDbDataAdapter("Select * From Lista_CN_AM_aprobados_Servicios_Saldos Where Año_Ejecucion = '" + My.Settings.Año_Ejecucion + "' and Codigo_Unidad_Organica='" + Codigo_Unidad_Organica + "' and Codigo_Secuencia_Funcional='" + Codigo_Secuencia_Funcional + "' and Codigo_Actividad='" + Codigo_Actividad + "' and Codigo_FF = " + Codigo_FF.ToString() + " and Codigo_Rubro='" + Codigo_Rubro + "' and Codigo_Grupo='" & Codigo_Grupo & "' And Codigo_Clase='" & Codigo_Clase & "' And Codigo_Familia='" & Codigo_Familia & "' And Codigo_Item='" & Codigo_Item & "'", Cn)
+                'Dim Da As New OleDb.OleDbDataAdapter("Select * From Lista_CN_AM_aprobados_Servicios_Saldos Where Año_Ejecucion = '" + My.Settings.Año_Ejecucion + "' and Codigo_Unidad_Organica='" + Codigo_Unidad_Organica + "' and Codigo_Secuencia_Funcional='" + Codigo_Secuencia_Funcional + "' and Codigo_Actividad='" + Codigo_Actividad + "' and Codigo_FF = " + Codigo_FF.ToString() + " and Codigo_Rubro='" + Codigo_Rubro + "' and Codigo_Grupo='" & Codigo_Grupo & "' And Codigo_Clase='" & Codigo_Clase & "' And Codigo_Familia='" & Codigo_Familia & "' And Codigo_Item='" & Codigo_Item & "'", Cn)
+                Dim Da As New OleDb.OleDbDataAdapter("Select * From Lista_CN_AM_aprobados_Servicios_Saldos Where Año_Ejecucion = '" + My.Settings.Año_Ejecucion + "' and Codigo_Unidad_Organica='" + Codigo_Unidad_Organica + "' and Codigo_FF = " + Codigo_FF.ToString() + " and Codigo_Rubro='" + Codigo_Rubro + "' and Codigo_Grupo='" & Codigo_Grupo & "' And Codigo_Clase='" & Codigo_Clase & "' And Codigo_Familia='" & Codigo_Familia & "' And Codigo_Item='" & Codigo_Item & "'", Cn)
                 Dim Ds As New Data.DataSet
-                Da.Fill(Ds)
                 Da.Fill(Ds)
                 If Ds.Tables(0).Rows.Count > 0 Then
                     Verifica_Si_Existe_en_CN_AM = True
@@ -5188,8 +5200,10 @@ Public Class Mantenimiento
         Select Case Tipo
             Case 1
                 'Dim Da As New OleDb.OleDbDataAdapter("Select * From Detalle_Cuadro_Necesidades a inner join Catalogo_Bienes b on a.Codigo_Catalogo=b.Codigo_Catalogo and a.Codigo_Grupo=b.Codigo_Grupo and a.Codigo_Clase=b.Codigo_Clase and a.Codigo_Familia=b.Codigo_Familia and a.Codigo_Item=b.Codigo_Item Where Año_Ejecucion = '" + My.Settings.Año_Ejecucion + "' and Codigo_Unidad_Organica='" + Codigo_Unidad_Organica + "' and Codigo_Secuencia_Funcional='" + Codigo_Secuencia_Funcional + "' and Codigo_Actividad='" + Codigo_Actividad + "' and Codigo_FF = " + Codigo_FF.ToString() + " and Codigo_Rubro='" + Codigo_Rubro + "' and a.Codigo_Grupo='" & Codigo_Grupo & "' And a.Codigo_Clase='" & Codigo_Clase & "' And a.Codigo_Familia='" & Codigo_Familia & "' And a.Codigo_Item='" & Codigo_Item & "'", Cn)
-                Dim Da As New OleDb.OleDbDataAdapter("Select * From Lista_CN_AM_aprobados_Bienes_Saldos Where Año_Ejecucion = '" + My.Settings.Año_Ejecucion + "' and Codigo_Unidad_Organica='" + Codigo_Unidad_Organica + "' and Codigo_Secuencia_Funcional='" + Codigo_Secuencia_Funcional + "' and Codigo_Actividad='" + Codigo_Actividad + "' and Codigo_FF = " + Codigo_FF.ToString() + " and Codigo_Rubro='" + Codigo_Rubro + "' and Codigo_Grupo='" & Codigo_Grupo & "' And Codigo_Clase='" & Codigo_Clase & "' And Codigo_Familia='" & Codigo_Familia & "' And Codigo_Item='" & Codigo_Item & "'", Cn)
-                Dim Da_Saldos As New OleDb.OleDbDataAdapter("Select * From Lista_saldos_CN_AM_Requerimientos Where Año_Ejecucion = '" + My.Settings.Año_Ejecucion + "' and Codigo_Unidad_Organica='" + Codigo_Unidad_Organica + "' and Codigo_Secuencia_Funcional='" + Codigo_Secuencia_Funcional + "' and Codigo_Actividad='" + Codigo_Actividad + "' and Codigo_FF = " + Codigo_FF.ToString() + " and Codigo_Rubro='" + Codigo_Rubro + "' and Codigo_Grupo='" & Codigo_Grupo & "' And Codigo_Clase='" & Codigo_Clase & "' And Codigo_Familia='" & Codigo_Familia & "' And Codigo_Item='" & Codigo_Item & "'", Cn)
+                'Dim Da As New OleDb.OleDbDataAdapter("Select * From Lista_CN_AM_aprobados_Bienes_Saldos Where Año_Ejecucion = '" + My.Settings.Año_Ejecucion + "' and Codigo_Unidad_Organica='" + Codigo_Unidad_Organica + "' and Codigo_Secuencia_Funcional='" + Codigo_Secuencia_Funcional + "' and Codigo_Actividad='" + Codigo_Actividad + "' and Codigo_FF = " + Codigo_FF.ToString() + " and Codigo_Rubro='" + Codigo_Rubro + "' and Codigo_Grupo='" & Codigo_Grupo & "' And Codigo_Clase='" & Codigo_Clase & "' And Codigo_Familia='" & Codigo_Familia & "' And Codigo_Item='" & Codigo_Item & "'", Cn)
+                Dim Da As New OleDb.OleDbDataAdapter("Select * From Lista_CN_AM_aprobados_Bienes_Saldos Where Año_Ejecucion = '" + My.Settings.Año_Ejecucion + "' and Codigo_Unidad_Organica='" + Codigo_Unidad_Organica + "' and Codigo_FF = " + Codigo_FF.ToString() + " and Codigo_Rubro='" + Codigo_Rubro + "' and Codigo_Grupo='" & Codigo_Grupo & "' And Codigo_Clase='" & Codigo_Clase & "' And Codigo_Familia='" & Codigo_Familia & "' And Codigo_Item='" & Codigo_Item & "'", Cn)
+                'Dim Da_Saldos As New OleDb.OleDbDataAdapter("Select * From Lista_saldos_CN_AM_Requerimientos Where Año_Ejecucion = '" + My.Settings.Año_Ejecucion + "' and Codigo_Unidad_Organica='" + Codigo_Unidad_Organica + "' and Codigo_Secuencia_Funcional='" + Codigo_Secuencia_Funcional + "' and Codigo_Actividad='" + Codigo_Actividad + "' and Codigo_FF = " + Codigo_FF.ToString() + " and Codigo_Rubro='" + Codigo_Rubro + "' and Codigo_Grupo='" & Codigo_Grupo & "' And Codigo_Clase='" & Codigo_Clase & "' And Codigo_Familia='" & Codigo_Familia & "' And Codigo_Item='" & Codigo_Item & "'", Cn)
+                Dim Da_Saldos As New OleDb.OleDbDataAdapter("Select * From Lista_saldos_CN_AM_Requerimientos Where Año_Ejecucion = '" + My.Settings.Año_Ejecucion + "' and Codigo_Unidad_Organica='" + Codigo_Unidad_Organica + "' and Codigo_FF = " + Codigo_FF.ToString() + " and Codigo_Rubro='" + Codigo_Rubro + "' and Codigo_Grupo='" & Codigo_Grupo & "' And Codigo_Clase='" & Codigo_Clase & "' And Codigo_Familia='" & Codigo_Familia & "' And Codigo_Item='" & Codigo_Item & "'", Cn)
                 Dim Da_Catalogo As New OleDb.OleDbDataAdapter("Select * From Catalogo_Bienes Where Codigo_Grupo='" & Codigo_Grupo & "' And Codigo_Clase='" & Codigo_Clase & "' And Codigo_Familia='" & Codigo_Familia & "' And Codigo_Item='" & Codigo_Item & "'", Cn)
                 Dim Ds As New Data.DataSet
                 Dim Ds_Saldos As New Data.DataSet
@@ -5322,7 +5336,8 @@ Public Class Mantenimiento
                 End If
             Case 2
                 'Dim Da As New OleDb.OleDbDataAdapter("Select * From Detalle_Cuadro_Necesidades a inner join Catalogo_Servicios b on a.Codigo_Catalogo=b.Codigo_Catalogo and a.Codigo_Grupo=b.Codigo_Grupo and a.Codigo_Clase=b.Codigo_Clase and a.Codigo_Familia=b.Codigo_Familia and a.Codigo_Item=b.Codigo_Item Where Año_Ejecucion = '" + My.Settings.Año_Ejecucion + "' and Codigo_Unidad_Organica='" + Codigo_Unidad_Organica + "' and Codigo_Secuencia_Funcional='" + Codigo_Secuencia_Funcional + "' and Codigo_Actividad='" + Codigo_Actividad + "' and Codigo_FF = " + Codigo_FF.ToString() + " and Codigo_Rubro='" + Codigo_Rubro + "' and a.Codigo_Grupo='" & Codigo_Grupo & "' And a.Codigo_Clase='" & Codigo_Clase & "' And a.Codigo_Familia='" & Codigo_Familia & "' And a.Codigo_Item='" & Codigo_Item & "'", Cn)
-                Dim Da As New OleDb.OleDbDataAdapter("Select * From Lista_CN_AM_aprobados_Servicios_Saldos Where Año_Ejecucion = '" + My.Settings.Año_Ejecucion + "' and Codigo_Unidad_Organica='" + Codigo_Unidad_Organica + "' and Codigo_Secuencia_Funcional='" + Codigo_Secuencia_Funcional + "' and Codigo_Actividad='" + Codigo_Actividad + "' and Codigo_FF = " + Codigo_FF.ToString() + " and Codigo_Rubro='" + Codigo_Rubro + "' and Codigo_Grupo='" & Codigo_Grupo & "' And Codigo_Clase='" & Codigo_Clase & "' And Codigo_Familia='" & Codigo_Familia & "' And Codigo_Item='" & Codigo_Item & "'", Cn)
+                'Dim Da As New OleDb.OleDbDataAdapter("Select * From Lista_CN_AM_aprobados_Servicios_Saldos Where Año_Ejecucion = '" + My.Settings.Año_Ejecucion + "' and Codigo_Unidad_Organica='" + Codigo_Unidad_Organica + "' and Codigo_Secuencia_Funcional='" + Codigo_Secuencia_Funcional + "' and Codigo_Actividad='" + Codigo_Actividad + "' and Codigo_FF = " + Codigo_FF.ToString() + " and Codigo_Rubro='" + Codigo_Rubro + "' and Codigo_Grupo='" & Codigo_Grupo & "' And Codigo_Clase='" & Codigo_Clase & "' And Codigo_Familia='" & Codigo_Familia & "' And Codigo_Item='" & Codigo_Item & "'", Cn)
+                Dim Da As New OleDb.OleDbDataAdapter("Select * From Lista_CN_AM_aprobados_Servicios_Saldos Where Año_Ejecucion = '" + My.Settings.Año_Ejecucion + "' and Codigo_Unidad_Organica='" + Codigo_Unidad_Organica + "' and Codigo_FF = " + Codigo_FF.ToString() + " and Codigo_Rubro='" + Codigo_Rubro + "' and Codigo_Grupo='" & Codigo_Grupo & "' And Codigo_Clase='" & Codigo_Clase & "' And Codigo_Familia='" & Codigo_Familia & "' And Codigo_Item='" & Codigo_Item & "'", Cn)
                 Dim Da_Catalogo As New OleDb.OleDbDataAdapter("Select * From Catalogo_Servicios Where Codigo_Grupo='" & Codigo_Grupo & "' And Codigo_Clase='" & Codigo_Clase & "' And Codigo_Familia='" & Codigo_Familia & "' And Codigo_Item='" & Codigo_Item & "'", Cn)
                 Dim Ds As New Data.DataSet
                 Dim Ds_Catalogo As New Data.DataSet
@@ -5458,6 +5473,7 @@ Public Class Mantenimiento
             Case 1
                 Dim Da As New OleDb.OleDbDataAdapter("Select * From Catalogo_Bienes Where Codigo_Grupo='" & Codigo_Grupo & "' And Codigo_Clase='" & Codigo_Clase & "' And Codigo_Familia='" & Codigo_Familia & "' And Codigo_Item='" & Codigo_Item & "'", Cn)
                 Dim Ds As New Data.DataSet
+
                 Da.Fill(Ds)
                 If Ds.Tables(0).Rows.Count > 0 Then
                     Caja_Codigo_Grupo.Text = Ds.Tables(0).Rows(0).Item("Codigo_Grupo").ToString
@@ -5476,7 +5492,10 @@ Public Class Mantenimiento
                     Caja_Sub_Generica_Detalle.Text = Ds.Tables(0).Rows(0).Item("Sub_Generica_Detalle").ToString
                     Caja_Especifica.Text = Ds.Tables(0).Rows(0).Item("Especifica").ToString
                     Caja_Especifica_Detalle.Text = Ds.Tables(0).Rows(0).Item("Especifica_Detalle").ToString
-
+                    Variable_Codigo_Grupo = Codigo_Grupo
+                    Variable_Codigo_Clase = Codigo_Clase
+                    Variable_Codigo_Familia = Codigo_Familia
+                    Variable_Codigo_Item = Codigo_Item
                 Else
                     Caja_Codigo_Grupo.Text = String.Empty
                     Caja_Grupo.Text = String.Empty
@@ -5494,6 +5513,11 @@ Public Class Mantenimiento
                     Caja_Sub_Generica_Detalle.Text = String.Empty
                     Caja_Especifica.Text = String.Empty
                     Caja_Especifica_Detalle.Text = String.Empty
+
+                    Variable_Codigo_Grupo = String.Empty
+                    Variable_Codigo_Clase = String.Empty
+                    Variable_Codigo_Familia = String.Empty
+                    Variable_Codigo_Item = String.Empty
                     Return
                 End If
             Case 2
@@ -5517,6 +5541,11 @@ Public Class Mantenimiento
                     Caja_Sub_Generica_Detalle.Text = Ds.Tables(0).Rows(0).Item("Sub_Generica_Detalle").ToString
                     Caja_Especifica.Text = Ds.Tables(0).Rows(0).Item("Especifica").ToString
                     Caja_Especifica_Detalle.Text = Ds.Tables(0).Rows(0).Item("Especifica_Detalle").ToString
+
+                    Variable_Codigo_Grupo = Codigo_Grupo
+                    Variable_Codigo_Clase = Codigo_Clase
+                    Variable_Codigo_Familia = Codigo_Familia
+                    Variable_Codigo_Item = Codigo_Item
                 Else
                     Caja_Codigo_Grupo.Text = String.Empty
                     Caja_Grupo.Text = String.Empty
@@ -5534,6 +5563,11 @@ Public Class Mantenimiento
                     Caja_Sub_Generica_Detalle.Text = String.Empty
                     Caja_Especifica.Text = String.Empty
                     Caja_Especifica_Detalle.Text = String.Empty
+
+                    Variable_Codigo_Grupo = String.Empty
+                    Variable_Codigo_Clase = String.Empty
+                    Variable_Codigo_Familia = String.Empty
+                    Variable_Codigo_Item = String.Empty
                     Return
                 End If
         End Select
@@ -5668,69 +5702,87 @@ Public Class Mantenimiento
         End If
     End Sub
     Public function Evalua_Saldo_del_Mes(Mes As Integer, Codigo_FF As String,Codigo_Rubro As String ,Variable_Codigo_Grupo As String, Variable_Codigo_Clase As String, Variable_Codigo_Familia  As String, Variable_Codigo_Item  As String, Codigo_Secuencia_Funcional As String, Codigo_Unidad_Organica As String, Codigo_Actividad As String , Año_Ejecucion As String)
-        Select Case Mes
+        Try
+            Select Case Mes
                 Case 1
-                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_ENERO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    'Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_ENERO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_ENERO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"'", Cn)
                     Dim Ds As New Data.DataSet
                     Da.Fill(Ds)
                     Return IIf(Ds.Tables(0).Rows.Count>0,Convert.ToDecimal(Ds.Tables(0).Rows(0)(0)),Convert.ToDecimal("0.00"))
                 Case 2
-                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_FEBRERO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    'Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_FEBRERO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_FEBRERO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"'", Cn)
                     Dim Ds As New Data.DataSet
                     Da.Fill(Ds)
                     Return IIf(Ds.Tables(0).Rows.Count>0,Convert.ToDecimal(Ds.Tables(0).Rows(0)(0)),Convert.ToDecimal("0.00"))
                 Case 3
-                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_MARZO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    'Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_MARZO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_MARZO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"'", Cn)
                     Dim Ds As New Data.DataSet
                     Da.Fill(Ds)
                     Return IIf(Ds.Tables(0).Rows.Count>0,Convert.ToDecimal(Ds.Tables(0).Rows(0)(0)),Convert.ToDecimal("0.00"))
                 Case 4
-                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_ABRIL_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    'Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_ABRIL_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_ABRIL_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"'", Cn)
                     Dim Ds As New Data.DataSet
                     Da.Fill(Ds)
                     Return IIf(Ds.Tables(0).Rows.Count>0,Convert.ToDecimal(Ds.Tables(0).Rows(0)(0)),Convert.ToDecimal("0.00"))
                 Case 5
-                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_MAYO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    'Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_MAYO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_MAYO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"'", Cn)
                     Dim Ds As New Data.DataSet
                     Da.Fill(Ds)
                     Return IIf(Ds.Tables(0).Rows.Count>0,Convert.ToDecimal(Ds.Tables(0).Rows(0)(0)),Convert.ToDecimal("0.00"))
                 Case 6
-                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_JUNIO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    'Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_JUNIO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_JUNIO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"'", Cn)
                     Dim Ds As New Data.DataSet
                     Da.Fill(Ds)
                     Return IIf(Ds.Tables(0).Rows.Count>0,Convert.ToDecimal(Ds.Tables(0).Rows(0)(0)),Convert.ToDecimal("0.00"))
                 Case 7
-                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_JULIO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    'Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_JULIO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_JULIO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"'", Cn)
                     Dim Ds As New Data.DataSet
                     Da.Fill(Ds)
                     Return IIf(Ds.Tables(0).Rows.Count>0,Convert.ToDecimal(Ds.Tables(0).Rows(0)(0)),Convert.ToDecimal("0.00"))
                 Case 8
-                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_AGOSTO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    'Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_AGOSTO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_AGOSTO_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"'", Cn)
                     Dim Ds As New Data.DataSet
                     Da.Fill(Ds)
                     Return IIf(Ds.Tables(0).Rows.Count>0,Convert.ToDecimal(Ds.Tables(0).Rows(0)(0)),Convert.ToDecimal("0.00"))
                 Case 9
-                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_SEPTIEMBRE_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    'Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_SEPTIEMBRE_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_SEPTIEMBRE_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"'", Cn)
                     Dim Ds As New Data.DataSet
                     Da.Fill(Ds)
                     Return IIf(Ds.Tables(0).Rows.Count>0,Convert.ToDecimal(Ds.Tables(0).Rows(0)(0)),Convert.ToDecimal("0.00"))
                 Case 10
-                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_OCTUBRE_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    'Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_OCTUBRE_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_OCTUBRE_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"'", Cn)
                     Dim Ds As New Data.DataSet
                     Da.Fill(Ds)
                     Return IIf(Ds.Tables(0).Rows.Count>0,Convert.ToDecimal(Ds.Tables(0).Rows(0)(0)),Convert.ToDecimal("0.00"))
                 Case 11
-                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_NOVIEMBRE_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    'Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_NOVIEMBRE_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_NOVIEMBRE_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"'", Cn)
                     Dim Ds As New Data.DataSet
                     Da.Fill(Ds)
                     Return IIf(Ds.Tables(0).Rows.Count>0,Convert.ToDecimal(Ds.Tables(0).Rows(0)(0)),Convert.ToDecimal("0.00"))
                 Case 12
-                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_DICIEMBRE_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    'Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_DICIEMBRE_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Secuencia_Funcional = '"+Codigo_Secuencia_Funcional+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"' and Codigo_Actividad = '"+Codigo_Actividad+"'", Cn)
+                    Dim Da As New OleDb.OleDbDataAdapter("Select ISNULL(Saldo,0.00) AS Saldo from Lista_Movimientos_CN_AM_RE_DICIEMBRE_Saldo where Año_Ejecucion = '"+Año_Ejecucion+"' and Codigo_FF = '"+Codigo_FF+"' and Codigo_Rubro ='"+Codigo_Rubro+"' and Codigo_Grupo = '"+Variable_Codigo_Grupo+"' and Codigo_Clase = '"+Variable_Codigo_Clase+"' and Codigo_Familia = '"+Variable_Codigo_Familia+"' and Codigo_Item = '"+Variable_Codigo_Item+"' and Codigo_Unidad_Organica = '"+Codigo_Unidad_Organica+"'", Cn)
                     Dim Ds As New Data.DataSet
                     Da.Fill(Ds)
                     Return IIf(Ds.Tables(0).Rows.Count>0,Convert.ToDecimal(Ds.Tables(0).Rows(0)(0)),Convert.ToDecimal("0.00"))
+                Case Else
+                Return 0.00
          end Select
         Return 0.00
+        Catch ex As Exception
+            'Sin errores
+        End Try
     End function
     Public Function Obtiene_Mes_Actual() As String
         Dim Da As New OleDb.OleDbDataAdapter("Select MONTH(GETDATE())", Cn)
