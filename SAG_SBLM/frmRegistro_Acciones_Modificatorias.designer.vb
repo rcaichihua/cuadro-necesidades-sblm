@@ -26,16 +26,16 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmRegistro_Acciones_Modificatorias))
         Me.gbDatosGenerales = New System.Windows.Forms.GroupBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.cbActividad = New System.Windows.Forms.ComboBox()
-        Me.cbSecuenciaFuncional = New System.Windows.Forms.ComboBox()
         Me.cbRubro = New System.Windows.Forms.ComboBox()
         Me.cbFF = New System.Windows.Forms.ComboBox()
         Me.cbUnidadOrganica = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.cbActividad = New System.Windows.Forms.ComboBox()
+        Me.cbSecuenciaFuncional = New System.Windows.Forms.ComboBox()
         Me.gbOriginal = New System.Windows.Forms.GroupBox()
         Me.txtDiciembre = New System.Windows.Forms.TextBox()
         Me.txtJunio = New System.Windows.Forms.TextBox()
@@ -151,9 +151,9 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.chkRebajar = New System.Windows.Forms.CheckBox()
         Me.txtDiferencia = New System.Windows.Forms.TextBox()
         Me.lblDiferencia = New System.Windows.Forms.Label()
-        Me.txtTotal2 = New System.Windows.Forms.TextBox()
+        Me.txtTotalAmpliacion = New System.Windows.Forms.TextBox()
         Me.Label42 = New System.Windows.Forms.Label()
-        Me.txtTotal = New System.Windows.Forms.TextBox()
+        Me.txtTotalRebajas = New System.Windows.Forms.TextBox()
         Me.Label43 = New System.Windows.Forms.Label()
         Me.txtMonto = New System.Windows.Forms.TextBox()
         Me.Label44 = New System.Windows.Forms.Label()
@@ -185,26 +185,6 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.gbDatosGenerales.TabStop = false
         Me.gbDatosGenerales.Text = "Datos Generales:"
         '
-        'Label5
-        '
-        Me.Label5.AutoSize = true
-        Me.Label5.Location = New System.Drawing.Point(496, 509)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(54, 13)
-        Me.Label5.TabIndex = 8
-        Me.Label5.Text = "Actividad:"
-        Me.Label5.Visible = false
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = true
-        Me.Label4.Location = New System.Drawing.Point(246, 509)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(110, 13)
-        Me.Label4.TabIndex = 6
-        Me.Label4.Text = "Secuencia Funcional:"
-        Me.Label4.Visible = false
-        '
         'Label3
         '
         Me.Label3.AutoSize = true
@@ -222,26 +202,6 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.Label2.Size = New System.Drawing.Size(139, 13)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Fuente Financiamiento:"
-        '
-        'cbActividad
-        '
-        Me.cbActividad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbActividad.FormattingEnabled = true
-        Me.cbActividad.Location = New System.Drawing.Point(566, 506)
-        Me.cbActividad.Name = "cbActividad"
-        Me.cbActividad.Size = New System.Drawing.Size(364, 21)
-        Me.cbActividad.TabIndex = 4
-        Me.cbActividad.Visible = false
-        '
-        'cbSecuenciaFuncional
-        '
-        Me.cbSecuenciaFuncional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbSecuenciaFuncional.FormattingEnabled = true
-        Me.cbSecuenciaFuncional.Location = New System.Drawing.Point(391, 506)
-        Me.cbSecuenciaFuncional.Name = "cbSecuenciaFuncional"
-        Me.cbSecuenciaFuncional.Size = New System.Drawing.Size(99, 21)
-        Me.cbSecuenciaFuncional.TabIndex = 3
-        Me.cbSecuenciaFuncional.Visible = false
         '
         'cbRubro
         '
@@ -278,6 +238,46 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.Label1.Size = New System.Drawing.Size(106, 13)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Unidad Orgánica:"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = true
+        Me.Label5.Location = New System.Drawing.Point(496, 509)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(54, 13)
+        Me.Label5.TabIndex = 8
+        Me.Label5.Text = "Actividad:"
+        Me.Label5.Visible = false
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = true
+        Me.Label4.Location = New System.Drawing.Point(246, 509)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(110, 13)
+        Me.Label4.TabIndex = 6
+        Me.Label4.Text = "Secuencia Funcional:"
+        Me.Label4.Visible = false
+        '
+        'cbActividad
+        '
+        Me.cbActividad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbActividad.FormattingEnabled = true
+        Me.cbActividad.Location = New System.Drawing.Point(566, 506)
+        Me.cbActividad.Name = "cbActividad"
+        Me.cbActividad.Size = New System.Drawing.Size(364, 21)
+        Me.cbActividad.TabIndex = 4
+        Me.cbActividad.Visible = false
+        '
+        'cbSecuenciaFuncional
+        '
+        Me.cbSecuenciaFuncional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbSecuenciaFuncional.FormattingEnabled = true
+        Me.cbSecuenciaFuncional.Location = New System.Drawing.Point(391, 506)
+        Me.cbSecuenciaFuncional.Name = "cbSecuenciaFuncional"
+        Me.cbSecuenciaFuncional.Size = New System.Drawing.Size(99, 21)
+        Me.cbSecuenciaFuncional.TabIndex = 3
+        Me.cbSecuenciaFuncional.Visible = false
         '
         'gbOriginal
         '
@@ -1477,9 +1477,9 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.GroupBox1.Controls.Add(Me.chkRebajar)
         Me.GroupBox1.Controls.Add(Me.txtDiferencia)
         Me.GroupBox1.Controls.Add(Me.lblDiferencia)
-        Me.GroupBox1.Controls.Add(Me.txtTotal2)
+        Me.GroupBox1.Controls.Add(Me.txtTotalAmpliacion)
         Me.GroupBox1.Controls.Add(Me.Label42)
-        Me.GroupBox1.Controls.Add(Me.txtTotal)
+        Me.GroupBox1.Controls.Add(Me.txtTotalRebajas)
         Me.GroupBox1.Controls.Add(Me.Label43)
         Me.GroupBox1.Controls.Add(Me.txtMonto)
         Me.GroupBox1.Controls.Add(Me.Label44)
@@ -1523,15 +1523,15 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.lblDiferencia.Text = "Diferencia"
         Me.lblDiferencia.Visible = false
         '
-        'txtTotal2
+        'txtTotalAmpliacion
         '
-        Me.txtTotal2.Location = New System.Drawing.Point(431, 45)
-        Me.txtTotal2.Name = "txtTotal2"
-        Me.txtTotal2.ReadOnly = true
-        Me.txtTotal2.Size = New System.Drawing.Size(135, 20)
-        Me.txtTotal2.TabIndex = 1
-        Me.txtTotal2.Text = "0.00"
-        Me.txtTotal2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtTotalAmpliacion.Location = New System.Drawing.Point(431, 45)
+        Me.txtTotalAmpliacion.Name = "txtTotalAmpliacion"
+        Me.txtTotalAmpliacion.ReadOnly = true
+        Me.txtTotalAmpliacion.Size = New System.Drawing.Size(135, 20)
+        Me.txtTotalAmpliacion.TabIndex = 1
+        Me.txtTotalAmpliacion.Text = "0.00"
+        Me.txtTotalAmpliacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label42
         '
@@ -1542,15 +1542,15 @@ Partial Class frmRegistro_Acciones_Modificatorias
         Me.Label42.TabIndex = 0
         Me.Label42.Text = "Total Ampliaciones:"
         '
-        'txtTotal
+        'txtTotalRebajas
         '
-        Me.txtTotal.Location = New System.Drawing.Point(136, 45)
-        Me.txtTotal.Name = "txtTotal"
-        Me.txtTotal.ReadOnly = true
-        Me.txtTotal.Size = New System.Drawing.Size(135, 20)
-        Me.txtTotal.TabIndex = 1
-        Me.txtTotal.Text = "0.00"
-        Me.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtTotalRebajas.Location = New System.Drawing.Point(136, 45)
+        Me.txtTotalRebajas.Name = "txtTotalRebajas"
+        Me.txtTotalRebajas.ReadOnly = true
+        Me.txtTotalRebajas.Size = New System.Drawing.Size(135, 20)
+        Me.txtTotalRebajas.TabIndex = 1
+        Me.txtTotalRebajas.Text = "0.00"
+        Me.txtTotalRebajas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label43
         '
@@ -1738,9 +1738,9 @@ End Sub
     Friend WithEvents chkRebajar As CheckBox
     Friend WithEvents txtDiferencia As TextBox
     Friend WithEvents lblDiferencia As Label
-    Friend WithEvents txtTotal2 As TextBox
+    Friend WithEvents txtTotalAmpliacion As TextBox
     Friend WithEvents Label42 As Label
-    Friend WithEvents txtTotal As TextBox
+    Friend WithEvents txtTotalRebajas As TextBox
     Friend WithEvents Label43 As Label
     Friend WithEvents txtMonto As TextBox
     Friend WithEvents Label44 As Label

@@ -19,6 +19,7 @@ Public Class frmModulo_CN
         Me.cbEstado.SelectedIndex = 0
         Call Me.Filtrar()
         Call Me.Dimensionar()
+        Me.Windowstate = FormWindowState.Maximized
     End Sub
     Sub Filtrar()
         If Me.cbUnidadOrganica.Items.Count > 0 And Me.cbEstado.Items.Count > 0 Then
@@ -388,7 +389,67 @@ codigo, item, unidad, costo, cantidad, Cantidad_Enero as Cantidad_Enero, Cantida
         If Datos.Acceso_Sub_Boton(My.Settings.Usuario.Trim, "Boton_Cuadro_Necesidades", Me.Boton_Reporte_CN_Saldos.Name) = True Then
            If Variable_Codigo_Secuencia_Funcional.Trim.Length > 0 And Variable_Codigo_Actividad.Trim.Length > 0 And Variable_Codigo_Unidad_Organica.Trim.Length > 0 Then
                 If Me.dgvCuadroDeNecesidades.CurrentCellAddress.Y >= 0 Then
-                    Datos.Imprimir_Reporte("Select Año_Ejecucion,Unidad_O,Meta,Actividad,Codigo_Catalogo,Clasificador as Partida,Nombre_Partida,Codigo,Descripcion_Item,unidad_medida,precio_unitario, Cantidad_Enero,Cantidad_Febrero, Cantidad_Marzo, Cantidad_Abril, Cantidad_Mayo, Cantidad_Junio, Cantidad_Julio, Cantidad_Agosto, Cantidad_Septiembre, Cantidad_Octubre, Cantidad_Noviembre, Cantidad_Diciembre From Lista_saldos_CN_AM_Requerimientos_Saldos Where Año_Ejecucion='" & My.Settings.Año_Ejecucion & "' And Codigo_Secuencia_Funcional='" & Me.dgvCuadroDeNecesidades.CurrentRow.Cells(1).Value & "' And Codigo_Actividad='" & Me.dgvCuadroDeNecesidades.CurrentRow.Cells(2).Value & "' And Codigo_Unidad_Organica='" & Me.dgvCuadroDeNecesidades.CurrentRow.Cells(3).Value & "' Order by Codigo_Catalogo, Clasificador, Nombre_Partida asc", New Reporte_CN_Resumen_General_Saldos, 100, "Reporte Cuadro de Necesidades Saldos", False)
+                    'Datos.Imprimir_Reporte("Select Año_Ejecucion,Unidad_O,Meta,Actividad,Codigo_Catalogo,Clasificador as Partida,Nombre_Partida,Codigo,Descripcion_Item,unidad_medida,precio_unitario, Cantidad_Enero,Cantidad_Febrero, Cantidad_Marzo, Cantidad_Abril, Cantidad_Mayo, Cantidad_Junio, Cantidad_Julio, Cantidad_Agosto, Cantidad_Septiembre, Cantidad_Octubre, Cantidad_Noviembre, Cantidad_Diciembre From Lista_saldos_CN_AM_Requerimientos_Saldos Where Año_Ejecucion='" & My.Settings.Año_Ejecucion & "' And Codigo_Secuencia_Funcional='" & Me.dgvCuadroDeNecesidades.CurrentRow.Cells(1).Value & "' And Codigo_Actividad='" & Me.dgvCuadroDeNecesidades.CurrentRow.Cells(2).Value & "' And Codigo_Unidad_Organica='" & Me.dgvCuadroDeNecesidades.CurrentRow.Cells(3).Value & "' Order by Codigo_Catalogo, Clasificador, Nombre_Partida asc", New Reporte_CN_Resumen_General_Saldos, 100, "Reporte Cuadro de Necesidades Saldos", False)
+                    Datos.Imprimir_Reporte("Select Año_Ejecucion,Unidad_O,Meta,Actividad,Codigo_Catalogo,Clasificador as Partida,Nombre_Partida,Codigo,Descripcion_Item,unidad_medida,precio_unitario, Cantidad_Enero,Cantidad_Febrero, Cantidad_Marzo, Cantidad_Abril, Cantidad_Mayo, Cantidad_Junio, Cantidad_Julio, Cantidad_Agosto, Cantidad_Septiembre, Cantidad_Octubre, Cantidad_Noviembre, Cantidad_Diciembre From Lista_saldos_CN_AM_Requerimientos_Saldos Where Año_Ejecucion='" & My.Settings.Año_Ejecucion & "' And Codigo_Unidad_Organica='" & Me.dgvCuadroDeNecesidades.CurrentRow.Cells(3).Value & "' Order by Codigo_Catalogo, Clasificador, Nombre_Partida asc", New Reporte_CN_Resumen_General_Saldos, 100, "Reporte Cuadro de Necesidades Saldos", False)
+                    'Datos.Imprimir_Reporte("select Año_Ejecucion,Codigo_FF,Codigo_Rubro,Tipo_Transaccion,Generica,Sub_Generica,Sub_Generica_Detalle,Especifica,Especifica_Detalle,Clasificador,Codigo_Secuencia_Funcional, " +
+                    '                    " Codigo_Unidad_Organica,Codigo_Actividad,Codigo_Grupo,Codigo_Clase,Codigo_Familia,Codigo_Item,codigo,Descripcion_Item as Item,'' as Codigo_Unidad_Medida,unidad_medida as Unidad, " +
+                    '                    " (Cantidad_Enero+Cantidad_Febrero+ Cantidad_Marzo+ Cantidad_Abril+ Cantidad_Mayo+ Cantidad_Junio+ Cantidad_Julio+ Cantidad_Agosto+ Cantidad_Septiembre+Cantidad_Octubre+ Cantidad_Noviembre+ Cantidad_Diciembre) as Cantidad, " +
+                    '                    " precio_unitario as Costo,Cantidad_Enero,Cantidad_Febrero, Cantidad_Marzo, Cantidad_Abril, Cantidad_Mayo, Cantidad_Junio, Cantidad_Julio, Cantidad_Agosto, Cantidad_Septiembre, " +
+                    '                    " Cantidad_Octubre, Cantidad_Noviembre, Cantidad_Diciembre,'' as Cadena,Codigo_Catalogo,Nombre_Partida as Descripcion_Especifica_Detalle, " +
+                    '                    " (Cantidad_Enero+Cantidad_Febrero+ Cantidad_Marzo+ Cantidad_Abril+ Cantidad_Mayo+ Cantidad_Junio+ Cantidad_Julio+ Cantidad_Agosto+ Cantidad_Septiembre+Cantidad_Octubre+ Cantidad_Noviembre+ Cantidad_Diciembre) * precio_unitario as Total " +
+                    '                    " From Lista_saldos_CN_AM_Requerimientos_Saldos " +
+                    '                    " Where Año_Ejecucion='2023' And Codigo_Unidad_Organica='01' and Codigo_FF='' and Codigo_Rubro='' and Codigo_Catalogo='01' " +
+                    '                    " and (Cantidad_Enero+Cantidad_Febrero+ Cantidad_Marzo+ Cantidad_Abril+ Cantidad_Mayo+ Cantidad_Junio+ " +
+                    '                    " Cantidad_Julio+ Cantidad_Agosto+ Cantidad_Septiembre+Cantidad_Octubre+ Cantidad_Noviembre+ Cantidad_Diciembre) > 0 " +
+                    '                    " Order by Codigo_Catalogo, Clasificador, Nombre_Partida asc", New Reporte_CN_Resumen_General_Saldos, 100, "Reporte Cuadro de Necesidades Saldos", False)
+                    Call Me.Filtrar()
+                    Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_CN, Boton_Editar_CN, Boton_Eliminar_CN, Boton_Extornar_CN, Boton_Autorizar_CN, Boton_Aprobar_CN, Me.Boton_Visualizar_CN, Me.Boton_Imprimir_CN)
+                Else
+                    MessageBox.Show("Seleccione un C.N. para Reportar", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1)
+                    Call Me.Filtrar()
+                    Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_CN, Boton_Editar_CN, Boton_Eliminar_CN, Boton_Extornar_CN, Boton_Autorizar_CN, Boton_Aprobar_CN, Me.Boton_Visualizar_CN, Me.Boton_Imprimir_CN)
+                End If
+            Else
+                Call Me.Filtrar()
+                Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_CN, Boton_Editar_CN, Boton_Eliminar_CN, Boton_Extornar_CN, Boton_Autorizar_CN, Boton_Aprobar_CN, Me.Boton_Visualizar_CN, Me.Boton_Imprimir_CN)
+            End If
+        Else
+            MessageBox.Show("Estimado: " & My.Settings.Nombre_Usuario & ", Ud no cuenta con privilegios para acceder a esta opción", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+        End If
+    End Sub
+
+    Private Sub Boton_Reporte_CN_Saldos_Movimientos_Click(sender As Object, e As EventArgs) Handles Boton_Reporte_CN_Saldos_Movimientos.Click
+        If Datos.Acceso_Sub_Boton(My.Settings.Usuario.Trim, "Boton_Cuadro_Necesidades", Me.Boton_Reporte_CN_Saldos.Name) = True Then
+           If Variable_Codigo_Secuencia_Funcional.Trim.Length > 0 And Variable_Codigo_Actividad.Trim.Length > 0 And Variable_Codigo_Unidad_Organica.Trim.Length > 0 Then
+                If Me.dgvCuadroDeNecesidades.CurrentCellAddress.Y >= 0 Then
+                    'Datos.Imprimir_Reporte("Select Año_Ejecucion,Unidad_O,Meta,Actividad,Codigo_Catalogo,Clasificador as Partida,Nombre_Partida,Codigo,Descripcion_Item,unidad_medida,precio_unitario, Cantidad_Enero,Cantidad_Febrero, Cantidad_Marzo, Cantidad_Abril, Cantidad_Mayo, Cantidad_Junio, Cantidad_Julio, Cantidad_Agosto, Cantidad_Septiembre, Cantidad_Octubre, Cantidad_Noviembre, Cantidad_Diciembre From Lista_saldos_CN_AM_Requerimientos_Saldos Where Año_Ejecucion='" & My.Settings.Año_Ejecucion & "' And Codigo_Secuencia_Funcional='" & Me.dgvCuadroDeNecesidades.CurrentRow.Cells(1).Value & "' And Codigo_Actividad='" & Me.dgvCuadroDeNecesidades.CurrentRow.Cells(2).Value & "' And Codigo_Unidad_Organica='" & Me.dgvCuadroDeNecesidades.CurrentRow.Cells(3).Value & "' Order by Codigo_Catalogo, Clasificador, Nombre_Partida asc", New Reporte_CN_Resumen_General_Saldos, 100, "Reporte Cuadro de Necesidades Saldos", False)
+                    Datos.Imprimir_Reporte("select tabla01.Año_Ejecucion,uo.Codigo_Unidad_Organica + ' - ' + uo.Nombre_Unidad_Organica AS Unidad_O,'' as Meta,'' as Actividad,Codigo_Catalogo,Clasificador as Partida,dbo.Especifica_Detalle."+ 
+						"Descripcion_Especifica_Detalle AS Nombre_Partida,Codigo,Descripcion_Item,unidad_medida,precio_unitario, " +
+                        " Cantidad_Enero,Cantidad_Febrero, Cantidad_Marzo, Cantidad_Abril, Cantidad_Mayo, Cantidad_Junio, Cantidad_Julio, Cantidad_Agosto, Cantidad_Septiembre, "+
+                        " Cantidad_Octubre, Cantidad_Noviembre, Cantidad_Diciembre, Tipo " +
+                        " from Lista_Movimientos_CN_AM_REQUERIMIENTOS_mov tabla01 inner join dbo.Unidad_Organica uo on uo.Codigo_Unidad_Organica=tabla01.Codigo_Unidad_Organica and uo.Año_Ejecucion=tabla01.Año_Ejecucion "+
+                        " inner join dbo.Tipo_Transaccion ON tabla01.Año_Ejecucion = dbo.Tipo_Transaccion.Año_Ejecucion INNER JOIN " +
+                        " dbo.Generica ON dbo.Tipo_Transaccion.Año_Ejecucion = dbo.Generica.Año_Ejecucion AND  " +
+                        " dbo.Tipo_Transaccion.Tipo_Transaccion = dbo.Generica.Tipo_Transaccion INNER JOIN " +
+                        " dbo.Sub_Generica ON dbo.Generica.Año_Ejecucion = dbo.Sub_Generica.Año_Ejecucion AND  " +
+                        " dbo.Generica.Tipo_Transaccion = dbo.Sub_Generica.Tipo_Transaccion AND dbo.Generica.Generica = dbo.Sub_Generica.Generica INNER JOIN " +
+                        " dbo.Sub_Generica_Detalle ON dbo.Sub_Generica.Año_Ejecucion = dbo.Sub_Generica_Detalle.Año_Ejecucion AND  " +
+                        " dbo.Sub_Generica.Tipo_Transaccion = dbo.Sub_Generica_Detalle.Tipo_Transaccion AND dbo.Sub_Generica.Generica = dbo.Sub_Generica_Detalle.Generica AND  " +
+                        " dbo.Sub_Generica.Sub_Generica = dbo.Sub_Generica_Detalle.Sub_Generica INNER JOIN " +
+                        " dbo.Especifica ON dbo.Sub_Generica_Detalle.Año_Ejecucion = dbo.Especifica.Año_Ejecucion AND  " +
+                        " dbo.Sub_Generica_Detalle.Tipo_Transaccion = dbo.Especifica.Tipo_Transaccion AND dbo.Sub_Generica_Detalle.Generica = dbo.Especifica.Generica AND  " +
+                        " dbo.Sub_Generica_Detalle.Sub_Generica = dbo.Especifica.Sub_Generica AND  " +
+                        " dbo.Sub_Generica_Detalle.Sub_Generica_Detalle = dbo.Especifica.Sub_Generica_Detalle INNER JOIN " +
+                        " dbo.Especifica_Detalle ON tabla01.Año_Ejecucion = dbo.Especifica_Detalle.Año_Ejecucion AND  " +
+                        " tabla01.Tipo_Transaccion = dbo.Especifica_Detalle.Tipo_Transaccion AND tabla01.Generica = dbo.Especifica_Detalle.Generica AND  " +
+                        " tabla01.Sub_Generica = dbo.Especifica_Detalle.Sub_Generica AND " +
+                        " tabla01.Sub_Generica_Detalle = dbo.Especifica_Detalle.Sub_Generica_Detalle AND tabla01.Especifica = dbo.Especifica_Detalle.Especifica AND  " +
+                        " tabla01.Especifica_Detalle = dbo.Especifica_Detalle.Especifica_Detalle AND dbo.Especifica.Año_Ejecucion = dbo.Especifica_Detalle.Año_Ejecucion AND  " +
+                        " dbo.Especifica.Tipo_Transaccion = dbo.Especifica_Detalle.Tipo_Transaccion AND dbo.Especifica.Generica = dbo.Especifica_Detalle.Generica AND  " +
+                        " dbo.Especifica.Sub_Generica = dbo.Especifica_Detalle.Sub_Generica AND dbo.Especifica.Sub_Generica_Detalle = dbo.Especifica_Detalle.Sub_Generica_Detalle AND " +
+                        " dbo.Especifica.Especifica = dbo.Especifica_Detalle.Especifica " +
+                        " where tabla01.Año_Ejecucion='"+My.Settings.Año_Ejecucion+"' and tabla01.Codigo_Unidad_Organica='"& Me.dgvCuadroDeNecesidades.CurrentRow.Cells(3).Value &"' " +   
+                        " order by tabla01.Codigo_Unidad_Organica asc,tabla01.Descripcion_Item asc,tabla01.Tipo asc", New Reporte_CN_Resumen_General_Saldos_Movimientos, 100, "Reporte Cuadro de Necesidades Saldos Movimientos", False)
                     Call Me.Filtrar()
                     Datos.Evaluacion_Botones_Modulo_CN(My.Settings.Año_Ejecucion, Variable_Codigo_Secuencia_Funcional, Variable_Codigo_Unidad_Organica, Variable_Codigo_Actividad, Boton_Nuevo_CN, Boton_Editar_CN, Boton_Eliminar_CN, Boton_Extornar_CN, Boton_Autorizar_CN, Boton_Aprobar_CN, Me.Boton_Visualizar_CN, Me.Boton_Imprimir_CN)
                 Else

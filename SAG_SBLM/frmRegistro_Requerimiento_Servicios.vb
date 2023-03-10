@@ -309,31 +309,31 @@
             Me.dgvRequerimientoServicios.Rows.Remove(Me.dgvRequerimientoServicios.CurrentRow)
             If Me.dgvRequerimientoServicios.Rows.Count = 0 Then Me.cbUnidadOrganica.Enabled = True Else Me.cbUnidadOrganica.Enabled = False
         End If
-        If dgvRequerimientoServicios.Columns(e.ColumnIndex).Name = "btnEditar" Then
-            Datos.Llenar_Componentes(Me.dgvRequerimientoServicios.CurrentRow.Cells(3).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(4).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(5).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(6).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(7).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(8).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(1).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(2).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(11).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(10).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(12).Value)
-            Me.txtTipoTransaccion.Text = Variable_Tipo_Transaccion
-            Me.txtGenerica.Text = Variable_Generica
-            Me.txtSubGenerica.Text = Variable_SubGenerica
-            Me.txtSubGenericaDetalle.Text = Variable_SubGenerica_Detalle
-            Me.txtEspecifica.Text = Variable_Especifica
-            Me.txtEspecificaDetalle.Text = Variable_Especifica_Detalle
-            Me.cbUnidadOrganica.Text = Variable_Unidad_Organica
-            Me.cbSecuenciaFuncional.Text = Variable_Secuencia_Funcional
-            Me.cbActividad.Text = Variable_Actividad
-            Me.cbFF.Text = Variable_FF
-            Me.cbRubro.Text = Variable_Rubro
-            Datos.Mostrar_Data_Item_Catalogo(Me.dgvRequerimientoServicios.CurrentRow.Cells(13).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(14).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(15).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(16).Value, 2, Me.txtCodigoGrupo, Me.txtGrupo, Me.txtCodigoClase, Me.txtClase, Me.txtCodigoFamilia, Me.txtFamilia, Me.txtCodigoItem, Me.txtItem, Me.txtCodigoUnidadMedida, Me.txtUnidadMedida, Me.txtTipoTransaccion, Me.txtGenerica, Me.txtSubGenerica, Me.txtSubGenericaDetalle, Me.txtEspecifica, Me.txtEspecificaDetalle)
-            Me.txtCantidad.Text = Format(Convert.ToDouble(Me.dgvRequerimientoServicios.CurrentRow.Cells(21).Value), "###,###,#.00")
-            Me.txtCosto.Text = Format(Convert.ToDouble(Me.dgvRequerimientoServicios.CurrentRow.Cells(22).Value), "###,###,#.00")
-            Me.dgvRequerimientoServicios.Rows.Remove(Me.dgvRequerimientoServicios.CurrentRow)
-            If Me.dgvRequerimientoServicios.Rows.Count = 0 Then Me.cbUnidadOrganica.Enabled = True Else Me.cbUnidadOrganica.Enabled = False
-            Call Verifica_Existencia_Item("Grilla")
-            Call Evalua_Saldo_del_Mes()
-            Call Evalua_Saldo_del_Mes_Acumulado()
-            'if Me.dgvRequerimientoServicios.CurrentRow IsNot Nothing Then
-            '    Me.txtCosto.Text = Format(Convert.ToDouble(Me.dgvRequerimientoServicios.CurrentRow.Cells(22).Value), "###,###,#.00")
-            'End If
-        End If
+        'If dgvRequerimientoServicios.Columns(e.ColumnIndex).Name = "btnEditar" Then
+        '    Datos.Llenar_Componentes(Me.dgvRequerimientoServicios.CurrentRow.Cells(3).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(4).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(5).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(6).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(7).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(8).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(1).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(2).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(11).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(10).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(12).Value)
+        '    Me.txtTipoTransaccion.Text = Variable_Tipo_Transaccion
+        '    Me.txtGenerica.Text = Variable_Generica
+        '    Me.txtSubGenerica.Text = Variable_SubGenerica
+        '    Me.txtSubGenericaDetalle.Text = Variable_SubGenerica_Detalle
+        '    Me.txtEspecifica.Text = Variable_Especifica
+        '    Me.txtEspecificaDetalle.Text = Variable_Especifica_Detalle
+        '    Me.cbUnidadOrganica.Text = Variable_Unidad_Organica
+        '    Me.cbSecuenciaFuncional.Text = Variable_Secuencia_Funcional
+        '    Me.cbActividad.Text = Variable_Actividad
+        '    Me.cbFF.Text = Variable_FF
+        '    Me.cbRubro.Text = Variable_Rubro
+        '    Datos.Mostrar_Data_Item_Catalogo(Me.dgvRequerimientoServicios.CurrentRow.Cells(13).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(14).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(15).Value, Me.dgvRequerimientoServicios.CurrentRow.Cells(16).Value, 2, Me.txtCodigoGrupo, Me.txtGrupo, Me.txtCodigoClase, Me.txtClase, Me.txtCodigoFamilia, Me.txtFamilia, Me.txtCodigoItem, Me.txtItem, Me.txtCodigoUnidadMedida, Me.txtUnidadMedida, Me.txtTipoTransaccion, Me.txtGenerica, Me.txtSubGenerica, Me.txtSubGenericaDetalle, Me.txtEspecifica, Me.txtEspecificaDetalle)
+        '    Me.txtCantidad.Text = Format(Convert.ToDouble(Me.dgvRequerimientoServicios.CurrentRow.Cells(21).Value), "###,###,#.00")
+        '    Me.txtCosto.Text = Format(Convert.ToDouble(Me.dgvRequerimientoServicios.CurrentRow.Cells(22).Value), "###,###,#.00")
+        '    Me.dgvRequerimientoServicios.Rows.Remove(Me.dgvRequerimientoServicios.CurrentRow)
+        '    If Me.dgvRequerimientoServicios.Rows.Count = 0 Then Me.cbUnidadOrganica.Enabled = True Else Me.cbUnidadOrganica.Enabled = False
+        '    Call Verifica_Existencia_Item("Grilla")
+        '    Call Evalua_Saldo_del_Mes()
+        '    Call Evalua_Saldo_del_Mes_Acumulado()
+        '    'if Me.dgvRequerimientoServicios.CurrentRow IsNot Nothing Then
+        '    '    Me.txtCosto.Text = Format(Convert.ToDouble(Me.dgvRequerimientoServicios.CurrentRow.Cells(22).Value), "###,###,#.00")
+        '    'End If
+        'End If
         If dgvRequerimientoServicios.Columns(e.ColumnIndex).Name = "btnLimpiar" Then
             Me.dgvRequerimientoServicios.Rows.Clear()
             Me.cbUnidadOrganica.Enabled = True
@@ -509,19 +509,55 @@
         If cbActividad.Text.Trim.Length > 0 Then Call Asigna_Item_Segun_Filtro()
     End Sub
     Private Sub btnBuscarItems_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBuscarItems.Click
+        if cbUnidadOrganica.SelectedIndex = -1 
+            MessageBox.Show("Debes seleccionar una Unidad Organica.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+            cbUnidadOrganica.Focus()
+            Exit Sub
+        End If
         if cbFF.SelectedIndex = -1 
             MessageBox.Show("Debes seleccionar una Fuente de financiamiento.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+            cbFF.Focus()
             Exit Sub
         End If
         if cbRubro.SelectedIndex = -1 
             MessageBox.Show("Debes seleccionar un Rubro.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+            cbRubro.Focus()
             Exit Sub
         End If
-        Dim Formulario As New frmCatalogo_Bienes_Servicios_Obras
-        Formulario.Operacion = 2
-        Formulario.Tipo_Catalogo = "02"
+        If cbSecuenciaFuncional.SelectedIndex = -1
+            MessageBox.Show("Debes seleccionar una Secuencia Funcional(Meta).", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+            cbSecuenciaFuncional.Focus()
+            Exit Sub
+        End If
+        If cbActividad.SelectedIndex = -1
+            MessageBox.Show("Debes seleccionar una Actividad.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+            cbActividad.Focus()
+            Exit Sub
+        End If
+
+        Dim Formulario As New frmFiltrarItemsCatalogoCN
+        Formulario._UnidadOrganica=cbUnidadOrganica.Text
+        Formulario._FuenteFinanciamientio=cbFF.Text
+        Formulario._RubroFuente =cbRubro.Text
+        Formulario._CodigoSecuenciaFuncional=Secuencia_Funcional.Rows(Me.cbSecuenciaFuncional.SelectedIndex).Item("Codigo_Secuencia_Funcional")
+        Formulario._CodigoActividad=Actividad.Rows(Me.cbActividad.SelectedIndex).Item("Codigo_Actividad")
+        Formulario._DatagridViewData = dgvRequerimientoServicios
+        Formulario._CodigoCatalogo = "02"
         Formulario.ShowDialog()
-        Call Asigna_Item_Segun_Filtro()
+        'Call VerificaGrillaHabilitarCombos()
+        'if cbFF.SelectedIndex = -1 
+        '    MessageBox.Show("Debes seleccionar una Fuente de financiamiento.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+        '    Exit Sub
+        'End If
+        'if cbRubro.SelectedIndex = -1 
+        '    MessageBox.Show("Debes seleccionar un Rubro.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+        '    Exit Sub
+        'End If
+        'Dim Formulario As New frmCatalogo_Bienes_Servicios_Obras
+        'Formulario.Operacion = 2
+        'Formulario.Tipo_Catalogo = "02"
+        'Formulario.ShowDialog()
+        'Call Asigna_Item_Segun_Filtro()
     End Sub
     Private sub Asigna_Item_Segun_Filtro()
         If Variable_Codigo_Grupo.Trim.Length > 0 And Variable_Codigo_Clase.Trim.Length > 0 And Variable_Codigo_Familia.Trim.Length > 0 And Variable_Codigo_Item.Trim.Length > 0 Then
@@ -631,7 +667,7 @@
         End Try
     End sub
     Private Sub Evalua_Saldo_del_Mes()
-        Me.txtSaldoMes.Text = Format(Datos.Evalua_Saldo_del_Mes(Obtiene_Mes_Actual(),Convert.ToDouble(Fuente_Financiaminto.Rows(Me.cbFF.SelectedIndex).Item("Codigo_FF").ToString), 
+        Me.txtSaldoMes.Text = Format(Datos.Evalua_Saldo_del_Mes(Obtiene_Mes_Actual(My.Settings.Año_Ejecucion),Convert.ToDouble(Fuente_Financiaminto.Rows(Me.cbFF.SelectedIndex).Item("Codigo_FF").ToString), 
                                                                 Rubro.Rows(Me.cbRubro.SelectedIndex).Item("Codigo_Rubro").ToString,Variable_Codigo_Grupo, Variable_Codigo_Clase, 
                                                                 Variable_Codigo_Familia, Variable_Codigo_Item, 
                                                                 Secuencia_Funcional.Rows(Me.cbSecuenciaFuncional.SelectedIndex).Item("Codigo_Secuencia_Funcional").ToString, 
@@ -687,8 +723,8 @@
         Next
         Return total_Item
     End Function
-    Public Function Obtiene_Mes_Actual() As String
-        Return Datos.Obtiene_Mes_Actual()
+    Public Function Obtiene_Mes_Actual(Byval Año_Ejecucion As String) As String
+        Return Datos.Obtiene_Mes_Actual(Año_Ejecucion)
     End Function
     Private Sub txtCosto_Enter(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtCosto.Enter
         txtCosto.SelectionStart = 0

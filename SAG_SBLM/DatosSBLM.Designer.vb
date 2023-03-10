@@ -4593,6 +4593,8 @@ Partial Public Class DatosSBLM
         
         Private columnCantidad_Diciembre As Global.System.Data.DataColumn
         
+        Private columnTipo As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -4813,6 +4815,14 @@ Partial Public Class DatosSBLM
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TipoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -4872,9 +4882,10 @@ Partial Public Class DatosSBLM
                     ByVal Cantidad_Septiembre As Decimal,  _
                     ByVal Cantidad_Octubre As Decimal,  _
                     ByVal Cantidad_Noviembre As Decimal,  _
-                    ByVal Cantidad_Diciembre As Decimal) As Lista_saldos_CN_AM_Requerimientos_SaldosRow
+                    ByVal Cantidad_Diciembre As Decimal,  _
+                    ByVal Tipo As String) As Lista_saldos_CN_AM_Requerimientos_SaldosRow
             Dim rowLista_saldos_CN_AM_Requerimientos_SaldosRow As Lista_saldos_CN_AM_Requerimientos_SaldosRow = CType(Me.NewRow,Lista_saldos_CN_AM_Requerimientos_SaldosRow)
-            Dim columnValuesArray() As Object = New Object() {Año_Ejecucion, Unidad_O, Meta, Actividad, Codigo_Catalogo, Partida, Nombre_Partida, Codigo, Descripcion_Item, unidad_medida, precio_unitario, Cantidad_Enero, Cantidad_Febrero, Cantidad_Marzo, Cantidad_Abril, Cantidad_Mayo, Cantidad_Junio, Cantidad_Julio, Cantidad_Agosto, Cantidad_Septiembre, Cantidad_Octubre, Cantidad_Noviembre, Cantidad_Diciembre}
+            Dim columnValuesArray() As Object = New Object() {Año_Ejecucion, Unidad_O, Meta, Actividad, Codigo_Catalogo, Partida, Nombre_Partida, Codigo, Descripcion_Item, unidad_medida, precio_unitario, Cantidad_Enero, Cantidad_Febrero, Cantidad_Marzo, Cantidad_Abril, Cantidad_Mayo, Cantidad_Junio, Cantidad_Julio, Cantidad_Agosto, Cantidad_Septiembre, Cantidad_Octubre, Cantidad_Noviembre, Cantidad_Diciembre, Tipo}
             rowLista_saldos_CN_AM_Requerimientos_SaldosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowLista_saldos_CN_AM_Requerimientos_SaldosRow)
             Return rowLista_saldos_CN_AM_Requerimientos_SaldosRow
@@ -4920,6 +4931,7 @@ Partial Public Class DatosSBLM
             Me.columnCantidad_Octubre = MyBase.Columns("Cantidad_Octubre")
             Me.columnCantidad_Noviembre = MyBase.Columns("Cantidad_Noviembre")
             Me.columnCantidad_Diciembre = MyBase.Columns("Cantidad_Diciembre")
+            Me.columnTipo = MyBase.Columns("Tipo")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4971,6 +4983,8 @@ Partial Public Class DatosSBLM
             MyBase.Columns.Add(Me.columnCantidad_Noviembre)
             Me.columnCantidad_Diciembre = New Global.System.Data.DataColumn("Cantidad_Diciembre", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCantidad_Diciembre)
+            Me.columnTipo = New Global.System.Data.DataColumn("Tipo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipo)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10285,6 +10299,22 @@ Partial Public Class DatosSBLM
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Tipo() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableLista_saldos_CN_AM_Requerimientos_Saldos.TipoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Tipo' in table 'Lista_saldos_CN_AM_Requerimientos_Saldos' i"& _ 
+                            "s DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableLista_saldos_CN_AM_Requerimientos_Saldos.TipoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsAño_EjecucionNull() As Boolean
             Return Me.IsNull(Me.tableLista_saldos_CN_AM_Requerimientos_Saldos.Año_EjecucionColumn)
         End Function
@@ -10557,6 +10587,18 @@ Partial Public Class DatosSBLM
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetCantidad_DiciembreNull()
             Me(Me.tableLista_saldos_CN_AM_Requerimientos_Saldos.Cantidad_DiciembreColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsTipoNull() As Boolean
+            Return Me.IsNull(Me.tableLista_saldos_CN_AM_Requerimientos_Saldos.TipoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetTipoNull()
+            Me(Me.tableLista_saldos_CN_AM_Requerimientos_Saldos.TipoColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

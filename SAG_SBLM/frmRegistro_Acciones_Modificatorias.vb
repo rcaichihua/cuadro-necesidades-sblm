@@ -1007,8 +1007,8 @@
                                                                             Me.txtDB.Text = ""
                                                                             Me.btnBuscarItems.Focus()
                                                                     End Select
-                                                                    Me.txtTotal.Text = Format(Me.Total, "###,###,#.00")
-                                                                    Me.txtTotal2.Text = Format(Me.Total2, "###,###,#.00")
+                                                                    Me.txtTotalRebajas.Text = Format(Me.Total, "###,###,#.00")
+                                                                    Me.txtTotalAmpliacion.Text = Format(Me.Total2, "###,###,#.00")
                                                                     Me.txtDiferencia.Text = Format(Me.Total() + Me.Total2(), "###,###,#.00")
                                                                     Call desactivaRebajaMeses(False)
 
@@ -1353,8 +1353,8 @@
             End If
             Me.txtEnero_m.Focus()
         End If
-        Me.txtTotal.Text = Format(Me.Total, "###,###,#.00")
-        Me.txtTotal2.Text = Format(Me.Total2, "###,###,#.00")
+        Me.txtTotalRebajas.Text = Format(Me.Total, "###,###,#.00")
+        Me.txtTotalAmpliacion.Text = Format(Me.Total2, "###,###,#.00")
         If Me.dgvDistribucionCn.Rows.Count = 0 Then Me.cbMotivo.Enabled = True
     End Sub
     Private Sub btnCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancelar.Click
@@ -1395,7 +1395,7 @@
                                             End If
                                         Case "002"
                                             If Me.txtJustificacion.Text.Trim.Length > 0 Then
-                                                If Math.Abs(Convert.ToDecimal(Me.txtTotal.Text.Trim)) = Math.Abs(Convert.ToDecimal(Me.txtTotal2.Text.Trim)) Then
+                                                If Math.Abs(Convert.ToDecimal(Me.txtTotalRebajas.Text.Trim)) >= Math.Abs(Convert.ToDecimal(Me.txtTotalAmpliacion.Text.Trim)) Then
                                                     Dim Numero As String = Datos.Generar_Numero_AM(My.Settings.Año_Ejecucion)
                                                     Datos.Nueva_Accion_Modificatoria(My.Settings.Año_Ejecucion, Numero, Motivo.Rows(Me.cbMotivo.SelectedIndex).Item("Codigo_Motivo_AM").ToString, Me.txtJustificacion.Text.Trim.Trim, Today.Date, My.Settings.Usuario, "01",Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString)
 
@@ -1482,7 +1482,7 @@
                                             End If
                                         Case "002"
                                             If Me.txtJustificacion.Text.Trim.Length > 0 Then
-                                                If Math.Abs(Convert.ToDecimal(Me.txtTotal.Text.Trim)) = Math.Abs(Convert.ToDecimal(Me.txtTotal2.Text.Trim)) Then
+                                                If Math.Abs(Convert.ToDecimal(Me.txtTotalRebajas.Text.Trim)) = Math.Abs(Convert.ToDecimal(Me.txtTotalAmpliacion.Text.Trim)) Then
                                                     Datos.Eliminar_AM(My.Settings.Año_Ejecucion, Variable_Numero_Accion_Modificatoria, False)
                                                     Datos.Modificar_Acción_Modificatoria(My.Settings.Año_Ejecucion, Variable_Numero_Accion_Modificatoria, Motivo.Rows(Me.cbMotivo.SelectedIndex).Item("Codigo_Motivo_AM").ToString, Me.txtJustificacion.Text.Trim)
                                                     
@@ -1500,7 +1500,7 @@
                                             End If
                                         Case "003"
                                             If Me.txtJustificacion.Text.Trim.Length > 0 Then
-                                                If Math.Abs(Convert.ToDecimal(Me.txtTotal.Text.Trim)) = Math.Abs(Convert.ToDecimal(Me.txtTotal2.Text.Trim)) Then
+                                                If Math.Abs(Convert.ToDecimal(Me.txtTotalRebajas.Text.Trim)) = Math.Abs(Convert.ToDecimal(Me.txtTotalAmpliacion.Text.Trim)) Then
                                                     Datos.Eliminar_AM(My.Settings.Año_Ejecucion, Variable_Numero_Accion_Modificatoria, False)
                                                     Datos.Modificar_Acción_Modificatoria(My.Settings.Año_Ejecucion, Variable_Numero_Accion_Modificatoria, Motivo.Rows(Me.cbMotivo.SelectedIndex).Item("Codigo_Motivo_AM").ToString, Me.txtJustificacion.Text.Trim)
                                                     
@@ -1567,8 +1567,8 @@
             Me.cbUnidadOrganica.Enabled = False
             Call Me.Total()
             Call Me.Total2()
-            Me.txtTotal.Text = Format(Me.Total, "###,###,#.00")
-            Me.txtTotal2.Text = Format(Me.Total2, "###,###,#.00")
+            Me.txtTotalRebajas.Text = Format(Me.Total, "###,###,#.00")
+            Me.txtTotalAmpliacion.Text = Format(Me.Total2, "###,###,#.00")
             Separador = Application.CurrentCulture.NumberFormat.NumberDecimalSeparator
             If Me.dgvDistribucionCn.Rows.Count > 0 Then Me.cbMotivo.Enabled = False Else Me.cbMotivo.Enabled = True
         End If

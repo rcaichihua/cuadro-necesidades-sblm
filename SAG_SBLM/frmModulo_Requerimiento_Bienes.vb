@@ -8,7 +8,7 @@
     Dim Estado As New DataTable
     Dim Datos As New Mantenimiento
     Private Sub frmRequerimiento_Bienes_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        B_Busqueda_S = " select Año_Ejecucion As Año,Numero,Nombre_Unidad_Organica as [Unidad Orgánica],Justificacion,IsNull(Convert(VarChar(10),FechaEmision,103),'00/00/0000') as Emisión,IsNull(Convert(VarChar(10),FechaAutorizacion,103),'00/00/0000') as Autorización,IsNull(Convert(VarChar(10),FechaAprobacion,103),'00/00/0000') As Aprobación,Monto_Referencial as Referencial,Descripcion_Estado_Requerimiento as Estado from [dbo].[lista_requerimientos_bienes_basica] "
+        B_Busqueda_S = " select Año_Ejecucion As Año,Numero,Numero_Unidad_Organica as [Numero-U.O],Nombre_Unidad_Organica as [Unidad Orgánica],Justificacion,IsNull(Convert(VarChar(10),FechaEmision,103),'00/00/0000') as Emisión,IsNull(Convert(VarChar(10),FechaAutorizacion,103),'00/00/0000') as Autorización,IsNull(Convert(VarChar(10),FechaAprobacion,103),'00/00/0000') As Aprobación,Monto_Referencial as Referencial,Descripcion_Estado_Requerimiento as Estado from [dbo].[lista_requerimientos_bienes_basica] "
         B_Busqueda_W = " Where Año_Ejecucion ='" & My.Settings.Año_Ejecucion & "' "
         B_Busqueda_O = " Order By Año_Ejecucion,Numero "
         Unidad_Organica = Datos.LLenar_Combo("Select * From Unidad_Organica Where Año_Ejecucion='" & My.Settings.Año_Ejecucion & "' And Codigo_Unidad_Organica In (" & Datos.Cadena_Unidades_Organicas_Por_Usuario(My.Settings.Año_Ejecucion, My.Settings.Usuario) & ")", Me.cbUnidadOrganica, "Nombre_Unidad_Organica")
@@ -22,6 +22,7 @@
         Me.cbCriterio.Items.Add(Me.DataGridView1.Columns(1).Name)
         Me.cbCriterio.Items.Add(Me.DataGridView1.Columns(3).Name)
         Me.cbCriterio.SelectedIndex = 0
+        Me.Windowstate = FormWindowState.Maximized
     End Sub
     Private Sub Boton_Salir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Boton_Salir.Click
         Me.Close()
@@ -125,13 +126,14 @@
     Private Sub Dimensionar()
         Me.DataGridView1.Columns(0).Width = 50
         Me.DataGridView1.Columns(1).Width = 50
-        Me.DataGridView1.Columns(2).Width = 320
-        Me.DataGridView1.Columns(3).Width = 270
-        Me.DataGridView1.Columns(4).Width = 80
+        Me.DataGridView1.Columns(2).Width = 80
+        Me.DataGridView1.Columns(3).Width = 300
+        Me.DataGridView1.Columns(4).Width = 255
         Me.DataGridView1.Columns(5).Width = 80
         Me.DataGridView1.Columns(6).Width = 80
         Me.DataGridView1.Columns(7).Width = 80
-        Me.DataGridView1.Columns(8).Width = 90
+        Me.DataGridView1.Columns(8).Width = 80
+        Me.DataGridView1.Columns(9).Width = 90
         Me.DataGridView1.RowsDefaultCellStyle.BackColor = Color.White
         Me.DataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.AliceBlue
         Me.DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
@@ -139,13 +141,14 @@
         Me.DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataGridView1.Columns(0).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         Me.DataGridView1.Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridView1.Columns(2).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+        Me.DataGridView1.Columns(2).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         Me.DataGridView1.Columns(3).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-        Me.DataGridView1.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridView1.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
         Me.DataGridView1.Columns(5).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         Me.DataGridView1.Columns(6).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridView1.Columns(7).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-        Me.DataGridView1.Columns(8).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+        Me.DataGridView1.Columns(7).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridView1.Columns(8).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        Me.DataGridView1.Columns(9).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
     End Sub
     Private Sub Boton_Visualizar_Requerimiento_Bienes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Boton_Visualizar_Requerimiento_Bienes.Click
         If Datos.Acceso_Sub_Boton(My.Settings.Usuario.Trim, "Boton_Requerimiento_Bienes", Me.Boton_Visualizar_Requerimiento_Bienes.Name) = True Then

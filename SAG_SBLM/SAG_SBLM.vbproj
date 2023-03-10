@@ -34,7 +34,7 @@
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
     <TargetFrameworkProfile />
-    <PublishUrl>\\192.168.1.8\Sistemas\SAG_CN\</PublishUrl>
+    <PublishUrl>\\192.168.1.8\Sistemas\CN_PRUEBA\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -44,11 +44,11 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>\\192.168.1.8\Sistemas\SAG_CN\</UpdateUrl>
-    <ProductName>SAG-SBL-CN</ProductName>
-    <PublisherName>Sistema Cuadro de Necesidades</PublisherName>
+    <UpdateUrl>\\192.168.1.8\Sistemas\CN_PRUEBA\</UpdateUrl>
+    <ProductName>SAG-SBL-CN-prueba</ProductName>
+    <PublisherName>Sistema Cuadro de Necesidades Prueba</PublisherName>
     <SuiteName>Sistema Cuadro de Necesidades</SuiteName>
-    <ApplicationRevision>18</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -231,6 +231,12 @@
     <Compile Include="frmCambiar_Clave.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmAsignar_Cantidad_CN.designer.vb">
+      <DependentUpon>frmAsignar_Cantidad_CN.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAsignar_Cantidad_CN.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmCatalogo_Bienes_Servicios_Obras.Designer.vb">
       <DependentUpon>frmCatalogo_Bienes_Servicios_Obras.vb</DependentUpon>
     </Compile>
@@ -325,6 +331,12 @@
       <DependentUpon>frmRegistro_Acciones_Modificatorias.vb</DependentUpon>
     </Compile>
     <Compile Include="frmRegistro_Acciones_Modificatorias.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFiltrarItemsCatalogoCN.designer.vb">
+      <DependentUpon>frmFiltrarItemsCatalogoCN.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmFiltrarItemsCatalogoCN.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmRegistro_CN.designer.vb">
@@ -452,10 +464,10 @@
       <DependentUpon>Reporte_CN_Resumen_General_Saldos.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes\Reporte_CN_Resumen_por_item.vb">
+    <Compile Include="Reportes\Reporte_CN_Resumen_General_Saldos_Movimientos.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Reporte_CN_Resumen_por_item.rpt</DependentUpon>
+      <DependentUpon>Reporte_CN_Resumen_General_Saldos_Movimientos.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\Requerimiento_Bienes.vb">
@@ -542,6 +554,9 @@
     <EmbeddedResource Include="frmCambiar_Clave.resx">
       <DependentUpon>frmCambiar_Clave.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAsignar_Cantidad_CN.resx">
+      <DependentUpon>frmAsignar_Cantidad_CN.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCatalogo_Bienes_Servicios_Obras.resx">
       <DependentUpon>frmCatalogo_Bienes_Servicios_Obras.vb</DependentUpon>
     </EmbeddedResource>
@@ -589,6 +604,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRegistro_Acciones_Modificatorias.resx">
       <DependentUpon>frmRegistro_Acciones_Modificatorias.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFiltrarItemsCatalogoCN.resx">
+      <DependentUpon>frmFiltrarItemsCatalogoCN.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRegistro_CN.resx">
       <DependentUpon>frmRegistro_CN.vb</DependentUpon>
@@ -653,9 +671,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Reporte_CN_Resumen_General_Saldos.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\Reporte_CN_Resumen_por_item.rpt">
+    <EmbeddedResource Include="Reportes\Reporte_CN_Resumen_General_Saldos_Movimientos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Reporte_CN_Resumen_por_item.vb</LastGenOutput>
+      <LastGenOutput>Reporte_CN_Resumen_General_Saldos_Movimientos.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Requerimiento_Bienes.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -709,6 +727,7 @@
     <Content Include="Resources\Anular.gif" />
     <Content Include="Resources\Anular.png" />
     <Content Include="Resources\Autorizar.gif" />
+    <None Include="Resources\bene.png" />
     <Content Include="Resources\Cancelar_Comprobante.png" />
     <Content Include="Resources\Cancelar_Formato.png" />
     <Content Include="Resources\Cargo.png" />

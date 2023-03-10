@@ -35,6 +35,7 @@ Partial Class frmModulo_CN
         Me.Boton_Agrupado_Por_Item_y_UO = New DevComponents.DotNetBar.ButtonItem()
         Me.Boton_Reporte_General_CN = New DevComponents.DotNetBar.ButtonItem()
         Me.Boton_Reporte_CN_Saldos = New DevComponents.DotNetBar.ButtonItem()
+        Me.Boton_Reporte_CN_Saldos_Movimientos = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonBar2 = New DevComponents.DotNetBar.RibbonBar()
         Me.Boton_Autorizar_CN = New DevComponents.DotNetBar.ButtonItem()
         Me.Boton_Aprobar_CN = New DevComponents.DotNetBar.ButtonItem()
@@ -101,7 +102,7 @@ Partial Class frmModulo_CN
         Me.RibbonBar3.Dock = System.Windows.Forms.DockStyle.Left
         Me.RibbonBar3.DragDropSupport = true
         Me.RibbonBar3.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.Boton_Salir})
-        Me.RibbonBar3.Location = New System.Drawing.Point(783, 0)
+        Me.RibbonBar3.Location = New System.Drawing.Point(874, 0)
         Me.RibbonBar3.Name = "RibbonBar3"
         Me.RibbonBar3.Size = New System.Drawing.Size(69, 83)
         Me.RibbonBar3.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
@@ -138,10 +139,10 @@ Partial Class frmModulo_CN
         Me.RibbonBar4.ContainerControlProcessDialogKey = true
         Me.RibbonBar4.Dock = System.Windows.Forms.DockStyle.Left
         Me.RibbonBar4.DragDropSupport = true
-        Me.RibbonBar4.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.Boton_Imprimir_CN, Me.Boton_Visualizar_CN, Me.Boton_Visualizar_Saldos_CN, Me.Boton_Agrupado_Por_Item_y_UO, Me.Boton_Reporte_General_CN, Me.Boton_Reporte_CN_Saldos})
+        Me.RibbonBar4.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.Boton_Imprimir_CN, Me.Boton_Visualizar_CN, Me.Boton_Visualizar_Saldos_CN, Me.Boton_Agrupado_Por_Item_y_UO, Me.Boton_Reporte_General_CN, Me.Boton_Reporte_CN_Saldos, Me.Boton_Reporte_CN_Saldos_Movimientos})
         Me.RibbonBar4.Location = New System.Drawing.Point(371, 0)
         Me.RibbonBar4.Name = "RibbonBar4"
-        Me.RibbonBar4.Size = New System.Drawing.Size(412, 83)
+        Me.RibbonBar4.Size = New System.Drawing.Size(503, 83)
         Me.RibbonBar4.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
         Me.RibbonBar4.TabIndex = 3
         Me.RibbonBar4.Text = "Reportes Individuales"
@@ -202,6 +203,15 @@ Partial Class frmModulo_CN
         Me.Boton_Reporte_CN_Saldos.Name = "Boton_Reporte_CN_Saldos"
         Me.Boton_Reporte_CN_Saldos.SubItemsExpandWidth = 14
         Me.Boton_Reporte_CN_Saldos.Text = "<div align=""center"">Reporte<br/>C.N. Saldos</div>"
+        '
+        'Boton_Reporte_CN_Saldos_Movimientos
+        '
+        Me.Boton_Reporte_CN_Saldos_Movimientos.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.Boton_Reporte_CN_Saldos_Movimientos.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Certificcion
+        Me.Boton_Reporte_CN_Saldos_Movimientos.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.Boton_Reporte_CN_Saldos_Movimientos.Name = "Boton_Reporte_CN_Saldos_Movimientos"
+        Me.Boton_Reporte_CN_Saldos_Movimientos.SubItemsExpandWidth = 14
+        Me.Boton_Reporte_CN_Saldos_Movimientos.Text = "<div align=""center"">Reporte<br/>C.N. Movimientos</div>"
         '
         'RibbonBar2
         '
@@ -448,7 +458,6 @@ Partial Class frmModulo_CN
         Me.Name = "frmModulo_CN"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "..:: Módulo de Registro del Cuadro de Necesidades ::.."
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ribbonBarMergeContainer1.ResumeLayout(false)
         Me.gbFiltros.ResumeLayout(false)
         Me.gbFiltros.PerformLayout
@@ -487,4 +496,5 @@ End Sub
     Friend WithEvents Boton_Agrupado_Por_Item_y_UO As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents Boton_Reporte_General_CN As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents Boton_Reporte_CN_Saldos As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents Boton_Reporte_CN_Saldos_Movimientos As DevComponents.DotNetBar.ButtonItem
 End Class

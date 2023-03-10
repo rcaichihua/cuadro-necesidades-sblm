@@ -22,6 +22,7 @@
         Me.cbCriterio.Items.Add(Me.DataGridView1.Columns(1).Name)
         Me.cbCriterio.Items.Add(Me.DataGridView1.Columns(3).Name)
         Me.cbCriterio.SelectedIndex = 0
+        Me.Windowstate = FormWindowState.Maximized
     End Sub
     Private Sub Boton_Salir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Boton_Salir.Click
         Me.Close()

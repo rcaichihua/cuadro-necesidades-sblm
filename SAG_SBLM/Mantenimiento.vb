@@ -135,6 +135,26 @@ Public Class Mantenimiento
         End If
     End Function
 
+    Public Function Verificar_Items_No_Autorizados_Requerimientos_Por_Items(Byval Año_Ejecucion As String, Byval Codigo_Unidad_Organica As String ,Byval Codigo_Item As String) As DataTable
+        Dim Consulta as String = "" 
+
+        Dim Da As New OleDb.OleDbDataAdapter(Consulta, Cn)
+        Dim Ds As New Data.DataSet
+        'Da.Fill(Ds)
+        Consulta = "select a.Año_Ejecucion, a.numero,convert(varchar(10),a.FechaEmision,103) as fecha_emision, case b.Codigo_Catalogo when '01' then 'B.' else 'S.' end + b.Codigo_Grupo+'.'+b.Codigo_Clase+'.'+b.Codigo_Familia+'.'+b.Codigo_Item as codigo,i.Descripcion_Item " +
+                    "from Requerimiento_Bienes a " +
+                    "inner join Detalle_Requerimiento_Bienes b on a.Año_Ejecucion=b.Año_Ejecucion and a.Numero=b.Numero " +
+                    "inner join Item i on i.Codigo_Catalogo=b.Codigo_Catalogo and i.Codigo_Grupo=b.Codigo_Grupo and " +
+                    "i.Codigo_Clase=b.Codigo_Clase and i.Codigo_Familia=b.Codigo_Familia and i.Codigo_Item=b.Codigo_Item " +
+                    "where a.Año_Ejecucion='"+Año_Ejecucion+"' and a.Codigo_Unidad_Organica='"+Codigo_Unidad_Organica+"' " + 
+                    "and case b.Codigo_Catalogo when '01' then 'B.' else 'S.' end + b.Codigo_Grupo+'.'+b.Codigo_Clase+'.'+b.Codigo_Familia+'.'+b.Codigo_Item = '"+Codigo_Item+"' " +
+                    "and a.Codigo_Estado_Requerimiento in ('01','02','03')"
+        Da = New  OleDbDataAdapter(Consulta, Cn)
+        Da.Fill(Ds)
+
+        Return Ds.Tables(0)
+    End Function
+
     Public Sub Combo(ByVal Combo As System.Windows.Forms.ComboBox, ByVal Tabla As String, ByVal Campo_Value As String, ByVal Campo_Mostrar As String)
         Dim Da As New OleDb.OleDbDataAdapter(Tabla, Cn)
         Dim Ds As New DataSet
@@ -747,6 +767,123 @@ Public Class Mantenimiento
         End If
         Return 0
     End Function
+    Public Function Cargar_CN_Filtro_Requerimientos(ByVal Año_Ejecución As String, ByVal Codigo_Unidad_Organica As String, ByVal Fuente_Financiamiento As String, ByVal Rubro As String, Byval Codigo_Catalogo As String, 
+                                                    ByVal DataGridView As DataGridView, ByVal DatagridView2 As DataGridView, ByVal CodigoSecuenciaFuncional As String, ByVal CodigoActividad As String) As Integer
+        'Dim Da As New OleDb.OleDbDataAdapter("Select * From Lista_Detalle_CN_Basica_edicion Where Año_Ejecucion='" & Año_Ejecución & "' And Codigo_Unidad_Organica='" & Codigo_Unidad_Organica & "' and Codigo_FF='"+Fuente_Financiamiento+"' and Codigo_Rubro='"+Rubro+"' and Codigo_Catalogo='"+Codigo_Catalogo+"'", Cn)
+        Dim Da As New OleDb.OleDbDataAdapter("select Año_Ejecucion,Codigo_FF,Codigo_Rubro,Tipo_Transaccion,Generica,Sub_Generica,Sub_Generica_Detalle,Especifica,Especifica_Detalle,Clasificador,Codigo_Secuencia_Funcional, " +
+                                        " Codigo_Unidad_Organica,Codigo_Actividad,Codigo_Grupo,Codigo_Clase,Codigo_Familia,Codigo_Item,codigo,Descripcion_Item as Item,'' as Codigo_Unidad_Medida,unidad_medida as Unidad, " +
+                                        " (Cantidad_Enero+Cantidad_Febrero+ Cantidad_Marzo+ Cantidad_Abril+ Cantidad_Mayo+ Cantidad_Junio+ Cantidad_Julio+ Cantidad_Agosto+ Cantidad_Septiembre+Cantidad_Octubre+ Cantidad_Noviembre+ Cantidad_Diciembre) as Cantidad, " +
+                                        " precio_unitario as Costo,Cantidad_Enero,Cantidad_Febrero, Cantidad_Marzo, Cantidad_Abril, Cantidad_Mayo, Cantidad_Junio, Cantidad_Julio, Cantidad_Agosto, Cantidad_Septiembre, " +
+                                        " Cantidad_Octubre, Cantidad_Noviembre, Cantidad_Diciembre,'' as Cadena,Codigo_Catalogo,Nombre_Partida as Descripcion_Especifica_Detalle, " +
+                                        " (Cantidad_Enero+Cantidad_Febrero+ Cantidad_Marzo+ Cantidad_Abril+ Cantidad_Mayo+ Cantidad_Junio+ Cantidad_Julio+ Cantidad_Agosto+ Cantidad_Septiembre+Cantidad_Octubre+ Cantidad_Noviembre+ Cantidad_Diciembre) * precio_unitario as Total " +
+                                        " From Lista_saldos_CN_AM_Requerimientos_Saldos " +
+                                        " Where Año_Ejecucion='"+Año_Ejecución+"' And Codigo_Unidad_Organica='"+Codigo_Unidad_Organica+"' and Codigo_FF='"+Fuente_Financiamiento+"' and Codigo_Rubro='"+Rubro+"' and Codigo_Catalogo='"+iif(Codigo_Catalogo="01","BIENES","SERVICIOS")+"' " +
+                                        " Order by Descripcion_Item asc", Cn)
+                                        '" and (Cantidad_Enero+Cantidad_Febrero+ Cantidad_Marzo+ Cantidad_Abril+ Cantidad_Mayo+ Cantidad_Junio+ " +
+                                        '" Cantidad_Julio+ Cantidad_Agosto+ Cantidad_Septiembre+Cantidad_Octubre+ Cantidad_Noviembre+ Cantidad_Diciembre) > 0 " +
+        Dim Ds As New Data.DataSet
+        Da.Fill(Ds)
+        if Ds.Tables(0).Rows.Count <= 0
+            MessageBox.Show("No hay items para seleccionar segun el filtro ingresado.","C.N.", MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1)
+            Return 1
+        End If
+        If Ds.Tables(0).Rows.Count > 0 Then
+            For Recorrido As Integer = 0 To Ds.Tables(0).Rows.Count - 1
+                DataGridView.Rows.Add()
+                DataGridView.Item(0, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Año_Ejecucion").ToString
+                DataGridView.Item(1, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_FF").ToString
+                DataGridView.Item(2, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_Rubro").ToString
+                DataGridView.Item(3, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Tipo_Transaccion").ToString
+                DataGridView.Item(4, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Generica").ToString
+                DataGridView.Item(5, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Sub_Generica").ToString
+                DataGridView.Item(6, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Sub_Generica_Detalle").ToString
+                DataGridView.Item(7, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Especifica").ToString
+                DataGridView.Item(8, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Especifica_Detalle").ToString
+                DataGridView.Item(9, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Clasificador").ToString
+                DataGridView.Item(10, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_Secuencia_Funcional").ToString
+                DataGridView.Item(11, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_Unidad_Organica").ToString
+                DataGridView.Item(12, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_Actividad").ToString
+
+                DataGridView.Item(13, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_Grupo").ToString
+                DataGridView.Item(14, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_Clase").ToString
+                DataGridView.Item(15, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_Familia").ToString
+                DataGridView.Item(16, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_Item").ToString
+                DataGridView.Item(17, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo").ToString
+                DataGridView.Item(18, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Item").ToString
+                DataGridView.Item(19, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_Unidad_Medida").ToString
+                DataGridView.Item(20, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Unidad").ToString
+                DataGridView.Item(21, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad").ToString
+                DataGridView.Item(22, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Costo").ToString
+
+                DataGridView.Item(23, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Enero").ToString
+                DataGridView.Item(24, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Febrero").ToString
+                DataGridView.Item(25, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Marzo").ToString
+                DataGridView.Item(26, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Abril").ToString
+                DataGridView.Item(27, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Mayo").ToString
+                DataGridView.Item(28, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Junio").ToString
+                DataGridView.Item(29, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Julio").ToString
+                DataGridView.Item(30, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Agosto").ToString
+                DataGridView.Item(31, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Septiembre").ToString
+                DataGridView.Item(32, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Octubre").ToString
+                DataGridView.Item(33, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Noviembre").ToString
+                DataGridView.Item(34, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Diciembre").ToString
+
+                DataGridView.Item(35, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cadena").ToString
+                DataGridView.Item(36, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_Catalogo").ToString
+                DataGridView.Item(37, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Descripcion_Especifica_Detalle").ToString
+                
+                DataGridView.Item(38, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Total").ToString
+
+                For Recorrido2 As Integer = 0 To DatagridView2.Rows.Count - 1
+                     If DatagridView2.Rows(Recorrido2).Cells(10).Value + DatagridView2.Rows(Recorrido2).Cells(11).Value + 
+                                                    DatagridView2.Rows(Recorrido2).Cells(12).Value + DatagridView2.Rows(Recorrido2).Cells(17).Value = 
+                                                    CodigoSecuenciaFuncional +'Ds.Tables(0).Rows(Recorrido).Item("Codigo_Secuencia_Funcional").ToString + 
+                                                    Ds.Tables(0).Rows(Recorrido).Item("Codigo_Unidad_Organica").ToString + 
+                                                    CodigoActividad +'Ds.Tables(0).Rows(Recorrido).Item("Codigo_Actividad").ToString +
+                                                    Ds.Tables(0).Rows(Recorrido).Item("Codigo").ToString Then
+                        DataGridView.Rows(Recorrido).Cells(39).Value = True
+                        DataGridView.Rows(Recorrido).Cells(53).Value = "1"
+
+                        DataGridView.Item(23, DataGridView.Rows.Count - 1).Value = DatagridView2.Rows(Recorrido2).Cells(23).Value
+                        DataGridView.Item(24, DataGridView.Rows.Count - 1).Value = DatagridView2.Rows(Recorrido2).Cells(24).Value
+                        DataGridView.Item(25, DataGridView.Rows.Count - 1).Value = DatagridView2.Rows(Recorrido2).Cells(25).Value
+                        DataGridView.Item(26, DataGridView.Rows.Count - 1).Value = DatagridView2.Rows(Recorrido2).Cells(26).Value
+                        DataGridView.Item(27, DataGridView.Rows.Count - 1).Value = DatagridView2.Rows(Recorrido2).Cells(27).Value
+                        DataGridView.Item(28, DataGridView.Rows.Count - 1).Value = DatagridView2.Rows(Recorrido2).Cells(28).Value
+                        DataGridView.Item(29, DataGridView.Rows.Count - 1).Value = DatagridView2.Rows(Recorrido2).Cells(29).Value
+                        DataGridView.Item(30, DataGridView.Rows.Count - 1).Value = DatagridView2.Rows(Recorrido2).Cells(30).Value
+                        DataGridView.Item(31, DataGridView.Rows.Count - 1).Value = DatagridView2.Rows(Recorrido2).Cells(31).Value
+                        DataGridView.Item(32, DataGridView.Rows.Count - 1).Value = DatagridView2.Rows(Recorrido2).Cells(32).Value
+                        DataGridView.Item(33, DataGridView.Rows.Count - 1).Value = DatagridView2.Rows(Recorrido2).Cells(33).Value
+                        DataGridView.Item(34, DataGridView.Rows.Count - 1).Value = DatagridView2.Rows(Recorrido2).Cells(34).Value
+
+                        DataGridView.Item(21, DataGridView.Rows.Count - 1).Value = Format(Convert.ToDecimal(DatagridView2.Rows(Recorrido2).Cells(23).Value) + Convert.ToDecimal(DatagridView2.Rows(Recorrido2).Cells(24).Value) +
+                        Convert.ToDecimal(DatagridView2.Rows(Recorrido2).Cells(25).Value) + Convert.ToDecimal(DatagridView2.Rows(Recorrido2).Cells(26).Value) +
+                        Convert.ToDecimal(DatagridView2.Rows(Recorrido2).Cells(27).Value) + Convert.ToDecimal(DatagridView2.Rows(Recorrido2).Cells(28).Value) + 
+                        Convert.ToDecimal(DatagridView2.Rows(Recorrido2).Cells(29).Value) + Convert.ToDecimal(DatagridView2.Rows(Recorrido2).Cells(30).Value) + 
+                        Convert.ToDecimal(DatagridView2.Rows(Recorrido2).Cells(31).Value) + Convert.ToDecimal(DatagridView2.Rows(Recorrido2).Cells(32).Value) + 
+                        Convert.ToDecimal(DatagridView2.Rows(Recorrido2).Cells(33).Value) + Convert.ToDecimal(DatagridView2.Rows(Recorrido2).Cells(34).Value), "###,###,#.00")
+                     End If
+                Next
+
+                DataGridView.Item(41, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Enero").ToString
+                DataGridView.Item(42, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Febrero").ToString
+                DataGridView.Item(43, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Marzo").ToString
+                DataGridView.Item(44, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Abril").ToString
+                DataGridView.Item(45, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Mayo").ToString
+                DataGridView.Item(46, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Junio").ToString
+                DataGridView.Item(47, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Julio").ToString
+                DataGridView.Item(48, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Agosto").ToString
+                DataGridView.Item(49, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Septiembre").ToString
+                DataGridView.Item(50, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Octubre").ToString
+                DataGridView.Item(51, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Noviembre").ToString
+                DataGridView.Item(52, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Diciembre").ToString
+            Next
+
+            
+        End If
+        Return 0
+    End Function
     Public Function Cargar_AM_Para_Modificacion(ByVal Año_Ejecución As String,ByVal Numero As String, ByVal Codigo_Unidad_Organica As String, ByVal Codigo_Secuencia_Funcional As String, ByVal Codigo_Actividad As String, ByVal Combo_Unidad_Organica As System.Windows.Forms.ComboBox, ByVal DataGridView As System.Windows.Forms.DataGridView, ByVal Combo_Motivo As System.Windows.Forms.ComboBox, ByVal Caja_Justificacion As System.Windows.Forms.TextBox) As Integer
         Dim Da As New OleDb.OleDbDataAdapter("Select * From Lista_Detalle_AM_Basica_edicion Where Año_Ejecucion='" & Año_Ejecución & "' And Numero = '"& Numero &"'" , Cn)
         Dim Ds As New Data.DataSet
@@ -895,16 +1032,30 @@ Public Class Mantenimiento
             Else
                 Caja_Certificacion.Text = ""
             End If
-
+            
 
         End If
     End Sub
-    Public Sub Cargar_Requerimiento_Bien_Para_Modificacion(ByVal Año_Ejecución As String, ByVal Numero As String, ByVal DataGridView As System.Windows.Forms.DataGridView, ByVal Combo_Unidad As System.Windows.Forms.ComboBox, ByVal Caja_Justificacion As System.Windows.Forms.TextBox)
-        Dim Da As New OleDb.OleDbDataAdapter("Select * From Lista_Detalle_Requerimientos_Bienes_Basica Where Año_Ejecucion='" & Año_Ejecución & "' And Numero='" & Numero & "'", Cn)
+    Public Sub Cargar_Requerimiento_Bien_Para_Modificacion(ByVal Año_Ejecución As String, ByVal Numero As String, 
+                                                           ByVal DataGridView As System.Windows.Forms.DataGridView, 
+                                                           ByVal Combo_Unidad As System.Windows.Forms.ComboBox, 
+                                                           ByVal Combo_Fuente As System.Windows.Forms.ComboBox,
+                                                           ByVal Combo_Rubro As System.Windows.Forms.ComboBox,
+                                                           ByVal Combo_Secuencia As System.Windows.Forms.ComboBox,
+                                                           ByVal Combo_Actividad As System.Windows.Forms.ComboBox,
+                                                           ByVal Caja_Justificacion As System.Windows.Forms.TextBox)
+        Dim Da As New OleDb.OleDbDataAdapter("Select * From Lista_Detalle_Requerimientos_Bienes_Basica_Mensualizado Where Año_Ejecucion='" & Año_Ejecución & "' And Numero='" & Numero & "'", Cn)
         Dim Ds As New Data.DataSet
+        Dim Codigo_Fuente_tmp As String=""
+        Dim Codigo_Rubro_tmp As String=""
+        Dim Codigo_Secuencia_Funcional_tmp As String=""
+        Dim Codigo_Actividad_tmp As String=""
         Da.Fill(Ds)
         If Ds.Tables(0).Rows.Count > 0 Then
-
+            Codigo_Fuente_tmp = Ds.Tables(0).Rows(0).Item("Codigo_FF").ToString
+            Codigo_Rubro_tmp = Ds.Tables(0).Rows(0).Item("Codigo_Rubro").ToString
+            Codigo_Secuencia_Funcional_tmp = Ds.Tables(0).Rows(0).Item("Codigo_Secuencia_Funcional").ToString
+            Codigo_Actividad_tmp = Ds.Tables(0).Rows(0).Item("Codigo_Actividad").ToString
             For Recorrido As Integer = 0 To Ds.Tables(0).Rows.Count - 1
                 DataGridView.Rows.Add()
                 DataGridView.Item(0, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Año_Ejecucion").ToString
@@ -924,13 +1075,25 @@ Public Class Mantenimiento
                 DataGridView.Item(14, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_Clase").ToString
                 DataGridView.Item(15, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_Familia").ToString
                 DataGridView.Item(16, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_Item").ToString
-                DataGridView.Item(17, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo").ToString
+                DataGridView.Item(17, DataGridView.Rows.Count - 1).Value = IIf(Ds.Tables(0).Rows(Recorrido).Item("Codigo_Catalogo").ToString="01","B.","S.") + Ds.Tables(0).Rows(Recorrido).Item("Codigo").ToString
                 DataGridView.Item(18, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Descripcion_Item").ToString
                 DataGridView.Item(19, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_Unidad_Medida").ToString
                 DataGridView.Item(20, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Descripcion_Unidad_Medida").ToString
                 DataGridView.Item(21, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad").ToString
                 DataGridView.Item(22, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Costo").ToString
-                DataGridView.Item(23, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_FF").ToString & "." & Ds.Tables(0).Rows(Recorrido).Item("Codigo_Rubro").ToString & "." & Ds.Tables(0).Rows(Recorrido).Item("Codigo_Grupo").ToString & "." & Ds.Tables(0).Rows(Recorrido).Item("Codigo_Clase").ToString & "." & Ds.Tables(0).Rows(Recorrido).Item("Codigo_Familia").ToString & "." & Ds.Tables(0).Rows(Recorrido).Item("Codigo_Item").ToString & "." & Ds.Tables(0).Rows(Recorrido).Item("Codigo_Secuencia_Funcional").ToString & "." & Ds.Tables(0).Rows(Recorrido).Item("Codigo_Unidad_Organica").ToString & "." & Ds.Tables(0).Rows(Recorrido).Item("Codigo_Actividad").ToString
+                DataGridView.Item(23, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Enero").ToString
+                DataGridView.Item(24, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Febrero").ToString
+                DataGridView.Item(25, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Marzo").ToString
+                DataGridView.Item(26, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Abril").ToString
+                DataGridView.Item(27, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Mayo").ToString
+                DataGridView.Item(28, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Junio").ToString
+                DataGridView.Item(29, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Julio").ToString
+                DataGridView.Item(30, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Agosto").ToString
+                DataGridView.Item(31, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Septiembre").ToString
+                DataGridView.Item(32, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Octubre").ToString
+                DataGridView.Item(33, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Noviembre").ToString
+                DataGridView.Item(34, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Cantidad_Diciembre").ToString
+                DataGridView.Item(35, DataGridView.Rows.Count - 1).Value = Ds.Tables(0).Rows(Recorrido).Item("Codigo_FF").ToString & "." & Ds.Tables(0).Rows(Recorrido).Item("Codigo_Rubro").ToString & "." & Ds.Tables(0).Rows(Recorrido).Item("Codigo_Grupo").ToString & "." & Ds.Tables(0).Rows(Recorrido).Item("Codigo_Clase").ToString & "." & Ds.Tables(0).Rows(Recorrido).Item("Codigo_Familia").ToString & "." & Ds.Tables(0).Rows(Recorrido).Item("Codigo_Item").ToString & "." & Ds.Tables(0).Rows(Recorrido).Item("Codigo_Secuencia_Funcional").ToString & "." & Ds.Tables(0).Rows(Recorrido).Item("Codigo_Unidad_Organica").ToString & "." & Ds.Tables(0).Rows(Recorrido).Item("Codigo_Actividad").ToString
             Next
         End If
         Ds = Nothing
@@ -940,6 +1103,10 @@ Public Class Mantenimiento
         Da.Fill(Ds)
         If Ds.Tables(0).Rows.Count > 0 Then
             Combo_Unidad.Text = Ds.Tables(0).Rows(0).Item("Nombre_Unidad_Organica").ToString
+            Combo_Fuente.SelectedValue = Codigo_Fuente_tmp
+            Combo_Rubro.SelectedValue = Codigo_Rubro_tmp
+            Combo_Secuencia.SelectedValue = Codigo_Secuencia_Funcional_tmp
+            Combo_Actividad.SelectedValue= Codigo_Actividad_tmp
             Caja_Justificacion.Text = Ds.Tables(0).Rows(0).Item("Justificacion").ToString
         End If
     End Sub
@@ -1361,7 +1528,7 @@ Public Class Mantenimiento
         Da.Fill(Ds)
         If Ds.Tables(0).Rows.Count > 0 Then
             Select Case Ds.Tables(0).Rows(0).Item("Codigo_Estado_CN").ToString
-                Case "01" 'EMITIDO() 01
+                Case "03" 'EMITIDO() 01
                     Nuevo.Enabled = True
                     Editar.Enabled = True
                     Eliminar.Enabled = True
@@ -1370,7 +1537,7 @@ Public Class Mantenimiento
                     Aprobar.Enabled = False
                     Visualizar.Enabled = True
                     Imprimir.Enabled = True
-                Case "02" 'AUTORIZADO()
+                Case "02" 'AUTORIZADO() 02
                     Nuevo.Enabled = True
                     Editar.Enabled = False
                     Eliminar.Enabled = False
@@ -1789,6 +1956,14 @@ Public Class Mantenimiento
         Dim Numero As Double = Convert.ToDouble(Ds.Tables(0).Rows(0).Item("Numero").ToString)
         Generar_Numero_Requerimiento_Bienes = Right("00000" & Numero.ToString, 5)
         Return Generar_Numero_Requerimiento_Bienes
+    End Function
+    Public Function Generar_Numero_Requerimiento_Bienes_Por_Unidad_Organica(ByVal Año_Ejecucion As String, ByVal Codigo_Unidad_Organica As String) As String
+        Dim Da As New OleDb.OleDbDataAdapter("Select Isnull(Max(Abs(Numero_Unidad_Organica)+1),1) As Numero_Unidad_Organica From Requerimiento_Bienes Where Año_Ejecucion='" & Año_Ejecucion & "' And Codigo_Unidad_Organica= '"+Codigo_Unidad_Organica+"'", Cn)
+        Dim Ds As New Data.DataSet
+        Da.Fill(Ds)
+        Dim Numero As Double = Convert.ToDouble(Ds.Tables(0).Rows(0).Item("Numero_Unidad_Organica").ToString)
+        Generar_Numero_Requerimiento_Bienes_Por_Unidad_Organica = Right("00000" & Numero.ToString, 5)
+        Return Generar_Numero_Requerimiento_Bienes_Por_Unidad_Organica
     End Function
     Public Function Generar_Numero_Requerimiento_Servicios(ByVal Año_Ejecucion As String) As String
         Dim Da As New OleDb.OleDbDataAdapter("Select Isnull(Max(Abs(Numero)+1),1) As Numero From Requerimiento_Servicios Where Año_Ejecucion='" & Año_Ejecucion & "'", Cn)
@@ -5572,7 +5747,7 @@ Public Class Mantenimiento
                 End If
         End Select
     End Sub
-    Public Sub Nuevo_Requerimiento_Bienes(ByVal Año_Ejecucion As String, ByVal Numero As String, ByVal Codigo_Unidad_Organica As String, ByVal Justificacion As String, ByVal FechaEmision As Date, ByVal UsuarioEmision As String, ByVal Codigo_Estado_Requerimiento As String, ByVal Monto_Referencial As Double)
+    Public Sub Nuevo_Requerimiento_Bienes(ByVal Año_Ejecucion As String, ByVal Numero As String, ByVal Numero_Unidad_Organica As String, ByVal Codigo_Unidad_Organica As String, ByVal Justificacion As String, ByVal FechaEmision As Date, ByVal UsuarioEmision As String, ByVal Codigo_Estado_Requerimiento As String, ByVal Monto_Referencial As Double)
         Dim Cm As New OleDb.OleDbCommand
         Cm.CommandTimeout = 0
         Cm.Connection = Cn
@@ -5580,6 +5755,7 @@ Public Class Mantenimiento
         Cm.CommandText = "Nuevo_Requerimiento_Bienes"
         Cm.Parameters.AddWithValue("@Año_Ejecucion", Año_Ejecucion)
         Cm.Parameters.AddWithValue("@Numero", Numero)
+        Cm.Parameters.AddWithValue("@Numero_Unidad_Organica", Numero_Unidad_Organica)
         Cm.Parameters.AddWithValue("@Codigo_Unidad_Organica", Codigo_Unidad_Organica)
         Cm.Parameters.AddWithValue("@Justificacion", Justificacion)
         Cm.Parameters.AddWithValue("@FechaEmision", FechaEmision)
@@ -5604,12 +5780,23 @@ Public Class Mantenimiento
         Cm.Parameters.AddWithValue("@Monto_Referencial", Monto_Referencial)
         Cm.ExecuteNonQuery()
     End Sub
-    Public Sub Nuevo_Detalle_Requerimiento_Bienes(ByVal Año_Ejecucion As String, ByVal Numero As String, ByVal Codigo_FF As Double, ByVal Codigo_Rubro As String, ByVal Tipo_Transaccion As String, ByVal Generica As String, ByVal Sub_Generica As String, ByVal Sub_Generica_Detalle As String, ByVal Especifica As String, ByVal Especifica_Detalle As String, ByVal Codigo_Secuencia_Funcional As String, ByVal Codigo_Unidad_Organica As String, ByVal Codigo_Actividad As String, ByVal Codigo_Catalogo As String, ByVal Codigo_Grupo As String, ByVal Codigo_Clase As String, ByVal Codigo_Familia As String, ByVal Codigo_Item As String, ByVal Cantidad As Double, ByVal Costo As Double)
+    Public Sub Nuevo_Detalle_Requerimiento_Bienes(ByVal Año_Ejecucion As String, ByVal Numero As String, ByVal Codigo_FF As Double, 
+                                                  ByVal Codigo_Rubro As String, ByVal Tipo_Transaccion As String, ByVal Generica As String, 
+                                                  ByVal Sub_Generica As String, ByVal Sub_Generica_Detalle As String, ByVal Especifica As String, 
+                                                  ByVal Especifica_Detalle As String, ByVal Codigo_Secuencia_Funcional As String, 
+                                                  ByVal Codigo_Unidad_Organica As String, ByVal Codigo_Actividad As String, 
+                                                  ByVal Codigo_Catalogo As String, ByVal Codigo_Grupo As String, ByVal Codigo_Clase As String, 
+                                                  ByVal Codigo_Familia As String, ByVal Codigo_Item As String, ByVal Cantidad As Double, 
+                                                  ByVal Costo As Double, ByVal Cantidad_Enero As Decimal, ByVal Cantidad_Febrero As Decimal, 
+                                                  ByVal Cantidad_Marzo As Decimal, ByVal Cantidad_Abril As Decimal, ByVal Cantidad_Mayo As Decimal,
+                                                  ByVal Cantidad_Junio As Decimal, ByVal Cantidad_Julio As Decimal, ByVal Cantidad_Agosto As Decimal,
+                                                  ByVal Cantidad_Septiembre As Decimal, ByVal Cantidad_Octubre As Decimal, ByVal Cantidad_Noviembre As Decimal,
+                                                  ByVal Cantidad_Diciembre As Decimal)
         Dim Cm As New OleDb.OleDbCommand
         Cm.CommandTimeout = 0
         Cm.Connection = Cn
         Cm.CommandType = CommandType.StoredProcedure
-        Cm.CommandText = "Nuevo_Detalle_Requerimiento_Bienes"
+        Cm.CommandText = "Nuevo_Detalle_Requerimiento_Bienes_Mensualizado"
         Cm.Parameters.AddWithValue("@Año_Ejecucion", Año_Ejecucion)
         Cm.Parameters.AddWithValue("@Numero", Numero)
         Cm.Parameters.AddWithValue("@Codigo_FF", Codigo_FF)
@@ -5628,6 +5815,18 @@ Public Class Mantenimiento
         Cm.Parameters.AddWithValue("@Codigo_Clase", Codigo_Clase)
         Cm.Parameters.AddWithValue("@Codigo_Familia", Codigo_Familia)
         Cm.Parameters.AddWithValue("@Codigo_Item", Codigo_Item)
+        Cm.Parameters.AddWithValue("@Cantidad_Enero", Cantidad_Enero)
+        Cm.Parameters.AddWithValue("@Cantidad_Febrero", Cantidad_Febrero)
+        Cm.Parameters.AddWithValue("@Cantidad_Marzo", Cantidad_Marzo)
+        Cm.Parameters.AddWithValue("@Cantidad_Abril", Cantidad_Abril)
+        Cm.Parameters.AddWithValue("@Cantidad_Mayo", Cantidad_Mayo)
+        Cm.Parameters.AddWithValue("@Cantidad_Junio", Cantidad_Junio)
+        Cm.Parameters.AddWithValue("@Cantidad_Julio", Cantidad_Julio)
+        Cm.Parameters.AddWithValue("@Cantidad_Agosto", Cantidad_Agosto)
+        Cm.Parameters.AddWithValue("@Cantidad_Septiembre", Cantidad_Septiembre)
+        Cm.Parameters.AddWithValue("@Cantidad_Octubre", Cantidad_Octubre)
+        Cm.Parameters.AddWithValue("@Cantidad_Noviembre", Cantidad_Noviembre)
+        Cm.Parameters.AddWithValue("@Cantidad_Diciembre", Cantidad_Diciembre)
         Cm.Parameters.AddWithValue("@Cantidad", Cantidad)
         Cm.Parameters.AddWithValue("@Costo", Costo)
         Cm.ExecuteNonQuery()
@@ -5784,8 +5983,15 @@ Public Class Mantenimiento
             'Sin errores
         End Try
     End function
-    Public Function Obtiene_Mes_Actual() As String
-        Dim Da As New OleDb.OleDbDataAdapter("Select MONTH(GETDATE())", Cn)
+    Public Function Obtiene_Mes_Actual(ByVal Año_Ejecucion As String) As String
+        Dim Da As New OleDb.OleDbDataAdapter("if "+Año_Ejecucion+" = year(GETDATE()) " +
+                                                "begin " +
+	                                                " select MONTH(GETDATE()); " +
+                                                " end " +
+                                                " else " +
+                                                " begin " +
+	                                                " select 0; " +
+                                                " end", Cn)
         Dim Ds As New Data.DataSet
         Da.Fill(Ds)
         Return Ds.Tables(0).Rows(0)(0).ToString()

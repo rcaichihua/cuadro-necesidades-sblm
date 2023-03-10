@@ -38,16 +38,16 @@ Partial Class frmRegistro_Requerimiento_Bienes
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnAgregar = New System.Windows.Forms.Button()
+        Me.txtCosto = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.txtCantidad = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
         Me.txtSaldoTotalCN = New System.Windows.Forms.TextBox()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.txtSaldoMes = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.txtSaldo = New System.Windows.Forms.TextBox()
         Me.Label13 = New System.Windows.Forms.Label()
-        Me.txtCosto = New System.Windows.Forms.TextBox()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.txtCantidad = New System.Windows.Forms.TextBox()
-        Me.Label12 = New System.Windows.Forms.Label()
         Me.gbDetalle = New System.Windows.Forms.GroupBox()
         Me.dgvRequerimientoBienes = New System.Windows.Forms.DataGridView()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -81,6 +81,32 @@ Partial Class frmRegistro_Requerimiento_Bienes
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
+        Me.gbOriginal = New System.Windows.Forms.GroupBox()
+        Me.txtDiciembre = New System.Windows.Forms.TextBox()
+        Me.txtJunio = New System.Windows.Forms.TextBox()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.txtNoviembre = New System.Windows.Forms.TextBox()
+        Me.txtMayo = New System.Windows.Forms.TextBox()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.txtOctubre = New System.Windows.Forms.TextBox()
+        Me.txtAbril = New System.Windows.Forms.TextBox()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.txtSeptiembre = New System.Windows.Forms.TextBox()
+        Me.txtMarzo = New System.Windows.Forms.TextBox()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.txtAgosto = New System.Windows.Forms.TextBox()
+        Me.txtFebrero = New System.Windows.Forms.TextBox()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.txtJulio = New System.Windows.Forms.TextBox()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.txtEnero = New System.Windows.Forms.TextBox()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.gbDatosGenerales.SuspendLayout
         Me.GroupBox1.SuspendLayout
         Me.gbDetalle.SuspendLayout
@@ -88,6 +114,8 @@ Partial Class frmRegistro_Requerimiento_Bienes
         Me.GroupBox2.SuspendLayout
         Me.GroupBox3.SuspendLayout
         Me.gbCatalogo.SuspendLayout
+        Me.gbOriginal.SuspendLayout
+        Me.GroupBox4.SuspendLayout
         Me.SuspendLayout
         '
         'gbDatosGenerales
@@ -105,7 +133,7 @@ Partial Class frmRegistro_Requerimiento_Bienes
         Me.gbDatosGenerales.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.gbDatosGenerales.Location = New System.Drawing.Point(12, 12)
         Me.gbDatosGenerales.Name = "gbDatosGenerales"
-        Me.gbDatosGenerales.Size = New System.Drawing.Size(710, 143)
+        Me.gbDatosGenerales.Size = New System.Drawing.Size(710, 139)
         Me.gbDatosGenerales.TabIndex = 0
         Me.gbDatosGenerales.TabStop = false
         Me.gbDatosGenerales.Text = "Datos Generales:"
@@ -203,37 +231,69 @@ Partial Class frmRegistro_Requerimiento_Bienes
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.btnAgregar)
-        Me.GroupBox1.Controls.Add(Me.txtSaldoTotalCN)
-        Me.GroupBox1.Controls.Add(Me.Label17)
-        Me.GroupBox1.Controls.Add(Me.txtSaldoMes)
-        Me.GroupBox1.Controls.Add(Me.Label16)
         Me.GroupBox1.Controls.Add(Me.txtCosto)
         Me.GroupBox1.Controls.Add(Me.Label14)
         Me.GroupBox1.Controls.Add(Me.txtCantidad)
         Me.GroupBox1.Controls.Add(Me.Label12)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(728, 218)
+        Me.GroupBox1.Location = New System.Drawing.Point(199, 462)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(581, 91)
+        Me.GroupBox1.Size = New System.Drawing.Size(581, 50)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = false
-        Me.GroupBox1.Text = "Cantidad:"
         '
         'btnAgregar
         '
-        Me.btnAgregar.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Aprobacion_Requerimiento
+        Me.btnAgregar.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Reporte_SEACE
         Me.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAgregar.Location = New System.Drawing.Point(427, 43)
+        Me.btnAgregar.Location = New System.Drawing.Point(425, 3)
         Me.btnAgregar.Name = "btnAgregar"
-        Me.btnAgregar.Size = New System.Drawing.Size(145, 41)
+        Me.btnAgregar.Size = New System.Drawing.Size(155, 41)
         Me.btnAgregar.TabIndex = 6
-        Me.btnAgregar.Text = "Agregar al Detalle"
+        Me.btnAgregar.Text = "&Agregar al detalle"
         Me.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnAgregar.UseVisualStyleBackColor = true
         '
+        'txtCosto
+        '
+        Me.txtCosto.Location = New System.Drawing.Point(342, 13)
+        Me.txtCosto.Name = "txtCosto"
+        Me.txtCosto.ReadOnly = true
+        Me.txtCosto.Size = New System.Drawing.Size(77, 20)
+        Me.txtCosto.TabIndex = 3
+        Me.txtCosto.Text = "0.00"
+        Me.txtCosto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = true
+        Me.Label14.Location = New System.Drawing.Point(224, 16)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(112, 13)
+        Me.Label14.TabIndex = 2
+        Me.Label14.Text = "Costo Referencial:"
+        '
+        'txtCantidad
+        '
+        Me.txtCantidad.Location = New System.Drawing.Point(134, 13)
+        Me.txtCantidad.Name = "txtCantidad"
+        Me.txtCantidad.Size = New System.Drawing.Size(84, 20)
+        Me.txtCantidad.TabIndex = 1
+        Me.txtCantidad.Text = "0.00"
+        Me.txtCantidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = true
+        Me.Label12.Location = New System.Drawing.Point(6, 16)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(122, 13)
+        Me.Label12.TabIndex = 0
+        Me.Label12.Text = "Cantidad a Solicitar:"
+        '
         'txtSaldoTotalCN
         '
-        Me.txtSaldoTotalCN.Location = New System.Drawing.Point(156, 68)
+        Me.txtSaldoTotalCN.Location = New System.Drawing.Point(677, 415)
         Me.txtSaldoTotalCN.Name = "txtSaldoTotalCN"
         Me.txtSaldoTotalCN.ReadOnly = true
         Me.txtSaldoTotalCN.Size = New System.Drawing.Size(103, 20)
@@ -244,16 +304,16 @@ Partial Class frmRegistro_Requerimiento_Bienes
         'Label17
         '
         Me.Label17.AutoSize = true
-        Me.Label17.Location = New System.Drawing.Point(35, 71)
+        Me.Label17.Location = New System.Drawing.Point(556, 418)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(115, 13)
+        Me.Label17.Size = New System.Drawing.Size(97, 13)
         Me.Label17.TabIndex = 4
         Me.Label17.Text = "Saldo C.N. del Año"
         Me.Label17.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'txtSaldoMes
         '
-        Me.txtSaldoMes.Location = New System.Drawing.Point(156, 42)
+        Me.txtSaldoMes.Location = New System.Drawing.Point(205, 415)
         Me.txtSaldoMes.Name = "txtSaldoMes"
         Me.txtSaldoMes.ReadOnly = true
         Me.txtSaldoMes.Size = New System.Drawing.Size(103, 20)
@@ -264,15 +324,15 @@ Partial Class frmRegistro_Requerimiento_Bienes
         'Label16
         '
         Me.Label16.AutoSize = true
-        Me.Label16.Location = New System.Drawing.Point(34, 45)
+        Me.Label16.Location = New System.Drawing.Point(83, 418)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(116, 13)
+        Me.Label16.Size = New System.Drawing.Size(98, 13)
         Me.Label16.TabIndex = 4
         Me.Label16.Text = "Saldo C.N. del Mes"
         '
         'txtSaldo
         '
-        Me.txtSaldo.Location = New System.Drawing.Point(825, 407)
+        Me.txtSaldo.Location = New System.Drawing.Point(442, 415)
         Me.txtSaldo.Name = "txtSaldo"
         Me.txtSaldo.ReadOnly = true
         Me.txtSaldo.Size = New System.Drawing.Size(103, 20)
@@ -284,57 +344,20 @@ Partial Class frmRegistro_Requerimiento_Bienes
         'Label13
         '
         Me.Label13.AutoSize = true
-        Me.Label13.Location = New System.Drawing.Point(703, 410)
+        Me.Label13.Location = New System.Drawing.Point(320, 418)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(98, 13)
         Me.Label13.TabIndex = 4
         Me.Label13.Text = "Saldo Presupuestal"
         Me.Label13.Visible = false
         '
-        'txtCosto
-        '
-        Me.txtCosto.Location = New System.Drawing.Point(447, 16)
-        Me.txtCosto.Name = "txtCosto"
-        Me.txtCosto.ReadOnly = true
-        Me.txtCosto.Size = New System.Drawing.Size(123, 20)
-        Me.txtCosto.TabIndex = 3
-        Me.txtCosto.Text = "0.00"
-        Me.txtCosto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = true
-        Me.Label14.Location = New System.Drawing.Point(329, 19)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(112, 13)
-        Me.Label14.TabIndex = 2
-        Me.Label14.Text = "Costo Referencial:"
-        '
-        'txtCantidad
-        '
-        Me.txtCantidad.Location = New System.Drawing.Point(156, 16)
-        Me.txtCantidad.Name = "txtCantidad"
-        Me.txtCantidad.Size = New System.Drawing.Size(103, 20)
-        Me.txtCantidad.TabIndex = 1
-        Me.txtCantidad.Text = "0.00"
-        Me.txtCantidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = true
-        Me.Label12.Location = New System.Drawing.Point(28, 19)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(122, 13)
-        Me.Label12.TabIndex = 0
-        Me.Label12.Text = "Cantidad a Solicitar:"
-        '
         'gbDetalle
         '
         Me.gbDetalle.Controls.Add(Me.dgvRequerimientoBienes)
         Me.gbDetalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.gbDetalle.Location = New System.Drawing.Point(13, 308)
+        Me.gbDetalle.Location = New System.Drawing.Point(13, 224)
         Me.gbDetalle.Name = "gbDetalle"
-        Me.gbDetalle.Size = New System.Drawing.Size(1296, 276)
+        Me.gbDetalle.Size = New System.Drawing.Size(1296, 351)
         Me.gbDetalle.TabIndex = 5
         Me.gbDetalle.TabStop = false
         '
@@ -355,9 +378,10 @@ Partial Class frmRegistro_Requerimiento_Bienes
         Me.dgvRequerimientoBienes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvRequerimientoBienes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvRequerimientoBienes.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.dgvRequerimientoBienes.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvRequerimientoBienes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvRequerimientoBienes.EnableHeadersVisualStyles = false
-        Me.dgvRequerimientoBienes.Location = New System.Drawing.Point(6, 19)
+        Me.dgvRequerimientoBienes.Location = New System.Drawing.Point(3, 16)
         Me.dgvRequerimientoBienes.MultiSelect = false
         Me.dgvRequerimientoBienes.Name = "dgvRequerimientoBienes"
         Me.dgvRequerimientoBienes.RowHeadersVisible = false
@@ -366,7 +390,7 @@ Partial Class frmRegistro_Requerimiento_Bienes
         DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
         Me.dgvRequerimientoBienes.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvRequerimientoBienes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvRequerimientoBienes.Size = New System.Drawing.Size(1279, 251)
+        Me.dgvRequerimientoBienes.Size = New System.Drawing.Size(1290, 332)
         Me.dgvRequerimientoBienes.StandardTab = true
         Me.dgvRequerimientoBienes.TabIndex = 18
         '
@@ -376,9 +400,9 @@ Partial Class frmRegistro_Requerimiento_Bienes
         Me.GroupBox2.Controls.Add(Me.btnCancelar)
         Me.GroupBox2.Controls.Add(Me.btnGuardar)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 246)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 157)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(710, 63)
+        Me.GroupBox2.Size = New System.Drawing.Size(710, 70)
         Me.GroupBox2.TabIndex = 4
         Me.GroupBox2.TabStop = false
         Me.GroupBox2.Text = "Opciones de Registro"
@@ -387,9 +411,9 @@ Partial Class frmRegistro_Requerimiento_Bienes
         '
         Me.Button1.Image = Global.SAG_SBLM.My.Resources.Resources.Aceptar
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(503, 19)
+        Me.Button1.Location = New System.Drawing.Point(514, 20)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(201, 41)
+        Me.Button1.Size = New System.Drawing.Size(178, 41)
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "Exportar Detalle a Excel"
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -399,9 +423,9 @@ Partial Class frmRegistro_Requerimiento_Bienes
         '
         Me.btnCancelar.Image = Global.SAG_SBLM.My.Resources.Resources.Anular1
         Me.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCancelar.Location = New System.Drawing.Point(252, 19)
+        Me.btnCancelar.Location = New System.Drawing.Point(258, 19)
         Me.btnCancelar.Name = "btnCancelar"
-        Me.btnCancelar.Size = New System.Drawing.Size(245, 42)
+        Me.btnCancelar.Size = New System.Drawing.Size(250, 42)
         Me.btnCancelar.TabIndex = 0
         Me.btnCancelar.Text = "Cancelar Registro de Requerimiento"
         Me.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -413,9 +437,9 @@ Partial Class frmRegistro_Requerimiento_Bienes
         Me.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnGuardar.Location = New System.Drawing.Point(13, 19)
         Me.btnGuardar.Name = "btnGuardar"
-        Me.btnGuardar.Size = New System.Drawing.Size(233, 42)
+        Me.btnGuardar.Size = New System.Drawing.Size(239, 42)
         Me.btnGuardar.TabIndex = 0
-        Me.btnGuardar.Text = "Guardar y/o Crear Requerimiento"
+        Me.btnGuardar.Text = "Guardar y/o editar Requerimiento"
         Me.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnGuardar.UseVisualStyleBackColor = true
         '
@@ -424,9 +448,9 @@ Partial Class frmRegistro_Requerimiento_Bienes
         Me.GroupBox3.Controls.Add(Me.txtJustificacion)
         Me.GroupBox3.Controls.Add(Me.Label15)
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.GroupBox3.Location = New System.Drawing.Point(12, 161)
+        Me.GroupBox3.Location = New System.Drawing.Point(728, 19)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(710, 79)
+        Me.GroupBox3.Size = New System.Drawing.Size(581, 132)
         Me.GroupBox3.TabIndex = 3
         Me.GroupBox3.TabStop = false
         Me.GroupBox3.Text = "Justificación"
@@ -434,18 +458,18 @@ Partial Class frmRegistro_Requerimiento_Bienes
         'txtJustificacion
         '
         Me.txtJustificacion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtJustificacion.Location = New System.Drawing.Point(165, 19)
+        Me.txtJustificacion.Location = New System.Drawing.Point(9, 41)
         Me.txtJustificacion.MaxLength = 300
         Me.txtJustificacion.Multiline = true
         Me.txtJustificacion.Name = "txtJustificacion"
         Me.txtJustificacion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtJustificacion.Size = New System.Drawing.Size(539, 53)
+        Me.txtJustificacion.Size = New System.Drawing.Size(539, 78)
         Me.txtJustificacion.TabIndex = 3
         '
         'Label15
         '
         Me.Label15.AutoSize = true
-        Me.Label15.Location = New System.Drawing.Point(6, 22)
+        Me.Label15.Location = New System.Drawing.Point(6, 25)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(128, 13)
         Me.Label15.TabIndex = 2
@@ -455,11 +479,11 @@ Partial Class frmRegistro_Requerimiento_Bienes
         '
         Me.btnBuscarItems.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Buscar
         Me.btnBuscarItems.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnBuscarItems.Location = New System.Drawing.Point(21, 149)
+        Me.btnBuscarItems.Location = New System.Drawing.Point(6, 16)
         Me.btnBuscarItems.Name = "btnBuscarItems"
-        Me.btnBuscarItems.Size = New System.Drawing.Size(117, 38)
+        Me.btnBuscarItems.Size = New System.Drawing.Size(279, 45)
         Me.btnBuscarItems.TabIndex = 17
-        Me.btnBuscarItems.Text = "Buscar Items"
+        Me.btnBuscarItems.Text = "Buscar Items del Cuadro de Necesidades"
         Me.btnBuscarItems.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnBuscarItems.UseVisualStyleBackColor = true
         '
@@ -486,12 +510,11 @@ Partial Class frmRegistro_Requerimiento_Bienes
         Me.gbCatalogo.Controls.Add(Me.Label6)
         Me.gbCatalogo.Controls.Add(Me.Label8)
         Me.gbCatalogo.Controls.Add(Me.Label9)
-        Me.gbCatalogo.Controls.Add(Me.btnBuscarItems)
         Me.gbCatalogo.Controls.Add(Me.Label10)
         Me.gbCatalogo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.gbCatalogo.Location = New System.Drawing.Point(728, 12)
+        Me.gbCatalogo.Location = New System.Drawing.Point(811, 460)
         Me.gbCatalogo.Name = "gbCatalogo"
-        Me.gbCatalogo.Size = New System.Drawing.Size(581, 200)
+        Me.gbCatalogo.Size = New System.Drawing.Size(73, 35)
         Me.gbCatalogo.TabIndex = 1
         Me.gbCatalogo.TabStop = false
         Me.gbCatalogo.Text = "Catalogo de Bienes"
@@ -701,19 +724,310 @@ Partial Class frmRegistro_Requerimiento_Bienes
         Me.Label10.TabIndex = 0
         Me.Label10.Text = "Grupo Bien:"
         '
+        'gbOriginal
+        '
+        Me.gbOriginal.Controls.Add(Me.txtDiciembre)
+        Me.gbOriginal.Controls.Add(Me.txtJunio)
+        Me.gbOriginal.Controls.Add(Me.Label23)
+        Me.gbOriginal.Controls.Add(Me.Label18)
+        Me.gbOriginal.Controls.Add(Me.txtNoviembre)
+        Me.gbOriginal.Controls.Add(Me.txtMayo)
+        Me.gbOriginal.Controls.Add(Me.Label22)
+        Me.gbOriginal.Controls.Add(Me.Label19)
+        Me.gbOriginal.Controls.Add(Me.txtOctubre)
+        Me.gbOriginal.Controls.Add(Me.txtAbril)
+        Me.gbOriginal.Controls.Add(Me.Label21)
+        Me.gbOriginal.Controls.Add(Me.Label20)
+        Me.gbOriginal.Controls.Add(Me.txtSeptiembre)
+        Me.gbOriginal.Controls.Add(Me.txtMarzo)
+        Me.gbOriginal.Controls.Add(Me.Label24)
+        Me.gbOriginal.Controls.Add(Me.Label25)
+        Me.gbOriginal.Controls.Add(Me.txtAgosto)
+        Me.gbOriginal.Controls.Add(Me.txtFebrero)
+        Me.gbOriginal.Controls.Add(Me.Label26)
+        Me.gbOriginal.Controls.Add(Me.Label27)
+        Me.gbOriginal.Controls.Add(Me.txtJulio)
+        Me.gbOriginal.Controls.Add(Me.Label28)
+        Me.gbOriginal.Controls.Add(Me.txtEnero)
+        Me.gbOriginal.Controls.Add(Me.Label29)
+        Me.gbOriginal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.gbOriginal.Location = New System.Drawing.Point(908, 450)
+        Me.gbOriginal.Name = "gbOriginal"
+        Me.gbOriginal.Size = New System.Drawing.Size(229, 46)
+        Me.gbOriginal.TabIndex = 6
+        Me.gbOriginal.TabStop = false
+        Me.gbOriginal.Text = "Cantidad / Importe Mensualizados"
+        '
+        'txtDiciembre
+        '
+        Me.txtDiciembre.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtDiciembre.Location = New System.Drawing.Point(509, 71)
+        Me.txtDiciembre.Name = "txtDiciembre"
+        Me.txtDiciembre.Size = New System.Drawing.Size(65, 20)
+        Me.txtDiciembre.TabIndex = 11
+        Me.txtDiciembre.Text = "0.00"
+        Me.txtDiciembre.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtJunio
+        '
+        Me.txtJunio.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtJunio.Location = New System.Drawing.Point(217, 46)
+        Me.txtJunio.Name = "txtJunio"
+        Me.txtJunio.Size = New System.Drawing.Size(65, 20)
+        Me.txtJunio.TabIndex = 5
+        Me.txtJunio.Text = "0.00"
+        Me.txtJunio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = true
+        Me.Label23.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label23.Location = New System.Drawing.Point(436, 74)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(67, 13)
+        Me.Label23.TabIndex = 22
+        Me.Label23.Text = "Diciembre:"
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = true
+        Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label18.Location = New System.Drawing.Point(170, 49)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(41, 13)
+        Me.Label18.TabIndex = 10
+        Me.Label18.Text = "Junio:"
+        '
+        'txtNoviembre
+        '
+        Me.txtNoviembre.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtNoviembre.Location = New System.Drawing.Point(365, 71)
+        Me.txtNoviembre.Name = "txtNoviembre"
+        Me.txtNoviembre.Size = New System.Drawing.Size(65, 20)
+        Me.txtNoviembre.TabIndex = 10
+        Me.txtNoviembre.Text = "0.00"
+        Me.txtNoviembre.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtMayo
+        '
+        Me.txtMayo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtMayo.Location = New System.Drawing.Point(84, 47)
+        Me.txtMayo.Name = "txtMayo"
+        Me.txtMayo.Size = New System.Drawing.Size(65, 20)
+        Me.txtMayo.TabIndex = 4
+        Me.txtMayo.Text = "0.00"
+        Me.txtMayo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = true
+        Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label22.Location = New System.Drawing.Point(288, 74)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(71, 13)
+        Me.Label22.TabIndex = 20
+        Me.Label22.Text = "Noviembre:"
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = true
+        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label19.Location = New System.Drawing.Point(37, 50)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(41, 13)
+        Me.Label19.TabIndex = 8
+        Me.Label19.Text = "Mayo:"
+        '
+        'txtOctubre
+        '
+        Me.txtOctubre.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtOctubre.Location = New System.Drawing.Point(217, 71)
+        Me.txtOctubre.Name = "txtOctubre"
+        Me.txtOctubre.Size = New System.Drawing.Size(65, 20)
+        Me.txtOctubre.TabIndex = 9
+        Me.txtOctubre.Text = "0.00"
+        Me.txtOctubre.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtAbril
+        '
+        Me.txtAbril.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtAbril.Location = New System.Drawing.Point(509, 21)
+        Me.txtAbril.Name = "txtAbril"
+        Me.txtAbril.Size = New System.Drawing.Size(65, 20)
+        Me.txtAbril.TabIndex = 3
+        Me.txtAbril.Text = "0.00"
+        Me.txtAbril.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = true
+        Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label21.Location = New System.Drawing.Point(155, 74)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(56, 13)
+        Me.Label21.TabIndex = 18
+        Me.Label21.Text = "Octubre:"
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = true
+        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label20.Location = New System.Drawing.Point(467, 25)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(36, 13)
+        Me.Label20.TabIndex = 6
+        Me.Label20.Text = "Abril:"
+        '
+        'txtSeptiembre
+        '
+        Me.txtSeptiembre.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtSeptiembre.Location = New System.Drawing.Point(84, 72)
+        Me.txtSeptiembre.Name = "txtSeptiembre"
+        Me.txtSeptiembre.Size = New System.Drawing.Size(65, 20)
+        Me.txtSeptiembre.TabIndex = 8
+        Me.txtSeptiembre.Text = "0.00"
+        Me.txtSeptiembre.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtMarzo
+        '
+        Me.txtMarzo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtMarzo.Location = New System.Drawing.Point(365, 21)
+        Me.txtMarzo.Name = "txtMarzo"
+        Me.txtMarzo.Size = New System.Drawing.Size(65, 20)
+        Me.txtMarzo.TabIndex = 2
+        Me.txtMarzo.Text = "0.00"
+        Me.txtMarzo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = true
+        Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label24.Location = New System.Drawing.Point(4, 74)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(74, 13)
+        Me.Label24.TabIndex = 16
+        Me.Label24.Text = "Septiembre:"
+        '
+        'Label25
+        '
+        Me.Label25.AutoSize = true
+        Me.Label25.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label25.Location = New System.Drawing.Point(314, 24)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(45, 13)
+        Me.Label25.TabIndex = 4
+        Me.Label25.Text = "Marzo:"
+        '
+        'txtAgosto
+        '
+        Me.txtAgosto.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtAgosto.Location = New System.Drawing.Point(509, 46)
+        Me.txtAgosto.Name = "txtAgosto"
+        Me.txtAgosto.Size = New System.Drawing.Size(65, 20)
+        Me.txtAgosto.TabIndex = 7
+        Me.txtAgosto.Text = "0.00"
+        Me.txtAgosto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtFebrero
+        '
+        Me.txtFebrero.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtFebrero.Location = New System.Drawing.Point(217, 21)
+        Me.txtFebrero.Name = "txtFebrero"
+        Me.txtFebrero.Size = New System.Drawing.Size(65, 20)
+        Me.txtFebrero.TabIndex = 1
+        Me.txtFebrero.Text = "0.00"
+        Me.txtFebrero.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label26
+        '
+        Me.Label26.AutoSize = true
+        Me.Label26.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label26.Location = New System.Drawing.Point(453, 49)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(50, 13)
+        Me.Label26.TabIndex = 14
+        Me.Label26.Text = "Agosto:"
+        '
+        'Label27
+        '
+        Me.Label27.AutoSize = true
+        Me.Label27.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label27.Location = New System.Drawing.Point(157, 24)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(54, 13)
+        Me.Label27.TabIndex = 2
+        Me.Label27.Text = "Febrero:"
+        '
+        'txtJulio
+        '
+        Me.txtJulio.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtJulio.Location = New System.Drawing.Point(365, 46)
+        Me.txtJulio.Name = "txtJulio"
+        Me.txtJulio.Size = New System.Drawing.Size(65, 20)
+        Me.txtJulio.TabIndex = 6
+        Me.txtJulio.Text = "0.00"
+        Me.txtJulio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label28
+        '
+        Me.Label28.AutoSize = true
+        Me.Label28.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label28.Location = New System.Drawing.Point(322, 50)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(37, 13)
+        Me.Label28.TabIndex = 12
+        Me.Label28.Text = "Julio:"
+        '
+        'txtEnero
+        '
+        Me.txtEnero.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtEnero.Location = New System.Drawing.Point(84, 22)
+        Me.txtEnero.Name = "txtEnero"
+        Me.txtEnero.Size = New System.Drawing.Size(65, 20)
+        Me.txtEnero.TabIndex = 0
+        Me.txtEnero.Text = "0.00"
+        Me.txtEnero.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label29
+        '
+        Me.Label29.AutoSize = true
+        Me.Label29.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label29.Location = New System.Drawing.Point(34, 25)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(44, 13)
+        Me.Label29.TabIndex = 0
+        Me.Label29.Text = "Enero:"
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.btnBuscarItems)
+        Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox4.Location = New System.Drawing.Point(728, 157)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(581, 70)
+        Me.GroupBox4.TabIndex = 7
+        Me.GroupBox4.TabStop = false
+        Me.GroupBox4.Text = "Opciones de Búsqueda de Bienes del C.N."
+        '
         'frmRegistro_Requerimiento_Bienes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1321, 590)
+        Me.ClientSize = New System.Drawing.Size(1315, 590)
+        Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox3)
-        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.gbDetalle)
         Me.Controls.Add(Me.gbCatalogo)
         Me.Controls.Add(Me.txtSaldo)
         Me.Controls.Add(Me.gbDatosGenerales)
         Me.Controls.Add(Me.Label13)
+        Me.Controls.Add(Me.Label16)
+        Me.Controls.Add(Me.Label17)
+        Me.Controls.Add(Me.txtSaldoMes)
+        Me.Controls.Add(Me.txtSaldoTotalCN)
+        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.gbOriginal)
         Me.DoubleBuffered = true
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
@@ -733,6 +1047,9 @@ Partial Class frmRegistro_Requerimiento_Bienes
         Me.GroupBox3.PerformLayout
         Me.gbCatalogo.ResumeLayout(false)
         Me.gbCatalogo.PerformLayout
+        Me.gbOriginal.ResumeLayout(false)
+        Me.gbOriginal.PerformLayout
+        Me.GroupBox4.ResumeLayout(false)
         Me.ResumeLayout(false)
         Me.PerformLayout
 
@@ -793,4 +1110,30 @@ End Sub
     Friend WithEvents Label17 As Label
     Friend WithEvents txtSaldoMes As TextBox
     Friend WithEvents Label16 As Label
+    Friend WithEvents gbOriginal As GroupBox
+    Friend WithEvents txtDiciembre As TextBox
+    Friend WithEvents txtJunio As TextBox
+    Friend WithEvents Label23 As Label
+    Friend WithEvents Label18 As Label
+    Friend WithEvents txtNoviembre As TextBox
+    Friend WithEvents txtMayo As TextBox
+    Friend WithEvents Label22 As Label
+    Friend WithEvents Label19 As Label
+    Friend WithEvents txtOctubre As TextBox
+    Friend WithEvents txtAbril As TextBox
+    Friend WithEvents Label21 As Label
+    Friend WithEvents Label20 As Label
+    Friend WithEvents txtSeptiembre As TextBox
+    Friend WithEvents txtMarzo As TextBox
+    Friend WithEvents Label24 As Label
+    Friend WithEvents Label25 As Label
+    Friend WithEvents txtAgosto As TextBox
+    Friend WithEvents txtFebrero As TextBox
+    Friend WithEvents Label26 As Label
+    Friend WithEvents Label27 As Label
+    Friend WithEvents txtJulio As TextBox
+    Friend WithEvents Label28 As Label
+    Friend WithEvents txtEnero As TextBox
+    Friend WithEvents Label29 As Label
+    Friend WithEvents GroupBox4 As GroupBox
 End Class

@@ -41,6 +41,8 @@ Partial Class frmModulo_Acciones_Modificatorias
         Me.Boton_Extornar_AM = New DevComponents.DotNetBar.ButtonItem()
         Me.Boton_Anular_AM = New DevComponents.DotNetBar.ButtonItem()
         Me.Boton_Actualizar_Registros = New DevComponents.DotNetBar.ButtonItem()
+        Me.Boton_Reenumerar_Nota = New DevComponents.DotNetBar.ButtonItem()
+        Me.Boton_Reenumerar_AM = New DevComponents.DotNetBar.ButtonItem()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.dgvAccionesModificatorias = New System.Windows.Forms.DataGridView()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -56,8 +58,6 @@ Partial Class frmModulo_Acciones_Modificatorias
         Me.Label3 = New System.Windows.Forms.Label()
         Me.cbCriterio = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Boton_Reenumerar_Nota = New DevComponents.DotNetBar.ButtonItem()
-        Me.Boton_Reenumerar_AM = New DevComponents.DotNetBar.ButtonItem()
         Me.ribbonBarMergeContainer1.SuspendLayout
         Me.GroupBox1.SuspendLayout
         CType(Me.dgvAccionesModificatorias,System.ComponentModel.ISupportInitialize).BeginInit
@@ -303,6 +303,22 @@ Partial Class frmModulo_Acciones_Modificatorias
         Me.Boton_Actualizar_Registros.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.Boton_Reenumerar_Nota})
         Me.Boton_Actualizar_Registros.Text = "<div align=""center"">Actualizar<br/>Registros</div>"
         '
+        'Boton_Reenumerar_Nota
+        '
+        Me.Boton_Reenumerar_Nota.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.Boton_Reenumerar_Nota.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Reenumerar_Orden
+        Me.Boton_Reenumerar_Nota.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.Boton_Reenumerar_Nota.Name = "Boton_Reenumerar_Nota"
+        Me.Boton_Reenumerar_Nota.Text = "<div align=""center"">Reenumerar<br/>Nota</div>"
+        '
+        'Boton_Reenumerar_AM
+        '
+        Me.Boton_Reenumerar_AM.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.Boton_Reenumerar_AM.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Reenumerar_Orden
+        Me.Boton_Reenumerar_AM.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.Boton_Reenumerar_AM.Name = "Boton_Reenumerar_AM"
+        Me.Boton_Reenumerar_AM.Text = "<div align=""center"">Reenumerar<br/>A.M.</div>"
+        '
         'GroupBox1
         '
         Me.GroupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top
@@ -477,22 +493,6 @@ Partial Class frmModulo_Acciones_Modificatorias
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Seleccione Campo:"
         '
-        'Boton_Reenumerar_Nota
-        '
-        Me.Boton_Reenumerar_Nota.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.Boton_Reenumerar_Nota.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Reenumerar_Orden
-        Me.Boton_Reenumerar_Nota.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.Boton_Reenumerar_Nota.Name = "Boton_Reenumerar_Nota"
-        Me.Boton_Reenumerar_Nota.Text = "<div align=""center"">Reenumerar<br/>Nota</div>"
-        '
-        'Boton_Reenumerar_AM
-        '
-        Me.Boton_Reenumerar_AM.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.Boton_Reenumerar_AM.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Reenumerar_Orden
-        Me.Boton_Reenumerar_AM.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.Boton_Reenumerar_AM.Name = "Boton_Reenumerar_AM"
-        Me.Boton_Reenumerar_AM.Text = "<div align=""center"">Reenumerar<br/>A.M.</div>"
-        '
         'frmModulo_Acciones_Modificatorias
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
@@ -508,7 +508,6 @@ Partial Class frmModulo_Acciones_Modificatorias
         Me.Name = "frmModulo_Acciones_Modificatorias"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = " ..:: Módulo de Registro Acciones Modificatorias ::.."
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ribbonBarMergeContainer1.ResumeLayout(false)
         Me.GroupBox1.ResumeLayout(false)
         CType(Me.dgvAccionesModificatorias,System.ComponentModel.ISupportInitialize).EndInit

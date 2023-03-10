@@ -19,6 +19,7 @@
         Me.cbCriterio.Items.Add(Me.DataGridView1.Columns(4).Name)
         Me.cbCriterio.SelectedIndex = 0
         Datos.Evaluacion_Botones_Modulo_Usuarios(Variable_Codigo_Usuario, Boton_Nuevo_Usuario, Boton_Editar_Usuario, Boton_Anular_Usuario, Boton_Eliminar_Usuario, Boton_Asignar_Accesos_Usuario)
+        Me.Windowstate = FormWindowState.Maximized
     End Sub
     Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
         If Me.DataGridView1.CurrentCellAddress.Y >= 0 Then

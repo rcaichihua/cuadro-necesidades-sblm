@@ -19,6 +19,7 @@
         Me.cbCriterio.Items.Add(Me.dgvAccionesModificatorias.Columns(1).Name)
         Me.cbCriterio.SelectedIndex = 0
         Datos.Evaluacion_Botones_Modulo_Accion_Modificatoria(My.Settings.Año_Ejecucion, Variable_Numero_Accion_Modificatoria, Boton_Nueva_AM, Boton_Editar_AM, Boton_Anular_AM, Boton_Eliminar_AM, Boton_Extornar_AM, Boton_Autorizar_AM, Boton_Aprobar_AM, Me.Boton_Visualizar_AM, Me.Boton_Imprimir_AM, Me.Boton_Reenumerar_AM)
+        Me.Windowstate = FormWindowState.Maximized
     End Sub
     Sub Filtrar()
         If Me.cbEstado.Items.Count > 0 And Me.cbMes.Items.Count > 0 Then
@@ -282,5 +283,9 @@
         Else
             MessageBox.Show("Estimado: " & My.Settings.Nombre_Usuario & ", Ud no cuenta con privilegios para acceder a esta opción", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
         End If
+    End Sub
+
+    Private Sub cbMes_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbMes.SelectedIndexChanged
+        Boton_Actualizar_Registros_Click(sender,e)
     End Sub
 End Class
