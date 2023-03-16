@@ -425,7 +425,7 @@
             Dim cellSelecion As DataGridViewCheckBoxCell = TryCast(row.Cells("chkCargar"), DataGridViewCheckBoxCell)
             dgvDistribucionCn.EditMode = DataGridViewEditMode.EditOnEnter
         ElseIf dgvDistribucionCn.Columns(e.ColumnIndex).Name = "btnAsignar" Then
-            Dim Formulario As New frmAsignar_Cantidad_CN
+            Dim Formulario As New frmAsignar_Cantidad_CN_Bienes
             if Me.dgvDistribucionCn.CurrentRow.Cells(53).Value = "1"
                 Formulario._Cantidad_Enero = Convert.ToDecimal(Me.dgvDistribucionCn.CurrentRow.Cells(23).Value)
                 Formulario._Cantidad_Febrero = Convert.ToDecimal(Me.dgvDistribucionCn.CurrentRow.Cells(24).Value)

@@ -1,4 +1,4 @@
-﻿Public Class frmAsignar_Cantidad_CN
+﻿Public Class frmAsignar_Cantidad_CN_Bienes
     Dim Datos As New Mantenimiento
     Dim Separador As Char
     Public Property _Cantidad_Enero_CN() As Decimal

@@ -676,7 +676,7 @@
                                             If Convert.ToDouble(Me.txtCantidad_m.Text.Trim()) > 0 Or Motivo.Rows(Me.cbMotivo.SelectedIndex).Item("Codigo_Motivo_AM").ToString="003" Then
                                                 If Convert.ToDouble(Me.txtCosto.Text.Trim()) > 0 Then
                                                     If Convert.ToDouble(Me.txtCantidad_m.Text.Trim) > 0 Or Motivo.Rows(Me.cbMotivo.SelectedIndex).Item("Codigo_Motivo_AM").ToString="003" Then 
-                                                        If Convert.ToDouble(Me.txtSaldo.Text.Trim) - Convert.ToDouble(txtCantidad_m.Text) * Convert.ToDouble(txtCosto.Text) >= 0 Then
+                                                        'If Convert.ToDouble(Me.txtSaldo.Text.Trim) - Convert.ToDouble(txtCantidad_m.Text) * Convert.ToDouble(txtCosto.Text) >= 0 Then
                                                             If VerificaModificaciones() Then Return
                                                             'If Datos.Verificar_Duplicidad_Grid_Global(23, Fuente_Financiaminto.Rows(Me.cbFF.SelectedIndex).Item("Codigo_FF").ToString & "." & Rubro.Rows(Me.cbRubro.SelectedIndex).Item("Codigo_Rubro").ToString & "." & Me.txtCodigoGrupo.Text.Trim & "." & Me.txtCodigoClase.Text.Trim & "." & Me.txtCodigoFamilia.Text.Trim & "." & Me.txtCodigoItem.Text.Trim & "." & Secuencia_Funcional.Rows(Me.cbSecuenciaFuncional.SelectedIndex).Item("Codigo_Secuencia_Funcional").ToString & "." & Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString & "." & Actividad.Rows(Me.cbActividad.SelectedIndex).Item("Codigo_Actividad").ToString, Me.dgvDistribucionCn) = True Then
                                                             If Datos.Verificar_Duplicidad_Grid_CN(23, Fuente_Financiaminto.Rows(Me.cbFF.SelectedIndex).Item("Codigo_FF").ToString & "." & Rubro.Rows(Me.cbRubro.SelectedIndex).Item("Codigo_Rubro").ToString & "." & IIf(rbBienes.Checked, "B.", "S.") & Me.txtCodigoGrupo.Text.Trim & "." & Me.txtCodigoClase.Text.Trim & "." & Me.txtCodigoFamilia.Text.Trim & "." & Me.txtCodigoItem.Text.Trim & "." & Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString & "", Me.dgvDistribucionCn) = True Then
@@ -1021,9 +1021,9 @@
                                                                 Me.cbMotivo.Focus()
                                                             End If
                                                             
-                                                        Else
-                                                            MessageBox.Show(String.Format("No hay saldo suficiente para agregar este {0}", IIf(rbBienes.Checked, "Bien", "Servicio")), Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
-                                                        End If
+                                                        'Else
+                                                        '    MessageBox.Show(String.Format("No hay saldo suficiente para agregar este {0}", IIf(rbBienes.Checked, "Bien", "Servicio")), Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+                                                        'End If
                                                     Else
                                                         MessageBox.Show("La Cantidad debe ser Mayor a Cero (0).", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1)
                                                         Me.txtCantidad.Focus()
@@ -1405,7 +1405,7 @@
                                                     'Datos.Eliminar_Registro_Restriccion_Abrir_Multiples_Formularios(Unidad_Organica.Rows(Me.cbUnidadOrganica.SelectedIndex).Item("Codigo_Unidad_Organica").ToString,"frmRegistro_Acciones_Modificatorias")
                                                     Me.Close()
                                                 Else
-                                                    MessageBox.Show("El Monto acumulado de las Rebajas debe cubirir el Monto de las Habilitaciones.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
+                                                    MessageBox.Show("El monto acumulado de las rebajas debe cubrir el monto de las habilitaciones.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
                                                 End If
                                             Else
                                                 MessageBox.Show("Debes ingresar la Justificación para la Acción Modificatoria.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)

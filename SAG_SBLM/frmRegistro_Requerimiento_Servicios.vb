@@ -97,21 +97,33 @@
         Me.dgvRequerimientoServicios.Columns.Add("SGD", "SGD")
         Me.dgvRequerimientoServicios.Columns.Add("E", "E")
         Me.dgvRequerimientoServicios.Columns.Add("ED", "ED")
-        Me.dgvRequerimientoServicios.Columns.Add("Clasificador", "Clasificador")
-        Me.dgvRequerimientoServicios.Columns.Add("Meta", "Meta")
+        Me.dgvRequerimientoServicios.Columns.Add("Clasificador", "Clasificador")'9
+        Me.dgvRequerimientoServicios.Columns.Add("Meta", "Meta")'10
         Me.dgvRequerimientoServicios.Columns.Add("UO", "UO")
-        Me.dgvRequerimientoServicios.Columns.Add("CA", "CA")
+        Me.dgvRequerimientoServicios.Columns.Add("CA", "CA") '12
         Me.dgvRequerimientoServicios.Columns.Add("Codigo_Grupo", "Codigo_Grupo")
         Me.dgvRequerimientoServicios.Columns.Add("Codigo_Clase", "Codigo_Clase")
         Me.dgvRequerimientoServicios.Columns.Add("Codigo_Familia", "Codigo_Familia")
         Me.dgvRequerimientoServicios.Columns.Add("Codigo_Item", "Codigo_Item")
-        Me.dgvRequerimientoServicios.Columns.Add("Codigo", "Codigo")
+        Me.dgvRequerimientoServicios.Columns.Add("Codigo", "Codigo")'17
         Me.dgvRequerimientoServicios.Columns.Add("Item", "Item")
         Me.dgvRequerimientoServicios.Columns.Add("Codigo_Unidad_Medida", "Codigo_Unidad_Medida")
-        Me.dgvRequerimientoServicios.Columns.Add("Unidad", "Unidad")
+        Me.dgvRequerimientoServicios.Columns.Add("Unidad", "Unidad") '20
         Me.dgvRequerimientoServicios.Columns.Add("Cantidad", "Cantidad")
-        Me.dgvRequerimientoServicios.Columns.Add("Costo", "Costo")
-        Me.dgvRequerimientoServicios.Columns.Add("Cadena", "Cadena")
+        Me.dgvRequerimientoServicios.Columns.Add("Costo", "Costo")'22
+        Me.dgvRequerimientoServicios.Columns.Add("Ene.", "Ene.")
+        Me.dgvRequerimientoServicios.Columns.Add("Feb.", "Feb.")
+        Me.dgvRequerimientoServicios.Columns.Add("Mar.", "Mar.")
+        Me.dgvRequerimientoServicios.Columns.Add("Abr.", "Abr.")
+        Me.dgvRequerimientoServicios.Columns.Add("May.", "May.")
+        Me.dgvRequerimientoServicios.Columns.Add("Jun.", "Jun.")
+        Me.dgvRequerimientoServicios.Columns.Add("Jul.", "Jul.")
+        Me.dgvRequerimientoServicios.Columns.Add("Ago.", "Ago.")
+        Me.dgvRequerimientoServicios.Columns.Add("Sep.", "Sep.")
+        Me.dgvRequerimientoServicios.Columns.Add("Oct.", "Oct.")
+        Me.dgvRequerimientoServicios.Columns.Add("Nov.", "Nov.")
+        Me.dgvRequerimientoServicios.Columns.Add("Dic.", "Dic.")
+        Me.dgvRequerimientoServicios.Columns.Add("Cadena", "Cadena") '35
         Me.dgvRequerimientoServicios.RowsDefaultCellStyle.BackColor = Color.White
         Me.dgvRequerimientoServicios.AlternatingRowsDefaultCellStyle.BackColor = Color.AliceBlue
         Me.dgvRequerimientoServicios.Columns(0).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
@@ -132,22 +144,35 @@
         Me.dgvRequerimientoServicios.Columns(14).Width = 0
         Me.dgvRequerimientoServicios.Columns(15).Width = 0
         Me.dgvRequerimientoServicios.Columns(16).Width = 0
-        Me.dgvRequerimientoServicios.Columns(17).Width = 110
+        Me.dgvRequerimientoServicios.Columns(17).Width = 120
         Me.dgvRequerimientoServicios.Columns(18).Width = 280
         Me.dgvRequerimientoServicios.Columns(19).Width = 0
         Me.dgvRequerimientoServicios.Columns(22).Width = 100
+        Me.dgvRequerimientoServicios.Columns(23).Width = 55
+        Me.dgvRequerimientoServicios.Columns(24).Width = 55
+        Me.dgvRequerimientoServicios.Columns(25).Width = 55
+        Me.dgvRequerimientoServicios.Columns(26).Width = 55
+        Me.dgvRequerimientoServicios.Columns(27).Width = 55
+        Me.dgvRequerimientoServicios.Columns(28).Width = 55
+        Me.dgvRequerimientoServicios.Columns(29).Width = 55
+        Me.dgvRequerimientoServicios.Columns(30).Width = 55
+        Me.dgvRequerimientoServicios.Columns(31).Width = 55
+        Me.dgvRequerimientoServicios.Columns(32).Width = 55
+        Me.dgvRequerimientoServicios.Columns(33).Width = 55
+        Me.dgvRequerimientoServicios.Columns(34).Width = 55
         Me.dgvRequerimientoServicios.Columns(3).Visible = False
         Me.dgvRequerimientoServicios.Columns(4).Visible = False
         Me.dgvRequerimientoServicios.Columns(5).Visible = False
         Me.dgvRequerimientoServicios.Columns(6).Visible = False
         Me.dgvRequerimientoServicios.Columns(7).Visible = False
         Me.dgvRequerimientoServicios.Columns(8).Visible = False
+
         Me.dgvRequerimientoServicios.Columns(13).Visible = False
         Me.dgvRequerimientoServicios.Columns(14).Visible = False
         Me.dgvRequerimientoServicios.Columns(15).Visible = False
         Me.dgvRequerimientoServicios.Columns(16).Visible = False
         Me.dgvRequerimientoServicios.Columns(19).Visible = False
-        Me.dgvRequerimientoServicios.Columns(23).Visible = False
+        Me.dgvRequerimientoServicios.Columns(35).Visible = False
         Me.dgvRequerimientoServicios.Columns(13).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
         Me.dgvRequerimientoServicios.Columns(0).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         Me.dgvRequerimientoServicios.Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
@@ -156,8 +181,20 @@
         Me.dgvRequerimientoServicios.Columns(10).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         Me.dgvRequerimientoServicios.Columns(11).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         Me.dgvRequerimientoServicios.Columns(12).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        Me.dgvRequerimientoServicios.Columns(22).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
         Me.dgvRequerimientoServicios.Columns(21).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        Me.dgvRequerimientoServicios.Columns(22).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        Me.dgvRequerimientoServicios.Columns(23).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        Me.dgvRequerimientoServicios.Columns(24).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        Me.dgvRequerimientoServicios.Columns(25).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        Me.dgvRequerimientoServicios.Columns(26).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        Me.dgvRequerimientoServicios.Columns(27).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        Me.dgvRequerimientoServicios.Columns(28).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        Me.dgvRequerimientoServicios.Columns(29).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        Me.dgvRequerimientoServicios.Columns(30).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        Me.dgvRequerimientoServicios.Columns(31).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        Me.dgvRequerimientoServicios.Columns(32).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        Me.dgvRequerimientoServicios.Columns(33).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        Me.dgvRequerimientoServicios.Columns(34).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
         Me.dgvRequerimientoServicios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
         Me.dgvRequerimientoServicios.ColumnHeadersHeight = 25
         Me.dgvRequerimientoServicios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
@@ -170,10 +207,10 @@
             .AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
             .FlatStyle = FlatStyle.Standard
             .CellTemplate.Style.BackColor = Color.Honeydew
-            .DisplayIndex = 24
+            .DisplayIndex = 36
         End With
         dgvRequerimientoServicios.Columns.Add(Boton1)
-        dgvRequerimientoServicios.Columns(24).Width = 100
+        dgvRequerimientoServicios.Columns(36).Width = 100
         Dim Boton2 As New DataGridViewButtonColumn
         With Boton2
             .Name = "btnEliminar"
@@ -183,10 +220,10 @@
             .AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
             .FlatStyle = FlatStyle.Standard
             .CellTemplate.Style.BackColor = Color.Honeydew
-            .DisplayIndex = 25
+            .DisplayIndex = 37
         End With
         dgvRequerimientoServicios.Columns.Add(Boton2)
-        dgvRequerimientoServicios.Columns(25).Width = 100
+        dgvRequerimientoServicios.Columns(37).Width = 100
         Dim Boton3 As New DataGridViewButtonColumn
         With Boton3
             .Name = "btnLimpiar"
@@ -196,10 +233,11 @@
             .AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
             .FlatStyle = FlatStyle.Standard
             .CellTemplate.Style.BackColor = Color.Honeydew
-            .DisplayIndex = 26
+            .DisplayIndex = 38
         End With
         dgvRequerimientoServicios.Columns.Add(Boton3)
-        dgvRequerimientoServicios.Columns(26).Width = 100
+        dgvRequerimientoServicios.Columns(38).Width = 100
+        Me.dgvRequerimientoServicios.Columns(36).Visible = False
     End Sub
     Private Function ValidarSaldos() As Boolean
         ValidarSaldos = False
@@ -536,7 +574,7 @@
         End If
 
         Dim Formulario As New frmFiltrarItemsCatalogoCN
-        Formulario._UnidadOrganica=cbUnidadOrganica.Text
+        Formulario._UnidadOrganica=cbUnidadOrganica.Text 
         Formulario._FuenteFinanciamientio=cbFF.Text
         Formulario._RubroFuente =cbRubro.Text
         Formulario._CodigoSecuenciaFuncional=Secuencia_Funcional.Rows(Me.cbSecuenciaFuncional.SelectedIndex).Item("Codigo_Secuencia_Funcional")
@@ -544,7 +582,7 @@
         Formulario._DatagridViewData = dgvRequerimientoServicios
         Formulario._CodigoCatalogo = "02"
         Formulario.ShowDialog()
-        'Call VerificaGrillaHabilitarCombos()
+        Call VerificaGrillaHabilitarCombos()
         'if cbFF.SelectedIndex = -1 
         '    MessageBox.Show("Debes seleccionar una Fuente de financiamiento.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
         '    Exit Sub
@@ -559,6 +597,21 @@
         'Formulario.ShowDialog()
         'Call Asigna_Item_Segun_Filtro()
     End Sub
+    Private sub VerificaGrillaHabilitarCombos()
+        If dgvRequerimientoServicios.Rows.Count > 0 Then
+            cbUnidadOrganica.Enabled=False
+            cbFF.Enabled=False
+            cbRubro.Enabled=False
+            cbSecuenciaFuncional.Enabled=False
+            cbActividad.Enabled=False
+        Else
+            cbUnidadOrganica.Enabled=True
+            cbFF.Enabled=True
+            cbRubro.Enabled=True
+            cbSecuenciaFuncional.Enabled=True
+            cbActividad.Enabled=True
+        End If
+    End sub
     Private sub Asigna_Item_Segun_Filtro()
         If Variable_Codigo_Grupo.Trim.Length > 0 And Variable_Codigo_Clase.Trim.Length > 0 And Variable_Codigo_Familia.Trim.Length > 0 And Variable_Codigo_Item.Trim.Length > 0 Then
             Datos.Mostrar_Data_Item_Catalogo(Variable_Codigo_Grupo, Variable_Codigo_Clase, Variable_Codigo_Familia, Variable_Codigo_Item, 2, Me.txtCodigoGrupo, Me.txtGrupo, Me.txtCodigoClase, Me.txtClase, Me.txtCodigoFamilia, Me.txtFamilia, Me.txtCodigoItem, Me.txtItem, Me.txtCodigoUnidadMedida, Me.txtUnidadMedida, Me.txtTipoTransaccion, Me.txtGenerica, Me.txtSubGenerica, Me.txtSubGenericaDetalle, Me.txtEspecifica, Me.txtEspecificaDetalle)

@@ -48,7 +48,7 @@
     <ProductName>SAG-SBL-CN-prueba</ProductName>
     <PublisherName>Sistema Cuadro de Necesidades Prueba</PublisherName>
     <SuiteName>Sistema Cuadro de Necesidades</SuiteName>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -165,6 +165,10 @@
     <Compile Include="frmAgregar_Mes.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmAsignar_Cantidad_CN_Servicios.designer.vb">
+      <DependentUpon>frmAsignar_Cantidad_CN_Servicios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAsignar_Cantidad_CN_Servicios.vb" />
     <Compile Include="frmBuscar_Clases.Designer.vb">
       <DependentUpon>frmBuscar_Clases.vb</DependentUpon>
     </Compile>
@@ -231,10 +235,10 @@
     <Compile Include="frmCambiar_Clave.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAsignar_Cantidad_CN.designer.vb">
-      <DependentUpon>frmAsignar_Cantidad_CN.vb</DependentUpon>
+    <Compile Include="frmAsignar_Cantidad_CN_Bienes.designer.vb">
+      <DependentUpon>frmAsignar_Cantidad_CN_Bienes.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmAsignar_Cantidad_CN.vb">
+    <Compile Include="frmAsignar_Cantidad_CN_Bienes.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCatalogo_Bienes_Servicios_Obras.Designer.vb">
@@ -521,6 +525,9 @@
     <EmbeddedResource Include="frmAgregar_Mes.resx">
       <DependentUpon>frmAgregar_Mes.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAsignar_Cantidad_CN_Servicios.resx">
+      <DependentUpon>frmAsignar_Cantidad_CN_Servicios.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBuscar_Clases.resx">
       <DependentUpon>frmBuscar_Clases.vb</DependentUpon>
     </EmbeddedResource>
@@ -554,8 +561,8 @@
     <EmbeddedResource Include="frmCambiar_Clave.resx">
       <DependentUpon>frmCambiar_Clave.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAsignar_Cantidad_CN.resx">
-      <DependentUpon>frmAsignar_Cantidad_CN.vb</DependentUpon>
+    <EmbeddedResource Include="frmAsignar_Cantidad_CN_Bienes.resx">
+      <DependentUpon>frmAsignar_Cantidad_CN_Bienes.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCatalogo_Bienes_Servicios_Obras.resx">
       <DependentUpon>frmCatalogo_Bienes_Servicios_Obras.vb</DependentUpon>
