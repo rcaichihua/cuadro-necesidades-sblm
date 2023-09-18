@@ -1528,7 +1528,7 @@ Public Class Mantenimiento
         Da.Fill(Ds)
         If Ds.Tables(0).Rows.Count > 0 Then
             Select Case Ds.Tables(0).Rows(0).Item("Codigo_Estado_CN").ToString
-                Case "03" 'EMITIDO() 01
+                Case "01" 'EMITIDO() 01
                     Nuevo.Enabled = True
                     Editar.Enabled = True
                     Eliminar.Enabled = True

@@ -161,7 +161,7 @@ Partial Class frmModulo_CN
         Me.Boton_Imprimir_CN.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Estadistica
         Me.Boton_Imprimir_CN.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
         Me.Boton_Imprimir_CN.Name = "Boton_Imprimir_CN"
-        Me.Boton_Imprimir_CN.Text = "<div align=""center"">Ver C.N.<br/>por B. y S.</div>"
+        Me.Boton_Imprimir_CN.Text = "<div align=""center"">Ver C.N.<br/>Inicial.</div>"
         '
         'Boton_Visualizar_CN
         '
@@ -202,12 +202,12 @@ Partial Class frmModulo_CN
         Me.Boton_Reporte_CN_Saldos.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
         Me.Boton_Reporte_CN_Saldos.Name = "Boton_Reporte_CN_Saldos"
         Me.Boton_Reporte_CN_Saldos.SubItemsExpandWidth = 14
-        Me.Boton_Reporte_CN_Saldos.Text = "<div align=""center"">Reporte<br/>C.N. Saldos</div>"
+        Me.Boton_Reporte_CN_Saldos.Text = "<div align=""center"">Reporte<br/>C.N. Modificado</div>"
         '
         'Boton_Reporte_CN_Saldos_Movimientos
         '
         Me.Boton_Reporte_CN_Saldos_Movimientos.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.Boton_Reporte_CN_Saldos_Movimientos.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Certificcion
+        Me.Boton_Reporte_CN_Saldos_Movimientos.Image = Global.SAG_SBLM.My.Resources.Resources.Icono_Catalogo_Bienes
         Me.Boton_Reporte_CN_Saldos_Movimientos.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
         Me.Boton_Reporte_CN_Saldos_Movimientos.Name = "Boton_Reporte_CN_Saldos_Movimientos"
         Me.Boton_Reporte_CN_Saldos_Movimientos.SubItemsExpandWidth = 14

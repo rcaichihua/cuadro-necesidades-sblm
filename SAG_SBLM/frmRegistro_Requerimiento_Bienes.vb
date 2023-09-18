@@ -552,11 +552,11 @@
                     Next
                     Me.Close()
                 Else
-                    MessageBox.Show("Debes ingresar la Justificación del Requerimiento", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
+                    MessageBox.Show("Debes ingresar la Justificación del Requerimiento.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
                     Me.txtJustificacion.Focus()
                 End If
             Else
-                MessageBox.Show("Debes ingresar el detalle del Requerimiento", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
+                MessageBox.Show("Debes ingresar el detalle del Requerimiento.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
                 Me.btnBuscarItems.Focus()
             End If
         Else
@@ -597,11 +597,11 @@
                     'Next
                     Me.Close()
                 Else
-                    MessageBox.Show("Debes ingresar la Justificación del Requerimiento", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
+                    MessageBox.Show("Debes ingresar la Justificación del Requerimiento.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
                     Me.txtJustificacion.Focus()
                 End If
             Else
-                MessageBox.Show("Debes ingresar el detalle del Requerimiento", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
+                MessageBox.Show("Debes ingresar el detalle del Requerimiento.", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
                 Me.btnBuscarItems.Focus()
             End If
         End If

@@ -12,7 +12,7 @@
     <AssemblyName>SAG_SBLM</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <OptionExplicit>On</OptionExplicit>
     <OptionCompare>Binary</OptionCompare>
     <OptionStrict>Off</OptionStrict>
@@ -34,7 +34,7 @@
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
     <TargetFrameworkProfile />
-    <PublishUrl>\\192.168.1.8\Sistemas\CN_PRUEBA\</PublishUrl>
+    <PublishUrl>\\192.168.1.8\Sistemas\SAG_CN\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -44,11 +44,11 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>\\192.168.1.8\Sistemas\CN_PRUEBA\</UpdateUrl>
-    <ProductName>SAG-SBL-CN-prueba</ProductName>
-    <PublisherName>Sistema Cuadro de Necesidades Prueba</PublisherName>
+    <UpdateUrl>\\192.168.1.8\Sistemas\SAG_CN\</UpdateUrl>
+    <ProductName>SAG-SBL-CN</ProductName>
+    <PublisherName>Sistema Cuadro de Necesidades</PublisherName>
     <SuiteName>Sistema Cuadro de Necesidades</SuiteName>
-    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationRevision>22</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
